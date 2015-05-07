@@ -183,3 +183,60 @@ signed char I2C_writeRegisters(unsigned char channel, unsigned char slaveAdr,
 
     I2C_close(channel);
 }
+
+
+/*
+ * I2C_read reads the register at the given address on the given channel of the
+ * given register address and stores the value in the given location in memory
+ * and returns:
+ *
+ *     0  -  successful read, returned the data
+ *    -1  -  unsuccessful read, buffer overflow
+ *    -2  -  unsuccessful read, other issue
+ *
+ *
+ */
+
+signed char I2C_read(unsigned char channel, unsigned char slaveAdr,
+        unsigned char startRegAdr, unsigned char len,
+        unsigned char* dataRetAdr) {
+
+    signed char retVal;
+
+    I2C_open(channel);
+    retVal = I2C_write(channel, (slaveAdr | 0x01) );    // send slave adr, read
+    if(retVal != 0) {
+        if(SSP1CON1bits.WCOL || SSP2CON1bits.WCOL)
+            SSP1CON1bits.WCOL = SSP2CON1bits.WCOL = 0;
+        I2C_close(channel);
+    }
+
+    retVal += I2C_write(channel, startRegAdr);
+    if(retVal != 0) {
+        if(SSP1CON1bits.WCOL || SSP2CON1bits.WCOL)
+            SSP1CON1bits.WCOL = SSP2CON1bits.WCOL = 0;
+        I2C_close(channel);
+    }
+
+    if(channel == 1) {
+        for(unsigned char x = 0; x < len; x++) {
+            SSP1CON2bits.RCEN = 1;          // recieve mode on
+            while(!(SSP1STATbits.BF));      // wait for the buffer to fill
+            dataRetAdr[x] = SSP1BUF;        // get data
+            SSP1CON2bits.ACKEN = 1;         // acknowledge
+            SSP1CON2bits.RCEN = 0;          // recieve mode off
+        }
+        I2C_close(1);        // stop the transmittion on channel 1
+    }
+    else {  // channel 2
+        for(unsigned char x = 0; x < len; x++) {
+            SSP2CON2bits.RCEN = 1;          // recieve mode on
+            while(!(SSP2STATbits.BF));      // wait for the buffer to fill
+            dataRetAdr[x] = SSP2BUF;        // get data
+            SSP2CON2bits.ACKEN = 1;         // acknowledge
+            SSP2CON2bits.RCEN = 0;          // recieve mode off
+        }
+        I2C_close(2);        // stop the transmittion on channel 2
+    }
+    return retVal;
+}

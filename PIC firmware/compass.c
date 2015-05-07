@@ -67,7 +67,7 @@
 #include "GlobalDefines.h"
 #include <math.h>
 
-signed char compass_pixyInit() {
+signed char compass_pixyInit() {/*
 
     // the compass on the pixy board is on I2C line 1 (SDA: pin 56, SCL: pin 54)
 
@@ -92,12 +92,12 @@ signed char compass_pixyInit() {
     if(retry == 0) {
         return -1;
     }
-    else
+    else */
         return 0;
 }
 
 
-signed char compass_mainBoardInit() {
+signed char compass_mainBoardInit() { /*
     // the compass on the main board is on I2C line 2 (SDA: pin 81, SCL: pin 79)
 
     signed char retVal, data;
@@ -142,11 +142,12 @@ signed char compass_mainBoardInit() {
         retVal = compass_mainRead(&x, &y, &z);
         StopI2C1();
         return retVal;
-    }
+    } */
+    return 0;   // remove
 }
 
 
-signed char compass_mainRead(int *x, int *y, int *z) {
+signed char compass_mainRead(int *x, int *y, int *z) {/*
 
     signed char retVal;
     retVal += WriteI2C2(COMPASS_READ_ADDR); // compass address
@@ -163,16 +164,16 @@ signed char compass_mainRead(int *x, int *y, int *z) {
         (*y) = ReadI2C2();                  // read z MSB address
         (*y) = (*y) << 8;                   // shift MSB up
         (*y) = ReadI2C2();                  // read LSB
-
-        return 0;
+*/
+        return 0; /*
     }
     else
-        return -1;
+        return -1;*/
 
 }
 
 
-signed char compass_pixyRead(int *x, int *y, int *z) {
+signed char compass_pixyRead(int *x, int *y, int *z) { /*
     
     signed char retVal;
     retVal += WriteI2C1(COMPASS_READ_ADDR); // compass address
@@ -193,7 +194,8 @@ signed char compass_pixyRead(int *x, int *y, int *z) {
         return 0;
     }
     else
-        return -1;
+        return -1;*/
+    return 0; // remove
 }
 
 

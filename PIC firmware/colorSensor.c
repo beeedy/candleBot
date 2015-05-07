@@ -47,4 +47,5 @@ signed char colorSensor_init() {/*
     retVal += WriteI2C2(0xA0);      // configures for auto-inc. protocol tx
     retVal += WriteI2C2(0x00);
 */
+    return 0;
 }

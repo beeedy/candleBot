@@ -1,0 +1,1920 @@
+%CMF
+# %PSECTS Section
+# For each object file, details of its psects are enumerated here.
+# The begining of the section is indicated by %PSECTS.  The first
+# line indicates the name of the first object file, e.g.
+#    $foo.obj
+# Each line that follows describes a psect in that object file, until
+# the next object file.  The lines that describe a psect have the
+# format:
+#    <psect name> <class name> <space> <link address> <load addresses> <length> <delta>
+# All addresses and the length are given in unqualified hexadecimal
+# in delta units.  Any other numeric values are decimal.
+%PSECTS
+$C:\Users\Tyler\AppData\Local\Temp\s584.obj
+reset_vec CODE 0 0 0 4 1
+end_init CODE 0 F6 F6 4 1
+config CONFIG 0 1FFF0 1FFF0 10 1
+$dist/default/production\PIC_firmware.production.obj
+intcodelo CODE 0 18 18 DE 1
+cinit CODE 0 11A80 11A80 B4 1
+intcode_body CODE 0 119B0 119B0 D0 1
+text0 CODE 0 11522 11522 174 1
+text1 CODE 0 12380 12380 1C 1
+text2 CODE 0 12418 12418 E 1
+text3 CODE 0 12426 12426 E 1
+text4 CODE 0 123F8 123F8 10 1
+text5 CODE 0 121F8 121F8 34 1
+text6 CODE 0 12408 12408 10 1
+text7 CODE 0 12362 12362 1E 1
+text8 CODE 0 12290 12290 2E 1
+text9 CODE 0 11DF8 11DF8 84 1
+text10 CODE 0 11BD0 11BD0 8E 1
+text11 CODE 0 11D72 11D72 86 1
+text12 CODE 0 11CEA 11CEA 88 1
+text13 CODE 0 11E7C 11E7C 7E 1
+text14 CODE 0 11F6A 11F6A 6E 1
+text15 CODE 0 122BE 122BE 2A 1
+text16 CODE 0 123D0 123D0 16 1
+text17 CODE 0 117D6 117D6 10A 1
+text18 CODE 0 109EE 109EE 332 1
+text19 CODE 0 1222C 1222C 32 1
+text20 CODE 0 12446 12446 2 1
+text21 CODE 0 1239C 1239C 1C 1
+text22 CODE 0 11696 11696 140 1
+text23 CODE 0 10D20 10D20 29A 1
+text24 CODE 0 1233A 1233A 28 1
+text25 CODE 0 118E0 118E0 D0 1
+text26 CODE 0 1214A 1214A 3E 1
+text27 CODE 0 12188 12188 3A 1
+text28 CODE 0 121C2 121C2 36 1
+text29 CODE 0 113A8 113A8 17A 1
+text30 CODE 0 10FBA 10FBA 23A 1
+text31 CODE 0 12106 12106 44 1
+text32 CODE 0 11EFA 11EFA 70 1
+text33 CODE 0 11B34 11B34 9C 1
+text34 CODE 0 123B8 123B8 18 1
+text35 CODE 0 10000 10000 6A0 1
+text36 CODE 0 120A6 120A6 60 1
+text37 CODE 0 111F4 111F4 1B4 1
+text38 CODE 0 12040 12040 66 1
+text39 CODE 0 11FD8 11FD8 68 1
+text40 CODE 0 106A0 106A0 34E 1
+text41 CODE 0 1225E 1225E 32 1
+text42 CODE 0 11C5E 11C5E 8C 1
+text43 CODE 0 123E6 123E6 12 1
+text46 CODE 0 12434 12434 E 1
+idataCOMRAM CODE 0 12442 12442 3 1
+cstackCOMRAM COMRAM 1 1 1 25 1
+cstackBANK0 BANK0 1 60 60 4C 1
+cstackBANK1 BANK1 1 1EF 1EF 7 1
+cstackBANK2 BANK2 1 2B2 2B2 33 1
+bssBANK0 BANK0 1 AC AC 2B 1
+bssBANK1 BANK1 1 100 100 C6 1
+bssBANK2 BANK2 1 200 200 B2 1
+bssBANK3 BANK3 1 300 300 C8 1
+intcode CODE 0 8 8 10 1
+idataBANK0 CODE 0 122E8 122E8 29 1
+idataBANK1 CODE 0 12311 12311 29 1
+dataBANK0 BANK0 1 D7 D7 29 1
+dataBANK1 BANK1 1 1C6 1C6 29 1
+dataCOMRAM COMRAM 1 3E 3E 3 1
+bssBIGRAM BIGRAM 1 3C8 3C8 3E8 1
+bssCOMRAM COMRAM 1 26 26 18 1
+mediumconst MEDIUMCONST 0 F8D2 F8D2 72E 1
+# %UNUSED Section
+# This section enumerates the unused ranges of each CLASS. Each entry
+# is described on a single line as follows:
+#    <class name> <range> <delta>
+# Addresses given in the range are in hexadecimal and units of delta.
+%UNUSED
+RAM 1F6-1FF 1
+RAM 2E5-2FF 1
+RAM 7B0-DF9 1
+SFR DFA-FFF 1
+BANK1 1F6-1FF 1
+BANK2 2E5-2FF 1
+BANK7 7B0-7FF 1
+BANK8 800-8FF 1
+BANK9 900-9FF 1
+CONST 4-7 1
+CONST FA-F8D1 1
+CONST 12445-12445 1
+CONST 12448-1FFEF 1
+STACK 7B0-DF9 1
+SMALLCONST E00-F8D1 1
+SMALLCONST 12445-12445 1
+SMALLCONST 12448-1FFEF 1
+CODE 4-7 1
+CODE FA-F8D1 1
+CODE 12445-12445 1
+CODE 12448-1FFEF 1
+BANK10 A00-AFF 1
+BANK11 B00-BFF 1
+BANK12 C00-CFF 1
+BANK13 D00-DF9 1
+BIGRAM 41-5F 1
+BIGRAM 1F6-1FF 1
+BIGRAM 2E5-2FF 1
+BIGRAM 7B0-DF9 1
+COMRAM 41-5F 1
+MEDIUMCONST E00-F8D1 1
+MEDIUMCONST 12445-12445 1
+MEDIUMCONST 12448-1FFEF 1
+# %LINETAB Section
+# This section enumerates the file/line to address mappings.
+# The beginning of the section is indicated by %LINETAB.
+# The first line indicates the name of the first object file, e.g.
+#   $foo.obj
+# Each line that follows describes a single mapping until the next
+# object file.  Mappings have the following format:
+#    <address> <psect name> <class name> ><line number>:<file name>
+# The address is absolute and given given in unqualified hex 
+# in delta units of the psect. All mappings within an object file
+# are in ascending order of addresses.
+# All other numeric values are in decimal.
+%LINETAB
+$dist/default/production\PIC_firmware.production.obj
+8 intcode CODE >66:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+8 intcode CODE >203:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+18 intcodelo CODE >113:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+18 intcodelo CODE >40:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+5C intcodelo CODE >42:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+60 intcodelo CODE >44:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+64 intcodelo CODE >46:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+74 intcodelo CODE >50:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+82 intcodelo CODE >52:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+84 intcodelo CODE >53:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+86 intcodelo CODE >54:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+8A intcodelo CODE >56:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+8E intcodelo CODE >58:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+9E intcodelo CODE >62:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+AC intcodelo CODE >64:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+AE intcodelo CODE >65:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+B0 intcodelo CODE >66:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+10000 text35 CODE >312:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10004 text35 CODE >314:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10016 text35 CODE >317:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10022 text35 CODE >319:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+1002E text35 CODE >322:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+1003A text35 CODE >324:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+1007A text35 CODE >326:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+100CE text35 CODE >328:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+100E2 text35 CODE >329:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+100E4 text35 CODE >332:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+100FE text35 CODE >334:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10122 text35 CODE >335:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10138 text35 CODE >337:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+1013E text35 CODE >338:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10140 text35 CODE >342:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+1017E text35 CODE >343:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10184 text35 CODE >344:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+1019A text35 CODE >322:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+101FC text35 CODE >351:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10208 text35 CODE >353:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10220 text35 CODE >355:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+1022C text35 CODE >356:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+1022E text35 CODE >359:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10244 text35 CODE >360:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10246 text35 CODE >362:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10248 text35 CODE >365:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+1025C text35 CODE >366:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+1025E text35 CODE >367:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10352 text35 CODE >368:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10366 text35 CODE >369:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10368 text35 CODE >371:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+1037C text35 CODE >372:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+1037E text35 CODE >373:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10452 text35 CODE >374:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10466 text35 CODE >375:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10468 text35 CODE >378:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10468 text35 CODE >379:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+1046A text35 CODE >380:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+1046C text35 CODE >381:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10624 text35 CODE >382:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10638 text35 CODE >383:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+1063A text35 CODE >385:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+1063C text35 CODE >362:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+1064C text35 CODE >386:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10662 text35 CODE >387:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10666 text35 CODE >351:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+1069E text35 CODE >390:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+106A0 text40 CODE >279:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+106A4 text40 CODE >283:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+106B4 text40 CODE >284:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+106CA text40 CODE >285:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+106CC text40 CODE >288:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+106E0 text40 CODE >289:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+106E2 text40 CODE >290:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+107C8 text40 CODE >291:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+107DC text40 CODE >292:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+107DE text40 CODE >294:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+107F2 text40 CODE >295:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+107F4 text40 CODE >296:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10880 text40 CODE >297:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10894 text40 CODE >298:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10896 text40 CODE >299:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10898 text40 CODE >301:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10898 text40 CODE >302:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+1089A text40 CODE >303:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+1089C text40 CODE >304:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+109C4 text40 CODE >305:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+109D8 text40 CODE >306:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+109DA text40 CODE >308:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+109DC text40 CODE >285:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+109EC text40 CODE >309:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+109EE text18 CODE >47:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+109EE text18 CODE >50:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+109F2 text18 CODE >52:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+109F6 text18 CODE >53:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+109FA text18 CODE >54:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+109FE text18 CODE >55:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A02 text18 CODE >56:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A06 text18 CODE >58:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A0A text18 CODE >59:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A0C text18 CODE >60:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A10 text18 CODE >61:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A14 text18 CODE >62:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A18 text18 CODE >63:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A1C text18 CODE >65:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A1E text18 CODE >66:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A20 text18 CODE >67:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A22 text18 CODE >68:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A24 text18 CODE >70:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A26 text18 CODE >71:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A28 text18 CODE >72:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A2A text18 CODE >76:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A2C text18 CODE >77:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A2E text18 CODE >78:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A30 text18 CODE >79:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A32 text18 CODE >80:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A34 text18 CODE >81:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A36 text18 CODE >82:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A38 text18 CODE >84:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A3C text18 CODE >85:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A52 text18 CODE >87:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A54 text18 CODE >88:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A56 text18 CODE >91:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A6A text18 CODE >92:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A6C text18 CODE >93:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A74 text18 CODE >94:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A88 text18 CODE >95:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10A8A text18 CODE >97:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10AA0 text18 CODE >100:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10AB4 text18 CODE >101:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10AB6 text18 CODE >102:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10ABE text18 CODE >103:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10AD2 text18 CODE >104:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10AD4 text18 CODE >106:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10AEA text18 CODE >109:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10AFE text18 CODE >110:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10B00 text18 CODE >111:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10B08 text18 CODE >112:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10B1C text18 CODE >113:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10B1E text18 CODE >115:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10B34 text18 CODE >118:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10B48 text18 CODE >119:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10B4A text18 CODE >120:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10B52 text18 CODE >121:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10B66 text18 CODE >122:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10B68 text18 CODE >124:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10B7E text18 CODE >127:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10B92 text18 CODE >128:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10B94 text18 CODE >129:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10B9C text18 CODE >130:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10BB0 text18 CODE >131:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10BB2 text18 CODE >133:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10BC6 text18 CODE >134:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10BC8 text18 CODE >135:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10BD0 text18 CODE >136:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10BE4 text18 CODE >137:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10BE6 text18 CODE >140:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10BFA text18 CODE >141:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10BFC text18 CODE >142:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10C04 text18 CODE >143:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10C18 text18 CODE >144:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10C1A text18 CODE >146:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10C2E text18 CODE >147:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10C30 text18 CODE >148:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10C38 text18 CODE >149:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10C4C text18 CODE >150:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10C4E text18 CODE >153:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10C62 text18 CODE >154:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10C64 text18 CODE >155:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10C6C text18 CODE >156:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10C80 text18 CODE >157:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10C82 text18 CODE >159:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10C96 text18 CODE >160:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10C98 text18 CODE >161:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10CA0 text18 CODE >162:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10CB4 text18 CODE >163:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10CB6 text18 CODE >166:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10CCA text18 CODE >167:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10CCC text18 CODE >168:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10CD4 text18 CODE >169:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10CE8 text18 CODE >170:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10CEA text18 CODE >172:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10CFE text18 CODE >173:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10D00 text18 CODE >174:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10D08 text18 CODE >175:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10D1C text18 CODE >176:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10D1E text18 CODE >178:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+10D20 text23 CODE >68:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+10D24 text23 CODE >70:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+10D56 text23 CODE >71:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+10D86 text23 CODE >73:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+10DB2 text23 CODE >74:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+10DDE text23 CODE >76:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+10E0A text23 CODE >77:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+10E36 text23 CODE >79:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+10EDA text23 CODE >80:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+10F34 text23 CODE >82:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+10F6A text23 CODE >83:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+10FA0 text23 CODE >85:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+10FAC text23 CODE >86:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+10FB8 text23 CODE >87:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+10FBA text30 CODE >78:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+10FBA text30 CODE >80:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+1100A text30 CODE >82:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+1102A text30 CODE >84:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11030 text30 CODE >87:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+1106C text30 CODE >89:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+110C0 text30 CODE >92:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+110C8 text30 CODE >94:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+110CA text30 CODE >95:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+110CC text30 CODE >96:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+110CE text30 CODE >98:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+110E2 text30 CODE >101:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+110F4 text30 CODE >102:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11106 text30 CODE >105:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+1112A text30 CODE >107:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11152 text30 CODE >105:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+1115C text30 CODE >110:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11166 text30 CODE >112:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+1118A text30 CODE >114:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+111C6 text30 CODE >112:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+111D0 text30 CODE >116:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+111D0 text30 CODE >118:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+111D2 text30 CODE >120:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+111DE text30 CODE >121:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+111F2 text30 CODE >122:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+111F4 text37 CODE >492:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+111F4 text37 CODE >533:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+11200 text37 CODE >536:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+11202 text37 CODE >538:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+1120C text37 CODE >541:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+1121E text37 CODE >542:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+11220 text37 CODE >548:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+11226 text37 CODE >635:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+11228 text37 CODE >638:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+1122A text37 CODE >699:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+1122C text37 CODE >813:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+1122E text37 CODE >822:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+11230 text37 CODE >635:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+1125E text37 CODE >1259:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+11278 text37 CODE >1261:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+1127E text37 CODE >1262:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+11284 text37 CODE >1263:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+11290 text37 CODE >1305:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+112A4 text37 CODE >1306:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+112D2 text37 CODE >1307:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+112D4 text37 CODE >1305:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+112DA text37 CODE >1438:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+112E6 text37 CODE >1439:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+112FA text37 CODE >1472:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+112FE text37 CODE >1474:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+11300 text37 CODE >1489:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+11350 text37 CODE >1524:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+11364 text37 CODE >1474:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+11374 text37 CODE >536:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+11398 text37 CODE >1538:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+113A6 text37 CODE >1541:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
+113A8 text29 CODE >14:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+113A8 text29 CODE >18:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+113AA text29 CODE >19:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+113AC text29 CODE >20:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+113AE text29 CODE >21:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+113B0 text29 CODE >24:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+113B2 text29 CODE >25:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+113B4 text29 CODE >27:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+113B8 text29 CODE >28:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+113BC text29 CODE >30:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+113DA text29 CODE >32:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+113DE text29 CODE >36:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+113E4 text29 CODE >38:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11408 text29 CODE >40:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+1141E text29 CODE >43:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11432 text29 CODE >45:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11434 text29 CODE >46:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11436 text29 CODE >47:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11438 text29 CODE >49:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+1144C text29 CODE >51:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11470 text29 CODE >53:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11498 text29 CODE >51:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+114AC text29 CODE >56:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+114AE text29 CODE >58:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+114B2 text29 CODE >60:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+114C8 text29 CODE >62:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+114DE text29 CODE >64:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+114E2 text29 CODE >66:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+114EE text29 CODE >67:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+114F0 text29 CODE >69:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+114FE text29 CODE >71:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11502 text29 CODE >73:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11506 text29 CODE >38:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+1151C text29 CODE >75:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11520 text29 CODE >76:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11522 text0 CODE >108:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11522 text0 CODE >133:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11524 text0 CODE >134:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11528 text0 CODE >136:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+1152A text0 CODE >143:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11564 text0 CODE >145:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11566 text0 CODE >148:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+1157E text0 CODE >149:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11580 text0 CODE >152:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11598 text0 CODE >153:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+1159A text0 CODE >156:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+115B2 text0 CODE >157:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+115B4 text0 CODE >160:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+115CC text0 CODE >161:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+115CE text0 CODE >164:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+115E6 text0 CODE >165:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+115E8 text0 CODE >168:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11600 text0 CODE >170:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11602 text0 CODE >145:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11626 text0 CODE >172:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+1163C text0 CODE >173:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+1164E text0 CODE >175:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11650 text0 CODE >178:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11654 text0 CODE >179:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11656 text0 CODE >182:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+1165A text0 CODE >183:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+1165C text0 CODE >186:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11660 text0 CODE >187:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11662 text0 CODE >190:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11666 text0 CODE >191:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11668 text0 CODE >194:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+1166C text0 CODE >199:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+1166E text0 CODE >175:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11690 text0 CODE >136:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11692 text0 CODE >201:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11696 text22 CODE >77:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11696 text22 CODE >79:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+116AE text22 CODE >80:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+116B4 text22 CODE >83:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+116D4 text22 CODE >84:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+116EA text22 CODE >85:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+116F4 text22 CODE >81:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+116FE text22 CODE >88:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11706 text22 CODE >90:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+1173C text22 CODE >96:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11740 text22 CODE >98:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11778 text22 CODE >99:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+117B0 text22 CODE >103:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+117BC text22 CODE >104:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+117D2 text22 CODE >94:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+117D4 text22 CODE >106:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+117D6 text17 CODE >21:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+117D6 text17 CODE >43:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+117D8 text17 CODE >45:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+117DE text17 CODE >46:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+117E4 text17 CODE >48:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+117EA text17 CODE >49:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+117F0 text17 CODE >51:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+117F6 text17 CODE >52:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+117FC text17 CODE >54:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+117FE text17 CODE >56:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+11800 text17 CODE >59:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+11802 text17 CODE >69:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+11806 text17 CODE >70:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+1180C text17 CODE >72:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+1180E text17 CODE >74:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+11810 text17 CODE >75:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+11812 text17 CODE >76:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+11814 text17 CODE >77:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+11816 text17 CODE >79:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+11818 text17 CODE >80:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+1181A text17 CODE >81:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+1181C text17 CODE >82:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+1181E text17 CODE >84:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+11820 text17 CODE >85:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+11822 text17 CODE >88:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+11824 text17 CODE >89:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+11826 text17 CODE >99:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+1182C text17 CODE >100:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+11832 text17 CODE >102:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+11836 text17 CODE >104:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+1183A text17 CODE >105:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+1183E text17 CODE >106:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+11842 text17 CODE >107:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+11846 text17 CODE >109:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+1184A text17 CODE >110:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+1184E text17 CODE >111:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+11852 text17 CODE >112:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+11856 text17 CODE >114:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+1185A text17 CODE >115:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+1185E text17 CODE >118:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+11860 text17 CODE >119:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+11862 text17 CODE >129:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+11868 text17 CODE >130:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+1186E text17 CODE >132:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+11872 text17 CODE >134:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+11876 text17 CODE >135:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+1187A text17 CODE >136:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+1187E text17 CODE >137:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+11882 text17 CODE >139:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+11886 text17 CODE >140:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+1188A text17 CODE >141:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+1188E text17 CODE >142:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+11892 text17 CODE >144:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+11896 text17 CODE >145:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+1189A text17 CODE >147:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+1189C text17 CODE >148:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+1189E text17 CODE >158:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+118A0 text17 CODE >159:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+118A2 text17 CODE >162:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+118A8 text17 CODE >163:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+118AE text17 CODE >165:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+118B2 text17 CODE >167:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+118B6 text17 CODE >168:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+118BA text17 CODE >169:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+118BE text17 CODE >170:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+118C2 text17 CODE >172:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+118C6 text17 CODE >173:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+118CA text17 CODE >174:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+118CE text17 CODE >175:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+118D2 text17 CODE >177:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+118D6 text17 CODE >178:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+118DA text17 CODE >181:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+118DC text17 CODE >182:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+118DE text17 CODE >183:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+118E0 text25 CODE >8:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awdiv.c
+118E0 text25 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awdiv.c
+118E6 text25 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awdiv.c
+118EC text25 CODE >16:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awdiv.c
+118F6 text25 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awdiv.c
+118FE text25 CODE >19:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awdiv.c
+11904 text25 CODE >20:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awdiv.c
+1190E text25 CODE >21:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awdiv.c
+11916 text25 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awdiv.c
+11920 text25 CODE >24:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awdiv.c
+1192C text25 CODE >25:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awdiv.c
+11932 text25 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awdiv.c
+11934 text25 CODE >27:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awdiv.c
+1193C text25 CODE >28:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awdiv.c
+11942 text25 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awdiv.c
+1194C text25 CODE >31:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awdiv.c
+11954 text25 CODE >32:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awdiv.c
+11968 text25 CODE >33:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awdiv.c
+11978 text25 CODE >34:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awdiv.c
+1197E text25 CODE >36:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awdiv.c
+11986 text25 CODE >37:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awdiv.c
+1198E text25 CODE >39:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awdiv.c
+11998 text25 CODE >40:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awdiv.c
+119A4 text25 CODE >41:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awdiv.c
+119AE text25 CODE >42:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awdiv.c
+119B0 intcode_body CODE >203:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+119DC intcode_body CODE >205:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+119E0 intcode_body CODE >207:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+119E4 intcode_body CODE >208:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+119E6 intcode_body CODE >209:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+119E8 intcode_body CODE >210:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+119EC intcode_body CODE >211:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+119EE intcode_body CODE >217:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+119F0 intcode_body CODE >224:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+119F0 intcode_body CODE >225:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+119F4 intcode_body CODE >227:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11A08 intcode_body CODE >228:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11A0C intcode_body CODE >230:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11A0E intcode_body CODE >234:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11A12 intcode_body CODE >236:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11A26 intcode_body CODE >237:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11A2A intcode_body CODE >239:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11A2E intcode_body CODE >241:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11A42 intcode_body CODE >242:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11A46 intcode_body CODE >244:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+11A80 cinit CODE >16356:C:\Users\Tyler\AppData\Local\Temp\s584.
+11A80 cinit CODE >16358:C:\Users\Tyler\AppData\Local\Temp\s584.
+11A80 cinit CODE >16361:C:\Users\Tyler\AppData\Local\Temp\s584.
+11A80 cinit CODE >16513:C:\Users\Tyler\AppData\Local\Temp\s584.
+11A84 cinit CODE >16514:C:\Users\Tyler\AppData\Local\Temp\s584.
+11A88 cinit CODE >16515:C:\Users\Tyler\AppData\Local\Temp\s584.
+11A88 cinit CODE >16516:C:\Users\Tyler\AppData\Local\Temp\s584.
+11A8A cinit CODE >16517:C:\Users\Tyler\AppData\Local\Temp\s584.
+11A8C cinit CODE >16518:C:\Users\Tyler\AppData\Local\Temp\s584.
+11A8E cinit CODE >16519:C:\Users\Tyler\AppData\Local\Temp\s584.
+11A90 cinit CODE >16520:C:\Users\Tyler\AppData\Local\Temp\s584.
+11A92 cinit CODE >16521:C:\Users\Tyler\AppData\Local\Temp\s584.
+11A94 cinit CODE >16524:C:\Users\Tyler\AppData\Local\Temp\s584.
+11A98 cinit CODE >16525:C:\Users\Tyler\AppData\Local\Temp\s584.
+11A9A cinit CODE >16526:C:\Users\Tyler\AppData\Local\Temp\s584.
+11A9A cinit CODE >16527:C:\Users\Tyler\AppData\Local\Temp\s584.
+11A9C cinit CODE >16528:C:\Users\Tyler\AppData\Local\Temp\s584.
+11A9E cinit CODE >16529:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AA0 cinit CODE >16532:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AA4 cinit CODE >16533:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AA6 cinit CODE >16534:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AA6 cinit CODE >16535:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AA8 cinit CODE >16536:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AAA cinit CODE >16537:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AAC cinit CODE >16540:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AB0 cinit CODE >16541:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AB2 cinit CODE >16542:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AB2 cinit CODE >16543:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AB4 cinit CODE >16544:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AB6 cinit CODE >16545:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AB8 cinit CODE >16548:C:\Users\Tyler\AppData\Local\Temp\s584.
+11ABC cinit CODE >16549:C:\Users\Tyler\AppData\Local\Temp\s584.
+11ABE cinit CODE >16550:C:\Users\Tyler\AppData\Local\Temp\s584.
+11ABE cinit CODE >16551:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AC0 cinit CODE >16552:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AC2 cinit CODE >16553:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AC4 cinit CODE >16556:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AC8 cinit CODE >16557:C:\Users\Tyler\AppData\Local\Temp\s584.
+11ACA cinit CODE >16558:C:\Users\Tyler\AppData\Local\Temp\s584.
+11ACA cinit CODE >16559:C:\Users\Tyler\AppData\Local\Temp\s584.
+11ACC cinit CODE >16560:C:\Users\Tyler\AppData\Local\Temp\s584.
+11ACE cinit CODE >16561:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AD0 cinit CODE >16566:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AD2 cinit CODE >16567:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AD4 cinit CODE >16568:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AD6 cinit CODE >16569:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AD8 cinit CODE >16570:C:\Users\Tyler\AppData\Local\Temp\s584.
+11ADA cinit CODE >16571:C:\Users\Tyler\AppData\Local\Temp\s584.
+11ADC cinit CODE >16572:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AE0 cinit CODE >16573:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AE4 cinit CODE >16574:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AE4 cinit CODE >16575:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AE6 cinit CODE >16576:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AEA cinit CODE >16577:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AEC cinit CODE >16578:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AEE cinit CODE >16579:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AF0 cinit CODE >16583:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AF2 cinit CODE >16584:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AF4 cinit CODE >16585:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AF6 cinit CODE >16586:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AF8 cinit CODE >16587:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AFA cinit CODE >16588:C:\Users\Tyler\AppData\Local\Temp\s584.
+11AFC cinit CODE >16589:C:\Users\Tyler\AppData\Local\Temp\s584.
+11B00 cinit CODE >16590:C:\Users\Tyler\AppData\Local\Temp\s584.
+11B04 cinit CODE >16591:C:\Users\Tyler\AppData\Local\Temp\s584.
+11B04 cinit CODE >16592:C:\Users\Tyler\AppData\Local\Temp\s584.
+11B06 cinit CODE >16593:C:\Users\Tyler\AppData\Local\Temp\s584.
+11B0A cinit CODE >16594:C:\Users\Tyler\AppData\Local\Temp\s584.
+11B0C cinit CODE >16595:C:\Users\Tyler\AppData\Local\Temp\s584.
+11B0E cinit CODE >16596:C:\Users\Tyler\AppData\Local\Temp\s584.
+11B10 cinit CODE >16600:C:\Users\Tyler\AppData\Local\Temp\s584.
+11B12 cinit CODE >16601:C:\Users\Tyler\AppData\Local\Temp\s584.
+11B14 cinit CODE >16602:C:\Users\Tyler\AppData\Local\Temp\s584.
+11B16 cinit CODE >16603:C:\Users\Tyler\AppData\Local\Temp\s584.
+11B18 cinit CODE >16604:C:\Users\Tyler\AppData\Local\Temp\s584.
+11B1A cinit CODE >16605:C:\Users\Tyler\AppData\Local\Temp\s584.
+11B1C cinit CODE >16606:C:\Users\Tyler\AppData\Local\Temp\s584.
+11B1E cinit CODE >16607:C:\Users\Tyler\AppData\Local\Temp\s584.
+11B22 cinit CODE >16608:C:\Users\Tyler\AppData\Local\Temp\s584.
+11B24 cinit CODE >16609:C:\Users\Tyler\AppData\Local\Temp\s584.
+11B28 cinit CODE >16610:C:\Users\Tyler\AppData\Local\Temp\s584.
+11B2A cinit CODE >16611:C:\Users\Tyler\AppData\Local\Temp\s584.
+11B2E cinit CODE >16617:C:\Users\Tyler\AppData\Local\Temp\s584.
+11B2E cinit CODE >16618:C:\Users\Tyler\AppData\Local\Temp\s584.
+11B30 cinit CODE >16619:C:\Users\Tyler\AppData\Local\Temp\s584.
+11B34 text33 CODE >143:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11B38 text33 CODE >145:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11B3E text33 CODE >146:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11B48 text33 CODE >148:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11B68 text33 CODE >150:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11B6A text33 CODE >151:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11B6C text33 CODE >152:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11B6C text33 CODE >154:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11B6E text33 CODE >155:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11B6E text33 CODE >157:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11B70 text33 CODE >158:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11B84 text33 CODE >160:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11B88 text33 CODE >162:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11BA4 text33 CODE >165:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11BA6 text33 CODE >146:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11BB2 text33 CODE >167:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11BB4 text33 CODE >168:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11BC8 text33 CODE >169:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11BCE text33 CODE >170:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11BD0 text10 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setoc.c
+11BD2 text10 CODE >19:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setoc.c
+11BD6 text10 CODE >30:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setoc.c
+11BDA text10 CODE >31:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setoc.c
+11BDE text10 CODE >32:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setoc.c
+11BEA text10 CODE >34:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setoc.c
+11BF6 text10 CODE >37:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setoc.c
+11C0A text10 CODE >38:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setoc.c
+11C0E text10 CODE >40:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setoc.c
+11C14 text10 CODE >44:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setoc.c
+11C1C text10 CODE >46:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setoc.c
+11C1E text10 CODE >47:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setoc.c
+11C20 text10 CODE >48:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setoc.c
+11C28 text10 CODE >50:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setoc.c
+11C2A text10 CODE >52:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setoc.c
+11C30 text10 CODE >53:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setoc.c
+11C34 text10 CODE >54:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setoc.c
+11C34 text10 CODE >55:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setoc.c
+11C36 text10 CODE >62:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setoc.c
+11C38 text10 CODE >63:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setoc.c
+11C46 text10 CODE >65:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setoc.c
+11C48 text10 CODE >67:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setoc.c
+11C54 text10 CODE >68:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setoc.c
+11C58 text10 CODE >69:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setoc.c
+11C5A text10 CODE >91:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setoc.c
+11C5E text42 CODE >62:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+11C5E text42 CODE >64:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+11C72 text42 CODE >65:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+11CE8 text42 CODE >67:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+11CEA text12 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3open.c
+11CEC text12 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3open.c
+11CF2 text12 CODE >20:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3open.c
+11CF8 text12 CODE >21:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3open.c
+11D0C text12 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3open.c
+11D18 text12 CODE >25:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3open.c
+11D1A text12 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3open.c
+11D1E text12 CODE >27:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3open.c
+11D20 text12 CODE >28:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3open.c
+11D22 text12 CODE >30:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3open.c
+11D2E text12 CODE >32:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3open.c
+11D32 text12 CODE >33:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3open.c
+11D36 text12 CODE >34:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3open.c
+11D3A text12 CODE >35:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3open.c
+11D3C text12 CODE >37:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3open.c
+11D48 text12 CODE >39:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3open.c
+11D4C text12 CODE >40:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3open.c
+11D50 text12 CODE >41:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3open.c
+11D54 text12 CODE >42:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3open.c
+11D56 text12 CODE >44:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3open.c
+11D62 text12 CODE >46:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3open.c
+11D66 text12 CODE >47:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3open.c
+11D6A text12 CODE >48:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3open.c
+11D6E text12 CODE >51:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3open.c
+11D72 text11 CODE >50:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setoc.c
+11D74 text11 CODE >52:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setoc.c
+11D78 text11 CODE >63:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setoc.c
+11D7C text11 CODE >64:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setoc.c
+11D80 text11 CODE >67:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setoc.c
+11D88 text11 CODE >69:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setoc.c
+11D90 text11 CODE >78:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setoc.c
+11DA4 text11 CODE >79:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setoc.c
+11DA8 text11 CODE >81:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setoc.c
+11DAE text11 CODE >85:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setoc.c
+11DB6 text11 CODE >87:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setoc.c
+11DB8 text11 CODE >88:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setoc.c
+11DBA text11 CODE >89:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setoc.c
+11DC2 text11 CODE >91:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setoc.c
+11DC4 text11 CODE >93:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setoc.c
+11DCA text11 CODE >94:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setoc.c
+11DCE text11 CODE >95:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setoc.c
+11DCE text11 CODE >96:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setoc.c
+11DD0 text11 CODE >103:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setoc.c
+11DD2 text11 CODE >104:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setoc.c
+11DE0 text11 CODE >106:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setoc.c
+11DE2 text11 CODE >108:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setoc.c
+11DEE text11 CODE >109:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setoc.c
+11DF2 text11 CODE >110:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setoc.c
+11DF4 text11 CODE >131:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setoc.c
+11DF8 text9 CODE >15:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+11DF8 text9 CODE >22:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+11DFA text9 CODE >24:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+11E00 text9 CODE >25:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+11E02 text9 CODE >29:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+11E08 text9 CODE >30:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+11E0A text9 CODE >32:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+11E0C text9 CODE >38:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+11E10 text9 CODE >39:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+11E14 text9 CODE >43:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+11E18 text9 CODE >44:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+11E1C text9 CODE >46:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+11E20 text9 CODE >47:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+11E24 text9 CODE >50:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+11E2E text9 CODE >51:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+11E3A text9 CODE >52:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+11E44 text9 CODE >55:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+11E48 text9 CODE >56:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+11E4E text9 CODE >60:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+11E58 text9 CODE >61:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+11E64 text9 CODE >62:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+11E6E text9 CODE >64:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+11E7A text9 CODE >66:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+11E7C text13 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1open.c
+11E7E text13 CODE >30:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1open.c
+11E82 text13 CODE >37:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1open.c
+11E88 text13 CODE >38:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1open.c
+11E94 text13 CODE >40:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1open.c
+11EA0 text13 CODE >42:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1open.c
+11EA2 text13 CODE >43:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1open.c
+11EA6 text13 CODE >44:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1open.c
+11EA8 text13 CODE >45:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1open.c
+11EAA text13 CODE >47:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1open.c
+11EB6 text13 CODE >49:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1open.c
+11EBA text13 CODE >50:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1open.c
+11EBE text13 CODE >51:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1open.c
+11EC2 text13 CODE >52:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1open.c
+11EC4 text13 CODE >54:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1open.c
+11ED0 text13 CODE >56:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1open.c
+11ED4 text13 CODE >57:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1open.c
+11ED8 text13 CODE >58:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1open.c
+11EDC text13 CODE >59:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1open.c
+11EDE text13 CODE >61:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1open.c
+11EEA text13 CODE >63:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1open.c
+11EEE text13 CODE >64:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1open.c
+11EF2 text13 CODE >65:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1open.c
+11EF6 text13 CODE >85:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1open.c
+11EFA text32 CODE >131:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11EFA text32 CODE >133:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11EFC text32 CODE >134:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11F08 text32 CODE >136:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11F22 text32 CODE >134:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11F54 text32 CODE >139:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11F56 text32 CODE >140:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11F68 text32 CODE >141:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+11F6A text14 CODE >9:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\fft.c
+11F6A text14 CODE >12:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\fft.c
+11F6E text14 CODE >15:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\fft.c
+11F70 text14 CODE >18:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\fft.c
+11F74 text14 CODE >19:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\fft.c
+11F78 text14 CODE >20:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\fft.c
+11F7C text14 CODE >23:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\fft.c
+11F82 text14 CODE >26:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\fft.c
+11F86 text14 CODE >27:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\fft.c
+11F88 text14 CODE >28:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\fft.c
+11F8E text14 CODE >29:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\fft.c
+11F94 text14 CODE >32:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\fft.c
+11F96 text14 CODE >35:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\fft.c
+11FAC text14 CODE >39:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\fft.c
+11FAE text14 CODE >40:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\fft.c
+11FB4 text14 CODE >41:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\fft.c
+11FD4 text14 CODE >37:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\fft.c
+11FD6 text14 CODE >80:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\fft.c
+11FD8 text39 CODE >8:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwdiv.c
+11FD8 text39 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwdiv.c
+11FE2 text39 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwdiv.c
+11FEA text39 CODE >16:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwdiv.c
+11FF0 text39 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwdiv.c
+11FF2 text39 CODE >18:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwdiv.c
+11FF8 text39 CODE >19:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwdiv.c
+11FFE text39 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwdiv.c
+12006 text39 CODE >22:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwdiv.c
+1200E text39 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwdiv.c
+1201A text39 CODE >24:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwdiv.c
+12022 text39 CODE >25:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwdiv.c
+12028 text39 CODE >27:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwdiv.c
+1202E text39 CODE >28:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwdiv.c
+12036 text39 CODE >29:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwdiv.c
+12036 text39 CODE >30:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwdiv.c
+1203E text39 CODE >31:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwdiv.c
+12040 text38 CODE >8:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwmod.c
+12040 text38 CODE >13:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwmod.c
+1204C text38 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwmod.c
+12050 text38 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwmod.c
+12052 text38 CODE >16:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwmod.c
+1205A text38 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwmod.c
+1205E text38 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwmod.c
+12068 text38 CODE >20:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwmod.c
+1207C text38 CODE >21:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwmod.c
+1208E text38 CODE >22:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwmod.c
+12096 text38 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwmod.c
+1209C text38 CODE >24:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwmod.c
+1209C text38 CODE >25:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwmod.c
+120A4 text38 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwmod.c
+120A6 text36 CODE >8:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\strcat.c
+120A6 text36 CODE >18:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\strcat.c
+120AE text36 CODE >19:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\strcat.c
+120B0 text36 CODE >20:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\strcat.c
+120B6 text36 CODE >19:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\strcat.c
+120C6 text36 CODE >21:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\strcat.c
+120C8 text36 CODE >22:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\strcat.c
+120CC text36 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\strcat.c
+120D2 text36 CODE >21:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\strcat.c
+12104 text36 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\strcat.c
+12106 text31 CODE >124:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+12106 text31 CODE >126:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+1211C text31 CODE >127:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+12132 text31 CODE >128:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+12148 text31 CODE >129:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+1214A text26 CODE >16:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setdc.c
+1214A text26 CODE >21:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setdc.c
+12166 text26 CODE >24:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setdc.c
+1216A text26 CODE >27:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setdc.c
+12186 text26 CODE >28:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setdc.c
+12188 text27 CODE >32:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setdc.c
+12188 text27 CODE >37:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setdc.c
+121A4 text27 CODE >40:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setdc.c
+121A8 text27 CODE >44:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setdc.c
+121C0 text27 CODE >49:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setdc.c
+121C2 text28 CODE >172:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+121C2 text28 CODE >174:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+121CC text28 CODE >175:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+121D2 text28 CODE >176:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+121DA text28 CODE >177:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+121E0 text28 CODE >178:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+121EA text28 CODE >179:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+121EE text28 CODE >181:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+121F6 text28 CODE >182:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+121F8 text5 CODE >49:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+121F8 text5 CODE >53:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+12210 text5 CODE >55:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+1221E text5 CODE >56:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+1222A text5 CODE >57:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+1222C text19 CODE >7:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+1222C text19 CODE >12:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+12236 text19 CODE >14:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+12238 text19 CODE >15:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+12238 text19 CODE >18:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+1223A text19 CODE >19:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+1223C text19 CODE >22:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+1223E text19 CODE >23:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+12240 text19 CODE >26:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+12242 text19 CODE >29:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+12244 text19 CODE >32:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+12246 text19 CODE >34:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+1224E text19 CODE >42:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+12252 text19 CODE >43:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+12254 text19 CODE >44:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+12256 text19 CODE >45:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+12258 text19 CODE >46:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+1225C text19 CODE >48:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+1225E text41 CODE >51:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+1225E text41 CODE >53:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+12262 text41 CODE >56:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+1226A text41 CODE >57:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+1227C text41 CODE >54:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+1228E text41 CODE >59:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+12290 text8 CODE >16:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+12290 text8 CODE >18:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+12294 text8 CODE >19:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+1229A text8 CODE >20:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+122A0 text8 CODE >22:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+122A2 text8 CODE >23:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+122A4 text8 CODE >24:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+122A6 text8 CODE >25:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+122A8 text8 CODE >26:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+122AA text8 CODE >27:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+122AE text8 CODE >28:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+122B2 text8 CODE >29:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+122B6 text8 CODE >32:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+122BC text8 CODE >33:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+122BE text15 CODE >6:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+122BE text15 CODE >9:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+122C0 text15 CODE >10:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+122C2 text15 CODE >11:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+122C4 text15 CODE >12:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+122C6 text15 CODE >21:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+122C8 text15 CODE >22:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+122CE text15 CODE >23:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+122D4 text15 CODE >24:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+122D6 text15 CODE >26:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+122D8 text15 CODE >27:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+122DA text15 CODE >28:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+122DC text15 CODE >29:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+122DE text15 CODE >32:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+122E0 text15 CODE >33:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+122E2 text15 CODE >34:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+122E4 text15 CODE >35:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+122E6 text15 CODE >38:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+1233A text24 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\Umul16.c
+1233A text24 CODE >37:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\Umul16.c
+12346 text24 CODE >38:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\Umul16.c
+1234E text24 CODE >39:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\Umul16.c
+12356 text24 CODE >52:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\Umul16.c
+12360 text24 CODE >53:C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\Umul16.c
+12362 text7 CODE >30:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+12362 text7 CODE >32:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+12366 text7 CODE >33:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+1236A text7 CODE >34:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+1236E text7 CODE >35:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+12372 text7 CODE >36:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+12376 text7 CODE >37:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+1237A text7 CODE >41:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+1237E text7 CODE >42:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+12380 text1 CODE >59:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+12380 text1 CODE >61:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+12398 text1 CODE >62:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+12398 text1 CODE >65:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+1239A text1 CODE >66:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+1239C text21 CODE >68:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+1239C text21 CODE >70:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+123B4 text21 CODE >71:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+123B4 text21 CODE >74:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+123B6 text21 CODE >75:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+123B8 text34 CODE >242:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+123BA text34 CODE >244:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+123CE text34 CODE >245:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
+123D0 text16 CODE >115:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+123D0 text16 CODE >117:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+123D4 text16 CODE >118:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+123E4 text16 CODE >119:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+123E6 text43 CODE >110:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+123E6 text43 CODE >112:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+123F6 text43 CODE >113:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+123F8 text4 CODE >66:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+123F8 text4 CODE >68:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+12402 text4 CODE >69:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+12406 text4 CODE >70:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+12408 text6 CODE >45:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+12408 text6 CODE >47:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+12412 text6 CODE >48:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+12416 text6 CODE >49:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+12418 text2 CODE >80:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+12418 text2 CODE >82:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+12420 text2 CODE >83:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+12424 text2 CODE >84:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+12426 text3 CODE >94:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+12426 text3 CODE >96:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+1242E text3 CODE >97:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+12432 text3 CODE >98:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+12434 text46 CODE >121:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+12434 text46 CODE >123:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+12440 text46 CODE >124:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+12446 text20 CODE >44:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+12446 text20 CODE >47:C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+# %SYMTAB Section
+# An enumeration of all symbols in the program.
+# The beginning of the section is indicated by %SYMTAB.
+# Each line describes a single symbol as follows:
+#    <label> <value> [-]<load-adj> <class> <space> <psect> <file-name>
+# The value and load-adj are both in unqualified hexadecimal.
+# All other numeric values are in decimal.  The load-adj is the
+# quantity one needs to add to the symbol value in order to obtain the load
+# address of the symbol.  This value may be signed. If the symbol
+# was defined in a psect then <psect> will be "-". File-name
+# is the name of the object file in which the symbol was defined.
+%SYMTAB
+FONA_init@F16396 1DB 0 BANK1 1 dataBANK1 dist/default/production\PIC_firmware.production.obj
+___awdiv@counter 64 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+FONA_CheckStrength@F16408 1C6 0 BANK1 1 dataBANK1 dist/default/production\PIC_firmware.production.obj
+___lwmod@counter 24 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+__LdataBANK0 0 0 ABS 0 dataBANK0 dist/default/production\PIC_firmware.production.obj
+__LdataBANK1 0 0 ABS 0 dataBANK1 dist/default/production\PIC_firmware.production.obj
+__Lmediumconst F8D2 0 MEDIUMCONST 0 mediumconst dist/default/production\PIC_firmware.production.obj
+__Hspace_0 20000 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__Hspace_1 7B0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__Hspace_2 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__CFG_IESO$OFF 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__HidataBANK0 0 0 ABS 0 idataBANK0 dist/default/production\PIC_firmware.production.obj
+__HidataBANK1 0 0 ABS 0 idataBANK1 dist/default/production\PIC_firmware.production.obj
+__size_of_PS2_readType 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_SSP1STATbits FC7 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__Hibigdata 0 0 CODE 0 ibigdata dist/default/production\PIC_firmware.production.obj
+__mediumconst F8D2 0 MEDIUMCONST 0 mediumconst C:\Users\Tyler\AppData\Local\Temp\s584.obj
+__size_of_PS2_readGamepad 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_last_read CD 0 BANK0 1 bssBANK0 dist/default/production\PIC_firmware.production.obj
+__size_of_PS2_reconfig 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__end_of_delay_init 1225E 0 CODE 0 text19 dist/default/production\PIC_firmware.production.obj
+__end_of_encoders_init 122E8 0 CODE 0 text15 dist/default/production\PIC_firmware.production.obj
+__Lsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production\PIC_firmware.production.obj
+_ADON 7E0F 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_CPEN 76C7 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_DONE 7E00 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_IPEN 7E87 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_LCDA 76D5 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_SAMP 7E01 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+___sp 0 0 STACK 2 stack C:\Users\Tyler\AppData\Local\Temp\s584.obj
+_init 12362 0 CODE 0 text7 dist/default/production\PIC_firmware.production.obj
+_main 11522 0 CODE 0 text0 dist/default/production\PIC_firmware.production.obj
+_mode 3D 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_firmware.production.obj
+_fft_init 11F6A 0 CODE 0 text14 dist/default/production\PIC_firmware.production.obj
+__HbssBIGRAM 0 0 ABS 0 bssBIGRAM dist/default/production\PIC_firmware.production.obj
+start F6 0 CODE 0 init C:\Users\Tyler\AppData\Local\Temp\s584.obj
+_PS2_analog 123B8 0 CODE 0 text34 dist/default/production\PIC_firmware.production.obj
+OpenEPWM3@period 22 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+__size_of___awdiv 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_LCD_placeCursor 106A0 0 CODE 0 text40 dist/default/production\PIC_firmware.production.obj
+__size_of_init 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__size_of_main 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__size_of___lwdiv 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__size_of___lwmod 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+OpenEPWM3@timer_source 20 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+__CFG_WDTEN$OFF 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__HbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production\PIC_firmware.production.obj
+__end_of_PS2_readType 121F8 0 CODE 0 text28 dist/default/production\PIC_firmware.production.obj
+?___wmul 20 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+UART_transmitString@F16323 300 0 BANK3 1 bssBANK3 dist/default/production\PIC_firmware.production.obj
+__size_of_communicationInterruptHandler 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__end_of_fft_init 11FD8 0 CODE 0 text14 dist/default/production\PIC_firmware.production.obj
+LCD_printString@tempString_590 2DF 0 BANK2 1 cstackBANK2 dist/default/production\PIC_firmware.production.obj
+__end_of_RCMode 117D6 0 CODE 0 text22 dist/default/production\PIC_firmware.production.obj
+__end_of_competitionMode 123B8 0 CODE 0 text21 dist/default/production\PIC_firmware.production.obj
+__end_of_wanderMode 1239C 0 CODE 0 text1 dist/default/production\PIC_firmware.production.obj
+__LidataBANK0 0 0 ABS 0 idataBANK0 dist/default/production\PIC_firmware.production.obj
+__LidataBANK1 0 0 ABS 0 idataBANK1 dist/default/production\PIC_firmware.production.obj
+__end_of_PS2_reconfig 1214A 0 CODE 0 text31 dist/default/production\PIC_firmware.production.obj
+delay_init@config 36 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_firmware.production.obj
+__Hpowerup F6 0 CODE 0 powerup dist/default/production\PIC_firmware.production.obj
+delay_ms@time 6C 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+PS2_readGamepad@dword 89 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+_USART4_BUFF 200 0 BANK2 1 bssBANK2 dist/default/production\PIC_firmware.production.obj
+__CFG_WDTWIN$PS25_0 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__CFG_MSSPMSK1$MSK7 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__HdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production\PIC_firmware.production.obj
+__CFG_MSSPMSK2$MSK7 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__LbssBIGRAM 0 0 ABS 0 bssBIGRAM dist/default/production\PIC_firmware.production.obj
+LCD_placeCursor@x 74 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+LCD_placeCursor@y 24 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+__accesstop 60 0 ABS 0 - C:\Users\Tyler\AppData\Local\Temp\s584.obj
+intlevel0 0 0 CODE 0 text C:\Users\Tyler\AppData\Local\Temp\s584.obj
+intlevel1 0 0 CODE 0 text C:\Users\Tyler\AppData\Local\Temp\s584.obj
+intlevel2 0 0 CODE 0 text C:\Users\Tyler\AppData\Local\Temp\s584.obj
+intlevel3 0 0 CODE 0 text C:\Users\Tyler\AppData\Local\Temp\s584.obj
+__LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production\PIC_firmware.production.obj
+__end_of_settings_wander 12426 0 CODE 0 text2 dist/default/production\PIC_firmware.production.obj
+_TMR3CS0 7D8E 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TMR3CS1 7D8F 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+strcat@from 22 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+_settings_selfTest 12426 0 CODE 0 text3 dist/default/production\PIC_firmware.production.obj
+__LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production\PIC_firmware.production.obj
+PS2_shiftInOut@byte 60 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+PS2_sendCommandString@y 76 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+_PSPCONbits FA7 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+motorDrive_setSpeeds@lSpeed 7F 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+__Hifardata 0 0 CODE 0 ifardata dist/default/production\PIC_firmware.production.obj
+__CFG_DSWDTPS$DSWDTPS1F 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+___awdiv@sign 65 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+__Hclrtext 0 0 ABS 0 clrtext dist/default/production\PIC_firmware.production.obj
+_UART4_INDEX 3A 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_firmware.production.obj
+__pidataCOMRAM 12442 0 CODE 0 idataCOMRAM dist/default/production\PIC_firmware.production.obj
+__CFG_WPCFG$WPCFGDIS 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_right_count 2E 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_firmware.production.obj
+__end_ofatan@coeff_a FEEF 0 MEDIUMCONST 0 mediumconst dist/default/production\PIC_firmware.production.obj
+__end_ofatan@coeff_b FEFE 0 MEDIUMCONST 0 mediumconst dist/default/production\PIC_firmware.production.obj
+RCMode@done 1F4 0 BANK1 1 cstackBANK1 dist/default/production\PIC_firmware.production.obj
+RCMode@type 1F3 0 BANK1 1 cstackBANK1 dist/default/production\PIC_firmware.production.obj
+SetOutputEPWM3@outputconfig 22 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+___wmul@multiplicand 22 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+_ANCON1 E47 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_ANCON2 E46 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_ANCON3 E45 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_ANSEL6 723E 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_ANSEL9 7231 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__end_of_PS2_analog 123D0 0 CODE 0 text34 dist/default/production\PIC_firmware.production.obj
+___awdiv@dividend 60 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+___inthi_sp 0 0 STACK 2 stack C:\Users\Tyler\AppData\Local\Temp\s584.obj
+___intlo_sp 0 0 STACK 2 stack C:\Users\Tyler\AppData\Local\Temp\s584.obj
+_USB_BUFF 5BC 0 BIGRAM 1 bssBIGRAM dist/default/production\PIC_firmware.production.obj
+__LdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production\PIC_firmware.production.obj
+_competitionMode 1239C 0 CODE 0 text21 dist/default/production\PIC_firmware.production.obj
+_CCPR1L FBA 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_CCPR3L F4A 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+motorDrive_setSpeeds@rSpeed 68 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+?_millis 20 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+__Hintcode_body 0 0 ABS 0 intcode_body dist/default/production\PIC_firmware.production.obj
+settings_readButton@t 20 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+OpenEPWM1@period 22 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+__end_of___wmul 12362 0 CODE 0 text24 dist/default/production\PIC_firmware.production.obj
+__end_of_motorDrive_init 11E7C 0 CODE 0 text9 dist/default/production\PIC_firmware.production.obj
+__Lintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production\PIC_firmware.production.obj
+__CFG_BW$16 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__CFG_WPSA$128 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__size_of_sprintf 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TXSTA1bits FAC 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TXSTA2bits F32 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TXSTA3bits F2E 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TXSTA4bits EFE 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__Hmediumconst 10000 0 MEDIUMCONST 0 mediumconst dist/default/production\PIC_firmware.production.obj
+__Hintcodelo F6 0 CODE 0 intcodelo dist/default/production\PIC_firmware.production.obj
+_motorDrive_setSpeeds 10D20 0 CODE 0 text23 dist/default/production\PIC_firmware.production.obj
+___awdiv@divisor 62 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+LCD_printString@i_591 2E3 0 BANK2 1 cstackBANK2 dist/default/production\PIC_firmware.production.obj
+LCD_printString@input 77 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+___lwmod@divisor 65 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+__size_of_SetDCEPWM1 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__size_of_SetDCEPWM3 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__end_of___awdiv 119B0 0 CODE 0 text25 dist/default/production\PIC_firmware.production.obj
+_settings_wander 12418 0 CODE 0 text2 dist/default/production\PIC_firmware.production.obj
+__size_of_LCD_placeCursor 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__end_of___lwdiv 12040 0 CODE 0 text39 dist/default/production\PIC_firmware.production.obj
+__end_of___lwmod 120A6 0 CODE 0 text38 dist/default/production\PIC_firmware.production.obj
+_INT1IF 7F80 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_INT3IF 7F82 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_IOLOCK 7B36 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+PS2_analog@button 20 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+_clearMillis 123D0 0 CODE 0 text16 dist/default/production\PIC_firmware.production.obj
+_dpowers FED3 0 MEDIUMCONST 0 mediumconst dist/default/production\PIC_firmware.production.obj
+_PS2_shiftInOut 11B34 0 CODE 0 text33 dist/default/production\PIC_firmware.production.obj
+__CFG_DSWDTOSC$LPRC 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_tickMillis 12434 0 CODE 0 text46 dist/default/production\PIC_firmware.production.obj
+___lwdiv@quotient 61 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+__size_of_debug 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__LidataCOMRAM 0 0 ABS 0 idataCOMRAM dist/default/production\PIC_firmware.production.obj
+LCD_printString@val 2DB 0 BANK2 1 cstackBANK2 dist/default/production\PIC_firmware.production.obj
+__CFG_SOSCSEL$DIG 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_SetOutputEPWM1 11D72 0 CODE 0 text11 dist/default/production\PIC_firmware.production.obj
+_SetOutputEPWM3 11BD0 0 CODE 0 text10 dist/default/production\PIC_firmware.production.obj
+_INTCON2bits FF1 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_INTCON3bits FF0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+___lwmod@dividend 63 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+__Lintcodelo 18 0 CODE 0 intcodelo dist/default/production\PIC_firmware.production.obj
+_NVCFG0 746D 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_SSP2CON1bits F19 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+start_initialization 11A80 0 CODE 0 cinit dist/default/production\PIC_firmware.production.obj
+_SSP2CON2bits F18 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__CFG_WINDIS$WDTSTD 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__size_of_PS2_init 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__HnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production\PIC_firmware.production.obj
+__CFG_CINASEL$DEFAULT 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__end_of_PS2_sendCommandString 11F6A 0 CODE 0 text32 dist/default/production\PIC_firmware.production.obj
+_TRISBbits F93 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TRISCbits F94 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_PVCFG0 746E 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_PVCFG1 746F 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TRISDbits F95 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TRISEbits F96 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TRISFbits F97 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TRISGbits F98 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TRISHbits F99 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TRISJbits F9A 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TRISLbits EE6 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+PS2_readGamepad@temp 92 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+_motorDrive_init 11DF8 0 CODE 0 text9 dist/default/production\PIC_firmware.production.obj
+_ADCBUF0 FC2 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_ADCHS0H E87 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_ADCHS0L E86 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_ADCON3L E8A 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+___rparam_used 1 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+PS2_readGamepad@F16091 D7 0 BANK0 1 dataBANK0 dist/default/production\PIC_firmware.production.obj
+PS2_readGamepad@F16093 C1 0 BANK0 1 bssBANK0 dist/default/production\PIC_firmware.production.obj
+_RCMode 11696 0 CODE 0 text22 dist/default/production\PIC_firmware.production.obj
+_RCREG1 FAE 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_RCREG3 F2A 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_RCREG4 EFA 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__end_of_millis 123F8 0 CODE 0 text43 dist/default/production\PIC_firmware.production.obj
+_exit_config E9 0 BANK0 1 dataBANK0 dist/default/production\PIC_firmware.production.obj
+__CFG_WDTPS$32768 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__end_of_OpenEPWM1 11EFA 0 CODE 0 text13 dist/default/production\PIC_firmware.production.obj
+__end_of_OpenEPWM3 11D72 0 CODE 0 text12 dist/default/production\PIC_firmware.production.obj
+__size_of_delay_init 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_SPBRG1 FAF 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_SPBRG2 F1F 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_SPBRG3 F2B 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_SPBRG4 EFB 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__pcstackBANK0 60 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+__pcstackBANK1 1EF 0 BANK1 1 cstackBANK1 dist/default/production\PIC_firmware.production.obj
+__pcstackBANK2 2B2 0 BANK2 1 cstackBANK2 dist/default/production\PIC_firmware.production.obj
+__size_of_OpenEPWM1 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__size_of_OpenEPWM3 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_RPOR10_11 E17 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_RPOR12_13 E18 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TMR0IE 7F95 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TMR0IF 7F92 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TMR0IP 7F8A 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TMR3IE 7D01 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TMR3ON 7D88 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TMR4ON 7822 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TMR6ON 79EA 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_RPOR22_23 E1D 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_encoderInterrupt 18 0 CODE 0 intcodelo dist/default/production\PIC_firmware.production.obj
+_RPOR30_31 E21 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_RPOR34_35 E23 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TRISE0 7CB0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TRISE1 7CB1 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TRISE2 7CB2 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TRISE3 7CB3 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TRISE4 7CB4 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TRISE5 7CB5 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TRISE6 7CB6 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TRISE7 7CB7 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TRISG7 7CC7 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TRISH0 7CC8 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TRISH1 7CC9 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TRISH2 7CCA 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TRISH3 7CCB 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TRISK1 7749 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TRISL0 7730 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TXREG1 FAD 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TXREG2 F1D 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TXREG4 EF9 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_SineWave F8D3 0 MEDIUMCONST 0 mediumconst dist/default/production\PIC_firmware.production.obj
+_PS2_sendCommandString 11EFA 0 CODE 0 text32 dist/default/production\PIC_firmware.production.obj
+settings_auto@t 20 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+LCD_printString@string 2C6 0 BANK2 1 cstackBANK2 dist/default/production\PIC_firmware.production.obj
+__CFG_FSCM$CSDCMD 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+settings_wander@t 20 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+__end_of_PS2_shiftInOut 11BD0 0 CODE 0 text33 dist/default/production\PIC_firmware.production.obj
+__size_of_competitionMode 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__CFG_CLKOEN$OFF 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__CFG_FOSC$FRCPLL 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__end_of_SineWave FED3 0 MEDIUMCONST 0 mediumconst dist/default/production\PIC_firmware.production.obj
+settings_selfTest@t 20 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+_millisCount 2A 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_firmware.production.obj
+__Hbank0 0 0 ABS 0 bank0 dist/default/production\PIC_firmware.production.obj
+__Hbank1 0 0 ABS 0 bank1 dist/default/production\PIC_firmware.production.obj
+__Hbank2 0 0 ABS 0 bank2 dist/default/production\PIC_firmware.production.obj
+__Hbank3 0 0 ABS 0 bank3 dist/default/production\PIC_firmware.production.obj
+__Hbank4 0 0 ABS 0 bank4 dist/default/production\PIC_firmware.production.obj
+__Hbank5 0 0 ABS 0 bank5 dist/default/production\PIC_firmware.production.obj
+__Hbank6 0 0 ABS 0 bank6 dist/default/production\PIC_firmware.production.obj
+__Hbank7 0 0 ABS 0 bank7 dist/default/production\PIC_firmware.production.obj
+__Hbank8 0 0 ABS 0 bank8 dist/default/production\PIC_firmware.production.obj
+__Hbank9 0 0 ABS 0 bank9 dist/default/production\PIC_firmware.production.obj
+__Hcinit 0 0 ABS 0 cinit dist/default/production\PIC_firmware.production.obj
+__Hconst 0 0 CODE 0 const dist/default/production\PIC_firmware.production.obj
+__end_of_strcat 12106 0 CODE 0 text36 dist/default/production\PIC_firmware.production.obj
+__size_of_wanderMode 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__Hidata 0 0 CODE 0 idata dist/default/production\PIC_firmware.production.obj
+__Hidloc 0 0 IDLOC 0 idloc dist/default/production\PIC_firmware.production.obj
+__Hnvbit 0 0 COMRAM 1 nvbit dist/default/production\PIC_firmware.production.obj
+__Hparam 0 0 COMRAM 1 rparam dist/default/production\PIC_firmware.production.obj
+_OpenEPWM1 11E7C 0 CODE 0 text13 dist/default/production\PIC_firmware.production.obj
+_OpenEPWM3 11CEA 0 CODE 0 text12 dist/default/production\PIC_firmware.production.obj
+__Hrdata 0 0 COMRAM 1 rdata dist/default/production\PIC_firmware.production.obj
+__Hstack 0 0 STACK 2 stack dist/default/production\PIC_firmware.production.obj
+__Htext0 0 0 ABS 0 text0 dist/default/production\PIC_firmware.production.obj
+__Htext1 0 0 ABS 0 text1 dist/default/production\PIC_firmware.production.obj
+__Htext2 0 0 ABS 0 text2 dist/default/production\PIC_firmware.production.obj
+__Htext3 0 0 ABS 0 text3 dist/default/production\PIC_firmware.production.obj
+__Htext4 0 0 ABS 0 text4 dist/default/production\PIC_firmware.production.obj
+__Htext5 0 0 ABS 0 text5 dist/default/production\PIC_firmware.production.obj
+__Htext6 0 0 ABS 0 text6 dist/default/production\PIC_firmware.production.obj
+__Htext7 0 0 ABS 0 text7 dist/default/production\PIC_firmware.production.obj
+__Htext8 0 0 ABS 0 text8 dist/default/production\PIC_firmware.production.obj
+__Htext9 0 0 ABS 0 text9 dist/default/production\PIC_firmware.production.obj
+__CFG_DSBOREN$ON 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+___lwdiv@counter 60 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+__Ljflash_buffer 1FBF8 0 CODE 0 jflash_buffer dist/default/production\PIC_firmware.production.obj
+__Hbank10 0 0 ABS 0 bank10 dist/default/production\PIC_firmware.production.obj
+__Hbank11 0 0 ABS 0 bank11 dist/default/production\PIC_firmware.production.obj
+__Hbank12 0 0 ABS 0 bank12 dist/default/production\PIC_firmware.production.obj
+__Hbank13 0 0 ABS 0 bank13 dist/default/production\PIC_firmware.production.obj
+__end_of_SetOutputEPWM1 11DF8 0 CODE 0 text11 dist/default/production\PIC_firmware.production.obj
+__end_of_SetOutputEPWM3 11C5E 0 CODE 0 text10 dist/default/production\PIC_firmware.production.obj
+__Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production\PIC_firmware.production.obj
+__Hbigram 0 0 ABS 0 bigram dist/default/production\PIC_firmware.production.obj
+__smallconst 0 0 SMALLCONST 0 smallconst C:\Users\Tyler\AppData\Local\Temp\s584.obj
+__end_of_tickMillis 12442 0 CODE 0 text46 dist/default/production\PIC_firmware.production.obj
+__end_of_sprintf 113A8 0 CODE 0 text37 dist/default/production\PIC_firmware.production.obj
+__Hcomram 0 0 ABS 0 comram dist/default/production\PIC_firmware.production.obj
+__Hconfig 20000 0 CONFIG 0 config dist/default/production\PIC_firmware.production.obj
+_ANSEL10 7232 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_ANSEL11 7233 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_ANSEL14 7236 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_ANSEL16 7228 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_ANSEL17 7229 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_ANSEL18 722A 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_ANSEL19 722B 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_ANSEL21 722D 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+SetOutputEPWM1@outputmode 20 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+__size_of_settings_wander 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__Lbank0 0 0 ABS 0 bank0 dist/default/production\PIC_firmware.production.obj
+__Lbank1 0 0 ABS 0 bank1 dist/default/production\PIC_firmware.production.obj
+__Lbank2 0 0 ABS 0 bank2 dist/default/production\PIC_firmware.production.obj
+__Lbank3 0 0 ABS 0 bank3 dist/default/production\PIC_firmware.production.obj
+__Lbank4 0 0 ABS 0 bank4 dist/default/production\PIC_firmware.production.obj
+__Lbank5 0 0 ABS 0 bank5 dist/default/production\PIC_firmware.production.obj
+__Lbank6 0 0 ABS 0 bank6 dist/default/production\PIC_firmware.production.obj
+__Lbank7 0 0 ABS 0 bank7 dist/default/production\PIC_firmware.production.obj
+__Lbank8 0 0 ABS 0 bank8 dist/default/production\PIC_firmware.production.obj
+__Lbank9 0 0 ABS 0 bank9 dist/default/production\PIC_firmware.production.obj
+__Lcinit 0 0 ABS 0 cinit dist/default/production\PIC_firmware.production.obj
+__Lconst 0 0 CODE 0 const dist/default/production\PIC_firmware.production.obj
+_PS2_init 113A8 0 CODE 0 text29 dist/default/production\PIC_firmware.production.obj
+__Lidata 0 0 CODE 0 idata dist/default/production\PIC_firmware.production.obj
+__Lidloc 0 0 IDLOC 0 idloc dist/default/production\PIC_firmware.production.obj
+__Lnvbit 0 0 COMRAM 1 nvbit dist/default/production\PIC_firmware.production.obj
+__Lparam 0 0 COMRAM 1 rparam dist/default/production\PIC_firmware.production.obj
+__Lrdata 0 0 COMRAM 1 rdata dist/default/production\PIC_firmware.production.obj
+__Lstack 0 0 STACK 2 stack dist/default/production\PIC_firmware.production.obj
+__Ltext0 0 0 ABS 0 text0 dist/default/production\PIC_firmware.production.obj
+__Ltext1 0 0 ABS 0 text1 dist/default/production\PIC_firmware.production.obj
+__Ltext2 0 0 ABS 0 text2 dist/default/production\PIC_firmware.production.obj
+__Ltext3 0 0 ABS 0 text3 dist/default/production\PIC_firmware.production.obj
+__Ltext4 0 0 ABS 0 text4 dist/default/production\PIC_firmware.production.obj
+__Ltext5 0 0 ABS 0 text5 dist/default/production\PIC_firmware.production.obj
+__Ltext6 0 0 ABS 0 text6 dist/default/production\PIC_firmware.production.obj
+__Ltext7 0 0 ABS 0 text7 dist/default/production\PIC_firmware.production.obj
+__Ltext8 0 0 ABS 0 text8 dist/default/production\PIC_firmware.production.obj
+__Ltext9 0 0 ABS 0 text9 dist/default/production\PIC_firmware.production.obj
+__size_of_RCMode 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+LCD_printVal@F16365 3E 0 COMRAM 1 dataCOMRAM dist/default/production\PIC_firmware.production.obj
+__Hfarbss 0 0 FARRAM 0 farbss dist/default/production\PIC_firmware.production.obj
+__Lintcode_body 0 0 ABS 0 intcode_body dist/default/production\PIC_firmware.production.obj
+_PORTBbits F81 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_PORTDbits F83 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_PORTEbits F84 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_PORTFbits F85 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_PORTGbits F86 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_PORTHbits F87 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_PORTJbits F88 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_PORTKbits EE7 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_PORTLbits EE4 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_INTCONbits FF2 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_communicationInterruptHandler 8 0 CODE 0 intcode dist/default/production\PIC_firmware.production.obj
+__Habs1 0 0 ABS 0 abs1 dist/default/production\PIC_firmware.production.obj
+__Hdata 0 0 ABS 0 data dist/default/production\PIC_firmware.production.obj
+__Hinit F6 0 CODE 0 init dist/default/production\PIC_firmware.production.obj
+__Hrbit 0 0 COMRAM 1 rbit dist/default/production\PIC_firmware.production.obj
+__Hrbss 0 0 COMRAM 1 rbss dist/default/production\PIC_firmware.production.obj
+__Htemp 0 0 COMRAM 1 temp dist/default/production\PIC_firmware.production.obj
+__Htext 0 0 ABS 0 text dist/default/production\PIC_firmware.production.obj
+__Labs1 0 0 ABS 0 abs1 dist/default/production\PIC_firmware.production.obj
+__Ldata 0 0 ABS 0 data dist/default/production\PIC_firmware.production.obj
+__Linit F6 0 CODE 0 init dist/default/production\PIC_firmware.production.obj
+__Lrbit 0 0 COMRAM 1 rbit dist/default/production\PIC_firmware.production.obj
+__Lrbss 0 0 COMRAM 1 rbss dist/default/production\PIC_firmware.production.obj
+__Ltemp 0 0 COMRAM 1 temp dist/default/production\PIC_firmware.production.obj
+__Ltext 0 0 ABS 0 text dist/default/production\PIC_firmware.production.obj
+__CFG_XINST$OFF 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+SetOutputEPWM3@eccpmx 21 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+__end_of_PS2_init 11522 0 CODE 0 text29 dist/default/production\PIC_firmware.production.obj
+_SSP1CON1 FC6 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_SSP1CON2 FC5 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_SSP1CON3 F69 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_SSP1STAT FC7 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_SSP2CON1 F19 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_SSP2CON3 F39 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_SSP2STAT F1A 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+?_LCD_printString 76 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+___wmul 1233A 0 CODE 0 text24 dist/default/production\PIC_firmware.production.obj
+__LcstackBANK0 0 0 ABS 0 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+__LcstackBANK1 0 0 ABS 0 cstackBANK1 dist/default/production\PIC_firmware.production.obj
+__LcstackBANK2 0 0 ABS 0 cstackBANK2 dist/default/production\PIC_firmware.production.obj
+_SSP2STATbits F1A 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_motorDrive_setSpeeds$2400 71 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+_motorDrive_setSpeeds$2401 73 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+_motorDrive_setSpeeds$2402 75 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+_motorDrive_setSpeeds$2403 77 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+_motorDrive_setSpeeds$2404 79 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+_motorDrive_setSpeeds$2405 7B 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+_motorDrive_setSpeeds$2406 7D 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+__HcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+__Hintret 0 0 ABS 0 intret dist/default/production\PIC_firmware.production.obj
+__Hirdata 0 0 CODE 0 irdata dist/default/production\PIC_firmware.production.obj
+_PR2 FCB 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_PR4 F05 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_PR6 F3E 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_PR8 F3B 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_RG0 7C30 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_RG1 7C31 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_RG2 7C32 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_RG3 7C33 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_RG4 7C34 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_RL1 7721 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_RL2 7722 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_RL3 7723 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__S0 20000 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__S1 7B0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__S2 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__Hjflash_buffer 1FBF8 0 CODE 0 jflash_buffer dist/default/production\PIC_firmware.production.obj
+__end_of_LCD_printString 106A0 0 CODE 0 text35 dist/default/production\PIC_firmware.production.obj
+_T8CONbits F3A 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__CFG_DSWDTEN$ON 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__size_of_PS2_analog 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_config 3C 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_firmware.production.obj
+PS2_readGamepad@i 96 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+__size_of_motorDrive_init 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__HidataCOMRAM 0 0 ABS 0 idataCOMRAM dist/default/production\PIC_firmware.production.obj
+__Lbigdata 0 0 BIGRAM 1 bigdata dist/default/production\PIC_firmware.production.obj
+__CFG_LS48MHZ$SYSX2 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__Hnvrram 0 0 COMRAM 1 nvrram dist/default/production\PIC_firmware.production.obj
+sprintf@val 71 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+strcat@cp 24 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+strcat@to 20 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+_FONA_BUFF 100 0 BANK1 1 bssBANK1 dist/default/production\PIC_firmware.production.obj
+__end_of_encoderInterrupt F6 0 CODE 0 intcodelo dist/default/production\PIC_firmware.production.obj
+int_func 119B0 0 CODE 0 intcode_body dist/default/production\PIC_firmware.production.obj
+__CFG_BOREN$ON 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__Lintentry 0 0 ABS 0 intentry dist/default/production\PIC_firmware.production.obj
+__CFG_PLLDIV$NODIV 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__Hramtop E00 0 RAM 0 ramtop dist/default/production\PIC_firmware.production.obj
+__size_of_selfTest 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__Hrparam 0 0 COMRAM 1 rparam dist/default/production\PIC_firmware.production.obj
+__size_of_encoderInterrupt 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__pdataBANK0 D7 0 BANK0 1 dataBANK0 dist/default/production\PIC_firmware.production.obj
+__pdataBANK1 1C6 0 BANK1 1 dataBANK1 dist/default/production\PIC_firmware.production.obj
+__activetblptr 3 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__Hstruct 0 0 COMRAM 1 struct dist/default/production\PIC_firmware.production.obj
+__size_of_settings_readButton 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__size_of___wmul 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__LbssBANK0 0 0 ABS 0 bssBANK0 dist/default/production\PIC_firmware.production.obj
+__LbssBANK1 0 0 ABS 0 bssBANK1 dist/default/production\PIC_firmware.production.obj
+__LbssBANK2 0 0 ABS 0 bssBANK2 dist/default/production\PIC_firmware.production.obj
+__LbssBANK3 0 0 ABS 0 bssBANK3 dist/default/production\PIC_firmware.production.obj
+__Htext10 0 0 ABS 0 text10 dist/default/production\PIC_firmware.production.obj
+__Htext11 0 0 ABS 0 text11 dist/default/production\PIC_firmware.production.obj
+__Htext12 0 0 ABS 0 text12 dist/default/production\PIC_firmware.production.obj
+__Htext13 0 0 ABS 0 text13 dist/default/production\PIC_firmware.production.obj
+__Htext14 0 0 ABS 0 text14 dist/default/production\PIC_firmware.production.obj
+__Htext15 0 0 ABS 0 text15 dist/default/production\PIC_firmware.production.obj
+__Htext16 0 0 ABS 0 text16 dist/default/production\PIC_firmware.production.obj
+__Htext17 0 0 ABS 0 text17 dist/default/production\PIC_firmware.production.obj
+__Htext18 0 0 ABS 0 text18 dist/default/production\PIC_firmware.production.obj
+__Htext19 0 0 ABS 0 text19 dist/default/production\PIC_firmware.production.obj
+__Htext20 0 0 ABS 0 text20 dist/default/production\PIC_firmware.production.obj
+__Htext21 0 0 ABS 0 text21 dist/default/production\PIC_firmware.production.obj
+__Htext22 0 0 ABS 0 text22 dist/default/production\PIC_firmware.production.obj
+__Htext23 0 0 ABS 0 text23 dist/default/production\PIC_firmware.production.obj
+__Htext24 0 0 ABS 0 text24 dist/default/production\PIC_firmware.production.obj
+__Htext25 0 0 ABS 0 text25 dist/default/production\PIC_firmware.production.obj
+__Htext26 0 0 ABS 0 text26 dist/default/production\PIC_firmware.production.obj
+__Htext27 0 0 ABS 0 text27 dist/default/production\PIC_firmware.production.obj
+__Htext28 0 0 ABS 0 text28 dist/default/production\PIC_firmware.production.obj
+__Htext29 0 0 ABS 0 text29 dist/default/production\PIC_firmware.production.obj
+__Htext30 0 0 ABS 0 text30 dist/default/production\PIC_firmware.production.obj
+__Htext31 0 0 ABS 0 text31 dist/default/production\PIC_firmware.production.obj
+__Htext32 0 0 ABS 0 text32 dist/default/production\PIC_firmware.production.obj
+__Htext33 0 0 ABS 0 text33 dist/default/production\PIC_firmware.production.obj
+__Htext34 0 0 ABS 0 text34 dist/default/production\PIC_firmware.production.obj
+__Htext35 0 0 ABS 0 text35 dist/default/production\PIC_firmware.production.obj
+__Htext36 0 0 ABS 0 text36 dist/default/production\PIC_firmware.production.obj
+__Htext37 0 0 ABS 0 text37 dist/default/production\PIC_firmware.production.obj
+__Htext38 0 0 ABS 0 text38 dist/default/production\PIC_firmware.production.obj
+__Htext39 0 0 ABS 0 text39 dist/default/production\PIC_firmware.production.obj
+__Htext40 0 0 ABS 0 text40 dist/default/production\PIC_firmware.production.obj
+__Htext41 0 0 ABS 0 text41 dist/default/production\PIC_firmware.production.obj
+__Htext42 0 0 ABS 0 text42 dist/default/production\PIC_firmware.production.obj
+__Htext43 0 0 ABS 0 text43 dist/default/production\PIC_firmware.production.obj
+__Htext46 0 0 ABS 0 text46 dist/default/production\PIC_firmware.production.obj
+_LCD_init4bit 109EE 0 CODE 0 text18 dist/default/production\PIC_firmware.production.obj
+PS2_init@temp 9A 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+_RPINR0_1 E2A 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_RPINR4_5 E2C 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_RPINR6_7 E2D 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_millis 123E6 0 CODE 0 text43 dist/default/production\PIC_firmware.production.obj
+sprintf@flag 6F 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+sprintf@prec 70 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+_settings_auto 123F8 0 CODE 0 text4 dist/default/production\PIC_firmware.production.obj
+_settings_init 12290 0 CODE 0 text8 dist/default/production\PIC_firmware.production.obj
+_LCD_printString 10000 0 CODE 0 text35 dist/default/production\PIC_firmware.production.obj
+__ptext10 11BD0 0 CODE 0 text10 dist/default/production\PIC_firmware.production.obj
+__ptext11 11D72 0 CODE 0 text11 dist/default/production\PIC_firmware.production.obj
+__ptext12 11CEA 0 CODE 0 text12 dist/default/production\PIC_firmware.production.obj
+__ptext13 11E7C 0 CODE 0 text13 dist/default/production\PIC_firmware.production.obj
+__ptext14 11F6A 0 CODE 0 text14 dist/default/production\PIC_firmware.production.obj
+__ptext15 122BE 0 CODE 0 text15 dist/default/production\PIC_firmware.production.obj
+__ptext16 123D0 0 CODE 0 text16 dist/default/production\PIC_firmware.production.obj
+__ptext17 117D6 0 CODE 0 text17 dist/default/production\PIC_firmware.production.obj
+__ptext18 109EE 0 CODE 0 text18 dist/default/production\PIC_firmware.production.obj
+__ptext19 1222C 0 CODE 0 text19 dist/default/production\PIC_firmware.production.obj
+__ptext20 12446 0 CODE 0 text20 dist/default/production\PIC_firmware.production.obj
+__ptext21 1239C 0 CODE 0 text21 dist/default/production\PIC_firmware.production.obj
+__ptext22 11696 0 CODE 0 text22 dist/default/production\PIC_firmware.production.obj
+__ptext23 10D20 0 CODE 0 text23 dist/default/production\PIC_firmware.production.obj
+__ptext24 1233A 0 CODE 0 text24 dist/default/production\PIC_firmware.production.obj
+__ptext25 118E0 0 CODE 0 text25 dist/default/production\PIC_firmware.production.obj
+__ptext26 1214A 0 CODE 0 text26 dist/default/production\PIC_firmware.production.obj
+__ptext27 12188 0 CODE 0 text27 dist/default/production\PIC_firmware.production.obj
+__ptext28 121C2 0 CODE 0 text28 dist/default/production\PIC_firmware.production.obj
+__ptext29 113A8 0 CODE 0 text29 dist/default/production\PIC_firmware.production.obj
+__ptext30 10FBA 0 CODE 0 text30 dist/default/production\PIC_firmware.production.obj
+__ptext31 12106 0 CODE 0 text31 dist/default/production\PIC_firmware.production.obj
+__ptext32 11EFA 0 CODE 0 text32 dist/default/production\PIC_firmware.production.obj
+__ptext33 11B34 0 CODE 0 text33 dist/default/production\PIC_firmware.production.obj
+__ptext34 123B8 0 CODE 0 text34 dist/default/production\PIC_firmware.production.obj
+__ptext35 10000 0 CODE 0 text35 dist/default/production\PIC_firmware.production.obj
+__ptext36 120A6 0 CODE 0 text36 dist/default/production\PIC_firmware.production.obj
+__ptext37 111F4 0 CODE 0 text37 dist/default/production\PIC_firmware.production.obj
+__ptext38 12040 0 CODE 0 text38 dist/default/production\PIC_firmware.production.obj
+__ptext39 11FD8 0 CODE 0 text39 dist/default/production\PIC_firmware.production.obj
+__ptext40 106A0 0 CODE 0 text40 dist/default/production\PIC_firmware.production.obj
+__ptext41 1225E 0 CODE 0 text41 dist/default/production\PIC_firmware.production.obj
+__ptext42 11C5E 0 CODE 0 text42 dist/default/production\PIC_firmware.production.obj
+__ptext43 123E6 0 CODE 0 text43 dist/default/production\PIC_firmware.production.obj
+__ptext46 12434 0 CODE 0 text46 dist/default/production\PIC_firmware.production.obj
+OpenEPWM1@timer_source 20 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+__CFG_ABW$MM 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_CM1CONbits F53 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+___awdiv 118E0 0 CODE 0 text25 dist/default/production\PIC_firmware.production.obj
+__pintcode_body 119B0 0 CODE 0 intcode_body dist/default/production\PIC_firmware.production.obj
+___lwdiv 11FD8 0 CODE 0 text39 dist/default/production\PIC_firmware.production.obj
+___lwmod 12040 0 CODE 0 text38 dist/default/production\PIC_firmware.production.obj
+__Lbank10 0 0 ABS 0 bank10 dist/default/production\PIC_firmware.production.obj
+__Lbank11 0 0 ABS 0 bank11 dist/default/production\PIC_firmware.production.obj
+__Lbank12 0 0 ABS 0 bank12 dist/default/production\PIC_firmware.production.obj
+__Lbank13 0 0 ABS 0 bank13 dist/default/production\PIC_firmware.production.obj
+SetDCEPWM3@DCycle 24 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+LCD_printString@tempString 2B2 0 BANK2 1 cstackBANK2 dist/default/production\PIC_firmware.production.obj
+__Lbigbss 0 0 BIGRAM 1 bigbss dist/default/production\PIC_firmware.production.obj
+__Lbigram 0 0 ABS 0 bigram dist/default/production\PIC_firmware.production.obj
+SetOutputEPWM1@eccpmx 21 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+__CFG_BORV$1 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__CFG_DSBITEN$ON 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__Lcomram 0 0 ABS 0 comram dist/default/production\PIC_firmware.production.obj
+__Lconfig 1FFF0 0 CONFIG 0 config dist/default/production\PIC_firmware.production.obj
+PS2_readGamepad@dword2 7D 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+__CFG_WAIT$OFF 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+___wmul@multiplier 20 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+_read_delay D6 0 BANK0 1 bssBANK0 dist/default/production\PIC_firmware.production.obj
+_RCSTA1bits FAB 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_RCSTA2bits F33 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_RCSTA3bits F2F 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_RCSTA4bits EFF 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_T6CONbits F3D 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+main@mode 1F5 0 BANK1 1 cstackBANK1 dist/default/production\PIC_firmware.production.obj
+__Lfarbss 0 0 FARRAM 0 farbss dist/default/production\PIC_firmware.production.obj
+___lwdiv@divisor 22 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+_strcat 120A6 0 CODE 0 text36 dist/default/production\PIC_firmware.production.obj
+__Lfardata 0 0 FARRAM 0 fardata dist/default/production\PIC_firmware.production.obj
+__end_of_clearMillis 123E6 0 CODE 0 text16 dist/default/production\PIC_firmware.production.obj
+PS2_readGamepad@i_2532 98 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+stackhi DF9 0 ABS 0 - C:\Users\Tyler\AppData\Local\Temp\s584.obj
+stacklo 7B0 0 ABS 0 - C:\Users\Tyler\AppData\Local\Temp\s584.obj
+__size_of_LCD_init4bit 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_settings_readButton 12408 0 CODE 0 text6 dist/default/production\PIC_firmware.production.obj
+__Lintcode 8 0 CODE 0 intcode dist/default/production\PIC_firmware.production.obj
+_selfTest 121F8 0 CODE 0 text5 dist/default/production\PIC_firmware.production.obj
+__Lintret 0 0 ABS 0 intret dist/default/production\PIC_firmware.production.obj
+__Lirdata 0 0 CODE 0 irdata dist/default/production\PIC_firmware.production.obj
+_RPINR26_27 E37 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_RPINR28_29 E38 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__pbssBIGRAM 3C8 0 BIGRAM 1 bssBIGRAM dist/default/production\PIC_firmware.production.obj
+_PADCFG1bits F54 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__CFG_WPEND$WPENDMEM 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__Lspace_0 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__Lspace_1 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__Lspace_2 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__pbssCOMRAM 26 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_firmware.production.obj
+__size_of_millis 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__HcstackBANK0 0 0 ABS 0 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+__HcstackBANK1 0 0 ABS 0 cstackBANK1 dist/default/production\PIC_firmware.production.obj
+__HcstackBANK2 0 0 ABS 0 cstackBANK2 dist/default/production\PIC_firmware.production.obj
+delay_ms@x 60 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+delay_us@x 20 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+__CFG_T5GSEL$T5G 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_PIR1bits F9E 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__end_of_selfTest 1222C 0 CODE 0 text5 dist/default/production\PIC_firmware.production.obj
+_PIR3bits FA4 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__Lend_init F6 0 CODE 0 end_init dist/default/production\PIC_firmware.production.obj
+_PIR6bits FA6 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_USB_INDEX 3B 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_firmware.production.obj
+__size_of_delay_ms 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__size_of_delay_us 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+SetOutputEPWM1@outputconfig 22 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+__LcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+__CFG_RETEN$OFF 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_buttons D1 0 BANK0 1 bssBANK0 dist/default/production\PIC_firmware.production.obj
+end_of_initialization 11B2E 0 CODE 0 cinit dist/default/production\PIC_firmware.production.obj
+__size_of_settings_selfTest 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__end_of_PS2_readGamepad 111F4 0 CODE 0 text30 dist/default/production\PIC_firmware.production.obj
+RCMode@left_speed 1EF 0 BANK1 1 cstackBANK1 dist/default/production\PIC_firmware.production.obj
+__size_of_tickMillis 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__Lnvrram 0 0 COMRAM 1 nvrram dist/default/production\PIC_firmware.production.obj
+__Hintentry 0 0 ABS 0 intentry dist/default/production\PIC_firmware.production.obj
+__CFG_STVREN$ON 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_LCDCONbits ED9 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__end_of_LCD_init4bit 10D20 0 CODE 0 text18 dist/default/production\PIC_firmware.production.obj
+___awdiv@quotient 66 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+?___awdiv 60 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+___lwdiv@dividend 20 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+__CFG_VBTBOR$ON 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+?___lwdiv 20 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+?___lwmod 63 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+_PIXY_INDEX 39 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_firmware.production.obj
+__Hreset_vec 4 0 CODE 0 reset_vec dist/default/production\PIC_firmware.production.obj
+_set_mode F2 0 BANK0 1 dataBANK0 dist/default/production\PIC_firmware.production.obj
+__HbssBANK0 0 0 ABS 0 bssBANK0 dist/default/production\PIC_firmware.production.obj
+__HbssBANK1 0 0 ABS 0 bssBANK1 dist/default/production\PIC_firmware.production.obj
+__HbssBANK2 0 0 ABS 0 bssBANK2 dist/default/production\PIC_firmware.production.obj
+__HbssBANK3 0 0 ABS 0 bssBANK3 dist/default/production\PIC_firmware.production.obj
+_ADCON1Hbits FC1 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+motorDrive_setSpeeds@templ 6D 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+motorDrive_setSpeeds@tempr 6F 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+__Lramtop E00 0 RAM 0 ramtop dist/default/production\PIC_firmware.production.obj
+__size_of_strcat 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__end_of_UART_init 118E0 0 CODE 0 text17 dist/default/production\PIC_firmware.production.obj
+__Lrparam 0 0 COMRAM 1 rparam dist/default/production\PIC_firmware.production.obj
+__pcinit 11A80 0 CODE 0 cinit dist/default/production\PIC_firmware.production.obj
+_ADCBUF0Hbits FC3 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__size_of_motorDrive_setSpeeds 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_ADCBUF0Lbits FC2 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+SetDCEPWM1@DCycle 24 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+__size_of_UART_init 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__ptext0 11522 0 CODE 0 text0 dist/default/production\PIC_firmware.production.obj
+__ptext1 12380 0 CODE 0 text1 dist/default/production\PIC_firmware.production.obj
+__ptext2 12418 0 CODE 0 text2 dist/default/production\PIC_firmware.production.obj
+__ptext3 12426 0 CODE 0 text3 dist/default/production\PIC_firmware.production.obj
+__ptext4 123F8 0 CODE 0 text4 dist/default/production\PIC_firmware.production.obj
+__ptext5 121F8 0 CODE 0 text5 dist/default/production\PIC_firmware.production.obj
+__ptext6 12408 0 CODE 0 text6 dist/default/production\PIC_firmware.production.obj
+__ptext7 12362 0 CODE 0 text7 dist/default/production\PIC_firmware.production.obj
+__ptext8 12290 0 CODE 0 text8 dist/default/production\PIC_firmware.production.obj
+__ptext9 11DF8 0 CODE 0 text9 dist/default/production\PIC_firmware.production.obj
+_encoders_init 122BE 0 CODE 0 text15 dist/default/production\PIC_firmware.production.obj
+__Lstruct 0 0 COMRAM 1 struct dist/default/production\PIC_firmware.production.obj
+_PIXY_BUFF 3C8 0 BIGRAM 1 bssBIGRAM dist/default/production\PIC_firmware.production.obj
+_controller_type D5 0 BANK0 1 bssBANK0 dist/default/production\PIC_firmware.production.obj
+__Ltext10 0 0 ABS 0 text10 dist/default/production\PIC_firmware.production.obj
+__Ltext11 0 0 ABS 0 text11 dist/default/production\PIC_firmware.production.obj
+__Ltext12 0 0 ABS 0 text12 dist/default/production\PIC_firmware.production.obj
+__Ltext13 0 0 ABS 0 text13 dist/default/production\PIC_firmware.production.obj
+__Ltext14 0 0 ABS 0 text14 dist/default/production\PIC_firmware.production.obj
+__Ltext15 0 0 ABS 0 text15 dist/default/production\PIC_firmware.production.obj
+__Ltext16 0 0 ABS 0 text16 dist/default/production\PIC_firmware.production.obj
+__Ltext17 0 0 ABS 0 text17 dist/default/production\PIC_firmware.production.obj
+__Ltext18 0 0 ABS 0 text18 dist/default/production\PIC_firmware.production.obj
+__Ltext19 0 0 ABS 0 text19 dist/default/production\PIC_firmware.production.obj
+__Ltext20 0 0 ABS 0 text20 dist/default/production\PIC_firmware.production.obj
+__Ltext21 0 0 ABS 0 text21 dist/default/production\PIC_firmware.production.obj
+__Ltext22 0 0 ABS 0 text22 dist/default/production\PIC_firmware.production.obj
+__Ltext23 0 0 ABS 0 text23 dist/default/production\PIC_firmware.production.obj
+__Ltext24 0 0 ABS 0 text24 dist/default/production\PIC_firmware.production.obj
+__Ltext25 0 0 ABS 0 text25 dist/default/production\PIC_firmware.production.obj
+__Ltext26 0 0 ABS 0 text26 dist/default/production\PIC_firmware.production.obj
+__Ltext27 0 0 ABS 0 text27 dist/default/production\PIC_firmware.production.obj
+__Ltext28 0 0 ABS 0 text28 dist/default/production\PIC_firmware.production.obj
+__Ltext29 0 0 ABS 0 text29 dist/default/production\PIC_firmware.production.obj
+__Ltext30 0 0 ABS 0 text30 dist/default/production\PIC_firmware.production.obj
+__Ltext31 0 0 ABS 0 text31 dist/default/production\PIC_firmware.production.obj
+__Ltext32 0 0 ABS 0 text32 dist/default/production\PIC_firmware.production.obj
+__Ltext33 0 0 ABS 0 text33 dist/default/production\PIC_firmware.production.obj
+__Ltext34 0 0 ABS 0 text34 dist/default/production\PIC_firmware.production.obj
+__Ltext35 0 0 ABS 0 text35 dist/default/production\PIC_firmware.production.obj
+__Ltext36 0 0 ABS 0 text36 dist/default/production\PIC_firmware.production.obj
+__Ltext37 0 0 ABS 0 text37 dist/default/production\PIC_firmware.production.obj
+__Ltext38 0 0 ABS 0 text38 dist/default/production\PIC_firmware.production.obj
+__Ltext39 0 0 ABS 0 text39 dist/default/production\PIC_firmware.production.obj
+__Ltext40 0 0 ABS 0 text40 dist/default/production\PIC_firmware.production.obj
+__Ltext41 0 0 ABS 0 text41 dist/default/production\PIC_firmware.production.obj
+__Ltext42 0 0 ABS 0 text42 dist/default/production\PIC_firmware.production.obj
+__Ltext43 0 0 ABS 0 text43 dist/default/production\PIC_firmware.production.obj
+__Ltext46 0 0 ABS 0 text46 dist/default/production\PIC_firmware.production.obj
+_type_read E0 0 BANK0 1 dataBANK0 dist/default/production\PIC_firmware.production.obj
+PS2_shiftInOut@i 62 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+__ramtop E00 0 RAM 0 ramtop C:\Users\Tyler\AppData\Local\Temp\s584.obj
+_sprintf 111F4 0 CODE 0 text37 dist/default/production\PIC_firmware.production.obj
+__size_of_PS2_sendCommandString 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+LCD_printString@aptr 2DD 0 BANK2 1 cstackBANK2 dist/default/production\PIC_firmware.production.obj
+__size_of_LCD_printString 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__Lpowerup F6 0 CODE 0 powerup dist/default/production\PIC_firmware.production.obj
+__size_of_settings_auto 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__size_of_settings_init 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+sprintf@ap 6D 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+sprintf@sp 67 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+_SetDCEPWM1 12188 0 CODE 0 text27 dist/default/production\PIC_firmware.production.obj
+_SetDCEPWM3 1214A 0 CODE 0 text26 dist/default/production\PIC_firmware.production.obj
+_T4CONbits F04 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__CFG_WPDIS$WPDIS 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+LCD_placeCursor@address 75 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+__Lreset_vec 0 0 CODE 0 reset_vec dist/default/production\PIC_firmware.production.obj
+SetOutputEPWM3@outputmode 20 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+__end_of_motorDrive_setSpeeds 10FBA 0 CODE 0 text23 dist/default/production\PIC_firmware.production.obj
+PS2_sendCommandString@len 72 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+__end_of_communicationInterruptHandler 11A80 0 CODE 0 intcode_body dist/default/production\PIC_firmware.production.obj
+_UART_init 117D6 0 CODE 0 text17 dist/default/production\PIC_firmware.production.obj
+_PADCFG1 F54 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__size_of_PS2_shiftInOut 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+___param_bank 10 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__CFG_WDTCLK$FRC 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__Hbigdata 0 0 BIGRAM 1 bigdata dist/default/production\PIC_firmware.production.obj
+__end_of__initialization 11B2E 0 CODE 0 cinit dist/default/production\PIC_firmware.production.obj
+__CFG_EASHFT$ON 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_delay_ms 11C5E 0 CODE 0 text42 dist/default/production\PIC_firmware.production.obj
+_delay_us 1225E 0 CODE 0 text41 dist/default/production\PIC_firmware.production.obj
+_PS2_readGamepad 10FBA 0 CODE 0 text30 dist/default/production\PIC_firmware.production.obj
+__Libigdata 0 0 CODE 0 ibigdata dist/default/production\PIC_firmware.production.obj
+__size_of_SetOutputEPWM1 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__size_of_SetOutputEPWM3 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+PS2_shiftInOut@tmp 61 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+_realNumbers 146 0 BANK1 1 bssBANK1 dist/default/production\PIC_firmware.production.obj
+__pidataBANK0 122E8 0 CODE 0 idataBANK0 dist/default/production\PIC_firmware.production.obj
+__pidataBANK1 12311 0 CODE 0 idataBANK1 dist/default/production\PIC_firmware.production.obj
+__Lclrtext 0 0 ABS 0 clrtext dist/default/production\PIC_firmware.production.obj
+_SSP1CON1bits FC6 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_SSP1CON2bits FC5 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_SPBRGH1 F30 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_SPBRGH2 F20 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_SPBRGH3 F2C 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_SPBRGH4 EFC 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__end_of_delay_ms 11CEA 0 CODE 0 text42 dist/default/production\PIC_firmware.production.obj
+__end_of_delay_us 12290 0 CODE 0 text41 dist/default/production\PIC_firmware.production.obj
+_FONA_INDEX 38 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_firmware.production.obj
+__pintcodelo 18 0 CODE 0 intcodelo dist/default/production\PIC_firmware.production.obj
+PS2_sendCommandString@string 70 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+_imaginaryNumbers 232 0 BANK2 1 bssBANK2 dist/default/production\PIC_firmware.production.obj
+__end_of_settings_auto 12408 0 CODE 0 text4 dist/default/production\PIC_firmware.production.obj
+__end_of_settings_init 122BE 0 CODE 0 text8 dist/default/production\PIC_firmware.production.obj
+__end_of_settings_readButton 12418 0 CODE 0 text6 dist/default/production\PIC_firmware.production.obj
+__pcstackCOMRAM 1 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+__pmediumconst F8D2 0 MEDIUMCONST 0 mediumconst dist/default/production\PIC_firmware.production.obj
+_SSP1ADD FC8 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_SSP1BUF FC9 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_SSP2ADD F02 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_SSP2BUF F03 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__Hend_init FA 0 CODE 0 end_init dist/default/production\PIC_firmware.production.obj
+__CFG_WPFP$WPFP255 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_T3CKPS0 7D8C 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_T3CKPS1 7D8D 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_last_buttons D3 0 BANK0 1 bssBANK0 dist/default/production\PIC_firmware.production.obj
+RCMode@right_speed 1F1 0 BANK1 1 cstackBANK1 dist/default/production\PIC_firmware.production.obj
+sprintf@c 73 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+sprintf@f 69 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+_CCPTMRS0 F36 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+LCD_printString@i 2E1 0 BANK2 1 cstackBANK2 dist/default/production\PIC_firmware.production.obj
+LCD_printString@x 2DA 0 BANK2 1 cstackBANK2 dist/default/production\PIC_firmware.production.obj
+LCD_printString@y 76 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+__end_of_init 12380 0 CODE 0 text7 dist/default/production\PIC_firmware.production.obj
+__end_of_main 11696 0 CODE 0 text0 dist/default/production\PIC_firmware.production.obj
+__pintcode 8 0 CODE 0 intcode dist/default/production\PIC_firmware.production.obj
+_T4CKPS1 7821 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__CFG_POSCMD$NONE 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_delay_init 1222C 0 CODE 0 text19 dist/default/production\PIC_firmware.production.obj
+__end_of_dpowers FEDD 0 MEDIUMCONST 0 mediumconst dist/default/production\PIC_firmware.production.obj
+__end_of_debug 12448 0 CODE 0 text20 dist/default/production\PIC_firmware.production.obj
+_LCDMD 778B 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+?_sprintf 67 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+_RC1IE 7CED 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_RC2IE 7D1D 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_RC3IE 7B0D 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_RC4IE 7B0F 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_RD163 7D8F 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_T0CON FD5 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TMR0L FD6 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TMR3H FB3 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TMR3L FB2 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TX1IE 7CEC 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TX2IE 7D1C 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TX3IE 7B0C 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_TX4IE 7B0E 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_PS2_readType 121C2 0 CODE 0 text28 dist/default/production\PIC_firmware.production.obj
+__CFG_CP0$OFF 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__CFG_IOL1WAY$ON 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__HRAM 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__Hbss 0 0 RAM 1 bss dist/default/production\PIC_firmware.production.obj
+__Hram 0 0 ABS 0 ram dist/default/production\PIC_firmware.production.obj
+__Hsfr 0 0 ABS 0 sfr dist/default/production\PIC_firmware.production.obj
+__LRAM 1 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__Lbss 0 0 RAM 1 bss dist/default/production\PIC_firmware.production.obj
+__Lram 0 0 ABS 0 ram dist/default/production\PIC_firmware.production.obj
+__Lsfr 0 0 ABS 0 sfr dist/default/production\PIC_firmware.production.obj
+_debug 12446 0 CODE 0 text20 dist/default/production\PIC_firmware.production.obj
+_errno 32 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_firmware.production.obj
+_T6CKPS1 79E9 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_spbrg 34 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_firmware.production.obj
+___extmem_base 20000 0 ABS 0 - C:\Users\Tyler\AppData\Local\Temp\s584.obj
+_CCP1CON FB9 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_CCP3CON F49 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+PS2_init@i A5 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+PS2_init@y A3 0 BANK0 1 cstackBANK0 dist/default/production\PIC_firmware.production.obj
+__size_of_fft_init 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__end_of_SetDCEPWM1 121C2 0 CODE 0 text27 dist/default/production\PIC_firmware.production.obj
+__end_of_SetDCEPWM3 12188 0 CODE 0 text26 dist/default/production\PIC_firmware.production.obj
+__HdataBANK0 0 0 ABS 0 dataBANK0 dist/default/production\PIC_firmware.production.obj
+__HdataBANK1 0 0 ABS 0 dataBANK1 dist/default/production\PIC_firmware.production.obj
+_PS2_reconfig 12106 0 CODE 0 text31 dist/default/production\PIC_firmware.production.obj
+SetDCEPWM1@dutycycle 20 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+__size_of_clearMillis 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__end_of_LCD_placeCursor 109EE 0 CODE 0 text40 dist/default/production\PIC_firmware.production.obj
+__initialization 11A80 0 CODE 0 cinit dist/default/production\PIC_firmware.production.obj
+_BAUDCON1bits F67 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_BAUDCON2bits F31 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_BAUDCON3bits F2D 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__end_of_settings_selfTest 12434 0 CODE 0 text3 dist/default/production\PIC_firmware.production.obj
+_BAUDCON4bits EFD 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+LCD_printString@F16347 132 0 BANK1 1 bssBANK1 dist/default/production\PIC_firmware.production.obj
+__pbssBANK0 AC 0 BANK0 1 bssBANK0 dist/default/production\PIC_firmware.production.obj
+__pbssBANK1 100 0 BANK1 1 bssBANK1 dist/default/production\PIC_firmware.production.obj
+__pbssBANK2 200 0 BANK2 1 bssBANK2 dist/default/production\PIC_firmware.production.obj
+__pbssBANK3 300 0 BANK3 1 bssBANK3 dist/default/production\PIC_firmware.production.obj
+__pdataCOMRAM 3E 0 COMRAM 1 dataCOMRAM dist/default/production\PIC_firmware.production.obj
+_wanderMode 12380 0 CODE 0 text1 dist/default/production\PIC_firmware.production.obj
+_T2CONbits FCA 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__Hfardata 0 0 FARRAM 0 fardata dist/default/production\PIC_firmware.production.obj
+___wmul@product 24 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+_MEMCONbits EE3 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+__Hsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production\PIC_firmware.production.obj
+__size_of_encoders_init 0 0 ABS 0 - dist/default/production\PIC_firmware.production.obj
+_left_count 26 0 COMRAM 1 bssCOMRAM dist/default/production\PIC_firmware.production.obj
+__Lifardata 0 0 CODE 0 ifardata dist/default/production\PIC_firmware.production.obj
+_PS2data AC 0 BANK0 1 bssBANK0 dist/default/production\PIC_firmware.production.obj
+SetDCEPWM3@dutycycle 20 0 COMRAM 1 cstackCOMRAM dist/default/production\PIC_firmware.production.obj
+__Hintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production\PIC_firmware.production.obj
+__Hintcode 18 0 CODE 0 intcode dist/default/production\PIC_firmware.production.obj
+_enter_config FB 0 BANK0 1 dataBANK0 dist/default/production\PIC_firmware.production.obj
+# %SPLITSTAB Section
+# This section enumerates all the psect splits performed by the assembler.
+# The beginning of the section is indicated by %SPLITSTAB.
+# Each line is a record a particular split, where the parent psect is on
+# the left and the child on the right.  Note that a child psect is always
+# split form the top of the parent psect. All splits from a given parent
+# are listed in the order in which they occurred.
+%SPLITSTAB
+# %DABS Section
+# This section contains a table of all usuage of the assember
+# directive DABS in the program. Each line has the following format:
+#   <name> <space> <address> <size>
+# If the DABS was originally labelled then that shall be <name>,
+# otherwise name will be "-".  The <space> number is in decimal.
+# <address> and <size> are in byte units as unqaulified hexadecimal
+%DABS
+# %SEGMENTS Section
+# This sections enumerates the segments of the program.  Each segment
+# is described on a single line as follows:
+#    <name> <space> <link address> <file address> <size> <delta>
+# Addresses and size are in unqualified hexadecimal.  The link address
+# and size are in units of delta. The file address is in units of bytes.
+# All other numeric quantities are in decimal.
+%SEGMENTS
+intcodelo 0 18 18 E2 1
+text20 0 12446 12446 2 1
+text35 0 10000 10000 2445 1
+cstackCOMRAM 1 1 1 40 1
+cstackBANK0 1 60 60 A0 1
+reset_vec 0 0 0 4 1
+bssBANK1 1 100 100 F6 1
+bssBANK2 1 200 200 E5 1
+bssBANK3 1 300 300 C8 1
+intcode 0 8 8 10 1
+bssBIGRAM 1 3C8 3C8 3E8 1
+mediumconst 0 F8D2 F8D2 72E 1
+config 0 1FFF0 1FFF0 10 1

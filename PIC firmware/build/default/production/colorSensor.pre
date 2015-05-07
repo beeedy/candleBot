@@ -5,4 +5,5 @@
 signed char colorSensor_init() {
 
 # 50
+return 0;
 }

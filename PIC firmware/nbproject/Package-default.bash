@@ -10,9 +10,9 @@ CND_CONF=default
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/candleBot.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-OUTPUT_BASENAME=candleBot.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-PACKAGE_TOP_DIR=candlebot/
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/PIC_firmware.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=PIC_firmware.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=picfirmware/
 
 # Functions
 function checkReturnCode
@@ -57,15 +57,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/candlebot/bin
+makeDirectory ${TMPDIR}/picfirmware/bin
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/package/candlebot.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/picfirmware.tar
 cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/candlebot.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/picfirmware.tar *
 checkReturnCode
 
 # Cleanup

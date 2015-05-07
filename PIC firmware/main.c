@@ -43,13 +43,7 @@ void init()
 
 void debug()
 {
-    //signed char retVal = compass_pixyInit();
-
-    if(retVal == 0) {
-        LCD_printString(0, 0, "Pixy Com\n success");
-    }
-    else
-        LCD_printString(0, 0, "Pixy Com\n failure");
+    
 }
 
 void selfTest()
