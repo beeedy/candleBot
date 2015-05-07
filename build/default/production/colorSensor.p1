@@ -1,0 +1,11 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"39 colorSensor.c
+[v _colorSensor_init `(c ~T0 @X0 1 ef ]
+{
+[; ;colorSensor.c: 39: signed char colorSensor_init() {
+[e :U _colorSensor_init ]
+[f ]
+[; ;colorSensor.c: 50: }
+"50
+[e :UE 1 ]
+}
