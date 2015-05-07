@@ -9,7 +9,7 @@ short realNumbers[FFT_SIZE];
 void fft_init()
 {
     // Config port as analog
-    ANCON3 |= 0b00100000;
+    ANCON3 = 0b00100000;
 
     // setup in 12bit mode, 14TAD per reading
     ADCON1Hbits.MODE12 = 1;
@@ -33,6 +33,8 @@ void fft_init()
 
     // give time for ADC to stabalize
     delay_us(50);
+
+    LCD_printString(0,0, "Starting\nFHT");
 
     while(1)
     {

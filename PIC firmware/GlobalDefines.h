@@ -35,6 +35,8 @@ extern "C" {
 
 #define disablePPSLock() IOLOCK = 0
 #define enablePPSLock() IOLOCK = 1
+#define disableInterrupts() GIE = 0
+#define enableInterrupts() GIE = 1
 
 #ifdef	__cplusplus
 }

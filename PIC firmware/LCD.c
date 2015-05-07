@@ -121,7 +121,7 @@ void LCD_init4bit()
     delay_long();
     LCD_E = 0;
 
-    delay_ms(5); // 5
+    delay_ms(50); // 5
 
     ///////////////// font and # of lines  /////////////////
     delay_long();
