@@ -146,8 +146,8 @@ signed char I2C_write(unsigned char channel, unsigned char data) {
 
 
 /*
- * I2C_writeRegister writes the given byte to the given address on the given
- * channel and returns:
+ * I2C_writeRegisters writes the given byte(s) starting at the given address on
+ * the given channel and returns:
  *
  *    0  -  successful write, no errors
  *   -1  -  unsuccessful. NAK or bus collision
@@ -155,3 +155,31 @@ signed char I2C_write(unsigned char channel, unsigned char data) {
  */
 
 
+signed char I2C_writeRegisters(unsigned char channel, unsigned char slaveAdr,
+        unsigned char startRegAdr, unsigned char* data, unsigned char len) {
+
+    signed char retVal;
+
+    I2C_open(channel);
+    retVal = I2C_write(channel, (slaveAdr | 0x00) );    // call out slave, write mode
+    if(retVal != 0) {
+        I2C_close(channel);
+        return -1;
+    }
+
+    retVal += I2C_write(channel, startRegAdr);  // specify which register we're writing to
+    if(retVal != 0) {
+        I2C_close(channel);
+        return -1;
+    }
+
+    for(unsigned char x = 0; x < len; x++) {    // write all of the data out
+        retVal += I2C_write(channel, data[x]);
+        if(retVal != 0) {                       // check for errors
+            I2C_close(channel);
+            return -1;
+        }
+    } // for
+
+    I2C_close(channel);
+}
