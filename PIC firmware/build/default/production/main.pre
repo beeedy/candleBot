@@ -19738,7 +19738,7 @@ char FONA_init();
 char FONA_Text(char *data, char* phoneNumber);
 char FONA_CheckStrength();
 
-# 26 "fft.h"
+# 27 "fft.h"
 const short SineWave[1024-1024/4] = {
 0, 201, 402, 603, 804, 1005, 1206, 1406,
 1607, 1808, 2009, 2209, 2410, 2610, 2811, 3011,
@@ -19841,10 +19841,12 @@ const short SineWave[1024-1024/4] = {
 
 
 void fft_init();
-void fft_fix(short fr[], short fi[], short m);
+void fft_fix();
 void fft_collectData();
 void fft_execute();
+int fft_maxFreq();
 int fft_readAnalog();
+short fft_readBin(int i);
 
 # 19 "motorDrive.h"
 void motorDrive_init();
@@ -19909,6 +19911,28 @@ clearMillis();
 void debug()
 {
 
+while(1)
+{
+fft_collectData();
+fft_execute();
+
+for(int i = 1; i < 32; i++)
+{
+
+
+int temp = fft_readBin(i);
+while(temp > 0)
+{
+UART_transmitByte(USB,0xB2);
+temp -= 4;
+}
+UART_transmitByte(USB,'\n');
+UART_transmitByte(USB,'\r');
+
+}
+delay_ms(5);
+
+}
 }
 
 void selfTest()
@@ -19973,10 +19997,11 @@ delay_ms(50);
 void main()
 {
 
-# 132
+# 154
 IPEN = 1;
 GIE = 1;
 init();
+debug();
 
 while(1)
 {

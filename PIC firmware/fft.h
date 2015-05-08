@@ -19,6 +19,7 @@ extern "C" {
 // Definitions
 #define N_WAVE      1024    // full length of Sinewave[]
 #define LOG2_N_WAVE 10      // log2(N_WAVE)
+#define SAMP_FREQ 10000     // sampling frequency in Hz
 
 // Since we only use 3/4 of N_WAVE, we define only
 // this many samples, in order to conserve data space.
@@ -125,10 +126,12 @@ const short SineWave[N_WAVE-N_WAVE/4] = {
 
 // Function prototypes
 void fft_init();
-void fft_fix(short fr[], short fi[], short m);
+void fft_fix();
 void fft_collectData();
 void fft_execute();
+int fft_maxFreq();
 int fft_readAnalog();
+short fft_readBin(int i);
 
 #ifdef	__cplusplus
 }

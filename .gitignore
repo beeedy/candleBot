@@ -1,0 +1,70 @@
+
+*.p1
+
+*.p1
+
+*.pre
+
+PIC firmware/build/default/debug/fft.p1
+
+*.cmf
+
+*.elf
+
+*.hxl
+
+*.lst
+
+PIC firmware/dist/default/production/PIC_firmware.production.sym
+
+PIC firmware/dist/default/production/PIC_firmware.production.sdb
+
+PIC firmware/dist/default/production/PIC_firmware.production.rlf
+
+PIC firmware/dist/default/production/PIC_firmware.production.obj
+
+PIC firmware/dist/default/production/PIC_firmware.production.map
+
+PIC firmware/dist/default/production/PIC_firmware.production.lst
+
+PIC firmware/dist/default/production/PIC_firmware.production.hxl
+
+PIC firmware/dist/default/production/PIC_firmware.production.hex
+
+PIC firmware/dist/default/production/PIC_firmware.production.elf
+
+PIC firmware/dist/default/production/PIC_firmware.production.cmf
+
+PIC firmware/dist/default/debug/PIC_firmware.debug.sym
+
+PIC firmware/dist/default/debug/PIC_firmware.debug.sdb
+
+PIC firmware/dist/default/debug/PIC_firmware.debug.rlf
+
+PIC firmware/dist/default/debug/PIC_firmware.debug.obj
+
+PIC firmware/dist/default/debug/PIC_firmware.debug.map
+
+PIC firmware/dist/default/debug/PIC_firmware.debug.lst
+
+PIC firmware/dist/default/debug/PIC_firmware.debug.hxl
+
+PIC firmware/dist/default/debug/PIC_firmware.debug.elf
+
+PIC firmware/dist/default/debug/PIC_firmware.debug.cmf
+
+PIC firmware/build/default/production/main.pre
+
+PIC firmware/build/default/production/main.p1
+
+PIC firmware/build/default/production/fft.pre
+
+PIC firmware/build/default/production/fft.p1
+
+PIC firmware/build/default/debug/main.pre
+
+PIC firmware/build/default/debug/main.p1
+
+PIC firmware/build/default/debug/fft.pre
+
+PIC firmware/build/default/debug/fft.p1

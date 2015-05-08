@@ -19428,7 +19428,7 @@ void tickMillis();
 unsigned int delay_readCountMS();
 unsigned int delay_readCountUS();
 
-# 26 "fft.h"
+# 27 "fft.h"
 const short SineWave[1024-1024/4] = {
 0, 201, 402, 603, 804, 1005, 1206, 1406,
 1607, 1808, 2009, 2209, 2410, 2610, 2811, 3011,
@@ -19531,10 +19531,12 @@ const short SineWave[1024-1024/4] = {
 
 
 void fft_init();
-void fft_fix(short fr[], short fi[], short m);
+void fft_fix();
 void fft_collectData();
 void fft_execute();
+int fft_maxFreq();
 int fft_readAnalog();
+short fft_readBin(int i);
 
 # 7 "/Applications/microchip/xc8/v1.33/include/stdarg.h"
 typedef void * va_list[1];
@@ -19719,7 +19721,19 @@ void fft_init()
 ANCON3 = 0b00100000;
 
 
-ADCON1Hbits.MODE12 = 1;
+ADCON1L = 0x70;
+
+
+ADCSS0H = 0;
+
+
+ADCON3H = 0x1;
+
+
+ADCON3L = 0x54;
+
+
+ADCON1Hbits.MODE12 = 0;
 
 
 PVCFG0 = 0;
@@ -19727,83 +19741,30 @@ PVCFG1 = 0;
 NVCFG0 = 0;
 
 
-ADCON3L = 0x3F;
-
-
 ANSEL14 = 1;
 TRISHbits.TRISH6 = 1;
 ADCHS0L = 0x0E;
 ADCHS0H = 0x0E;
+
+ADCON2L = 0;
 
 
 ADON = 1;
 
 
 delay_us(50);
-
-LCD_printString(0,0, "Starting\nFHT");
-
-while(1)
-{
-SAMP = 1;
-while(!DONE);
-LCD_printString(0,0, "Ana:%i",ADCBUF0);
 }
 
-# 82
-}
-
-void fft_fix(short fr[], short fi[], short m)
+void fft_fix()
 {
-long int mr = 0, nn, i, j, l, k, istep, n;
-short qr, qi, tr, ti, wr, wi;
+long int mr = 0, nn, i, j, l, k, istep, n, shift;
+short qr, qi, tr, ti, wr, wi, m = 6;
 
-# 94
-nn = m - 1;
 
-switch(m)
-{
-case 0:
-m = 0;
-break;
+n = 1 << m;
+nn = n - 1;
 
-case 2:
-m = 1;
-break;
-
-case 4:
-m = 2;
-break;
-
-case 8:
-m = 3;
-break;
-
-case 16:
-m = 4;
-break;
-
-case 32:
-m = 5;
-break;
-
-case 64:
-m = 6;
-break;
-
-case 128:
-m = 7;
-break;
-
-case 256:
-m = 8;
-break;
-
-default:
-return;
-}
-
-# 142
+# 62
 for (m=1; m<=nn; ++m)
 {
 l = n;
@@ -19815,13 +19776,12 @@ l >>= 1;
 mr = (mr & (l-1)) + l;
 if (mr <= m) continue;
 
-tr = fr[m];
-fr[m] = fr[mr];
-fr[mr] = tr;
-
-ti = fi[m];
-fi[m] = fi[mr];
-fi[mr] = ti;
+tr = realNumbers[m];
+realNumbers[m] = realNumbers[mr];
+realNumbers[mr] = tr;
+ti = imaginaryNumbers[m];
+imaginaryNumbers[m] = imaginaryNumbers[mr];
+imaginaryNumbers[mr] = ti;
 }
 
 l = 1;
@@ -19830,7 +19790,7 @@ k = 10-1;
 while (l < n)
 {
 
-# 179
+# 98
 long int c;
 short b;
 
@@ -19849,39 +19809,37 @@ for (i=m; i<n; i+=istep)
 {
 j = i + l;
 
-# 203
-c = ((long int)wr * (long int)fr[j]);
+# 122
+c = ((long int)wr * (long int)realNumbers[j]);
 c = c >> 14;
 b = c & 0x01;
 tr = (c >> 1) + b;
 
-c = ((long int)wi * (long int)fi[j]);
+c = ((long int)wi * (long int)imaginaryNumbers[j]);
 c = c >> 14;
 b = c & 0x01;
 tr = tr - ((c >> 1) + b);
 
 
-
-c = ((long int)wr * (long int)fi[j]);
+c = ((long int)wr * (long int)imaginaryNumbers[j]);
 c = c >> 14;
 b = c & 0x01;
 ti = (c >> 1) + b;
 
-
-c = ((long int)wi * (long int)fr[j]);
+c = ((long int)wi * (long int)realNumbers[j]);
 c = c >> 14;
 b = c & 0x01;
 ti = ti + ((c >> 1) + b);
 
-qr = fr[i];
-qi = fi[i];
+qr = realNumbers[i];
+qi = imaginaryNumbers[i];
 qr >>= 1;
 qi >>= 1;
 
-fr[j] = qr - tr;
-fi[j] = qi - ti;
-fr[i] = qr + tr;
-fi[i] = qi + ti;
+realNumbers[j] = qr - tr;
+imaginaryNumbers[j] = qi - ti;
+realNumbers[i] = qr + tr;
+imaginaryNumbers[i] = qi + ti;
 }
 }
 
@@ -19895,30 +19853,39 @@ void fft_collectData()
 {
 short i = 0;
 
+TRISFbits.TRISF2 = 0;
+
+GIE = 0;
 for (i = 0; i < 64; i++)
 {
 
 
+SAMP = 1;
 
 
-while(DONE == 0);
 
-# 260
-realNumbers[i] = ((ADCBUF0Hbits.ADCBUF0H << 8) + (ADCBUF0Lbits.ADCBUF0L)) - 512;
+while(!DONE);
+DONE = 0;
+
+asm("NOP\nNOP\nNOP\nNOP");
+
+# 185
+realNumbers[i] = ADCBUF0 - 512;
 
 
 imaginaryNumbers[i] = 0;
 
-# 274
+# 199
 }
+GIE = 1;
 }
 
 
 void fft_execute()
 {
-fft_fix(realNumbers, imaginaryNumbers, 64);
+fft_fix();
 
-# 294
+# 220
 long place, root;
 for (int k=0; k < 32; k++)
 {
@@ -19930,7 +19897,7 @@ realNumbers[k] = (realNumbers[k] * realNumbers[k] + imaginaryNumbers[k] * imagin
 place = 0x40000000;
 root = 0;
 
-if (realNumbers[k] > 0)
+if (realNumbers[k] >= 0)
 {
 while (place > realNumbers[k]) place = place >> 2;
 
@@ -19950,7 +19917,29 @@ realNumbers[k] = root;
 
 }
 
+int fft_maxFreq()
+{
+short maxVal = 0;
+int maxFreq = 0;
+
+for(int i = 1; i < 32; i++)
+{
+if(realNumbers[i] > maxVal)
+{
+maxVal = realNumbers[i];
+maxFreq = i * 10000 / 32;
+}
+}
+
+return maxFreq;
+}
+
 int fft_readAnalog()
 {
 return ((ADCBUF0Hbits.ADCBUF0H << 8) + (ADCBUF0Lbits.ADCBUF0L)) - 512;
+}
+
+short fft_readBin(int i)
+{
+return realNumbers[i];
 }
