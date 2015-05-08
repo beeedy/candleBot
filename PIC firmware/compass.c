@@ -67,7 +67,7 @@
 #include "GlobalDefines.h"
 #include <math.h>
 
-signed char compass_pixyInit() {/*
+signed char compass_pixyInit() {
 
     // the compass on the pixy board is on I2C line 1 (SDA: pin 56, SCL: pin 54)
 
@@ -78,97 +78,59 @@ signed char compass_pixyInit() {/*
                     //full status
     do {
         unsigned char data[] = {
-            0x00,
             0x50,
             0x20,
             0x00
         };
-        retVal = I2C_write(COMPASS_PIXY, COMPASS_ADR, data, 4);
+        retVal = I2C_writeRegisters(COMPASS_PIXY, COMPASS_ADR, 0x00, data, 3);
         if(retVal == -3) { //check if bus collision happened
             SSP1CON1bits.WCOL=0; // clear the bus collision status bit
         }
         retry--;
     } while(retVal!=0 && retry > 0); //write untill successful communication
-    if(retry == 0) {
-        return -1;
-    }
-    else */
-        return 0;
+
+    return retVal;
 }
 
 
-signed char compass_mainBoardInit() { /*
+signed char compass_mainBoardInit() { 
     // the compass on the main board is on I2C line 2 (SDA: pin 81, SCL: pin 79)
 
     signed char retVal, data;
 
-    StartI2C2();
     data = SSP2BUF; //read any previous stored content in buffer to clear buffer
                     //full status
-    do {
-        retVal = WriteI2C2(COMPASS_WRITE_ADDR);  // compass address
-        if(retVal == -1) { //check if bus collision happened
-            data = SSP2BUF; //upon bus collision detection clear the buffer,
-            SSP2CON1bits.WCOL=0; // clear the bus collision status bit
-        }
-    } while(retVal!=0); //write untill successful communication
 
-    // clear/reset retVal
-    retVal = WriteI2C2(0x00);                // Config reg A address
-    retVal += WriteI2C2(0x50);                // config reg A val
+    retVal = I2C_writeRegister(COMPASS_MAIN, COMPASS_ADR, 0x00, 0x50);
+    retVal += I2C_writeRegister(COMPASS_MAIN, COMPASS_ADR, 0x01, 0x20);
+    retVal += I2C_writeRegister(COMPASS_MAIN, COMPASS_ADR, 0x02, 0x00);
 
-    retVal += WriteI2C2(COMPASS_WRITE_ADDR);  // compass address
-    retVal += WriteI2C2(0x01);                // Config reg B address
-    retVal += WriteI2C2(0x20);                // config reg B val
-
-    retVal += WriteI2C2(COMPASS_WRITE_ADDR);  // compass address
-    retVal += WriteI2C2(0x02);                // Mode reg address
-    retVal += WriteI2C2(0x00);                // Continuous Measure
-
-    IdleI2C2(); // close connection
-
-    if(retVal != 0) {
-        return -1;
+    if(retVal <= -3) { //check if bus collision happened
+        SSP2CON1bits.WCOL=0; // clear the bus collision status bit
     }
-    else {
-        WriteI2C1(COMPASS_READ_ADDR);  // compass address
-        WriteI2C1(0x0A);               // ID reg. A
-        if(ReadI2C1() != 'H')
-            return -1;
 
-        // get initial calibration. Must be flat on the floor!
-
-        int x, y, z;
-        retVal = compass_mainRead(&x, &y, &z);
-        StopI2C1();
-        return retVal;
-    } */
-    return 0;   // remove
+    return retVal;
 }
 
 
-signed char compass_mainRead(int *x, int *y, int *z) {/*
+signed char compass_mainRead(unsigned char positionData[]) {
 
     signed char retVal;
-    retVal += WriteI2C2(COMPASS_READ_ADDR); // compass address
-    retVal += WriteI2C2(0x03);              // x MSB address
-    if(retVal != 0) {
-        (*x) = ReadI2C2();                  // store val
-        (*x) = (*x) << 8;                   // shift MSB up
-        (*x) = ( 0x00ff & ReadI2C2() );     // read LSB
 
-        (*z) = ReadI2C2();                  // read y MSB address
-        (*z) = (*z) << 8;                   // shift MSB up
-        (*z) = ReadI2C2();                  // read LSB
-
-        (*y) = ReadI2C2();                  // read z MSB address
-        (*y) = (*y) << 8;                   // shift MSB up
-        (*y) = ReadI2C2();                  // read LSB
-*/
-        return 0; /*
+    I2C_open(COMPASS_MAIN);
+    I2C_write(COMPASS_MAIN, COMPASS_ADR);
+    I2C_write(COMPASS_MAIN, 0x03);
+    I2C_close(COMPASS_MAIN);
+    I2C_open(COMPASS_MAIN);
+    I2C_write(COMPASS_MAIN, COMPASS_ADR | 0x01);
+    for(unsigned char x = 0; x < 6; x++) {
+        I2C_read(COMPASS_MAIN, positionData[x]);
     }
+    I2C_close(COMPASS_MAIN);
+    if(retVal == 0)
+        return 0;
     else
-        return -1;*/
+        return -1;
 
 }
 

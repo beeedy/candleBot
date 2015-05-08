@@ -1,9 +1,0 @@
-
-# 1 "colorSensor.c"
-
-# 39
-signed char colorSensor_init() {
-
-# 50
-return 0;
-}

@@ -17,6 +17,7 @@
       <itemPath>PS2.h</itemPath>
       <itemPath>compass.h</itemPath>
       <itemPath>I2C.h</itemPath>
+      <itemPath>i2c_jimmy.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -39,6 +40,7 @@
       <itemPath>compass.c</itemPath>
       <itemPath>colorSensor.c</itemPath>
       <itemPath>I2C.c</itemPath>
+      <itemPath>i2c_jimmy.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -57,8 +59,8 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain>XC8</languageToolchain>
-        <languageToolchainVersion>1.33</languageToolchainVersion>
-        <platform>4</platform>
+        <languageToolchainVersion>1.34</languageToolchainVersion>
+        <platform>3</platform>
       </toolsSet>
       <compileType>
         <linkerTool>

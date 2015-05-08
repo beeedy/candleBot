@@ -19,7 +19,7 @@ endif
 endif
 
 # Environment
-MKDIR=mkdir -p
+MKDIR=gnumkdir -p
 RM=rm -f 
 MV=mv 
 CP=cp 
@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=LCD.c main.c delays.c encoders.c whiskers.c UART.c FONA.c settings.c fft.c motorDrive.c PS2.c compass.c colorSensor.c I2C.c
+SOURCEFILES_QUOTED_IF_SPACED=LCD.c main.c delays.c encoders.c whiskers.c UART.c FONA.c settings.c fft.c motorDrive.c PS2.c compass.c colorSensor.c I2C.c i2c_jimmy.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/LCD.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/delays.p1 ${OBJECTDIR}/encoders.p1 ${OBJECTDIR}/whiskers.p1 ${OBJECTDIR}/UART.p1 ${OBJECTDIR}/FONA.p1 ${OBJECTDIR}/settings.p1 ${OBJECTDIR}/fft.p1 ${OBJECTDIR}/motorDrive.p1 ${OBJECTDIR}/PS2.p1 ${OBJECTDIR}/compass.p1 ${OBJECTDIR}/colorSensor.p1 ${OBJECTDIR}/I2C.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/LCD.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/delays.p1.d ${OBJECTDIR}/encoders.p1.d ${OBJECTDIR}/whiskers.p1.d ${OBJECTDIR}/UART.p1.d ${OBJECTDIR}/FONA.p1.d ${OBJECTDIR}/settings.p1.d ${OBJECTDIR}/fft.p1.d ${OBJECTDIR}/motorDrive.p1.d ${OBJECTDIR}/PS2.p1.d ${OBJECTDIR}/compass.p1.d ${OBJECTDIR}/colorSensor.p1.d ${OBJECTDIR}/I2C.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/LCD.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/delays.p1 ${OBJECTDIR}/encoders.p1 ${OBJECTDIR}/whiskers.p1 ${OBJECTDIR}/UART.p1 ${OBJECTDIR}/FONA.p1 ${OBJECTDIR}/settings.p1 ${OBJECTDIR}/fft.p1 ${OBJECTDIR}/motorDrive.p1 ${OBJECTDIR}/PS2.p1 ${OBJECTDIR}/compass.p1 ${OBJECTDIR}/colorSensor.p1 ${OBJECTDIR}/I2C.p1 ${OBJECTDIR}/i2c_jimmy.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/LCD.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/delays.p1.d ${OBJECTDIR}/encoders.p1.d ${OBJECTDIR}/whiskers.p1.d ${OBJECTDIR}/UART.p1.d ${OBJECTDIR}/FONA.p1.d ${OBJECTDIR}/settings.p1.d ${OBJECTDIR}/fft.p1.d ${OBJECTDIR}/motorDrive.p1.d ${OBJECTDIR}/PS2.p1.d ${OBJECTDIR}/compass.p1.d ${OBJECTDIR}/colorSensor.p1.d ${OBJECTDIR}/I2C.p1.d ${OBJECTDIR}/i2c_jimmy.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/LCD.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/delays.p1 ${OBJECTDIR}/encoders.p1 ${OBJECTDIR}/whiskers.p1 ${OBJECTDIR}/UART.p1 ${OBJECTDIR}/FONA.p1 ${OBJECTDIR}/settings.p1 ${OBJECTDIR}/fft.p1 ${OBJECTDIR}/motorDrive.p1 ${OBJECTDIR}/PS2.p1 ${OBJECTDIR}/compass.p1 ${OBJECTDIR}/colorSensor.p1 ${OBJECTDIR}/I2C.p1
+OBJECTFILES=${OBJECTDIR}/LCD.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/delays.p1 ${OBJECTDIR}/encoders.p1 ${OBJECTDIR}/whiskers.p1 ${OBJECTDIR}/UART.p1 ${OBJECTDIR}/FONA.p1 ${OBJECTDIR}/settings.p1 ${OBJECTDIR}/fft.p1 ${OBJECTDIR}/motorDrive.p1 ${OBJECTDIR}/PS2.p1 ${OBJECTDIR}/compass.p1 ${OBJECTDIR}/colorSensor.p1 ${OBJECTDIR}/I2C.p1 ${OBJECTDIR}/i2c_jimmy.p1
 
 # Source Files
-SOURCEFILES=LCD.c main.c delays.c encoders.c whiskers.c UART.c FONA.c settings.c fft.c motorDrive.c PS2.c compass.c colorSensor.c I2C.c
+SOURCEFILES=LCD.c main.c delays.c encoders.c whiskers.c UART.c FONA.c settings.c fft.c motorDrive.c PS2.c compass.c colorSensor.c I2C.c i2c_jimmy.c
 
 
 CFLAGS=
@@ -193,6 +193,14 @@ ${OBJECTDIR}/I2C.p1: I2C.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/I2C.d ${OBJECTDIR}/I2C.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/I2C.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/i2c_jimmy.p1: i2c_jimmy.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/i2c_jimmy.p1.d 
+	@${RM} ${OBJECTDIR}/i2c_jimmy.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -P -N255 --warn=0 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/i2c_jimmy.p1  i2c_jimmy.c 
+	@-${MV} ${OBJECTDIR}/i2c_jimmy.d ${OBJECTDIR}/i2c_jimmy.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/i2c_jimmy.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/LCD.p1: LCD.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -306,6 +314,14 @@ ${OBJECTDIR}/I2C.p1: I2C.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/I2C.d ${OBJECTDIR}/I2C.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/I2C.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/i2c_jimmy.p1: i2c_jimmy.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/i2c_jimmy.p1.d 
+	@${RM} ${OBJECTDIR}/i2c_jimmy.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -P -N255 --warn=0 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/i2c_jimmy.p1  i2c_jimmy.c 
+	@-${MV} ${OBJECTDIR}/i2c_jimmy.d ${OBJECTDIR}/i2c_jimmy.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/i2c_jimmy.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 endif
 
 # ------------------------------------------------------------------------------------
@@ -345,7 +361,7 @@ endif
 # Enable dependency checking
 .dep.inc: .depcheck-impl
 
-DEPFILES=$(shell "${PATH_TO_IDE_BIN}"mplabwildcard ${POSSIBLE_DEPFILES})
+DEPFILES=$(shell mplabwildcard ${POSSIBLE_DEPFILES})
 ifneq (${DEPFILES},)
 include ${DEPFILES}
 endif

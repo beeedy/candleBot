@@ -34,18 +34,12 @@
 
 #define USE_OR_MASKS
 
-#define CS_ADDR 0x29
-
-signed char colorSensor_init() {/*
+signed char colorSensor_init() { /**
     signed char retVal = 0;
     unsigned char data;
 
-    //data = SSP2BUF; //read any previous stored content in buffer to clear buffer full
-    //retVal += WriteI2C2(CS_ADDR + 1);
-    if(retVal != 0)
-        return -1;
-    retVal += WriteI2C2(0xA0);      // configures for auto-inc. protocol tx
-    retVal += WriteI2C2(0x00);
+    data = SSP2BUF;             // clear out the previous data
 */
+
     return 0;
 }

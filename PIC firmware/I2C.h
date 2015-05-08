@@ -14,14 +14,22 @@ extern "C" {
 
 #define COMPASS_PIXY  1
 #define COLOR_SENSOR  1
-#define WII_CAM_LEFT  1
-#define WII_CAM_RIGHT 2
+#define WII_CAM_RIGHT 1
+#define WII_CAM_LEFT  2
 #define COMPASS_MAIN  2
 
 
 void I2C_init(unsigned char channel);
 
 
+
+
+/*
+ * Waits for a few things to finish before continuing
+ *
+ */
+
+void I2C_wait(unsigned char channel);
 
 
 
@@ -67,6 +75,27 @@ signed char I2C_write(unsigned char channel, unsigned char data);
 
 
 /*
+ * I2C_writeRegister1 writes the given byte at the given address on
+ * the given channel and returns:
+ *
+ *    0  -  successful write, no errors
+ *   -1  -  unsuccessful. NAK
+ *   -2  -  unsuccessful. Bus collision
+ *
+ */
+
+
+signed char I2C_writeRegister(unsigned char channel, unsigned char slaveAdr,
+        unsigned char startRegAdr, unsigned char data);
+
+
+
+
+
+
+
+
+/*
  * I2C_writeRegisters writes the given byte(s) starting at the given address on
  * the given channel and returns:
  *
@@ -91,10 +120,14 @@ signed char I2C_writeRegisters(unsigned char channel, unsigned char slaveAdr,
  *
  */
 
-signed char I2C_read(unsigned char channel, unsigned char slaveAdr,
+signed char I2C_readRegesters(unsigned char channel, unsigned char slaveAdr,
         unsigned char startRegAdr, unsigned char len,
         unsigned char* dataRetAdr);
 
+
+
+
+signed char I2C_read(unsigned char channel, unsigned char* dataRetAdr);
 
 
 #ifdef	__cplusplus

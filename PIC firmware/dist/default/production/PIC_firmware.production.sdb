@@ -1,8 +1,9 @@
-[p PRO_MODE GLOBOPT AUTOSTATIC LFSROK SPACEOPT EMI_WORD ]
+[p LITE_MODE AUTOSTATIC LFSROK EMI_WORD ]
 [d version 1.1 ]
 [d edition pro ]
 [d chip 18F97J94 ]
 [d frameptr 4065 ]
+<<<<<<< HEAD
 "59 /Users/broderickcarlin/candleBot/PIC firmware/main.c
 [e E16418 . `uc
 FONA 0
@@ -11,181 +12,95 @@ PIXY 2
 ]
 "186 /Users/broderickcarlin/candleBot/PIC firmware/UART.c
 [e E16307 . `uc
+=======
+"186 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
+[e E16303 . `uc
+>>>>>>> origin/master
 FONA 0
 USB 1
 PIXY 2
 ]
-"31 /Users/broderickcarlin/candleBot/PIC firmware/FONA.c
-[e E16307 . `uc
+"31 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\FONA.c
+[e E16303 . `uc
 FONA 0
 USB 1
 PIXY 2
 ]
-"4 /Applications/microchip/xc8/v1.33/sources/common/abdiv.c
-[v ___abdiv __abdiv `(c  1 e 1 0 ]
-"4 /Applications/microchip/xc8/v1.33/sources/common/abmod.c
-[v ___abmod __abmod `(c  1 e 1 0 ]
-"31 /Applications/microchip/xc8/v1.33/sources/common/abtofl.c
-[v ___abtofl __abtofl `(d  1 e 3 0 ]
-"33 /Applications/microchip/xc8/v1.33/sources/common/abtoft.c
-[v ___abtoft __abtoft `(f  1 e 3 0 ]
-"8 /Applications/microchip/xc8/v1.33/sources/common/acos.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\acos.c
 [v _acos acos `(d  1 e 3 0 ]
-"8 /Applications/microchip/xc8/v1.33/sources/common/aldiv.c
-[v ___aldiv __aldiv `(l  1 e 4 0 ]
-"8 /Applications/microchip/xc8/v1.33/sources/common/almod.c
-[v ___almod __almod `(l  1 e 4 0 ]
-"36 /Applications/microchip/xc8/v1.33/sources/common/altofl.c
-[v ___altofl __altofl `(d  1 e 3 0 ]
-"42 /Applications/microchip/xc8/v1.33/sources/common/altoft.c
-[v ___altoft __altoft `(f  1 e 3 0 ]
-"9 /Applications/microchip/xc8/v1.33/sources/common/asin.c
+"9 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\asin.c
 [v _asin asin `(d  1 e 3 0 ]
-"8 /Applications/microchip/xc8/v1.33/sources/common/atan.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\atan.c
 [v _atan atan `(d  1 e 3 0 ]
-"8 /Applications/microchip/xc8/v1.33/sources/common/atdiv.c
-[v ___atdiv __atdiv `(m  1 e 3 0 ]
-"8 /Applications/microchip/xc8/v1.33/sources/common/atmod.c
-[v ___atmod __atmod `(m  1 e 3 0 ]
-"37 /Applications/microchip/xc8/v1.33/sources/common/attofl.c
-[v ___attofl __attofl `(d  1 e 3 0 ]
-"37 /Applications/microchip/xc8/v1.33/sources/common/attoft.c
-[v ___attoft __attoft `(f  1 e 3 0 ]
-"8 /Applications/microchip/xc8/v1.33/sources/common/awdiv.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
-"8 /Applications/microchip/xc8/v1.33/sources/common/awmod.c
-[v ___awmod __awmod `(i  1 e 2 0 ]
-"31 /Applications/microchip/xc8/v1.33/sources/common/awtofl.c
-[v ___awtofl __awtofl `(d  1 e 3 0 ]
-"32 /Applications/microchip/xc8/v1.33/sources/common/awtoft.c
+"32 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awtoft.c
 [v ___awtoft __awtoft `(f  1 e 3 0 ]
-"492 /Applications/microchip/xc8/v1.33/sources/common/doprnt.c
+"492 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
 [v _sprintf sprintf `(i  1 e 2 0 ]
-"63 /Applications/microchip/xc8/v1.33/sources/common/double.c
+"63 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\double.c
 [v ___flpack __flpack `(d  1 e 3 0 ]
-"4 /Applications/microchip/xc8/v1.33/sources/common/evalpoly.c
+"4 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\evalpoly.c
 [v _eval_poly eval_poly `(d  1 e 3 0 ]
-"4 /Applications/microchip/xc8/v1.33/sources/common/fabs.c
+"4 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\fabs.c
 [v _fabs fabs `(d  1 e 3 0 ]
-"88 /Applications/microchip/xc8/v1.33/sources/common/fladd.c
+"88 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\fladd.c
 [v ___fladd __fladd `(d  1 e 3 0 ]
-"49 /Applications/microchip/xc8/v1.33/sources/common/fldiv.c
+"54 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\fldiv.c
 [v ___fldiv __fldiv `(d  1 e 3 0 ]
-"4 /Applications/microchip/xc8/v1.33/sources/common/flge.c
-[v ___flge __flge `(b  1 e 0 0 ]
-"62 /Applications/microchip/xc8/v1.33/sources/common/flmul.c
+"62 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\flmul.c
 [v ___flmul __flmul `(d  1 e 3 0 ]
-"15 /Applications/microchip/xc8/v1.33/sources/common/flneg.c
-[v ___flneg __flneg `(d  1 e 3 0 ]
-"62 /Applications/microchip/xc8/v1.33/sources/common/float.c
+"62 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\float.c
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
-"20 /Applications/microchip/xc8/v1.33/sources/common/flsub.c
+"20 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\flsub.c
 [v ___flsub __flsub `(d  1 e 3 0 ]
-"43 /Applications/microchip/xc8/v1.33/sources/common/fltol.c
-[v ___fltol __fltol `(l  1 e 4 0 ]
-"86 /Applications/microchip/xc8/v1.33/sources/common/ftadd.c
+"86 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\ftadd.c
 [v ___ftadd __ftadd `(f  1 e 3 0 ]
-"49 /Applications/microchip/xc8/v1.33/sources/common/ftdiv.c
+"54 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\ftdiv.c
 [v ___ftdiv __ftdiv `(f  1 e 3 0 ]
-"4 /Applications/microchip/xc8/v1.33/sources/common/ftge.c
+"4 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\ftge.c
 [v ___ftge __ftge `(b  1 e 0 0 ]
-"62 /Applications/microchip/xc8/v1.33/sources/common/ftmul.c
+"62 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\ftmul.c
 [v ___ftmul __ftmul `(f  1 e 3 0 ]
-"15 /Applications/microchip/xc8/v1.33/sources/common/ftneg.c
+"15 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\ftneg.c
 [v ___ftneg __ftneg `(f  1 e 3 0 ]
-"20 /Applications/microchip/xc8/v1.33/sources/common/ftsub.c
+"20 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\ftsub.c
 [v ___ftsub __ftsub `(f  1 e 3 0 ]
-"44 /Applications/microchip/xc8/v1.33/sources/common/fttol.c
+"44 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\fttol.c
 [v ___fttol __fttol `(l  1 e 4 0 ]
-"4 /Applications/microchip/xc8/v1.33/sources/common/lbdiv.c
-[v ___lbdiv __lbdiv `(uc  1 e 1 0 ]
-"4 /Applications/microchip/xc8/v1.33/sources/common/lbmod.c
-[v ___lbmod __lbmod `(uc  1 e 1 0 ]
-"27 /Applications/microchip/xc8/v1.33/sources/common/lbtofl.c
-[v ___lbtofl __lbtofl `(d  1 e 3 0 ]
-"27 /Applications/microchip/xc8/v1.33/sources/common/lbtoft.c
-[v ___lbtoft __lbtoft `(f  1 e 3 0 ]
-"8 /Applications/microchip/xc8/v1.33/sources/common/lldiv.c
-[v ___lldiv __lldiv `(ul  1 e 4 0 ]
-"8 /Applications/microchip/xc8/v1.33/sources/common/llmod.c
-[v ___llmod __llmod `(ul  1 e 4 0 ]
-"30 /Applications/microchip/xc8/v1.33/sources/common/lltofl.c
-[v ___lltofl __lltofl `(d  1 e 3 0 ]
-"35 /Applications/microchip/xc8/v1.33/sources/common/lltoft.c
-[v ___lltoft __lltoft `(f  1 e 3 0 ]
-"8 /Applications/microchip/xc8/v1.33/sources/common/ltdiv.c
-[v ___ltdiv __ltdiv `(um  1 e 3 0 ]
-"8 /Applications/microchip/xc8/v1.33/sources/common/ltmod.c
-[v ___ltmod __ltmod `(um  1 e 3 0 ]
-"30 /Applications/microchip/xc8/v1.33/sources/common/lttofl.c
-[v ___lttofl __lttofl `(d  1 e 3 0 ]
-"30 /Applications/microchip/xc8/v1.33/sources/common/lttoft.c
-[v ___lttoft __lttoft `(f  1 e 3 0 ]
-"8 /Applications/microchip/xc8/v1.33/sources/common/lwdiv.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
-"8 /Applications/microchip/xc8/v1.33/sources/common/lwmod.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
-"28 /Applications/microchip/xc8/v1.33/sources/common/lwtofl.c
-[v ___lwtofl __lwtofl `(d  1 e 3 0 ]
-"28 /Applications/microchip/xc8/v1.33/sources/common/lwtoft.c
+"28 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwtoft.c
 [v ___lwtoft __lwtoft `(f  1 e 3 0 ]
-"13 /Applications/microchip/xc8/v1.33/sources/common/sqrt.c
+"13 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\sqrt.c
 [v _sqrt sqrt `(d  1 e 3 0 ]
-"8 /Applications/microchip/xc8/v1.33/sources/common/strcat.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\strcat.c
 [v _strcat strcat `(*.39uc  1 e 2 0 ]
-"8 /Applications/microchip/xc8/v1.33/sources/common/strcpy.c
-[v _strcpy strcpy `(*.30uc  1 e 2 0 ]
-"15 /Applications/microchip/xc8/v1.33/sources/common/Umul16.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\strcpy.c
+[v _strcpy strcpy `(*.39uc  1 e 2 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
-"15 /Applications/microchip/xc8/v1.33/sources/common/Umul24.c
-[v ___tmul __tmul `(um  1 e 3 0 ]
-"15 /Applications/microchip/xc8/v1.33/sources/common/Umul32.c
+"15 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
-"4 /Applications/microchip/xc8/v1.33/sources/common/Umul8.c
-[v ___bmul __bmul `(uc  1 e 1 0 ]
-"6 /Applications/microchip/xc8/v1.33/sources/pic18/asfladd.c
-[v ___asfladd __asfladd `(d  1 e 3 0 ]
-"6 /Applications/microchip/xc8/v1.33/sources/pic18/asfldiv.c
-[v ___asfldiv __asfldiv `(d  1 e 3 0 ]
-"6 /Applications/microchip/xc8/v1.33/sources/pic18/asflmul.c
-[v ___asflmul __asflmul `(d  1 e 3 0 ]
-"6 /Applications/microchip/xc8/v1.33/sources/pic18/asflsub.c
-[v ___asflsub __asflsub `(d  1 e 3 0 ]
-"6 /Applications/microchip/xc8/v1.33/sources/pic18/asftadd.c
-[v ___asftadd __asftadd `(f  1 e 3 0 ]
-"6 /Applications/microchip/xc8/v1.33/sources/pic18/asftdiv.c
-[v ___asftdiv __asftdiv `(f  1 e 3 0 ]
-"6 /Applications/microchip/xc8/v1.33/sources/pic18/asftmul.c
-[v ___asftmul __asftmul `(f  1 e 3 0 ]
-"6 /Applications/microchip/xc8/v1.33/sources/pic18/asftsub.c
-[v ___asftsub __asftsub `(f  1 e 3 0 ]
-"6 /Applications/microchip/xc8/v1.33/sources/pic18/aslmul.c
-[v ___aslmul __aslmul `(ul  1 e 4 0 ]
-"26 /Applications/microchip/xc8/v1.33/sources/pic18/plib/PWM/ew1open.c
+"26 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1open.c
 [v _OpenEPWM1 OpenEPWM1 `(v  1 e 0 0 ]
-"32 /Applications/microchip/xc8/v1.33/sources/pic18/plib/PWM/ew1setdc.c
+"32 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setdc.c
 [v _SetDCEPWM1 SetDCEPWM1 `(v  1 e 0 0 ]
-"50 /Applications/microchip/xc8/v1.33/sources/pic18/plib/PWM/ew1setoc.c
+"50 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setoc.c
 [v _SetOutputEPWM1 SetOutputEPWM1 `(v  1 e 0 0 ]
-"14 /Applications/microchip/xc8/v1.33/sources/pic18/plib/PWM/ew3open.c
+"14 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3open.c
 [v _OpenEPWM3 OpenEPWM3 `(v  1 e 0 0 ]
-"16 /Applications/microchip/xc8/v1.33/sources/pic18/plib/PWM/ew3setdc.c
+"16 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setdc.c
 [v _SetDCEPWM3 SetDCEPWM3 `(v  1 e 0 0 ]
-"17 /Applications/microchip/xc8/v1.33/sources/pic18/plib/PWM/ew3setoc.c
+"17 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setoc.c
 [v _SetOutputEPWM3 SetOutputEPWM3 `(v  1 e 0 0 ]
-"39 /Users/broderickcarlin/candleBot/PIC firmware/colorSensor.c
-[v _colorSensor_init colorSensor_init `(c  1 e 1 0 ]
-"70 /Users/broderickcarlin/candleBot/PIC firmware/compass.c
-[v _compass_pixyInit compass_pixyInit `(c  1 e 1 0 ]
-"100
+"96 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\compass.c
 [v _compass_mainBoardInit compass_mainBoardInit `(c  1 e 1 0 ]
-"150
+"116
 [v _compass_mainRead compass_mainRead `(c  1 e 1 0 ]
-"176
-[v _compass_pixyRead compass_pixyRead `(c  1 e 1 0 ]
-"202
-[v _compass_cart2polar compass_cart2polar `(v  1 e 0 0 ]
-"7 /Users/broderickcarlin/candleBot/PIC firmware/delays.c
+"7 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
 [v _delay_init delay_init `(v  1 e 0 0 ]
 "51
 [v _delay_us delay_us `(v  1 e 0 0 ]
@@ -193,24 +108,17 @@ PIXY 2
 [v _delay_ms delay_ms `(v  1 e 0 0 ]
 "70
 [v _delay_s delay_s `(v  1 e 0 0 ]
-"78
-[v _delay_clear delay_clear `(v  1 e 0 0 ]
-"87
-[v _delay_startCount delay_startCount `(v  1 e 0 0 ]
-"93
-[v _delay_readCountMS delay_readCountMS `(ui  1 e 2 0 ]
-"102
-[v _delay_readCountUS delay_readCountUS `(ui  1 e 2 0 ]
 "110
 [v _millis millis `(ul  1 e 4 0 ]
 "115
 [v _clearMillis clearMillis `(v  1 e 0 0 ]
 "121
 [v _tickMillis tickMillis `(v  1 e 0 0 ]
-"6 /Users/broderickcarlin/candleBot/PIC firmware/encoders.c
+"6 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
 [v _encoders_init encoders_init `(v  1 e 0 0 ]
 "40
 [v _encoderInterrupt encoderInterrupt `IIL(v  1 e 0 0 ]
+<<<<<<< HEAD
 "69
 [v _encoders_readLeft encoders_readLeft `(l  1 e 4 0 ]
 "78
@@ -240,37 +148,47 @@ PIXY 2
 "72
 [v _FONA_Text FONA_Text `(uc  1 e 1 0 ]
 "125
+=======
+"84 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\fft.c
+[v _fft_fix fft_fix `(v  1 e 0 0 ]
+"125 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\FONA.c
+>>>>>>> origin/master
 [v _FONA_CheckStrength FONA_CheckStrength `(uc  1 e 1 0 ]
-"37 /Users/broderickcarlin/candleBot/PIC firmware/I2C.c
+"47 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\I2C.c
 [v _I2C_init I2C_init `(v  1 e 0 0 ]
-"73
+"83
+[v _I2C_wait I2C_wait `(v  1 e 0 0 ]
+"103
 [v _I2C_open I2C_open `(c  1 e 1 0 ]
-"95
+"131
 [v _I2C_close I2C_close `(c  1 e 1 0 ]
-"120
+"159
 [v _I2C_write I2C_write `(c  1 e 1 0 ]
-"158
+"209
 [v _I2C_writeRegisters I2C_writeRegisters `(c  1 e 1 0 ]
-"200
+"253
+[v _I2C_writeRegister I2C_writeRegister `(c  1 e 1 0 ]
+"346
 [v _I2C_read I2C_read `(c  1 e 1 0 ]
-"47 /Users/broderickcarlin/candleBot/PIC firmware/LCD.c
+"66 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\i2c_jimmy.c
+[v _i2c_Wait i2c_Wait `(v  1 e 0 0 ]
+"71
+[v _i2c_Start i2c_Start `(v  1 e 0 0 ]
+"79
+[v _i2c_Restart i2c_Restart `(v  1 e 0 0 ]
+"86
+[v _i2c_Stop i2c_Stop `(v  1 e 0 0 ]
+"94
+[v _i2c_Write i2c_Write `(v  1 e 0 0 ]
+"48 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
 [v _LCD_init4bit LCD_init4bit `(v  1 e 0 0 ]
-"181
-[v _LCD_init8bit LCD_init8bit `(v  1 e 0 0 ]
-"279
+"280
 [v _LCD_placeCursor LCD_placeCursor `(v  1 e 0 0 ]
-"312
+"313
 [v _LCD_printString LCD_printString `(v  1 e 0 0 ]
-"393
-[v _LCD_printChar LCD_printChar `(v  1 e 0 0 ]
-"402
-[v _LCD_printVal LCD_printVal `(v  1 e 0 0 ]
-"408
-[v _LCD_printBin LCD_printBin `(v  1 e 0 0 ]
-"419
-[v _LCD_clearDisplay LCD_clearDisplay `(v  1 e 0 0 ]
-"30 /Users/broderickcarlin/candleBot/PIC firmware/main.c
+"31 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
 [v _init init `(v  1 e 0 0 ]
+<<<<<<< HEAD
 "44
 [v _debug debug `(v  1 e 0 0 ]
 "71
@@ -284,12 +202,17 @@ PIXY 2
 "130
 [v _main main `(v  1 e 0 0 ]
 "226
+=======
+"109
+[v _main main `(v  1 e 0 0 ]
+"216
+>>>>>>> origin/master
 [v _communicationInterruptHandler communicationInterruptHandler `IIH(v  1 e 0 0 ]
-"15 /Users/broderickcarlin/candleBot/PIC firmware/motorDrive.c
+"15 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
 [v _motorDrive_init motorDrive_init `(v  1 e 0 0 ]
 "68
 [v _motorDrive_setSpeeds motorDrive_setSpeeds `(v  1 e 0 0 ]
-"14 /Users/broderickcarlin/candleBot/PIC firmware/PS2.c
+"14 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
 [v _PS2_init PS2_init `(uc  1 e 1 0 ]
 "78
 [v _PS2_readGamepad PS2_readGamepad `(v  1 e 0 0 ]
@@ -301,85 +224,59 @@ PIXY 2
 [v _PS2_shiftInOut PS2_shiftInOut `(uc  1 e 1 0 ]
 "172
 [v _PS2_readType PS2_readType `(uc  1 e 1 0 ]
-"186
-[v _PS2_newButtons PS2_newButtons `(uc  1 e 1 0 ]
 "196
 [v _PS2_newButtonState PS2_newButtonState `(uc  1 e 1 0 ]
-"206
-[v _PS2_buttonPressed PS2_buttonPressed `(uc  1 e 1 0 ]
-"216
-[v _PS2_buttonReleased PS2_buttonReleased `(uc  1 e 1 0 ]
 "226
 [v _PS2_button PS2_button `(uc  1 e 1 0 ]
-"236
-[v _PS2_buttonDataByte PS2_buttonDataByte `(ui  1 e 2 0 ]
 "242
 [v _PS2_analog PS2_analog `(uc  1 e 1 0 ]
-"16 /Users/broderickcarlin/candleBot/PIC firmware/settings.c
+"16 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
 [v _settings_init settings_init `(v  1 e 0 0 ]
-"36
-[v _settings_readSettings settings_readSettings `(uc  1 e 1 0 ]
 "45
 [v _settings_readButton settings_readButton `(uc  1 e 1 0 ]
-"52
-[v _settings_tylerOrBroderick settings_tylerOrBroderick `(uc  1 e 1 0 ]
-"59
-[v _settings_call settings_call `(uc  1 e 1 0 ]
-"66
-[v _settings_auto settings_auto `(uc  1 e 1 0 ]
-"73
-[v _settings_debugMode settings_debugMode `(uc  1 e 1 0 ]
-"80
-[v _settings_wander settings_wander `(uc  1 e 1 0 ]
-"87
-[v _settings_cams settings_cams `(uc  1 e 1 0 ]
-"94
-[v _settings_selfTest settings_selfTest `(uc  1 e 1 0 ]
-"21 /Users/broderickcarlin/candleBot/PIC firmware/UART.c
+"21 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
 [v _UART_init UART_init `(v  1 e 0 0 ]
 "185
 [v _UART_transmitByte UART_transmitByte `(v  1 e 0 0 ]
 "204
 [v _UART_transmitString UART_transmitString `(v  1 e 0 0 ]
-"6 /Users/broderickcarlin/candleBot/PIC firmware/whiskers.c
-[v _whiskers_Init whiskers_Init `(v  1 e 0 0 ]
-"17
-[v _whiskers_pollLeft whiskers_pollLeft `(uc  1 e 1 0 ]
-"22
-[v _whiskers_pollRight whiskers_pollRight `(uc  1 e 1 0 ]
-"2344 /Applications/microchip/xc8/v1.33/include/pic18f97j94.h
+"2346 C:\Program Files (x86)\Microchip\xc8\v1.34\include\pic18f97j94.h
 [v _RPOR10_11 RPOR10_11 `VEuc  1 e 1 @3607 ]
-"2419
+"2421
 [v _RPOR12_13 RPOR12_13 `VEuc  1 e 1 @3608 ]
-"2794
+"2796
 [v _RPOR22_23 RPOR22_23 `VEuc  1 e 1 @3613 ]
-"3094
+"3096
 [v _RPOR30_31 RPOR30_31 `VEuc  1 e 1 @3617 ]
-"3244
+"3246
 [v _RPOR34_35 RPOR34_35 `VEuc  1 e 1 @3619 ]
-"3739
+"3741
 [v _RPINR0_1 RPINR0_1 `VEuc  1 e 1 @3626 ]
-"3889
+"3891
 [v _RPINR4_5 RPINR4_5 `VEuc  1 e 1 @3628 ]
-"3964
+"3966
 [v _RPINR6_7 RPINR6_7 `VEuc  1 e 1 @3629 ]
-"4714
+"4716
 [v _RPINR26_27 RPINR26_27 `VEuc  1 e 1 @3639 ]
-"4789
+"4791
 [v _RPINR28_29 RPINR28_29 `VEuc  1 e 1 @3640 ]
-"5764
+"5766
 [v _ANCON3 ANCON3 `VEuc  1 e 1 @3653 ]
-"5825
+"5827
 [v _ANCON2 ANCON2 `VEuc  1 e 1 @3654 ]
-"5957
+"5959
 [v _ANCON1 ANCON1 `VEuc  1 e 1 @3655 ]
+<<<<<<< HEAD
 "7798
 [v _ADCSS0H ADCSS0H `VEuc  1 e 1 @3715 ]
 "7999
+=======
+"8001
+>>>>>>> origin/master
 [v _ADCHS0L ADCHS0L `VEuc  1 e 1 @3718 ]
-"8074
+"8076
 [v _ADCHS0H ADCHS0H `VEuc  1 e 1 @3719 ]
-"8252
+"8254
 [v _ADCON3L ADCON3L `VEuc  1 e 1 @3722 ]
 "8321
 [v _ADCON3H ADCON3H `VEuc  1 e 1 @3723 ]
@@ -391,7 +288,7 @@ PIXY 2
 `uc 1 SLPEN 1 0 :1:6 
 `uc 1 LCDEN 1 0 :1:7 
 ]
-"13393
+"13395
 [s S76 . 1 `uc 1 LMUX0 1 0 :1:0 
 `uc 1 LMUX1 1 0 :1:1 
 `uc 1 LMUX2 1 0 :1:2 
@@ -406,7 +303,7 @@ PIXY 2
 `uc 1 . 1 0 :1:6 
 `uc 1 EBDIS 1 0 :1:7 
 ]
-"13993
+"13995
 [s S32 . 1 `uc 1 WM0 1 0 :1:0 
 `uc 1 WM1 1 0 :1:1 
 `uc 1 . 1 0 :2:2 
@@ -415,40 +312,91 @@ PIXY 2
 ]
 [u S38 . 1 `S26 1 . 1 0 `S32 1 . 1 0 ]
 [v _MEMCONbits MEMCONbits `VES38  1 e 1 @3811 ]
-[s S383 . 1 `uc 1 TRISD0 1 0 :1:0 
-`uc 1 TRISD1 1 0 :1:1 
-`uc 1 TRISD2 1 0 :1:2 
-`uc 1 TRISD3 1 0 :1:3 
-`uc 1 TRISD4 1 0 :1:4 
-`uc 1 TRISD5 1 0 :1:5 
-`uc 1 TRISD6 1 0 :1:6 
-`uc 1 TRISD7 1 0 :1:7 
+[s S2100 . 1 `uc 1 RL0 1 0 :1:0 
+`uc 1 RL1 1 0 :1:1 
+`uc 1 RL2 1 0 :1:2 
+`uc 1 RL3 1 0 :1:3 
+`uc 1 RL4 1 0 :1:4 
+`uc 1 RL5 1 0 :1:5 
+`uc 1 RL6 1 0 :1:6 
+`uc 1 RL7 1 0 :1:7 
 ]
-"14049
-[u S392 . 1 `S383 1 . 1 0 ]
-[v _PORTLbits PORTLbits `VES392  1 e 1 @3812 ]
-"14171
-[v _TRISLbits TRISLbits `VES392  1 e 1 @3814 ]
-"14232
-[v _PORTKbits PORTKbits `VES392  1 e 1 @3815 ]
-"15416
+"14051
+[u S2109 . 1 `S2100 1 . 1 0 ]
+[v _PORTLbits PORTLbits `VES2109  1 e 1 @3812 ]
+[s S2078 . 1 `uc 1 TRISL0 1 0 :1:0 
+`uc 1 TRISL1 1 0 :1:1 
+`uc 1 TRISL2 1 0 :1:2 
+`uc 1 TRISL3 1 0 :1:3 
+`uc 1 TRISL4 1 0 :1:4 
+`uc 1 TRISL5 1 0 :1:5 
+`uc 1 TRISL6 1 0 :1:6 
+`uc 1 TRISL7 1 0 :1:7 
+]
+"14173
+[u S2087 . 1 `S2078 1 . 1 0 ]
+[v _TRISLbits TRISLbits `VES2087  1 e 1 @3814 ]
+[s S2362 . 1 `uc 1 RK0 1 0 :1:0 
+`uc 1 RK1 1 0 :1:1 
+`uc 1 RK2 1 0 :1:2 
+`uc 1 RK3 1 0 :1:3 
+`uc 1 RK4 1 0 :1:4 
+`uc 1 RK5 1 0 :1:5 
+`uc 1 RK6 1 0 :1:6 
+`uc 1 RK7 1 0 :1:7 
+]
+"14234
+[u S2371 . 1 `S2362 1 . 1 0 ]
+[v _PORTKbits PORTKbits `VES2371  1 e 1 @3815 ]
+"15418
 [v _TXREG4 TXREG4 `VEuc  1 e 1 @3833 ]
-"15435
+"15437
 [v _RCREG4 RCREG4 `VEuc  1 e 1 @3834 ]
-"15454
+"15456
 [v _SPBRG4 SPBRG4 `VEuc  1 e 1 @3835 ]
-"15523
+"15525
 [v _SPBRGH4 SPBRGH4 `VEuc  1 e 1 @3836 ]
-"15609
-[v _BAUDCON4bits BAUDCON4bits `VES392  1 e 1 @3837 ]
-"15670
-[v _TXSTA4bits TXSTA4bits `VES392  1 e 1 @3838 ]
-"15731
-[v _RCSTA4bits RCSTA4bits `VES392  1 e 1 @3839 ]
-"15881
+[s S1296 . 1 `uc 1 ABDEN 1 0 :1:0 
+`uc 1 WUE 1 0 :1:1 
+`uc 1 IREN 1 0 :1:2 
+`uc 1 BRG16 1 0 :1:3 
+`uc 1 TXCKP 1 0 :1:4 
+`uc 1 RXDTP 1 0 :1:5 
+`uc 1 RCIDL 1 0 :1:6 
+`uc 1 ABDOVF 1 0 :1:7 
+]
+"15611
+[u S1666 . 1 `S1296 1 . 1 0 ]
+[v _BAUDCON4bits BAUDCON4bits `VES1666  1 e 1 @3837 ]
+[s S1209 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 SENDB 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+"15672
+[u S1645 . 1 `S1209 1 . 1 0 ]
+[v _TXSTA4bits TXSTA4bits `VES1645  1 e 1 @3838 ]
+[s S1412 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+"15733
+[u S1687 . 1 `S1412 1 . 1 0 ]
+[v _RCSTA4bits RCSTA4bits `VES1687  1 e 1 @3839 ]
+"15883
 [v _SSP2ADD SSP2ADD `VEuc  1 e 1 @3842 ]
-"15971
+"15973
 [v _SSP2BUF SSP2BUF `VEuc  1 e 1 @3843 ]
+<<<<<<< HEAD
 [s S3674 . 1 `uc 1 T2CKPS 1 0 :2:0 
 `uc 1 TMR2ON 1 0 :1:2 
 `uc 1 T2OUTPS 1 0 :4:3 
@@ -467,6 +415,28 @@ PIXY 2
 "16060
 [v _PR4 PR4 `VEuc  1 e 1 @3845 ]
 [s S2838 . 1 `uc 1 SEN 1 0 :1:0 
+=======
+[s S4037 . 1 `uc 1 T4CKPS 1 0 :2:0 
+`uc 1 TMR4ON 1 0 :1:2 
+`uc 1 T4OUTPS 1 0 :4:3 
+]
+"16013
+[s S4041 . 1 `uc 1 T4CKPS0 1 0 :1:0 
+`uc 1 T4CKPS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 T4OUTPS0 1 0 :1:3 
+`uc 1 T4OUTPS1 1 0 :1:4 
+`uc 1 T4OUTPS2 1 0 :1:5 
+`uc 1 T4OUTPS3 1 0 :1:6 
+]
+[u S4049 . 1 `S4037 1 . 1 0 `S4041 1 . 1 0 ]
+[v _T4CONbits T4CONbits `VES4049  1 e 1 @3844 ]
+"16062
+[v _PR4 PR4 `VEuc  1 e 1 @3845 ]
+"16907
+[v _SSP2CON2 SSP2CON2 `VEuc  1 e 1 @3864 ]
+[s S2849 . 1 `uc 1 SEN 1 0 :1:0 
+>>>>>>> origin/master
 `uc 1 RSEN 1 0 :1:1 
 `uc 1 PEN 1 0 :1:2 
 `uc 1 RCEN 1 0 :1:3 
@@ -475,17 +445,26 @@ PIXY 2
 `uc 1 ACKSTAT 1 0 :1:6 
 `uc 1 GCEN 1 0 :1:7 
 ]
+<<<<<<< HEAD
 "16985
 [s S2847 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADMSK 1 0 :5:1 
 ]
 [s S2850 . 1 `uc 1 . 1 0 :1:0 
+=======
+"16987
+[s S2858 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 ADMSK 1 0 :5:1 
+]
+[s S2861 . 1 `uc 1 . 1 0 :1:0 
+>>>>>>> origin/master
 `uc 1 ADMSK1 1 0 :1:1 
 `uc 1 ADMSK2 1 0 :1:2 
 `uc 1 ADMSK3 1 0 :1:3 
 `uc 1 ADMSK4 1 0 :1:4 
 `uc 1 ADMSK5 1 0 :1:5 
 ]
+<<<<<<< HEAD
 [s S2857 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 ACKDT1 1 0 :1:5 
 ]
@@ -529,17 +508,68 @@ PIXY 2
 "17124
 [v _SSP2CON1 SSP2CON1 `VEuc  1 e 1 @3865 ]
 [s S2662 . 1 `uc 1 SSPM 1 0 :4:0 
+=======
+[s S3000 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 ACKDT2 1 0 :1:5 
+]
+[s S3003 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 ACKEN2 1 0 :1:4 
+]
+[s S3006 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 ACKSTAT2 1 0 :1:6 
+]
+[s S3009 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 ADMSK12 1 0 :1:1 
+]
+[s S3012 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 ADMSK22 1 0 :1:2 
+]
+[s S3015 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 ADMSK32 1 0 :1:3 
+]
+[s S3018 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 ADMSK42 1 0 :1:4 
+]
+[s S3021 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 ADMSK52 1 0 :1:5 
+]
+[s S3024 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 GCEN2 1 0 :1:7 
+]
+[s S3027 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PEN2 1 0 :1:2 
+]
+[s S3030 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 RCEN2 1 0 :1:3 
+]
+[s S3033 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 RSEN2 1 0 :1:1 
+]
+[s S3036 . 1 `uc 1 SEN2 1 0 :1:0 
+]
+[u S3038 . 1 `S2849 1 . 1 0 `S2858 1 . 1 0 `S2861 1 . 1 0 `S3000 1 . 1 0 `S3003 1 . 1 0 `S3006 1 . 1 0 `S3009 1 . 1 0 `S3012 1 . 1 0 `S3015 1 . 1 0 `S3018 1 . 1 0 `S3021 1 . 1 0 `S3024 1 . 1 0 `S3027 1 . 1 0 `S3030 1 . 1 0 `S3033 1 . 1 0 `S3036 1 . 1 0 ]
+[v _SSP2CON2bits SSP2CON2bits `VES3038  1 e 1 @3864 ]
+"17126
+[v _SSP2CON1 SSP2CON1 `VEuc  1 e 1 @3865 ]
+[s S2561 . 1 `uc 1 SSPM 1 0 :4:0 
+>>>>>>> origin/master
 `uc 1 CKP 1 0 :1:4 
 `uc 1 SSPEN 1 0 :1:5 
 `uc 1 SSPOV 1 0 :1:6 
 `uc 1 WCOL 1 0 :1:7 
 ]
+<<<<<<< HEAD
 "17175
 [s S2668 . 1 `uc 1 SSPM0 1 0 :1:0 
+=======
+"17177
+[s S2567 . 1 `uc 1 SSPM0 1 0 :1:0 
+>>>>>>> origin/master
 `uc 1 SSPM1 1 0 :1:1 
 `uc 1 SSPM2 1 0 :1:2 
 `uc 1 SSPM3 1 0 :1:3 
 ]
+<<<<<<< HEAD
 [s S2673 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 CKP1 1 0 :1:4 
 ]
@@ -575,6 +605,43 @@ PIXY 2
 `uc 1 D_NOT_A 1 0 :1:5 
 ]
 [s S3108 . 1 `uc 1 BF 1 0 :1:0 
+=======
+[s S2661 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 CKP2 1 0 :1:4 
+]
+[s S2664 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 SSPEN2 1 0 :1:5 
+]
+[s S2667 . 1 `uc 1 SSPM02 1 0 :1:0 
+]
+[s S2669 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 SSPM12 1 0 :1:1 
+]
+[s S2672 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 SSPM22 1 0 :1:2 
+]
+[s S2675 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 SSPM32 1 0 :1:3 
+]
+[s S2678 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 SSPOV2 1 0 :1:6 
+]
+[s S2681 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 WCOL2 1 0 :1:7 
+]
+[u S2684 . 1 `S2561 1 . 1 0 `S2567 1 . 1 0 `S2661 1 . 1 0 `S2664 1 . 1 0 `S2667 1 . 1 0 `S2669 1 . 1 0 `S2672 1 . 1 0 `S2675 1 . 1 0 `S2678 1 . 1 0 `S2681 1 . 1 0 ]
+[v _SSP2CON1bits SSP2CON1bits `VES2684  1 e 1 @3865 ]
+"17266
+[v _SSP2STAT SSP2STAT `VEuc  1 e 1 @3866 ]
+[s S3207 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_NOT_W 1 0 :1:2 
+]
+"17425
+[s S3210 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 D_NOT_A 1 0 :1:5 
+]
+[s S3213 . 1 `uc 1 BF 1 0 :1:0 
+>>>>>>> origin/master
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -583,16 +650,25 @@ PIXY 2
 `uc 1 CKE 1 0 :1:6 
 `uc 1 SMP 1 0 :1:7 
 ]
+<<<<<<< HEAD
 [s S3117 . 1 `uc 1 . 1 0 :2:0 
+=======
+[s S3222 . 1 `uc 1 . 1 0 :2:0 
+>>>>>>> origin/master
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
+<<<<<<< HEAD
 [s S3122 . 1 `uc 1 . 1 0 :2:0 
+=======
+[s S3227 . 1 `uc 1 . 1 0 :2:0 
+>>>>>>> origin/master
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
+<<<<<<< HEAD
 [s S3127 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_WRITE 1 0 :1:2 
 ]
@@ -600,21 +676,39 @@ PIXY 2
 `uc 1 NOT_ADDRESS 1 0 :1:5 
 ]
 [s S3133 . 1 `uc 1 . 1 0 :2:0 
+=======
+[s S3232 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_WRITE 1 0 :1:2 
+]
+[s S3235 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 NOT_ADDRESS 1 0 :1:5 
+]
+[s S3238 . 1 `uc 1 . 1 0 :2:0 
+>>>>>>> origin/master
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
+<<<<<<< HEAD
 [s S3138 . 1 `uc 1 . 1 0 :2:0 
+=======
+[s S3243 . 1 `uc 1 . 1 0 :2:0 
+>>>>>>> origin/master
 `uc 1 READ_WRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 DATA_ADDRESS 1 0 :1:5 
 ]
+<<<<<<< HEAD
 [s S3143 . 1 `uc 1 . 1 0 :2:0 
+=======
+[s S3248 . 1 `uc 1 . 1 0 :2:0 
+>>>>>>> origin/master
 `uc 1 I2C_READ 1 0 :1:2 
 `uc 1 I2C_START 1 0 :1:3 
 `uc 1 I2C_STOP 1 0 :1:4 
 `uc 1 I2C_DAT 1 0 :1:5 
 ]
+<<<<<<< HEAD
 [s S3337 . 1 `uc 1 BF2 1 0 :1:0 
 ]
 [s S3339 . 1 `uc 1 . 1 0 :6:0 
@@ -689,25 +783,102 @@ PIXY 2
 [u S3408 . 1 `S3102 1 . 1 0 `S3105 1 . 1 0 `S3108 1 . 1 0 `S3117 1 . 1 0 `S3122 1 . 1 0 `S3127 1 . 1 0 `S3130 1 . 1 0 `S3133 1 . 1 0 `S3138 1 . 1 0 `S3143 1 . 1 0 `S3337 1 . 1 0 `S3339 1 . 1 0 `S3342 1 . 1 0 `S3345 1 . 1 0 `S3348 1 . 1 0 `S3351 1 . 1 0 `S3354 1 . 1 0 `S3357 1 . 1 0 `S3360 1 . 1 0 `S3363 1 . 1 0 `S3366 1 . 1 0 `S3369 1 . 1 0 `S3372 1 . 1 0 `S3375 1 . 1 0 `S3378 1 . 1 0 `S3381 1 . 1 0 `S3384 1 . 1 0 `S3387 1 . 1 0 `S3390 1 . 1 0 `S3393 1 . 1 0 `S3396 1 . 1 0 `S3399 1 . 1 0 `S3402 1 . 1 0 `S3405 1 . 1 0 ]
 [v _SSP2STATbits SSP2STATbits `VES3408  1 e 1 @3866 ]
 "18027
+=======
+[s S3442 . 1 `uc 1 BF2 1 0 :1:0 
+]
+[s S3444 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 CKE2 1 0 :1:6 
+]
+[s S3447 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 DA2 1 0 :1:5 
+]
+[s S3450 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 DATA_ADDRESS2 1 0 :1:5 
+]
+[s S3453 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 D_A2 1 0 :1:5 
+]
+[s S3456 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 D_nA2 1 0 :1:5 
+]
+[s S3459 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 I2C_DAT2 1 0 :1:5 
+]
+[s S3462 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 I2C_READ2 1 0 :1:2 
+]
+[s S3465 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 I2C_START2 1 0 :1:3 
+]
+[s S3468 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 I2C_STOP2 1 0 :1:4 
+]
+[s S3471 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 P2 1 0 :1:4 
+]
+[s S3474 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 READ_WRITE2 1 0 :1:2 
+]
+[s S3477 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 RW2 1 0 :1:2 
+]
+[s S3480 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_W2 1 0 :1:2 
+]
+[s S3483 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_nW2 1 0 :1:2 
+]
+[s S3486 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 S2 1 0 :1:3 
+]
+[s S3489 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 SMP2 1 0 :1:7 
+]
+[s S3492 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 START2 1 0 :1:3 
+]
+[s S3495 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 STOP2 1 0 :1:4 
+]
+[s S3498 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 UA2 1 0 :1:1 
+]
+[s S3501 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 nA2 1 0 :1:5 
+]
+[s S3504 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 nADDRESS2 1 0 :1:5 
+]
+[s S3507 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nW2 1 0 :1:2 
+]
+[s S3510 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nWRITE2 1 0 :1:2 
+]
+[u S3513 . 1 `S3207 1 . 1 0 `S3210 1 . 1 0 `S3213 1 . 1 0 `S3222 1 . 1 0 `S3227 1 . 1 0 `S3232 1 . 1 0 `S3235 1 . 1 0 `S3238 1 . 1 0 `S3243 1 . 1 0 `S3248 1 . 1 0 `S3442 1 . 1 0 `S3444 1 . 1 0 `S3447 1 . 1 0 `S3450 1 . 1 0 `S3453 1 . 1 0 `S3456 1 . 1 0 `S3459 1 . 1 0 `S3462 1 . 1 0 `S3465 1 . 1 0 `S3468 1 . 1 0 `S3471 1 . 1 0 `S3474 1 . 1 0 `S3477 1 . 1 0 `S3480 1 . 1 0 `S3483 1 . 1 0 `S3486 1 . 1 0 `S3489 1 . 1 0 `S3492 1 . 1 0 `S3495 1 . 1 0 `S3498 1 . 1 0 `S3501 1 . 1 0 `S3504 1 . 1 0 `S3507 1 . 1 0 `S3510 1 . 1 0 ]
+[v _SSP2STATbits SSP2STATbits `VES3513  1 e 1 @3866 ]
+"18029
+>>>>>>> origin/master
 [v _TXREG2 TXREG2 `VEuc  1 e 1 @3869 ]
-"18065
+"18067
 [v _SPBRG2 SPBRG2 `VEuc  1 e 1 @3871 ]
-"18134
+"18136
 [v _SPBRGH2 SPBRGH2 `VEuc  1 e 1 @3872 ]
-"18435
+"18437
 [v _RCREG3 RCREG3 `VEuc  1 e 1 @3882 ]
-"18454
+"18456
 [v _SPBRG3 SPBRG3 `VEuc  1 e 1 @3883 ]
-"18523
+"18525
 [v _SPBRGH3 SPBRGH3 `VEuc  1 e 1 @3884 ]
-"18609
-[v _BAUDCON3bits BAUDCON3bits `VES392  1 e 1 @3885 ]
-"18670
-[v _TXSTA3bits TXSTA3bits `VES392  1 e 1 @3886 ]
-"18731
-[v _RCSTA3bits RCSTA3bits `VES392  1 e 1 @3887 ]
-"18775
+"18611
+[v _BAUDCON3bits BAUDCON3bits `VES1666  1 e 1 @3885 ]
+"18672
+[v _TXSTA3bits TXSTA3bits `VES1645  1 e 1 @3886 ]
+"18733
+[v _RCSTA3bits RCSTA3bits `VES1687  1 e 1 @3887 ]
+"18777
 [v _SPBRGH1 SPBRGH1 `VEuc  1 e 1 @3888 ]
+<<<<<<< HEAD
 [s S1328 . 1 `uc 1 ABDEN 1 0 :1:0 
 `uc 1 WUE 1 0 :1:1 
 `uc 1 IREN 1 0 :1:2 
@@ -787,9 +958,64 @@ PIXY 2
 [u S1641 . 1 `S1444 1 . 1 0 `S1633 1 . 1 0 `S1636 1 . 1 0 `S1639 1 . 1 0 ]
 [v _RCSTA2bits RCSTA2bits `VES1641  1 e 1 @3891 ]
 "19365
+=======
+"18970
+[s S1512 . 1 `uc 1 ABDEN2 1 0 :1:0 
+]
+[s S1514 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 ABDOVF2 1 0 :1:7 
+]
+[s S1517 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 BRG162 1 0 :1:3 
+]
+[s S1520 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 DTRXP2 1 0 :1:5 
+]
+[s S1523 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RCIDL2 1 0 :1:6 
+]
+[s S1526 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RCMT2 1 0 :1:6 
+]
+[s S1529 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 RXDTP2 1 0 :1:5 
+]
+[s S1532 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 SCKP2 1 0 :1:4 
+]
+[s S1535 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 TXCKP2 1 0 :1:4 
+]
+[s S1538 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 WUE2 1 0 :1:1 
+]
+[u S1541 . 1 `S1296 1 . 1 0 `S1512 1 . 1 0 `S1514 1 . 1 0 `S1517 1 . 1 0 `S1520 1 . 1 0 `S1523 1 . 1 0 `S1526 1 . 1 0 `S1529 1 . 1 0 `S1532 1 . 1 0 `S1535 1 . 1 0 `S1538 1 . 1 0 ]
+[v _BAUDCON2bits BAUDCON2bits `VES1541  1 e 1 @3889 ]
+"19088
+[s S1479 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 TX8_92 1 0 :1:6 
+]
+[s S1482 . 1 `uc 1 TXD82 1 0 :1:0 
+]
+[u S1484 . 1 `S1209 1 . 1 0 `S1479 1 . 1 0 `S1482 1 . 1 0 ]
+[v _TXSTA2bits TXSTA2bits `VES1484  1 e 1 @3890 ]
+"19170
+[s S1601 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC8_92 1 0 :1:6 
+]
+[s S1604 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC92 1 0 :1:6 
+]
+[s S1607 . 1 `uc 1 RCD82 1 0 :1:0 
+]
+[u S1609 . 1 `S1412 1 . 1 0 `S1601 1 . 1 0 `S1604 1 . 1 0 `S1607 1 . 1 0 ]
+[v _RCSTA2bits RCSTA2bits `VES1609  1 e 1 @3891 ]
+"19367
+>>>>>>> origin/master
 [v _CCPTMRS0 CCPTMRS0 `VEuc  1 e 1 @3894 ]
-"19740
+"19742
 [v _SSP2CON3 SSP2CON3 `VEuc  1 e 1 @3897 ]
+<<<<<<< HEAD
 "19822
 [v _T8CONbits T8CONbits `VES3686  1 e 1 @3898 ]
 "19871
@@ -797,25 +1023,70 @@ PIXY 2
 "19930
 [v _T6CONbits T6CONbits `VES3686  1 e 1 @3901 ]
 "19979
+=======
+[s S4095 . 1 `uc 1 T8CKPS 1 0 :2:0 
+`uc 1 TMR8ON 1 0 :1:2 
+`uc 1 T8OUTPS 1 0 :4:3 
+]
+"19824
+[s S4099 . 1 `uc 1 T8CKPS0 1 0 :1:0 
+`uc 1 T8CKPS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 T8OUTPS0 1 0 :1:3 
+`uc 1 T8OUTPS1 1 0 :1:4 
+`uc 1 T8OUTPS2 1 0 :1:5 
+`uc 1 T8OUTPS3 1 0 :1:6 
+]
+[u S4107 . 1 `S4095 1 . 1 0 `S4099 1 . 1 0 ]
+[v _T8CONbits T8CONbits `VES4107  1 e 1 @3898 ]
+"19873
+[v _PR8 PR8 `VEuc  1 e 1 @3899 ]
+[s S4066 . 1 `uc 1 T6CKPS 1 0 :2:0 
+`uc 1 TMR6ON 1 0 :1:2 
+`uc 1 T6OUTPS 1 0 :4:3 
+]
+"19932
+[s S4070 . 1 `uc 1 T6CKPS0 1 0 :1:0 
+`uc 1 T6CKPS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 T6OUTPS0 1 0 :1:3 
+`uc 1 T6OUTPS1 1 0 :1:4 
+`uc 1 T6OUTPS2 1 0 :1:5 
+`uc 1 T6OUTPS3 1 0 :1:6 
+]
+[u S4078 . 1 `S4066 1 . 1 0 `S4070 1 . 1 0 ]
+[v _T6CONbits T6CONbits `VES4078  1 e 1 @3901 ]
+"19981
+>>>>>>> origin/master
 [v _PR6 PR6 `VEuc  1 e 1 @3902 ]
-"20383
+"20385
 [v _CCP3CON CCP3CON `VEuc  1 e 1 @3913 ]
-"20485
+"20487
 [v _CCPR3L CCPR3L `VEuc  1 e 1 @3914 ]
+<<<<<<< HEAD
 [s S1990 . 1 `uc 1 CCH 1 0 :2:0 
+=======
+[s S1959 . 1 `uc 1 CCH 1 0 :2:0 
+>>>>>>> origin/master
 `uc 1 CREF 1 0 :1:2 
 `uc 1 EVPOL 1 0 :2:3 
 `uc 1 CPOL 1 0 :1:5 
 `uc 1 COE 1 0 :1:6 
 `uc 1 CON 1 0 :1:7 
 ]
+<<<<<<< HEAD
 "21023
 [s S1997 . 1 `uc 1 CCH0 1 0 :1:0 
+=======
+"21025
+[s S1966 . 1 `uc 1 CCH0 1 0 :1:0 
+>>>>>>> origin/master
 `uc 1 CCH1 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 EVPOL0 1 0 :1:3 
 `uc 1 EVPOL1 1 0 :1:4 
 ]
+<<<<<<< HEAD
 [s S2003 . 1 `uc 1 C1CH0 1 0 :1:0 
 ]
 [s S2005 . 1 `uc 1 . 1 0 :1:0 
@@ -849,6 +1120,41 @@ PIXY 2
 "21127
 [v _PADCFG1 PADCFG1 `VEuc  1 e 1 @3924 ]
 [s S1088 . 1 `uc 1 RLPU 1 0 :1:0 
+=======
+[s S1972 . 1 `uc 1 C1CH0 1 0 :1:0 
+]
+[s S1974 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 C1CH1 1 0 :1:1 
+]
+[s S1977 . 1 `uc 1 CCH01 1 0 :1:0 
+]
+[s S1979 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 CCH11 1 0 :1:1 
+]
+[s S1982 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 COE1 1 0 :1:6 
+]
+[s S1985 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 CON1 1 0 :1:7 
+]
+[s S1988 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 CPOL1 1 0 :1:5 
+]
+[s S1991 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 CREF1 1 0 :1:2 
+]
+[s S1994 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 EVPOL01 1 0 :1:3 
+]
+[s S1997 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 EVPOL11 1 0 :1:4 
+]
+[u S2000 . 1 `S1959 1 . 1 0 `S1966 1 . 1 0 `S1972 1 . 1 0 `S1974 1 . 1 0 `S1977 1 . 1 0 `S1979 1 . 1 0 `S1982 1 . 1 0 `S1985 1 . 1 0 `S1988 1 . 1 0 `S1991 1 . 1 0 `S1994 1 . 1 0 `S1997 1 . 1 0 ]
+[v _CM1CONbits CM1CONbits `VES2000  1 e 1 @3923 ]
+"21129
+[v _PADCFG1 PADCFG1 `VEuc  1 e 1 @3924 ]
+[s S1056 . 1 `uc 1 RLPU 1 0 :1:0 
+>>>>>>> origin/master
 `uc 1 RKPU 1 0 :1:1 
 `uc 1 RJPU 1 0 :1:2 
 `uc 1 RHPU 1 0 :1:3 
@@ -857,6 +1163,7 @@ PIXY 2
 `uc 1 REPU 1 0 :1:6 
 `uc 1 RDPU 1 0 :1:7 
 ]
+<<<<<<< HEAD
 "21147
 [s S1097 . 1 `uc 1 PMPTTL 1 0 :1:0 
 ]
@@ -868,10 +1175,24 @@ PIXY 2
 `uc 1 DTRXP 1 0 :1:5 
 ]
 [s S1341 . 1 `uc 1 . 1 0 :4:0 
+=======
+"21149
+[s S1065 . 1 `uc 1 PMPTTL 1 0 :1:0 
+]
+[u S1067 . 1 `S1056 1 . 1 0 `S1065 1 . 1 0 ]
+[v _PADCFG1bits PADCFG1bits `VES1067  1 e 1 @3924 ]
+"22276
+[s S1305 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 CKTXP 1 0 :1:4 
+`uc 1 DTRXP 1 0 :1:5 
+]
+[s S1309 . 1 `uc 1 . 1 0 :4:0 
+>>>>>>> origin/master
 `uc 1 SCKP 1 0 :1:4 
 `uc 1 . 1 0 :1:5 
 `uc 1 RCMT 1 0 :1:6 
 ]
+<<<<<<< HEAD
 [s S1346 . 1 `uc 1 ABDEN1 1 0 :1:0 
 ]
 [s S1348 . 1 `uc 1 . 1 0 :7:0 
@@ -909,6 +1230,45 @@ PIXY 2
 "22646
 [v _SSP1CON3 SSP1CON3 `VEuc  1 e 1 @3945 ]
 [s S1013 . 1 `uc 1 RB0 1 0 :1:0 
+=======
+[s S1314 . 1 `uc 1 ABDEN1 1 0 :1:0 
+]
+[s S1316 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 ABDOVF1 1 0 :1:7 
+]
+[s S1319 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 BRG161 1 0 :1:3 
+]
+[s S1322 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 DTRXP1 1 0 :1:5 
+]
+[s S1325 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RCIDL1 1 0 :1:6 
+]
+[s S1328 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RCMT1 1 0 :1:6 
+]
+[s S1331 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 RXDTP1 1 0 :1:5 
+]
+[s S1334 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 SCKP1 1 0 :1:4 
+]
+[s S1337 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 TXCKP1 1 0 :1:4 
+]
+[s S1340 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 WUE1 1 0 :1:1 
+]
+[s S1343 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 RXCKP 1 0 :1:5 
+]
+[u S1346 . 1 `S1296 1 . 1 0 `S1305 1 . 1 0 `S1309 1 . 1 0 `S1314 1 . 1 0 `S1316 1 . 1 0 `S1319 1 . 1 0 `S1322 1 . 1 0 `S1325 1 . 1 0 `S1328 1 . 1 0 `S1331 1 . 1 0 `S1334 1 . 1 0 `S1337 1 . 1 0 `S1340 1 . 1 0 `S1343 1 . 1 0 ]
+[v _BAUDCON1bits BAUDCON1bits `VES1346  1 e 1 @3943 ]
+"22648
+[v _SSP1CON3 SSP1CON3 `VEuc  1 e 1 @3945 ]
+[s S981 . 1 `uc 1 RB0 1 0 :1:0 
+>>>>>>> origin/master
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -917,12 +1277,21 @@ PIXY 2
 `uc 1 RB6 1 0 :1:6 
 `uc 1 RB7 1 0 :1:7 
 ]
+<<<<<<< HEAD
 "23963
 [s S1022 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CCP2_PA2 1 0 :1:3 
 ]
 [u S1025 . 1 `S1013 1 . 1 0 `S1022 1 . 1 0 ]
 [v _PORTBbits PORTBbits `VES1025  1 e 1 @3969 ]
+=======
+"23965
+[s S990 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 CCP2_PA2 1 0 :1:3 
+]
+[u S993 . 1 `S981 1 . 1 0 `S990 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES993  1 e 1 @3969 ]
+>>>>>>> origin/master
 [s S313 . 1 `uc 1 RD0 1 0 :1:0 
 `uc 1 RD1 1 0 :1:1 
 `uc 1 RD2 1 0 :1:2 
@@ -932,7 +1301,7 @@ PIXY 2
 `uc 1 RD6 1 0 :1:6 
 `uc 1 RD7 1 0 :1:7 
 ]
-"24121
+"24123
 [s S322 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 SS2 1 0 :1:7 
 ]
@@ -947,7 +1316,7 @@ PIXY 2
 `uc 1 RE6 1 0 :1:6 
 `uc 1 RE7 1 0 :1:7 
 ]
-"24253
+"24255
 [s S109 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 CCP10 1 0 :1:2 
 ]
@@ -999,7 +1368,11 @@ PIXY 2
 ]
 [u S158 . 1 `S100 1 . 1 0 `S109 1 . 1 0 `S112 1 . 1 0 `S115 1 . 1 0 `S118 1 . 1 0 `S121 1 . 1 0 `S124 1 . 1 0 `S127 1 . 1 0 `S130 1 . 1 0 `S133 1 . 1 0 `S136 1 . 1 0 `S139 1 . 1 0 `S142 1 . 1 0 `S145 1 . 1 0 `S148 1 . 1 0 `S151 1 . 1 0 `S153 1 . 1 0 `S155 1 . 1 0 ]
 [v _PORTEbits PORTEbits `VES158  1 e 1 @3972 ]
+<<<<<<< HEAD
 [s S2479 . 1 `uc 1 . 1 0 :2:0 
+=======
+[s S2423 . 1 `uc 1 . 1 0 :2:0 
+>>>>>>> origin/master
 `uc 1 RF2 1 0 :1:2 
 `uc 1 RF3 1 0 :1:3 
 `uc 1 RF4 1 0 :1:4 
@@ -1007,6 +1380,7 @@ PIXY 2
 `uc 1 RF6 1 0 :1:6 
 `uc 1 RF7 1 0 :1:7 
 ]
+<<<<<<< HEAD
 "24413
 [s S2487 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 C1OUTF 1 0 :1:2 
@@ -1021,6 +1395,22 @@ PIXY 2
 ]
 [u S2498 . 1 `S2479 1 . 1 0 `S2487 1 . 1 0 `S2490 1 . 1 0 `S2493 1 . 1 0 `S2495 1 . 1 0 ]
 [v _PORTFbits PORTFbits `VES2498  1 e 1 @3973 ]
+=======
+"24415
+[s S2431 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 C1OUTF 1 0 :1:2 
+]
+[s S2434 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 C2OUTF 1 0 :1:1 
+]
+[s S2437 . 1 `uc 1 RF0 1 0 :1:0 
+]
+[s S2439 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 RF1 1 0 :1:1 
+]
+[u S2442 . 1 `S2423 1 . 1 0 `S2431 1 . 1 0 `S2434 1 . 1 0 `S2437 1 . 1 0 `S2439 1 . 1 0 ]
+[v _PORTFbits PORTFbits `VES2442  1 e 1 @3973 ]
+>>>>>>> origin/master
 [s S341 . 1 `uc 1 RG0 1 0 :1:0 
 `uc 1 RG1 1 0 :1:1 
 `uc 1 RG2 1 0 :1:2 
@@ -1030,7 +1420,7 @@ PIXY 2
 `uc 1 RG6 1 0 :1:6 
 `uc 1 RG7 1 0 :1:7 
 ]
-"24496
+"24498
 [s S350 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 C3OUTG 1 0 :1:1 
 ]
@@ -1051,7 +1441,7 @@ PIXY 2
 `uc 1 RH6 1 0 :1:6 
 `uc 1 RH7 1 0 :1:7 
 ]
-"24599
+"24601
 [s S245 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 CCP6 1 0 :1:7 
 ]
@@ -1078,17 +1468,108 @@ PIXY 2
 ]
 [u S269 . 1 `S236 1 . 1 0 `S245 1 . 1 0 `S248 1 . 1 0 `S251 1 . 1 0 `S254 1 . 1 0 `S257 1 . 1 0 `S260 1 . 1 0 `S263 1 . 1 0 `S266 1 . 1 0 ]
 [v _PORTHbits PORTHbits `VES269  1 e 1 @3975 ]
-"24700
-[v _PORTJbits PORTJbits `VES392  1 e 1 @3976 ]
-"25967
-[v _TRISBbits TRISBbits `VES392  1 e 1 @3987 ]
-"26028
-[v _TRISCbits TRISCbits `VES392  1 e 1 @3988 ]
-"26089
+[s S1082 . 1 `uc 1 RJ0 1 0 :1:0 
+`uc 1 RJ1 1 0 :1:1 
+`uc 1 RJ2 1 0 :1:2 
+`uc 1 RJ3 1 0 :1:3 
+`uc 1 RJ4 1 0 :1:4 
+`uc 1 RJ5 1 0 :1:5 
+`uc 1 RJ6 1 0 :1:6 
+`uc 1 RJ7 1 0 :1:7 
+]
+"24702
+[u S1091 . 1 `S1082 1 . 1 0 ]
+[v _PORTJbits PORTJbits `VES1091  1 e 1 @3976 ]
+[s S3746 . 1 `uc 1 LATD0 1 0 :1:0 
+`uc 1 LATD1 1 0 :1:1 
+`uc 1 LATD2 1 0 :1:2 
+`uc 1 LATD3 1 0 :1:3 
+`uc 1 LATD4 1 0 :1:4 
+`uc 1 LATD5 1 0 :1:5 
+`uc 1 LATD6 1 0 :1:6 
+`uc 1 LATD7 1 0 :1:7 
+]
+"25190
+[s S3755 . 1 `uc 1 LD0 1 0 :1:0 
+]
+[s S3757 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 LD1 1 0 :1:1 
+]
+[s S3760 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 LD2 1 0 :1:2 
+]
+[s S3763 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 LD3 1 0 :1:3 
+]
+[s S3766 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 LD4 1 0 :1:4 
+]
+[s S3769 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 LD5 1 0 :1:5 
+]
+[s S3772 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 LD6 1 0 :1:6 
+]
+[s S3775 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 LD7 1 0 :1:7 
+]
+[u S3778 . 1 `S3746 1 . 1 0 `S3755 1 . 1 0 `S3757 1 . 1 0 `S3760 1 . 1 0 `S3763 1 . 1 0 `S3766 1 . 1 0 `S3769 1 . 1 0 `S3772 1 . 1 0 `S3775 1 . 1 0 ]
+[v _LATDbits LATDbits `VES3778  1 e 1 @3980 ]
+[s S875 . 1 `uc 1 TRISB0 1 0 :1:0 
+`uc 1 TRISB1 1 0 :1:1 
+`uc 1 TRISB2 1 0 :1:2 
+`uc 1 TRISB3 1 0 :1:3 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+"25969
+[u S884 . 1 `S875 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES884  1 e 1 @3987 ]
+[s S2806 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"26030
+[u S2815 . 1 `S2806 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES2815  1 e 1 @3988 ]
+[s S383 . 1 `uc 1 TRISD0 1 0 :1:0 
+`uc 1 TRISD1 1 0 :1:1 
+`uc 1 TRISD2 1 0 :1:2 
+`uc 1 TRISD3 1 0 :1:3 
+`uc 1 TRISD4 1 0 :1:4 
+`uc 1 TRISD5 1 0 :1:5 
+`uc 1 TRISD6 1 0 :1:6 
+`uc 1 TRISD7 1 0 :1:7 
+]
+"26091
+[u S392 . 1 `S383 1 . 1 0 ]
 [v _TRISDbits TRISDbits `VES392  1 e 1 @3989 ]
+<<<<<<< HEAD
 "26150
 [v _TRISEbits TRISEbits `VES392  1 e 1 @3990 ]
 [s S2279 . 1 `uc 1 . 1 0 :2:0 
+=======
+[s S404 . 1 `uc 1 TRISE0 1 0 :1:0 
+`uc 1 TRISE1 1 0 :1:1 
+`uc 1 TRISE2 1 0 :1:2 
+`uc 1 TRISE3 1 0 :1:3 
+`uc 1 TRISE4 1 0 :1:4 
+`uc 1 TRISE5 1 0 :1:5 
+`uc 1 TRISE6 1 0 :1:6 
+`uc 1 TRISE7 1 0 :1:7 
+]
+"26152
+[u S413 . 1 `S404 1 . 1 0 ]
+[v _TRISEbits TRISEbits `VES413  1 e 1 @3990 ]
+[s S2404 . 1 `uc 1 . 1 0 :2:0 
+>>>>>>> origin/master
 `uc 1 TRISF2 1 0 :1:2 
 `uc 1 TRISF3 1 0 :1:3 
 `uc 1 TRISF4 1 0 :1:4 
@@ -1096,6 +1577,7 @@ PIXY 2
 `uc 1 TRISF6 1 0 :1:6 
 `uc 1 TRISF7 1 0 :1:7 
 ]
+<<<<<<< HEAD
 "26210
 [u S2287 . 1 `S2279 1 . 1 0 ]
 [v _TRISFbits TRISFbits `VES2287  1 e 1 @3991 ]
@@ -1106,6 +1588,48 @@ PIXY 2
 "26378
 [v _TRISJbits TRISJbits `VES392  1 e 1 @3994 ]
 [s S708 . 1 `uc 1 TMR1IF 1 0 :1:0 
+=======
+"26212
+[u S2412 . 1 `S2404 1 . 1 0 ]
+[v _TRISFbits TRISFbits `VES2412  1 e 1 @3991 ]
+[s S2057 . 1 `uc 1 TRISG0 1 0 :1:0 
+`uc 1 TRISG1 1 0 :1:1 
+`uc 1 TRISG2 1 0 :1:2 
+`uc 1 TRISG3 1 0 :1:3 
+`uc 1 TRISG4 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 TRISG6 1 0 :1:6 
+`uc 1 TRISG7 1 0 :1:7 
+]
+"26263
+[u S2066 . 1 `S2057 1 . 1 0 ]
+[v _TRISGbits TRISGbits `VES2066  1 e 1 @3992 ]
+[s S425 . 1 `uc 1 TRISH0 1 0 :1:0 
+`uc 1 TRISH1 1 0 :1:1 
+`uc 1 TRISH2 1 0 :1:2 
+`uc 1 TRISH3 1 0 :1:3 
+`uc 1 TRISH4 1 0 :1:4 
+`uc 1 TRISH5 1 0 :1:5 
+`uc 1 TRISH6 1 0 :1:6 
+`uc 1 TRISH7 1 0 :1:7 
+]
+"26319
+[u S434 . 1 `S425 1 . 1 0 ]
+[v _TRISHbits TRISHbits `VES434  1 e 1 @3993 ]
+[s S1103 . 1 `uc 1 TRISJ0 1 0 :1:0 
+`uc 1 TRISJ1 1 0 :1:1 
+`uc 1 TRISJ2 1 0 :1:2 
+`uc 1 TRISJ3 1 0 :1:3 
+`uc 1 TRISJ4 1 0 :1:4 
+`uc 1 TRISJ5 1 0 :1:5 
+`uc 1 TRISJ6 1 0 :1:6 
+`uc 1 TRISJ7 1 0 :1:7 
+]
+"26380
+[u S1112 . 1 `S1103 1 . 1 0 ]
+[v _TRISJbits TRISJbits `VES1112  1 e 1 @3994 ]
+[s S688 . 1 `uc 1 TMR1IF 1 0 :1:0 
+>>>>>>> origin/master
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 TMR1GIF 1 0 :1:2 
 `uc 1 SSP1IF 1 0 :1:3 
@@ -1114,6 +1638,7 @@ PIXY 2
 `uc 1 ADIF 1 0 :1:6 
 `uc 1 PSPIF 1 0 :1:7 
 ]
+<<<<<<< HEAD
 "26635
 [s S717 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 TXIF 1 0 :1:4 
@@ -1121,6 +1646,15 @@ PIXY 2
 [u S720 . 1 `S708 1 . 1 0 `S717 1 . 1 0 ]
 [v _PIR1bits PIR1bits `VES720  1 e 1 @3998 ]
 [s S737 . 1 `uc 1 RTCCIF 1 0 :1:0 
+=======
+"26637
+[s S697 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 TXIF 1 0 :1:4 
+]
+[u S700 . 1 `S688 1 . 1 0 `S697 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES700  1 e 1 @3998 ]
+[s S717 . 1 `uc 1 RTCCIF 1 0 :1:0 
+>>>>>>> origin/master
 `uc 1 CCP1IF 1 0 :1:1 
 `uc 1 CCP2IF 1 0 :1:2 
 `uc 1 CTMUIF 1 0 :1:3 
@@ -1129,6 +1663,7 @@ PIXY 2
 `uc 1 LCDIF 1 0 :1:6 
 `uc 1 TMR5GIF 1 0 :1:7 
 ]
+<<<<<<< HEAD
 "27112
 [s S746 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 RXBNIF 1 0 :1:1 
@@ -1140,15 +1675,39 @@ PIXY 2
 [v _PIR3bits PIR3bits `VES752  1 e 1 @4004 ]
 "27262
 [v _PIR6bits PIR6bits `VES392  1 e 1 @4006 ]
+=======
+"27114
+[s S726 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 RXBNIF 1 0 :1:1 
+]
+[s S729 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 TXBNIF 1 0 :1:4 
+]
+[u S732 . 1 `S717 1 . 1 0 `S726 1 . 1 0 `S729 1 . 1 0 ]
+[v _PIR3bits PIR3bits `VES732  1 e 1 @4004 ]
+[s S752 . 1 `uc 1 CMP1IF 1 0 :1:0 
+`uc 1 CMP2IF 1 0 :1:1 
+`uc 1 CMP3IF 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 TX3IF 1 0 :1:4 
+`uc 1 RC3IF 1 0 :1:5 
+`uc 1 TX4IF 1 0 :1:6 
+`uc 1 RC4IF 1 0 :1:7 
+]
+"27264
+[u S761 . 1 `S752 1 . 1 0 ]
+[v _PIR6bits PIR6bits `VES761  1 e 1 @4006 ]
+>>>>>>> origin/master
 [s S54 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 PSPMODE 1 0 :1:4 
 `uc 1 IBOV 1 0 :1:5 
 `uc 1 OBF 1 0 :1:6 
 `uc 1 IBF 1 0 :1:7 
 ]
-"27315
+"27317
 [u S60 . 1 `S54 1 . 1 0 ]
 [v _PSPCONbits PSPCONbits `VES60  1 e 1 @4007 ]
+<<<<<<< HEAD
 "27608
 [s S1453 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 ADEN 1 0 :1:3 
@@ -1198,26 +1757,82 @@ PIXY 2
 [u S1278 . 1 `S1241 1 . 1 0 `S1250 1 . 1 0 `S1253 1 . 1 0 `S1255 1 . 1 0 `S1258 1 . 1 0 `S1261 1 . 1 0 `S1264 1 . 1 0 `S1267 1 . 1 0 `S1270 1 . 1 0 `S1273 1 . 1 0 `S1275 1 . 1 0 ]
 [v _TXSTA1bits TXSTA1bits `VES1278  1 e 1 @4012 ]
 "28073
+=======
+"27610
+[s S1421 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 ADEN 1 0 :1:3 
+]
+[s S1424 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC8_9 1 0 :1:6 
+]
+[s S1427 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC9 1 0 :1:6 
+]
+[s S1430 . 1 `uc 1 RCD8 1 0 :1:0 
+]
+[s S1432 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 SRENA 1 0 :1:5 
+]
+[u S1435 . 1 `S1412 1 . 1 0 `S1421 1 . 1 0 `S1424 1 . 1 0 `S1427 1 . 1 0 `S1430 1 . 1 0 `S1432 1 . 1 0 ]
+[v _RCSTA1bits RCSTA1bits `VES1435  1 e 1 @4011 ]
+"27838
+[s S1218 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 TX8_9 1 0 :1:6 
+]
+[s S1221 . 1 `uc 1 TXD8 1 0 :1:0 
+]
+[s S1223 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 BRGH1 1 0 :1:2 
+]
+[s S1226 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 CSRC1 1 0 :1:7 
+]
+[s S1229 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 SENDB1 1 0 :1:3 
+]
+[s S1232 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 SYNC1 1 0 :1:4 
+]
+[s S1235 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 TRMT1 1 0 :1:1 
+]
+[s S1238 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 TX91 1 0 :1:6 
+]
+[s S1241 . 1 `uc 1 TX9D1 1 0 :1:0 
+]
+[s S1243 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 TXEN1 1 0 :1:5 
+]
+[u S1246 . 1 `S1209 1 . 1 0 `S1218 1 . 1 0 `S1221 1 . 1 0 `S1223 1 . 1 0 `S1226 1 . 1 0 `S1229 1 . 1 0 `S1232 1 . 1 0 `S1235 1 . 1 0 `S1238 1 . 1 0 `S1241 1 . 1 0 `S1243 1 . 1 0 ]
+[v _TXSTA1bits TXSTA1bits `VES1246  1 e 1 @4012 ]
+"28075
+>>>>>>> origin/master
 [v _TXREG1 TXREG1 `VEuc  1 e 1 @4013 ]
-"28110
+"28112
 [v _RCREG1 RCREG1 `VEuc  1 e 1 @4014 ]
-"28147
+"28149
 [v _SPBRG1 SPBRG1 `VEuc  1 e 1 @4015 ]
-"28505
+"28507
 [v _TMR3L TMR3L `VEuc  1 e 1 @4018 ]
-"28524
+"28526
 [v _TMR3H TMR3H `VEuc  1 e 1 @4019 ]
-"28834
+"28836
 [v _CCP1CON CCP1CON `VEuc  1 e 1 @4025 ]
-"28936
+"28938
 [v _CCPR1L CCPR1L `VEuc  1 e 1 @4026 ]
+<<<<<<< HEAD
 "29228
 [v _ADCON1L ADCON1L `VEuc  1 e 1 @4032 ]
 [s S2238 . 1 `uc 1 FORM 1 0 :2:0 
+=======
+[s S2203 . 1 `uc 1 FORM 1 0 :2:0 
+>>>>>>> origin/master
 `uc 1 MODE12 1 0 :1:2 
 `uc 1 . 1 0 :4:3 
 `uc 1 ADON 1 0 :1:7 
 ]
+<<<<<<< HEAD
 "29310
 [s S2243 . 1 `uc 1 FORM0 1 0 :1:0 
 `uc 1 FORM1 1 0 :1:1 
@@ -1282,18 +1897,173 @@ PIXY 2
 [u S3184 . 1 `S3102 1 . 1 0 `S3105 1 . 1 0 `S3108 1 . 1 0 `S3117 1 . 1 0 `S3122 1 . 1 0 `S3127 1 . 1 0 `S3130 1 . 1 0 `S3133 1 . 1 0 `S3138 1 . 1 0 `S3143 1 . 1 0 `S3149 1 . 1 0 `S3151 1 . 1 0 `S3154 1 . 1 0 `S3157 1 . 1 0 `S3160 1 . 1 0 `S3163 1 . 1 0 `S3166 1 . 1 0 `S3169 1 . 1 0 `S3172 1 . 1 0 `S3175 1 . 1 0 `S3178 1 . 1 0 `S3181 1 . 1 0 ]
 [v _SSP1STATbits SSP1STATbits `VES3184  1 e 1 @4039 ]
 "30068
+=======
+"29312
+[s S2208 . 1 `uc 1 FORM0 1 0 :1:0 
+`uc 1 FORM1 1 0 :1:1 
+]
+[u S2211 . 1 `S2203 1 . 1 0 `S2208 1 . 1 0 ]
+[v _ADCON1Hbits ADCON1Hbits `VES2211  1 e 1 @4033 ]
+"29341
+[v _ADCBUF0 ADCBUF0 `VEus  1 e 2 @4034 ]
+[s S2255 . 1 `uc 1 ADCBUF0L 1 0 :8:0 
+]
+"29357
+[u S2257 . 1 `S2255 1 . 1 0 ]
+[v _ADCBUF0Lbits ADCBUF0Lbits `VES2257  1 e 1 @4034 ]
+[s S2248 . 1 `uc 1 ADCBUF0H 1 0 :8:0 
+]
+"29376
+[u S2250 . 1 `S2248 1 . 1 0 ]
+[v _ADCBUF0Hbits ADCBUF0Hbits `VES2250  1 e 1 @4035 ]
+"29416
+[v _SSP1CON2 SSP1CON2 `VEuc  1 e 1 @4037 ]
+"29496
+[s S2868 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 ACKDT1 1 0 :1:5 
+]
+[s S2871 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 ACKEN1 1 0 :1:4 
+]
+[s S2874 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 ACKSTAT1 1 0 :1:6 
+]
+[s S2877 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 ADMSK11 1 0 :1:1 
+]
+[s S2880 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 ADMSK21 1 0 :1:2 
+]
+[s S2883 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 ADMSK31 1 0 :1:3 
+]
+[s S2886 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 ADMSK41 1 0 :1:4 
+]
+[s S2889 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 ADMSK51 1 0 :1:5 
+]
+[s S2892 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 GCEN1 1 0 :1:7 
+]
+[s S2895 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PEN1 1 0 :1:2 
+]
+[s S2898 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 RCEN1 1 0 :1:3 
+]
+[s S2901 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 RSEN1 1 0 :1:1 
+]
+[s S2904 . 1 `uc 1 SEN1 1 0 :1:0 
+]
+[u S2906 . 1 `S2849 1 . 1 0 `S2858 1 . 1 0 `S2861 1 . 1 0 `S2868 1 . 1 0 `S2871 1 . 1 0 `S2874 1 . 1 0 `S2877 1 . 1 0 `S2880 1 . 1 0 `S2883 1 . 1 0 `S2886 1 . 1 0 `S2889 1 . 1 0 `S2892 1 . 1 0 `S2895 1 . 1 0 `S2898 1 . 1 0 `S2901 1 . 1 0 `S2904 1 . 1 0 ]
+[v _SSP1CON2bits SSP1CON2bits `VES2906  1 e 1 @4037 ]
+"29635
+[v _SSP1CON1 SSP1CON1 `VEuc  1 e 1 @4038 ]
+"29686
+[s S2572 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 CKP1 1 0 :1:4 
+]
+[s S2575 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 SSPEN1 1 0 :1:5 
+]
+[s S2578 . 1 `uc 1 SSPM01 1 0 :1:0 
+]
+[s S2580 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 SSPM11 1 0 :1:1 
+]
+[s S2583 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 SSPM21 1 0 :1:2 
+]
+[s S2586 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 SSPM31 1 0 :1:3 
+]
+[s S2589 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 SSPOV1 1 0 :1:6 
+]
+[s S2592 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 WCOL1 1 0 :1:7 
+]
+[u S2595 . 1 `S2561 1 . 1 0 `S2567 1 . 1 0 `S2572 1 . 1 0 `S2575 1 . 1 0 `S2578 1 . 1 0 `S2580 1 . 1 0 `S2583 1 . 1 0 `S2586 1 . 1 0 `S2589 1 . 1 0 `S2592 1 . 1 0 ]
+[v _SSP1CON1bits SSP1CON1bits `VES2595  1 e 1 @4038 ]
+"29775
+[v _SSP1STAT SSP1STAT `VEuc  1 e 1 @4039 ]
+"29886
+[s S3254 . 1 `uc 1 BF1 1 0 :1:0 
+]
+[s S3256 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 CKE1 1 0 :1:6 
+]
+[s S3259 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 DA 1 0 :1:5 
+]
+[s S3262 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 DA1 1 0 :1:5 
+]
+[s S3265 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 RW 1 0 :1:2 
+]
+[s S3268 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 RW1 1 0 :1:2 
+]
+[s S3271 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 SMP1 1 0 :1:7 
+]
+[s S3274 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 START 1 0 :1:3 
+]
+[s S3277 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 START1 1 0 :1:3 
+]
+[s S3280 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 STOP 1 0 :1:4 
+]
+[s S3283 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 STOP1 1 0 :1:4 
+]
+[s S3286 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 UA1 1 0 :1:1 
+]
+[u S3289 . 1 `S3207 1 . 1 0 `S3210 1 . 1 0 `S3213 1 . 1 0 `S3222 1 . 1 0 `S3227 1 . 1 0 `S3232 1 . 1 0 `S3235 1 . 1 0 `S3238 1 . 1 0 `S3243 1 . 1 0 `S3248 1 . 1 0 `S3254 1 . 1 0 `S3256 1 . 1 0 `S3259 1 . 1 0 `S3262 1 . 1 0 `S3265 1 . 1 0 `S3268 1 . 1 0 `S3271 1 . 1 0 `S3274 1 . 1 0 `S3277 1 . 1 0 `S3280 1 . 1 0 `S3283 1 . 1 0 `S3286 1 . 1 0 ]
+[v _SSP1STATbits SSP1STATbits `VES3289  1 e 1 @4039 ]
+"30070
+>>>>>>> origin/master
 [v _SSP1ADD SSP1ADD `VEuc  1 e 1 @4040 ]
-"30229
+"30231
 [v _SSP1BUF SSP1BUF `VEuc  1 e 1 @4041 ]
+<<<<<<< HEAD
 "30269
 [v _T2CONbits T2CONbits `VES3686  1 e 1 @4042 ]
 "30318
+=======
+[s S4008 . 1 `uc 1 T2CKPS 1 0 :2:0 
+`uc 1 TMR2ON 1 0 :1:2 
+`uc 1 T2OUTPS 1 0 :4:3 
+]
+"30271
+[s S4012 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+`uc 1 T2CKPS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 T2OUTPS0 1 0 :1:3 
+`uc 1 T2OUTPS1 1 0 :1:4 
+`uc 1 T2OUTPS2 1 0 :1:5 
+`uc 1 T2OUTPS3 1 0 :1:6 
+]
+[u S4020 . 1 `S4008 1 . 1 0 `S4012 1 . 1 0 ]
+[v _T2CONbits T2CONbits `VES4020  1 e 1 @4042 ]
+"30320
+>>>>>>> origin/master
 [v _PR2 PR2 `VEuc  1 e 1 @4043 ]
-"30866
+"30868
 [v _T0CON T0CON `VEuc  1 e 1 @4053 ]
-"30948
+"30950
 [v _TMR0L TMR0L `VEuc  1 e 1 @4054 ]
+<<<<<<< HEAD
 [s S972 . 1 `uc 1 INT1IF 1 0 :1:0 
+=======
+[s S940 . 1 `uc 1 INT1IF 1 0 :1:0 
+>>>>>>> origin/master
 `uc 1 INT2IF 1 0 :1:1 
 `uc 1 INT3IF 1 0 :1:2 
 `uc 1 INT1IE 1 0 :1:3 
@@ -1302,8 +2072,13 @@ PIXY 2
 `uc 1 INT1IP 1 0 :1:6 
 `uc 1 INT2IP 1 0 :1:7 
 ]
+<<<<<<< HEAD
 "31228
 [s S981 . 1 `uc 1 INT1F 1 0 :1:0 
+=======
+"31230
+[s S949 . 1 `uc 1 INT1F 1 0 :1:0 
+>>>>>>> origin/master
 `uc 1 INT2F 1 0 :1:1 
 `uc 1 INT3F 1 0 :1:2 
 `uc 1 INT1E 1 0 :1:3 
@@ -1312,6 +2087,7 @@ PIXY 2
 `uc 1 INT1P 1 0 :1:6 
 `uc 1 INT2P 1 0 :1:7 
 ]
+<<<<<<< HEAD
 [u S990 . 1 `S972 1 . 1 0 `S981 1 . 1 0 ]
 [v _INTCON3bits INTCON3bits `VES990  1 e 1 @4080 ]
 [s S931 . 1 `uc 1 . 1 0 :7:0 
@@ -1319,6 +2095,15 @@ PIXY 2
 ]
 "31340
 [s S934 . 1 `uc 1 IOCIP 1 0 :1:0 
+=======
+[u S958 . 1 `S940 1 . 1 0 `S949 1 . 1 0 ]
+[v _INTCON3bits INTCON3bits `VES958  1 e 1 @4080 ]
+[s S899 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 NOT_RBPU 1 0 :1:7 
+]
+"31342
+[s S902 . 1 `uc 1 IOCIP 1 0 :1:0 
+>>>>>>> origin/master
 `uc 1 INT3IP 1 0 :1:1 
 `uc 1 TMR0IP 1 0 :1:2 
 `uc 1 INTEDG3 1 0 :1:3 
@@ -1327,15 +2112,25 @@ PIXY 2
 `uc 1 INTEDG0 1 0 :1:6 
 `uc 1 nRBPU 1 0 :1:7 
 ]
+<<<<<<< HEAD
 [s S943 . 1 `uc 1 . 1 0 :1:0 
+=======
+[s S911 . 1 `uc 1 . 1 0 :1:0 
+>>>>>>> origin/master
 `uc 1 INT3P 1 0 :1:1 
 `uc 1 T0IP 1 0 :1:2 
 `uc 1 . 1 0 :4:3 
 `uc 1 RBPU 1 0 :1:7 
 ]
+<<<<<<< HEAD
 [u S949 . 1 `S931 1 . 1 0 `S934 1 . 1 0 `S943 1 . 1 0 ]
 [v _INTCON2bits INTCON2bits `VES949  1 e 1 @4081 ]
 [s S1190 . 1 `uc 1 IOCIF 1 0 :1:0 
+=======
+[u S917 . 1 `S899 1 . 1 0 `S902 1 . 1 0 `S911 1 . 1 0 ]
+[v _INTCON2bits INTCON2bits `VES917  1 e 1 @4081 ]
+[s S1158 . 1 `uc 1 IOCIF 1 0 :1:0 
+>>>>>>> origin/master
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 IOCIE 1 0 :1:3 
@@ -1344,8 +2139,13 @@ PIXY 2
 `uc 1 PEIE_GIEL 1 0 :1:6 
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
+<<<<<<< HEAD
 "31436
 [s S1199 . 1 `uc 1 . 1 0 :1:0 
+=======
+"31438
+[s S1167 . 1 `uc 1 . 1 0 :1:0 
+>>>>>>> origin/master
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -1354,6 +2154,7 @@ PIXY 2
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
+<<<<<<< HEAD
 [s S1208 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
@@ -1361,171 +2162,186 @@ PIXY 2
 [u S1212 . 1 `S1190 1 . 1 0 `S1199 1 . 1 0 `S1208 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES1212  1 e 1 @4082 ]
 "31933
+=======
+[s S1176 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 GIEL 1 0 :1:6 
+`uc 1 GIEH 1 0 :1:7 
+]
+[u S1180 . 1 `S1158 1 . 1 0 `S1167 1 . 1 0 `S1176 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES1180  1 e 1 @4082 ]
+"31935
+>>>>>>> origin/master
 [v _ADON ADON `VEb  1 e 0 @32271 ]
-"31957
-[v _ANSEL10 ANSEL10 `VEb  1 e 0 @29234 ]
 "31959
+[v _ANSEL10 ANSEL10 `VEb  1 e 0 @29234 ]
+"31961
 [v _ANSEL11 ANSEL11 `VEb  1 e 0 @29235 ]
-"31965
+"31967
 [v _ANSEL14 ANSEL14 `VEb  1 e 0 @29238 ]
-"31969
-[v _ANSEL16 ANSEL16 `VEb  1 e 0 @29224 ]
 "31971
-[v _ANSEL17 ANSEL17 `VEb  1 e 0 @29225 ]
+[v _ANSEL16 ANSEL16 `VEb  1 e 0 @29224 ]
 "31973
-[v _ANSEL18 ANSEL18 `VEb  1 e 0 @29226 ]
+[v _ANSEL17 ANSEL17 `VEb  1 e 0 @29225 ]
 "31975
+[v _ANSEL18 ANSEL18 `VEb  1 e 0 @29226 ]
+"31977
 [v _ANSEL19 ANSEL19 `VEb  1 e 0 @29227 ]
-"31981
+"31983
 [v _ANSEL21 ANSEL21 `VEb  1 e 0 @29229 ]
-"31993
+"31995
 [v _ANSEL6 ANSEL6 `VEb  1 e 0 @29246 ]
-"31999
+"32001
 [v _ANSEL9 ANSEL9 `VEb  1 e 0 @29233 ]
-"32649
+"32651
 [v _CPEN CPEN `VEb  1 e 0 @30407 ]
-"32909
+"32911
 [v _DONE DONE `VEb  1 e 0 @32256 ]
-"33355
+"33357
 [v _GIE GIE `VEb  1 e 0 @32663 ]
-"33415
+"33417
 [v _INT1IF INT1IF `VEb  1 e 0 @32640 ]
-"33455
+"33457
 [v _INT3IF INT3IF `VEb  1 e 0 @32642 ]
-"33605
-[v _IOLOCK IOLOCK `VEb  1 e 0 @31542 ]
 "33607
+[v _IOLOCK IOLOCK `VEb  1 e 0 @31542 ]
+"33609
 [v _IPEN IPEN `VEb  1 e 0 @32391 ]
-"33867
+"33869
 [v _LCDA LCDA `VEb  1 e 0 @30421 ]
-"33885
+"33887
 [v _LCDMD LCDMD `VEb  1 e 0 @30603 ]
-"34177
+"34179
 [v _NVCFG0 NVCFG0 `VEb  1 e 0 @29805 ]
-"34475
-[v _PVCFG0 PVCFG0 `VEb  1 e 0 @29806 ]
 "34477
+[v _PVCFG0 PVCFG0 `VEb  1 e 0 @29806 ]
+"34479
 [v _PVCFG1 PVCFG1 `VEb  1 e 0 @29807 ]
-"34525
+"34527
 [v _RC1IE RC1IE `VEb  1 e 0 @31981 ]
-"34533
+"34535
 [v _RC2IE RC2IE `VEb  1 e 0 @32029 ]
-"34541
+"34543
 [v _RC3IE RC3IE `VEb  1 e 0 @31501 ]
-"34549
+"34551
 [v _RC4IE RC4IE `VEb  1 e 0 @31503 ]
-"34591
+"34593
 [v _RD163 RD163 `VEb  1 e 0 @32143 ]
-"34657
-[v _RG0 RG0 `VEb  1 e 0 @31792 ]
 "34659
-[v _RG1 RG1 `VEb  1 e 0 @31793 ]
+[v _RG0 RG0 `VEb  1 e 0 @31792 ]
 "34661
-[v _RG2 RG2 `VEb  1 e 0 @31794 ]
+[v _RG1 RG1 `VEb  1 e 0 @31793 ]
 "34663
-[v _RG3 RG3 `VEb  1 e 0 @31795 ]
+[v _RG2 RG2 `VEb  1 e 0 @31794 ]
 "34665
+[v _RG3 RG3 `VEb  1 e 0 @31795 ]
+"34667
 [v _RG4 RG4 `VEb  1 e 0 @31796 ]
-"34731
-[v _RL1 RL1 `VEb  1 e 0 @30497 ]
 "34733
-[v _RL2 RL2 `VEb  1 e 0 @30498 ]
+[v _RL1 RL1 `VEb  1 e 0 @30497 ]
 "34735
+[v _RL2 RL2 `VEb  1 e 0 @30498 ]
+"34737
 [v _RL3 RL3 `VEb  1 e 0 @30499 ]
-"36263
+"36265
 [v _SAMP SAMP `VEb  1 e 0 @32257 ]
-"36705
+"36707
 [v _T3CKPS0 T3CKPS0 `VEb  1 e 0 @32140 ]
-"36709
+"36711
 [v _T3CKPS1 T3CKPS1 `VEb  1 e 0 @32141 ]
-"36745
+"36747
 [v _T4CKPS1 T4CKPS1 `VEb  1 e 0 @30753 ]
-"36805
+"36807
 [v _T6CKPS1 T6CKPS1 `VEb  1 e 0 @31209 ]
-"36829
-[v _TMR0IE TMR0IE `VEb  1 e 0 @32661 ]
 "36831
-[v _TMR0IF TMR0IF `VEb  1 e 0 @32658 ]
+[v _TMR0IE TMR0IE `VEb  1 e 0 @32661 ]
 "36833
+[v _TMR0IF TMR0IF `VEb  1 e 0 @32658 ]
+"36835
 [v _TMR0IP TMR0IP `VEb  1 e 0 @32650 ]
-"36871
+"36873
 [v _TMR3CS0 TMR3CS0 `VEb  1 e 0 @32142 ]
-"36875
+"36877
 [v _TMR3CS1 TMR3CS1 `VEb  1 e 0 @32143 ]
-"36887
+"36889
 [v _TMR3IE TMR3IE `VEb  1 e 0 @32001 ]
-"36895
+"36897
 [v _TMR3ON TMR3ON `VEb  1 e 0 @32136 ]
-"36905
+"36907
 [v _TMR4ON TMR4ON `VEb  1 e 0 @30754 ]
-"36937
+"36939
 [v _TMR6ON TMR6ON `VEb  1 e 0 @31210 ]
-"37015
-[v _TRISE0 TRISE0 `VEb  1 e 0 @31920 ]
 "37017
-[v _TRISE1 TRISE1 `VEb  1 e 0 @31921 ]
+[v _TRISE0 TRISE0 `VEb  1 e 0 @31920 ]
 "37019
-[v _TRISE2 TRISE2 `VEb  1 e 0 @31922 ]
+[v _TRISE1 TRISE1 `VEb  1 e 0 @31921 ]
 "37021
-[v _TRISE3 TRISE3 `VEb  1 e 0 @31923 ]
+[v _TRISE2 TRISE2 `VEb  1 e 0 @31922 ]
 "37023
-[v _TRISE4 TRISE4 `VEb  1 e 0 @31924 ]
+[v _TRISE3 TRISE3 `VEb  1 e 0 @31923 ]
 "37025
-[v _TRISE5 TRISE5 `VEb  1 e 0 @31925 ]
+[v _TRISE4 TRISE4 `VEb  1 e 0 @31924 ]
 "37027
-[v _TRISE6 TRISE6 `VEb  1 e 0 @31926 ]
+[v _TRISE5 TRISE5 `VEb  1 e 0 @31925 ]
 "37029
+[v _TRISE6 TRISE6 `VEb  1 e 0 @31926 ]
+"37031
 [v _TRISE7 TRISE7 `VEb  1 e 0 @31927 ]
-"37055
-[v _TRISG7 TRISG7 `VEb  1 e 0 @31943 ]
 "37057
-[v _TRISH0 TRISH0 `VEb  1 e 0 @31944 ]
+[v _TRISG7 TRISG7 `VEb  1 e 0 @31943 ]
 "37059
-[v _TRISH1 TRISH1 `VEb  1 e 0 @31945 ]
+[v _TRISH0 TRISH0 `VEb  1 e 0 @31944 ]
 "37061
-[v _TRISH2 TRISH2 `VEb  1 e 0 @31946 ]
+[v _TRISH1 TRISH1 `VEb  1 e 0 @31945 ]
 "37063
+[v _TRISH2 TRISH2 `VEb  1 e 0 @31946 ]
+"37065
 [v _TRISH3 TRISH3 `VEb  1 e 0 @31947 ]
-"37091
+"37093
 [v _TRISK1 TRISK1 `VEb  1 e 0 @30537 ]
-"37105
+"37107
 [v _TRISL0 TRISL0 `VEb  1 e 0 @30512 ]
-"37155
+"37157
 [v _TX1IE TX1IE `VEb  1 e 0 @31980 ]
-"37161
+"37163
 [v _TX2IE TX2IE `VEb  1 e 0 @32028 ]
-"37167
+"37169
 [v _TX3IE TX3IE `VEb  1 e 0 @31500 ]
-"37173
+"37175
 [v _TX4IE TX4IE `VEb  1 e 0 @31502 ]
-"354 /Applications/microchip/xc8/v1.33/sources/common/doprnt.c
+"354 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
 [v _dpowers dpowers `C[5]ui  1 s 10 dpowers ]
-"5 /Users/broderickcarlin/candleBot/PIC firmware/delays.c
+"5 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
 [v _millisCount millisCount `ul  1 e 4 0 ]
-"3 /Users/broderickcarlin/candleBot/PIC firmware/encoders.c
+"3 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
 [v _right_count right_count `VEl  1 e 4 0 ]
 "4
 [v _left_count left_count `VEl  1 e 4 0 ]
-"6 /Users/broderickcarlin/candleBot/PIC firmware/fft.c
+"6 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\fft.c
 [v _imaginaryNumbers imaginaryNumbers `[64]s  1 e 128 0 ]
 "7
 [v _realNumbers realNumbers `[64]s  1 e 128 0 ]
+<<<<<<< HEAD
 "27 /Users/broderickcarlin/candleBot/PIC firmware/fft.h
 [v _SineWave SineWave `C[768]s  1 e 1536 0 ]
 "45 /Users/broderickcarlin/candleBot/PIC firmware/LCD.c
+=======
+"26 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\fft.h
+[v _SineWave SineWave `C[768]s  1 e 1536 0 ]
+"46 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
+>>>>>>> origin/master
 [v _mode mode `VEuc  1 e 1 0 ]
-"26 /Users/broderickcarlin/candleBot/PIC firmware/main.c
+"27 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
 [v _FONA_BUFF FONA_BUFF `VE[50]uc  1 e 50 0 ]
 [v _USB_BUFF USB_BUFF `VE[500]uc  1 e 500 0 ]
-"27
+"28
 [v _PIXY_BUFF PIXY_BUFF `VE[500]uc  1 e 500 0 ]
 [v _USART4_BUFF USART4_BUFF `VE[50]uc  1 e 50 0 ]
-"28
+"29
 [v _FONA_INDEX FONA_INDEX `VEuc  1 e 1 0 ]
 [v _USB_INDEX USB_INDEX `VEuc  1 e 1 0 ]
 [v _PIXY_INDEX PIXY_INDEX `VEuc  1 e 1 0 ]
 [v _UART4_INDEX UART4_INDEX `VEuc  1 e 1 0 ]
-"3 /Users/broderickcarlin/candleBot/PIC firmware/PS2.c
+"3 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\PS2.c
 [v _enter_config enter_config `[5]uc  1 s 5 enter_config ]
 "4
 [v _set_mode set_mode `[9]uc  1 s 9 set_mode ]
@@ -1545,10 +2361,11 @@ PIXY 2
 [v _controller_type controller_type `VEuc  1 e 1 0 ]
 "12
 [v _last_read last_read `VEul  1 e 4 0 ]
-"18 /Users/broderickcarlin/candleBot/PIC firmware/UART.c
+"18 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
 [v _config config `VEuc  1 e 1 0 ]
 "19
 [v _spbrg spbrg `VEui  1 e 2 0 ]
+<<<<<<< HEAD
 "130 /Users/broderickcarlin/candleBot/PIC firmware/main.c
 [v _main main `(v  1 e 0 0 ]
 {
@@ -1560,28 +2377,48 @@ PIXY 2
 [v _wanderMode wanderMode `(v  1 e 0 0 ]
 {
 "88
-} 0
-"80 /Users/broderickcarlin/candleBot/PIC firmware/settings.c
-[v _settings_wander settings_wander `(uc  1 e 1 0 ]
+=======
+"109 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+[v _main main `(v  1 e 0 0 ]
 {
-"82
-[v settings_wander@t t `uc  1 a 1 5 ]
-"84
+"137
+[v main@positionData positionData `[6]uc  1 a 6 38 ]
+"136
+[v main@retVal retVal `c  1 a 1 44 ]
+"214
 } 0
-"94
-[v _settings_selfTest settings_selfTest `(uc  1 e 1 0 ]
+"31
+[v _init init `(v  1 e 0 0 ]
 {
-"96
-[v settings_selfTest@t t `uc  1 a 1 5 ]
-"98
+"43
+>>>>>>> origin/master
 } 0
+"16 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\settings.c
+[v _settings_init settings_init `(v  1 e 0 0 ]
+{
+"33
+} 0
+"15 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\motorDrive.c
+[v _motorDrive_init motorDrive_init `(v  1 e 0 0 ]
+{
 "66
-[v _settings_auto settings_auto `(uc  1 e 1 0 ]
-{
-"68
-[v settings_auto@t t `uc  1 a 1 5 ]
-"70
 } 0
+"68
+[v _motorDrive_setSpeeds motorDrive_setSpeeds `(v  1 e 0 0 ]
+{
+[v motorDrive_setSpeeds@lSpeed lSpeed `c  1 a 1 wreg ]
+"83
+[v motorDrive_setSpeeds@tempr tempr `i  1 a 2 21 ]
+"82
+[v motorDrive_setSpeeds@templ templ `i  1 a 2 19 ]
+"68
+[v motorDrive_setSpeeds@lSpeed lSpeed `c  1 a 1 wreg ]
+[v motorDrive_setSpeeds@rSpeed rSpeed `c  1 p 1 14 ]
+"70
+[v motorDrive_setSpeeds@lSpeed lSpeed `c  1 a 1 37 ]
+"87
+} 0
+<<<<<<< HEAD
 "71 /Users/broderickcarlin/candleBot/PIC firmware/main.c
 [v _selfTest selfTest `(v  1 e 0 0 ]
 {
@@ -1589,102 +2426,134 @@ PIXY 2
 } 0
 "45 /Users/broderickcarlin/candleBot/PIC firmware/settings.c
 [v _settings_readButton settings_readButton `(uc  1 e 1 0 ]
+=======
+"15 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+>>>>>>> origin/master
 {
-"47
-[v settings_readButton@t t `uc  1 a 1 5 ]
-"49
+"17
+[v ___wmul@product product `ui  1 a 2 4 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
 } 0
-"30 /Users/broderickcarlin/candleBot/PIC firmware/main.c
-[v _init init `(v  1 e 0 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
 {
+"11
+[v ___awdiv@quotient quotient `i  1 a 2 12 ]
+"12
+[v ___awdiv@sign sign `uc  1 a 1 11 ]
+[v ___awdiv@counter counter `uc  1 a 1 10 ]
+"8
+[v ___awdiv@dividend dividend `i  1 p 2 6 ]
+[v ___awdiv@divisor divisor `i  1 p 2 8 ]
 "42
 } 0
-"16 /Users/broderickcarlin/candleBot/PIC firmware/settings.c
-[v _settings_init settings_init `(v  1 e 0 0 ]
+"16 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setdc.c
+[v _SetDCEPWM3 SetDCEPWM3 `(v  1 e 0 0 ]
 {
-"33
+[u S4139 PWMDC 2 `ui 1 lpwm 2 0 `[2]uc 1 bpwm 2 0 ]
+"18
+[v SetDCEPWM3@DCycle DCycle `S4139  1 a 2 4 ]
+"16
+[v SetDCEPWM3@dutycycle dutycycle `ui  1 p 2 0 ]
+"28
 } 0
-"15 /Users/broderickcarlin/candleBot/PIC firmware/motorDrive.c
-[v _motorDrive_init motorDrive_init `(v  1 e 0 0 ]
+"32 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setdc.c
+[v _SetDCEPWM1 SetDCEPWM1 `(v  1 e 0 0 ]
 {
-"66
+[u S4139 PWMDC 2 `ui 1 lpwm 2 0 `[2]uc 1 bpwm 2 0 ]
+"34
+[v SetDCEPWM1@DCycle DCycle `S4139  1 a 2 4 ]
+"32
+[v SetDCEPWM1@dutycycle dutycycle `ui  1 p 2 0 ]
+"49
 } 0
-"17 /Applications/microchip/xc8/v1.33/sources/pic18/plib/PWM/ew3setoc.c
+"17 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3setoc.c
 [v _SetOutputEPWM3 SetOutputEPWM3 `(v  1 e 0 0 ]
 {
 [v SetOutputEPWM3@outputconfig outputconfig `uc  1 a 1 wreg ]
 "19
-[v SetOutputEPWM3@eccpmx eccpmx `uc  1 a 1 7 ]
+[v SetOutputEPWM3@eccpmx eccpmx `uc  1 a 1 1 ]
 "17
 [v SetOutputEPWM3@outputconfig outputconfig `uc  1 a 1 wreg ]
-[v SetOutputEPWM3@outputmode outputmode `uc  1 p 1 5 ]
-[v SetOutputEPWM3@outputconfig outputconfig `uc  1 a 1 8 ]
+[v SetOutputEPWM3@outputmode outputmode `uc  1 p 1 0 ]
+"19
+[v SetOutputEPWM3@outputconfig outputconfig `uc  1 a 1 2 ]
 "91
 } 0
-"50 /Applications/microchip/xc8/v1.33/sources/pic18/plib/PWM/ew1setoc.c
+"50 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1setoc.c
 [v _SetOutputEPWM1 SetOutputEPWM1 `(v  1 e 0 0 ]
 {
 [v SetOutputEPWM1@outputconfig outputconfig `uc  1 a 1 wreg ]
 "52
-[v SetOutputEPWM1@eccpmx eccpmx `uc  1 a 1 7 ]
+[v SetOutputEPWM1@eccpmx eccpmx `uc  1 a 1 1 ]
 "50
 [v SetOutputEPWM1@outputconfig outputconfig `uc  1 a 1 wreg ]
-[v SetOutputEPWM1@outputmode outputmode `uc  1 p 1 5 ]
-[v SetOutputEPWM1@outputconfig outputconfig `uc  1 a 1 8 ]
+[v SetOutputEPWM1@outputmode outputmode `uc  1 p 1 0 ]
+"52
+[v SetOutputEPWM1@outputconfig outputconfig `uc  1 a 1 2 ]
 "131
 } 0
-"14 /Applications/microchip/xc8/v1.33/sources/pic18/plib/PWM/ew3open.c
+"14 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew3open.c
 [v _OpenEPWM3 OpenEPWM3 `(v  1 e 0 0 ]
 {
 [v OpenEPWM3@period period `uc  1 a 1 wreg ]
 [v OpenEPWM3@period period `uc  1 a 1 wreg ]
-[v OpenEPWM3@timer_source timer_source `uc  1 p 1 5 ]
+[v OpenEPWM3@timer_source timer_source `uc  1 p 1 0 ]
 "17
-[v OpenEPWM3@period period `uc  1 a 1 7 ]
+[v OpenEPWM3@period period `uc  1 a 1 2 ]
 "51
 } 0
-"26 /Applications/microchip/xc8/v1.33/sources/pic18/plib/PWM/ew1open.c
+"26 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\PWM\ew1open.c
 [v _OpenEPWM1 OpenEPWM1 `(v  1 e 0 0 ]
 {
 [v OpenEPWM1@period period `uc  1 a 1 wreg ]
 [v OpenEPWM1@period period `uc  1 a 1 wreg ]
-[v OpenEPWM1@timer_source timer_source `uc  1 p 1 5 ]
+[v OpenEPWM1@timer_source timer_source `uc  1 p 1 0 ]
 "30
-[v OpenEPWM1@period period `uc  1 a 1 7 ]
+[v OpenEPWM1@period period `uc  1 a 1 2 ]
 "85
 } 0
+<<<<<<< HEAD
 "9 /Users/broderickcarlin/candleBot/PIC firmware/fft.c
 [v _fft_init fft_init `(v  1 e 0 0 ]
 {
 "47
 } 0
 "6 /Users/broderickcarlin/candleBot/PIC firmware/encoders.c
+=======
+"6 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
+>>>>>>> origin/master
 [v _encoders_init encoders_init `(v  1 e 0 0 ]
 {
 "38
 } 0
-"115 /Users/broderickcarlin/candleBot/PIC firmware/delays.c
+"115 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
 [v _clearMillis clearMillis `(v  1 e 0 0 ]
 {
 "119
 } 0
-"21 /Users/broderickcarlin/candleBot/PIC firmware/UART.c
+"21 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\UART.c
 [v _UART_init UART_init `(v  1 e 0 0 ]
 {
 "183
 } 0
-"47 /Users/broderickcarlin/candleBot/PIC firmware/LCD.c
+"48 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
 [v _LCD_init4bit LCD_init4bit `(v  1 e 0 0 ]
 {
-"178
+"179
 } 0
-"7 /Users/broderickcarlin/candleBot/PIC firmware/delays.c
+"7 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
 [v _delay_init delay_init `(v  1 e 0 0 ]
 {
 "9
 [v delay_init@config config `i  1 s 2 config ]
 "48
 } 0
+<<<<<<< HEAD
 "44 /Users/broderickcarlin/candleBot/PIC firmware/main.c
 [v _debug debug `(v  1 e 0 0 ]
 {
@@ -1779,246 +2648,260 @@ PIXY 2
 "110
 [v RCMode@type type `uc  1 a 1 83 ]
 "128
-} 0
-"68 /Users/broderickcarlin/candleBot/PIC firmware/motorDrive.c
-[v _motorDrive_setSpeeds motorDrive_setSpeeds `(v  1 e 0 0 ]
+=======
+"47 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\I2C.c
+[v _I2C_init I2C_init `(v  1 e 0 0 ]
 {
-[v motorDrive_setSpeeds@lSpeed lSpeed `c  1 a 1 wreg ]
-"83
-[v motorDrive_setSpeeds@tempr tempr `i  1 a 2 24 ]
-"82
-[v motorDrive_setSpeeds@templ templ `i  1 a 2 22 ]
-"68
-[v motorDrive_setSpeeds@lSpeed lSpeed `c  1 a 1 wreg ]
-[v motorDrive_setSpeeds@rSpeed rSpeed `c  1 p 1 19 ]
-"70
-[v motorDrive_setSpeeds@lSpeed lSpeed `c  1 a 1 40 ]
-"87
+[v I2C_init@channel channel `uc  1 a 1 wreg ]
+[v I2C_init@channel channel `uc  1 a 1 wreg ]
+"49
+[v I2C_init@channel channel `uc  1 a 1 0 ]
+"73
+>>>>>>> origin/master
 } 0
-"15 /Applications/microchip/xc8/v1.33/sources/common/Umul16.c
-[v ___wmul __wmul `(ui  1 e 2 0 ]
+"70 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
+[v _delay_s delay_s `(v  1 e 0 0 ]
+{
+"72
+[v delay_s@time time `ul  1 a 4 24 ]
+"70
+[v delay_s@x x `l  1 p 4 12 ]
+"75
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
 {
 "17
-[v ___wmul@product product `ui  1 a 2 9 ]
+[v ___lmul@product product `ul  1 a 4 8 ]
 "15
-[v ___wmul@multiplier multiplier `ui  1 p 2 5 ]
-[v ___wmul@multiplicand multiplicand `ui  1 p 2 7 ]
-"53
+[v ___lmul@multiplier multiplier `ul  1 p 4 0 ]
+[v ___lmul@multiplicand multiplicand `ul  1 p 4 4 ]
+"129
 } 0
-"8 /Applications/microchip/xc8/v1.33/sources/common/awdiv.c
-[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"116 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\compass.c
+[v _compass_mainRead compass_mainRead `(c  1 e 1 0 ]
 {
-"11
-[v ___awdiv@quotient quotient `i  1 a 2 17 ]
-"12
-[v ___awdiv@sign sign `uc  1 a 1 16 ]
-[v ___awdiv@counter counter `uc  1 a 1 15 ]
-"8
-[v ___awdiv@dividend dividend `i  1 p 2 11 ]
-[v ___awdiv@divisor divisor `i  1 p 2 13 ]
-"42
+"126
+[v compass_mainRead@x x `uc  1 a 1 9 ]
+"118
+[v compass_mainRead@retVal retVal `c  1 a 1 8 ]
+"116
+[v compass_mainRead@positionData positionData `*.39uc  1 p 2 4 ]
+"135
 } 0
-"16 /Applications/microchip/xc8/v1.33/sources/pic18/plib/PWM/ew3setdc.c
-[v _SetDCEPWM3 SetDCEPWM3 `(v  1 e 0 0 ]
+"346 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\I2C.c
+[v _I2C_read I2C_read `(c  1 e 1 0 ]
 {
+<<<<<<< HEAD
 [u S3805 PWMDC 2 `ui 1 lpwm 2 0 `[2]uc 1 bpwm 2 0 ]
 "18
 [v SetDCEPWM3@DCycle DCycle `S3805  1 a 2 9 ]
 "16
 [v SetDCEPWM3@dutycycle dutycycle `ui  1 p 2 5 ]
 "28
+=======
+[v I2C_read@channel channel `uc  1 a 1 wreg ]
+"348
+[v I2C_read@retVal retVal `VEc  1 a 1 3 ]
+"346
+[v I2C_read@channel channel `uc  1 a 1 wreg ]
+[v I2C_read@dataRetAdr dataRetAdr `*.39uc  1 p 2 0 ]
+"348
+[v I2C_read@channel channel `uc  1 a 1 2 ]
+"366
+>>>>>>> origin/master
 } 0
-"32 /Applications/microchip/xc8/v1.33/sources/pic18/plib/PWM/ew1setdc.c
-[v _SetDCEPWM1 SetDCEPWM1 `(v  1 e 0 0 ]
+"96 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\compass.c
+[v _compass_mainBoardInit compass_mainBoardInit `(c  1 e 1 0 ]
 {
+<<<<<<< HEAD
 [u S3805 PWMDC 2 `ui 1 lpwm 2 0 `[2]uc 1 bpwm 2 0 ]
 "34
 [v SetDCEPWM1@DCycle DCycle `S3805  1 a 2 9 ]
 "32
 [v SetDCEPWM1@dutycycle dutycycle `ui  1 p 2 5 ]
 "49
+=======
+"99
+[v compass_mainBoardInit@retVal retVal `c  1 a 1 10 ]
+[v compass_mainBoardInit@data data `c  1 a 1 9 ]
+"113
+>>>>>>> origin/master
 } 0
-"172 /Users/broderickcarlin/candleBot/PIC firmware/PS2.c
-[v _PS2_readType PS2_readType `(uc  1 e 1 0 ]
+"253 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\I2C.c
+[v _I2C_writeRegister I2C_writeRegister `(c  1 e 1 0 ]
 {
-"182
+[v I2C_writeRegister@channel channel `uc  1 a 1 wreg ]
+"256
+[v I2C_writeRegister@retVal retVal `VEc  1 a 1 8 ]
+"253
+[v I2C_writeRegister@channel channel `uc  1 a 1 wreg ]
+[v I2C_writeRegister@slaveAdr slaveAdr `uc  1 p 1 4 ]
+"254
+[v I2C_writeRegister@startRegAdr startRegAdr `uc  1 p 1 5 ]
+[v I2C_writeRegister@data data `uc  1 p 1 6 ]
+"258
+[v I2C_writeRegister@channel channel `uc  1 a 1 7 ]
+"279
 } 0
-"14
-[v _PS2_init PS2_init `(uc  1 e 1 0 ]
+"159
+[v _I2C_write I2C_write `(c  1 e 1 0 ]
 {
-"51
-[v PS2_init@i i `i  1 a 2 77 ]
-"38
-[v PS2_init@y y `i  1 a 2 75 ]
-"16
-[v PS2_init@temp temp `[9]uc  1 a 9 66 ]
-"76
+[v I2C_write@channel channel `uc  1 a 1 wreg ]
+[v I2C_write@channel channel `uc  1 a 1 wreg ]
+[v I2C_write@data data `uc  1 p 1 2 ]
+"161
+[v I2C_write@channel channel `uc  1 a 1 3 ]
+"194
 } 0
-"78
-[v _PS2_readGamepad PS2_readGamepad `(v  1 e 0 0 ]
+"103
+[v _I2C_open I2C_open `(c  1 e 1 0 ]
 {
+<<<<<<< HEAD
 "112
 [v PS2_readGamepad@i_2576 i `i  1 a 2 64 ]
+=======
+[v I2C_open@channel channel `uc  1 a 1 wreg ]
+[v I2C_open@channel channel `uc  1 a 1 wreg ]
+>>>>>>> origin/master
 "105
-[v PS2_readGamepad@i i `i  1 a 2 62 ]
-"102
-[v PS2_readGamepad@dword2 dword2 `[12]uc  1 a 12 37 ]
-"101
-[v PS2_readGamepad@dword dword `[9]uc  1 a 9 49 ]
-"80
-[v PS2_readGamepad@temp temp `l  1 a 4 58 ]
-"98
-[v PS2_readGamepad@F16091 F16091 `[9]uc  1 s 9 F16091 ]
-"122
-} 0
-"124
-[v _PS2_reconfig PS2_reconfig `(v  1 e 0 0 ]
-{
-"129
+[v I2C_open@channel channel `uc  1 a 1 2 ]
+"117
 } 0
 "131
-[v _PS2_sendCommandString PS2_sendCommandString `(v  1 e 0 0 ]
+[v _I2C_close I2C_close `(c  1 e 1 0 ]
 {
-[v PS2_sendCommandString@string string `*.30uc  1 a 1 wreg ]
-"134
-[v PS2_sendCommandString@y y `i  1 a 2 29 ]
-"131
-[v PS2_sendCommandString@string string `*.30uc  1 a 1 wreg ]
-[v PS2_sendCommandString@len len `uc  1 p 1 25 ]
+[v I2C_close@channel channel `uc  1 a 1 wreg ]
+[v I2C_close@channel channel `uc  1 a 1 wreg ]
 "133
-[v PS2_sendCommandString@string string `*.30uc  1 a 1 31 ]
-"141
+[v I2C_close@channel channel `uc  1 a 1 2 ]
+"147
 } 0
-"143
-[v _PS2_shiftInOut PS2_shiftInOut `(uc  1 e 1 0 ]
+"83
+[v _I2C_wait I2C_wait `(v  1 e 0 0 ]
 {
-[v PS2_shiftInOut@byte byte `uc  1 a 1 wreg ]
-"146
-[v PS2_shiftInOut@i i `uc  1 a 1 13 ]
-"145
-[v PS2_shiftInOut@tmp tmp `uc  1 a 1 12 ]
-"143
-[v PS2_shiftInOut@byte byte `uc  1 a 1 wreg ]
-"145
-[v PS2_shiftInOut@byte byte `uc  1 a 1 11 ]
-"170
+[v I2C_wait@channel channel `uc  1 a 1 wreg ]
+[v I2C_wait@channel channel `uc  1 a 1 wreg ]
+[v I2C_wait@channel channel `uc  1 a 1 1 ]
+"91
 } 0
-"242
-[v _PS2_analog PS2_analog `(uc  1 e 1 0 ]
-{
-[v PS2_analog@button button `uc  1 a 1 wreg ]
-[v PS2_analog@button button `uc  1 a 1 wreg ]
-"244
-[v PS2_analog@button button `uc  1 a 1 5 ]
-"245
-} 0
-"312 /Users/broderickcarlin/candleBot/PIC firmware/LCD.c
+"313 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
 [v _LCD_printString LCD_printString `(v  1 e 0 0 ]
 {
 [v LCD_printString@x x `uc  1 a 1 wreg ]
-"333
+"334
 [v LCD_printString@tempString tempString `[20]uc  1 a 20 0 ]
-"332
+"333
 [v LCD_printString@val val `i  1 a 2 41 ]
-"341
-[v LCD_printString@tempString_590 tempString `[2]uc  1 a 2 43 ]
-"351
-[v LCD_printString@i_591 i `i  1 a 2 48 ]
-"322
-[v LCD_printString@i i `i  1 a 2 46 ]
-"314
+"342
+[v LCD_printString@tempString_590 tempString `[2]uc  1 a 2 45 ]
+"352
+[v LCD_printString@i_591 i `i  1 a 2 49 ]
+"323
+[v LCD_printString@i i `i  1 a 2 47 ]
+"315
 [v LCD_printString@string string `[20]uc  1 a 20 20 ]
-"316
-[v LCD_printString@aptr aptr `[1]*.30v  1 a 1 45 ]
-"312
+"317
+[v LCD_printString@aptr aptr `[1]*.39v  1 a 2 43 ]
+"313
 [v LCD_printString@x x `uc  1 a 1 wreg ]
-[v LCD_printString@y y `uc  1 p 1 33 ]
-[v LCD_printString@input input `*.34uc  1 p 2 34 ]
+[v LCD_printString@y y `uc  1 p 1 27 ]
+[v LCD_printString@input input `*.34uc  1 p 2 28 ]
 "314
+[v LCD_printString@F16347 F16347 `[20]uc  1 s 20 F16347 ]
 [v LCD_printString@x x `uc  1 a 1 40 ]
-"390
+"391
 } 0
-"8 /Applications/microchip/xc8/v1.33/sources/common/strcat.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\strcat.c
 [v _strcat strcat `(*.39uc  1 e 2 0 ]
 {
 "15
-[v strcat@cp cp `*.39uc  1 a 2 9 ]
+[v strcat@cp cp `*.39uc  1 a 2 4 ]
 "8
-[v strcat@to to `*.39uc  1 p 2 5 ]
-[v strcat@from from `*.34Cuc  1 p 2 7 ]
+[v strcat@to to `*.39uc  1 p 2 0 ]
+[v strcat@from from `*.34Cuc  1 p 2 2 ]
 "26
 } 0
-"492 /Applications/microchip/xc8/v1.33/sources/common/doprnt.c
+"492 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
 [v _sprintf sprintf `(i  1 e 2 0 ]
 {
+<<<<<<< HEAD
 [v sprintf@sp sp `*.30uc  1 a 1 wreg ]
 [s S3661 . 5 `*.39Cuc 1 _cp 3 0 `ui 1 _len 2 3 ]
 "533
 [u S3664 . 5 `ui 1 _val 2 0 `S3661 1 _str 5 0 ]
 [v sprintf@_val _val `S3664  1 a 5 26 ]
-"499
-[v sprintf@c c `c  1 a 1 32 ]
-"506
-[v sprintf@prec prec `c  1 a 1 25 ]
-"508
-[v sprintf@flag flag `uc  1 a 1 24 ]
+=======
+"528
+[v sprintf@val val `ui  1 a 2 23 ]
 "494
-[v sprintf@ap ap `[1]*.30v  1 a 1 23 ]
+[v sprintf@ap ap `[1]*.39v  1 a 2 19 ]
+>>>>>>> origin/master
+"499
+[v sprintf@c c `c  1 a 1 25 ]
+"506
+[v sprintf@prec prec `c  1 a 1 22 ]
+"508
+[v sprintf@flag flag `uc  1 a 1 21 ]
 "492
-[v sprintf@sp sp `*.30uc  1 a 1 wreg ]
-[v sprintf@f f `*.32Cuc  1 p 2 17 ]
-"542
-[v sprintf@sp sp `*.30uc  1 a 1 31 ]
-"1550
+[v sprintf@sp sp `*.39uc  1 p 2 12 ]
+[v sprintf@f f `*.32Cuc  1 p 2 14 ]
+"1541
 } 0
-"8 /Applications/microchip/xc8/v1.33/sources/common/lwmod.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
 {
 "11
-[v ___lwmod@counter counter `uc  1 a 1 16 ]
+[v ___lwmod@counter counter `uc  1 a 1 11 ]
 "8
-[v ___lwmod@dividend dividend `ui  1 p 2 12 ]
-[v ___lwmod@divisor divisor `ui  1 p 2 14 ]
+[v ___lwmod@dividend dividend `ui  1 p 2 7 ]
+[v ___lwmod@divisor divisor `ui  1 p 2 9 ]
 "26
 } 0
-"8 /Applications/microchip/xc8/v1.33/sources/common/lwdiv.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
 {
 "11
+<<<<<<< HEAD
 [v ___lwdiv@quotient quotient `ui  1 a 2 9 ]
 "12
 [v ___lwdiv@counter counter `uc  1 a 1 11 ]
+=======
+[v ___lwdiv@quotient quotient `ui  1 a 2 5 ]
+"12
+[v ___lwdiv@counter counter `uc  1 a 1 4 ]
+>>>>>>> origin/master
 "8
-[v ___lwdiv@dividend dividend `ui  1 p 2 5 ]
-[v ___lwdiv@divisor divisor `ui  1 p 2 7 ]
+[v ___lwdiv@dividend dividend `ui  1 p 2 0 ]
+[v ___lwdiv@divisor divisor `ui  1 p 2 2 ]
 "31
 } 0
-"279 /Users/broderickcarlin/candleBot/PIC firmware/LCD.c
+"280 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\LCD.c
 [v _LCD_placeCursor LCD_placeCursor `(v  1 e 0 0 ]
 {
 [v LCD_placeCursor@x x `uc  1 a 1 wreg ]
-"283
-[v LCD_placeCursor@address address `uc  1 a 1 29 ]
-"279
+"284
+[v LCD_placeCursor@address address `uc  1 a 1 26 ]
+"280
 [v LCD_placeCursor@x x `uc  1 a 1 wreg ]
-[v LCD_placeCursor@y y `uc  1 p 1 25 ]
-"283
-[v LCD_placeCursor@x x `uc  1 a 1 28 ]
-"309
+[v LCD_placeCursor@y y `uc  1 p 1 20 ]
+"284
+[v LCD_placeCursor@x x `uc  1 a 1 25 ]
+"310
 } 0
-"51 /Users/broderickcarlin/candleBot/PIC firmware/delays.c
+"51 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
 [v _delay_us delay_us `(v  1 e 0 0 ]
 {
-[v delay_us@x x `l  1 p 4 5 ]
+[v delay_us@x x `l  1 p 4 0 ]
 "59
 } 0
 "62
 [v _delay_ms delay_ms `(v  1 e 0 0 ]
 {
 "64
-[v delay_ms@time time `ul  1 a 4 21 ]
+[v delay_ms@time time `ul  1 a 4 16 ]
 "62
-[v delay_ms@x x `l  1 p 4 9 ]
+[v delay_ms@x x `l  1 p 4 4 ]
 "67
 } 0
 "110
@@ -2026,17 +2909,24 @@ PIXY 2
 {
 "113
 } 0
-"40 /Users/broderickcarlin/candleBot/PIC firmware/encoders.c
+"40 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\encoders.c
 [v _encoderInterrupt encoderInterrupt `IIL(v  1 e 0 0 ]
 {
 "66
 } 0
+<<<<<<< HEAD
 "226 /Users/broderickcarlin/candleBot/PIC firmware/main.c
 [v _communicationInterruptHandler communicationInterruptHandler `IIH(v  1 e 0 0 ]
 {
 "267
+=======
+"216 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\main.c
+[v _communicationInterruptHandler communicationInterruptHandler `IIH(v  1 e 0 0 ]
+{
+"257
+>>>>>>> origin/master
 } 0
-"121 /Users/broderickcarlin/candleBot/PIC firmware/delays.c
+"121 C:\Users\Tyler\Desktop\Ladder42_GitSoftwareHub\candleBot\PIC firmware\delays.c
 [v _tickMillis tickMillis `(v  1 e 0 0 ]
 {
 "124
