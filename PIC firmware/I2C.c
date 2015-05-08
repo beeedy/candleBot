@@ -53,7 +53,7 @@ void I2C_init(unsigned char channel) {
 
         SSP1CON1 = 0x28;    // I2C master mode. clk = Fosc/(4*SSP1ADD + 1)
         SSP1CON2 = 0x00;    // clear current status
-        SSP1CON3 = 0x40;    // buffer overwrite allowed #yoloswag
+        SSP1CON3 = 0x08;    // buffer overwrite allowed #yoloswag
         SSP1ADD  = 0x9F;     // 100 kHz
         SSP1STAT = 0x80;    // slew rate disabled (100 kHz), SMBus disabled
 
@@ -65,7 +65,7 @@ void I2C_init(unsigned char channel) {
 
         SSP2CON1 = 0x28;    // I2C master mode. clk = Fosc/(4*SSP1ADD + 1)
         SSP2CON2 = 0x00;    // clear current status
-        SSP2CON3 = 0x40;    // buffer overwrite allowed #yoloswag
+        SSP2CON3 = 0x08;    // buffer overwrite allowed #yoloswag
         SSP2ADD  = 0x9F;     // 100kHz
         SSP2STAT = 0x80;    // slew rate disabled (100 kHz), SMBus disabled
 
@@ -321,6 +321,7 @@ signed char I2C_readRegisters(unsigned char channel, unsigned char slaveAdr,
             SSP1CON2bits.RCEN = 1;          // recieve mode on
             while(!(SSP1STATbits.BF));      // wait for the buffer to fill
             dataRetAdr[x] = SSP1BUF;        // get data
+            SSP1CON2bits.ACKDT = 0;
             SSP1CON2bits.ACKEN = 1;         // acknowledge
             SSP1CON2bits.RCEN = 0;          // recieve mode off
         }
@@ -331,6 +332,7 @@ signed char I2C_readRegisters(unsigned char channel, unsigned char slaveAdr,
             SSP2CON2bits.RCEN = 1;          // recieve mode on
             while(!(SSP2STATbits.BF));      // wait for the buffer to fill
             dataRetAdr[x] = SSP2BUF;        // get data
+            SSP2CON2bits.ACKDT = 0;         // Acknowledge
             SSP2CON2bits.ACKEN = 1;         // acknowledge
             SSP2CON2bits.RCEN = 0;          // recieve mode off
         }
@@ -351,6 +353,7 @@ signed char I2C_read(unsigned char channel, unsigned char* dataRetAdr) {
         while(!(SSP1STATbits.BF));      // wait for the buffer to fill
         (*dataRetAdr) = SSP1BUF;           // get data
         SSP1CON2bits.ACKEN = 1;         // acknowledge
+        while(SSP1CON2bits.ACKEN);
         SSP1CON2bits.RCEN = 0;          // recieve mode off
     }
     else {  // channel 2
@@ -359,6 +362,7 @@ signed char I2C_read(unsigned char channel, unsigned char* dataRetAdr) {
         while(!(SSP2STATbits.BF));      // wait for the buffer to fill
         (*dataRetAdr) = SSP2BUF;           // get data
         SSP2CON2bits.ACKEN = 1;         // acknowledge
+        while(SSP2CON2bits.ACKEN);
         SSP2CON2bits.RCEN = 0;          // recieve mode off
     }
 
