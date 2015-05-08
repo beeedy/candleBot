@@ -194,6 +194,7 @@ signed char I2C_write(unsigned char channel, unsigned char data) {
 }
 
 
+
 /*
  * I2C_writeRegisters writes the given byte(s) starting at the given address on
  * the given channel and returns:
@@ -201,7 +202,7 @@ signed char I2C_write(unsigned char channel, unsigned char data) {
  *    0  -  successful write, no errors
  *   -1  -  unsuccessful. NAK
  *   -2  -  unsuccessful. Bus collision
- * 
+ *
  */
 
 
@@ -236,6 +237,48 @@ signed char I2C_writeRegisters(unsigned char channel, unsigned char slaveAdr,
 }
 
 
+
+
+/*
+ * I2C_writeRegister1 writes the given byte at the given address on
+ * the given channel and returns:
+ *
+ *    0  -  successful write, no errors
+ *   -1  -  unsuccessful. NAK
+ *   -2  -  unsuccessful. Bus collision
+ * 
+ */
+
+
+signed char I2C_writeRegister(unsigned char channel, unsigned char slaveAdr,
+        unsigned char startRegAdr, unsigned char data) {
+
+    volatile signed char retVal;
+
+    I2C_open(channel);
+    retVal = I2C_write(channel, ((slaveAdr << 0) | 0x00) );    // call out slave, write mode
+    if(retVal != 0) {
+        I2C_close(channel);
+        return retVal;
+    }
+
+    retVal = I2C_write(channel, startRegAdr);  // specify which register we're writing to
+    if(retVal != 0) {
+        I2C_close(channel);
+        return retVal;
+    }
+
+    retVal = I2C_write(channel, data);
+    if(retVal != 0) {                       // check for errors
+        I2C_close(channel);
+        return retVal;
+    }
+
+    I2C_close(channel);
+    return retVal;
+}
+
+
 /*
  * I2C_read reads the register at the given address on the given channel of the
  * given register address and stores the value in the given location in memory
@@ -248,7 +291,7 @@ signed char I2C_writeRegisters(unsigned char channel, unsigned char slaveAdr,
  *
  */
 
-signed char I2C_read(unsigned char channel, unsigned char slaveAdr,
+signed char I2C_readRegisters(unsigned char channel, unsigned char slaveAdr,
         unsigned char startRegAdr, unsigned char len,
         unsigned char* dataRetAdr) {
 
@@ -257,16 +300,20 @@ signed char I2C_read(unsigned char channel, unsigned char slaveAdr,
     I2C_open(channel);
     retVal = I2C_write(channel, ((slaveAdr << 0)| 0x01) );    // send slave adr, read
     if(retVal != 0) {
-        if(SSP1CON1bits.WCOL || SSP2CON1bits.WCOL)
+        if(SSP1CON1bits.WCOL || SSP2CON1bits.WCOL) {
             SSP1CON1bits.WCOL = SSP2CON1bits.WCOL = 0;
+        }
         I2C_close(channel);
+        return -1;
     }
 
     retVal = I2C_write(channel, startRegAdr);
     if(retVal != 0) {
-        if(SSP1CON1bits.WCOL || SSP2CON1bits.WCOL)
+        if(SSP1CON1bits.WCOL || SSP2CON1bits.WCOL) {
             SSP1CON1bits.WCOL = SSP2CON1bits.WCOL = 0;
+        }
         I2C_close(channel);
+        return -1;
     }
 
     if(channel == 1) {
@@ -292,3 +339,29 @@ signed char I2C_read(unsigned char channel, unsigned char slaveAdr,
     
     return retVal;
 }
+
+
+
+
+signed char I2C_read(unsigned char channel, unsigned char* dataRetAdr) {
+
+    volatile signed char retVal = 0;
+    if(channel == 1) {
+        SSP1CON2bits.RCEN = 1;          // recieve mode on
+        while(!(SSP1STATbits.BF));      // wait for the buffer to fill
+        (*dataRetAdr) = SSP1BUF;           // get data
+        SSP1CON2bits.ACKEN = 1;         // acknowledge
+        SSP1CON2bits.RCEN = 0;          // recieve mode off
+    }
+    else {  // channel 2
+
+        SSP2CON2bits.RCEN = 1;          // recieve mode on
+        while(!(SSP2STATbits.BF));      // wait for the buffer to fill
+        (*dataRetAdr) = SSP2BUF;           // get data
+        SSP2CON2bits.ACKEN = 1;         // acknowledge
+        SSP2CON2bits.RCEN = 0;          // recieve mode off
+    }
+
+    return retVal;
+}
+
