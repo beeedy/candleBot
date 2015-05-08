@@ -67,7 +67,7 @@
 #include "GlobalDefines.h"
 #include <math.h>
 
-signed char compass_pixyInit() {/*
+signed char compass_pixyInit() {
 
     // the compass on the pixy board is on I2C line 1 (SDA: pin 56, SCL: pin 54)
 
@@ -78,72 +78,47 @@ signed char compass_pixyInit() {/*
                     //full status
     do {
         unsigned char data[] = {
-            0x00,
             0x50,
             0x20,
             0x00
         };
-        retVal = I2C_write(COMPASS_PIXY, COMPASS_ADR, data, 4);
+        //I2C_writeRegisters(unsigned char channel, unsigned char slaveAdr,
+        //unsigned char startRegAdr, unsigned char* data, unsigned char len)
+        retVal = I2C_writeRegisters(COMPASS_PIXY, COMPASS_ADR, 0x00, data, 3);
         if(retVal == -3) { //check if bus collision happened
             SSP1CON1bits.WCOL=0; // clear the bus collision status bit
         }
         retry--;
     } while(retVal!=0 && retry > 0); //write untill successful communication
-    if(retry == 0) {
-        return -1;
-    }
-    else */
-        return 0;
+
+    return retVal;
 }
 
 
-signed char compass_mainBoardInit() { /*
+signed char compass_mainBoardInit() { 
     // the compass on the main board is on I2C line 2 (SDA: pin 81, SCL: pin 79)
 
     signed char retVal, data;
+    unsigned char retry = 3;
 
-    StartI2C2();
     data = SSP2BUF; //read any previous stored content in buffer to clear buffer
                     //full status
     do {
-        retVal = WriteI2C2(COMPASS_WRITE_ADDR);  // compass address
-        if(retVal == -1) { //check if bus collision happened
-            data = SSP2BUF; //upon bus collision detection clear the buffer,
+        unsigned char data[] = {
+            0x50,
+            0x20,
+            0x00
+        };
+        //I2C_writeRegisters(unsigned char channel, unsigned char slaveAdr,
+        //unsigned char startRegAdr, unsigned char* data, unsigned char len)
+        retVal = I2C_writeRegisters(COMPASS_MAIN, COMPASS_ADR, 0x00, data, 3);
+        if(retVal == -3) { //check if bus collision happened
             SSP2CON1bits.WCOL=0; // clear the bus collision status bit
         }
-    } while(retVal!=0); //write untill successful communication
+        retry--;
+    } while(retVal!=0 && retry > 0); //write untill successful communication
 
-    // clear/reset retVal
-    retVal = WriteI2C2(0x00);                // Config reg A address
-    retVal += WriteI2C2(0x50);                // config reg A val
-
-    retVal += WriteI2C2(COMPASS_WRITE_ADDR);  // compass address
-    retVal += WriteI2C2(0x01);                // Config reg B address
-    retVal += WriteI2C2(0x20);                // config reg B val
-
-    retVal += WriteI2C2(COMPASS_WRITE_ADDR);  // compass address
-    retVal += WriteI2C2(0x02);                // Mode reg address
-    retVal += WriteI2C2(0x00);                // Continuous Measure
-
-    IdleI2C2(); // close connection
-
-    if(retVal != 0) {
-        return -1;
-    }
-    else {
-        WriteI2C1(COMPASS_READ_ADDR);  // compass address
-        WriteI2C1(0x0A);               // ID reg. A
-        if(ReadI2C1() != 'H')
-            return -1;
-
-        // get initial calibration. Must be flat on the floor!
-
-        int x, y, z;
-        retVal = compass_mainRead(&x, &y, &z);
-        StopI2C1();
-        return retVal;
-    } */
-    return 0;   // remove
+    return retVal;
 }
 
 

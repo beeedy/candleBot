@@ -42,6 +42,7 @@
     LCD_DB4 = (data_in & 1);\
     }
 
+
 volatile char mode = 0;
 
 void LCD_init4bit()

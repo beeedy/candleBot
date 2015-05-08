@@ -15,7 +15,7 @@ extern "C" {
 #define WII_CAM_ADR        0xB0
 #define WII_CAM_SLAVE_ADR  0x21
 #define COMPASS_ADR        0x3C
-#define COLOR_SENSOR_ADR   0x29
+#define COLOR_SENSOR_ADR   0x52 /* 0x29 <- non shifted version */
 
 #define FONA_BUFF_SIZE 50
 #define PIXY_BUFF_SIZE 500

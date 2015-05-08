@@ -14,14 +14,22 @@ extern "C" {
 
 #define COMPASS_PIXY  1
 #define COLOR_SENSOR  1
-#define WII_CAM_LEFT  1
-#define WII_CAM_RIGHT 2
+#define WII_CAM_RIGHT 1
+#define WII_CAM_LEFT  2
 #define COMPASS_MAIN  2
 
 
 void I2C_init(unsigned char channel);
 
 
+
+
+/*
+ * Waits for a few things to finish before continuing
+ *
+ */
+
+void I2C_wait(unsigned char channel);
 
 
 
