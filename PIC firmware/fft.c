@@ -48,7 +48,7 @@ void fft_init()
 
 void fft_fix()
 {
-	long int mr = 0, nn, i, j, l, k, istep, n, shift;
+	long int mr = 0, nn, i, j, l, k, istep, n;
 	short qr, qi, tr, ti, wr, wi, m = 6;
 
 
@@ -203,6 +203,7 @@ void fft_collectData()
 
 void fft_execute()
 {
+    fft_collectData();
     fft_fix();
 
     // Take the absolute value of the FFT results
@@ -258,7 +259,7 @@ int fft_maxFreq()
         if(realNumbers[i] > maxVal)
         {
             maxVal = realNumbers[i];
-            maxFreq = i * SAMP_FREQ / 32;
+            maxFreq = i * 312;
         }
     }
 

@@ -46,21 +46,13 @@ void debug()
     //disableInterrupts();
     while(1)
     {
-        fft_collectData();
         fft_execute();
         //LCD_printString(0,0,"Freq:\n%i    ",fft_maxFreq());
         for(int i = 1; i < 32; i++)
         {
             //UART_transmitString(USB,"%i\n\r",fft_readBin(i));
             
-            int temp = fft_readBin(i);
-            while(temp > 0)
-            {
-               UART_transmitByte(USB,0xB2);
-               temp -= 4;
-            }
-            UART_transmitByte(USB,'\n');
-            UART_transmitByte(USB,'\r');
+            UART_transmitString(USB,"Freq: %i    \r",fft_maxFreq());
             
         }
         delay_ms(5);
