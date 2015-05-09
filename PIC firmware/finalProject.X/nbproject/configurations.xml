@@ -4,20 +4,20 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/compass.h</itemPath>
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/config.h</itemPath>
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/delays.h</itemPath>
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/encoders.h</itemPath>
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/fft.h</itemPath>
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/FONA.h</itemPath>
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/I2C.h</itemPath>
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/LCD.h</itemPath>
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/motorDrive.h</itemPath>
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/PS2.h</itemPath>
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/settings.h</itemPath>
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/UART.h</itemPath>
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/USB.h</itemPath>
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/whiskers.h</itemPath>
+      <itemPath>../compass.h</itemPath>
+      <itemPath>../config.h</itemPath>
+      <itemPath>../delays.h</itemPath>
+      <itemPath>../encoders.h</itemPath>
+      <itemPath>../fft.h</itemPath>
+      <itemPath>../FONA.h</itemPath>
+      <itemPath>../I2C.h</itemPath>
+      <itemPath>../LCD.h</itemPath>
+      <itemPath>../motorDrive.h</itemPath>
+      <itemPath>../PS2.h</itemPath>
+      <itemPath>../settings.h</itemPath>
+      <itemPath>../UART.h</itemPath>
+      <itemPath>../USB.h</itemPath>
+      <itemPath>../whiskers.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -26,28 +26,28 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/colorSensor.c</itemPath>
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/compass.c</itemPath>
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/delays.c</itemPath>
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/encoders.c</itemPath>
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/fft.c</itemPath>
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/FONA.c</itemPath>
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/I2C.c</itemPath>
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/LCD.c</itemPath>
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/main.c</itemPath>
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/motorDrive.c</itemPath>
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/PS2.c</itemPath>
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/settings.c</itemPath>
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/UART.c</itemPath>
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/USB.c</itemPath>
-      <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/whiskers.c</itemPath>
+      <itemPath>../colorSensor.c</itemPath>
+      <itemPath>../compass.c</itemPath>
+      <itemPath>../delays.c</itemPath>
+      <itemPath>../encoders.c</itemPath>
+      <itemPath>../fft.c</itemPath>
+      <itemPath>../FONA.c</itemPath>
+      <itemPath>../I2C.c</itemPath>
+      <itemPath>../LCD.c</itemPath>
+      <itemPath>../main.c</itemPath>
+      <itemPath>../motorDrive.c</itemPath>
+      <itemPath>../PS2.c</itemPath>
+      <itemPath>../settings.c</itemPath>
+      <itemPath>../UART.c</itemPath>
+      <itemPath>../USB.c</itemPath>
+      <itemPath>../whiskers.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
-    <itemPath>/Users/broderickcarlin/candleBot/PIC firmware/GlobalDefines.h</itemPath>
+    <itemPath>../GlobalDefines.h</itemPath>
   </logicalFolder>
   <sourceRootList>
     <Elem>/Users/broderickcarlin/candleBot/PIC firmware</Elem>
