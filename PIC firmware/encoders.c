@@ -1,3 +1,14 @@
+/*                    _____                    _
+                     |  ___|                  | |
+                     | |__ _ __   ___ ___   __| | ___ _ __ ___
+                     |  __| '_ \ / __/ _ \ / _` |/ _ \ '__/ __|
+                     | |__| | | | (_| (_) | (_| |  __/ |  \__ \
+                     \____/_| |_|\___\___/ \__,_|\___|_|  |___/
+
+ * File:   encoders.h
+ * Author: Broderick Carlin
+ */
+
 #include "encoders.h"
 
 volatile long right_count = 0;
@@ -32,9 +43,7 @@ void encoders_init()
     INTCON2bits.INTEDG3 = 1;
     INTCON2bits.INT3IP = 0;
     INTCON3bits.INT3IF = 0;
-    INTCON3bits.INT3IE = 1;
-
-    //INTCON2bits.IOCIP = 0; Not needed? 
+    INTCON3bits.INT3IE = 1; 
 }
 
 void interrupt low_priority encoderInterrupt()
