@@ -1,28 +1,134 @@
-/* 
- * File:   fft.h
- * Author: broderickcarlin
+/*                            ____________ _____
+ *                           |  ___|  ___|_   _|
+ *                           | |_  | |_    | |
+ *                           |  _| |  _|   | |
+ *                           | |   | |     | |
+ *                           \_|   \_|     \_/
  *
- * Created on April 14, 2015, 9:36 AM
+ * File:   fft.h
+ * Author: Broderick Carlin
+ *
+ * This file is handles the on board FFT/FHT which is responsible for taking the
+ * input from an electret microphone and performing a Forier transform in real
+ * time to produce a frequency spectrum chart that can be analyzed to check for
+ * specific frequencies. This specific iteration has a Nyquist frequency of
+ * 10KHz and has an accuracy of ~312Hz. For this application this is more that
+ * adequete, however only slight modifications would need to be made to
+ * drasticly increase the accuracy or frequency range, bearing in mind that
+ * these changes would greatly reduce the processors performace aswell.
+ *
+ * -------------------------------Function List---------------------------------
+ * void fft_init();
+ * void fft_fix();
+ * void fft_collectData();
+ * void fft_execute();
+ * int fft_maxFreq();
+ * short fft_readBin(int);
+ *
+ *
+ * ---------------------------Function Descriptions-----------------------------
+ * void fft_init()
+ *      This function is responsible for intializing the analog input in its
+ *      entirety. To avoid overflows occuring during the execution of the FFT,
+ *      the ADC is setup in 10bit mode even though 12bit mode is possible. For
+ *      our specific purpose 10bit is more than capable of producing the results
+ *      we require so switching to 12bit mode would only slow down the FFT. This
+ *      function does not return any values.
+ *
+ * void fft_fix()
+ *      This function performs the FFT calulations based off of the raw data
+ *      collected from the external microphone circuitry. This function pulls
+ *      its data from the global arrays containing complex numbers and
+ *      overwrites the FFT data into the same arrays. Once this function has
+ *      completed the two global arrays will contain the complex results that
+ *      will need further computation to convert into fully real values. These
+ *      complex values correspond to magnitude of frequency bins coorelating
+ *      to the frequency composition of the sampled audio signal. This funtion
+ *      does not directly return any values, but instead modifies the globals.
+ *
+ * void fft_collectData()
+ *      This function records N numbers of analog values corresponding to the
+ *      time domain amplitude of an audio signal being sampled by the on board
+ *      microphone circuitry. The number of samples recorded is controled by the
+ *      define value FFT_SIZE, and it is important to note that this value must
+ *      be a power of two for optimization reasons. This function records these
+ *      samples at 20KHz which then coorelates to a Nyquist frequency of 10KHz.
+ *      For our specific purpose this function samples 64 values, which will
+ *      allow us to achieve 32 frequency bins through the FFT. This allows us
+ *      to achieve an accuracy of 10KHz / 32 = ~312Hz. This function does not
+ *      directly return any values, but instead modifies the globals.
+ *
+ * void fft_execute()
+ *      This function, when called, performs all the tasks required to execute
+ *      a full FFT. This function begins by calling fft_collectData() to sample
+ *      the neccessary number of audio amplitude samples, followed by a call to
+ *      fft_fix() to perform the FFT on the sampled audio. Following these two
+ *      calls, this function converts the magnitude and phase value for each of
+ *      the frequency bins into a magnitude that can be more easily used to
+ *      compare multipul frequency bins side by side. The user should only ever
+ *      use this function when they want to perform a FFT as it handles all the
+ *      neccessary functionality. The magnitude of each of the frequency bins is
+ *      stored in the first 32 slots of the realNumbers[] array, with slot 0
+ *      corresponding to low frequency and slot 31 being the highest frequency.
+ *      It should be noted that the value in slot 0 is not valid data and should
+ *      be ignored as it is an artifact of the FFT. This function does not
+ *      directly return any values, but instead modifies the globals.
+ *
+ * int fft_maxFreq()
+ *      This function returns the estimated fundamental frequency of the audio
+ *      sample that was acted upon by the FFT. It is important that the function
+ *      fft_execute() is called immedietly before this to gaurentee the accuracy
+ *      of the results. This function returns the estimated fundamental 
+ *      fundamental frequency in Hz and for this specific setup is only accurate
+ *      to ~312Hz. Further accuracy could be achieved my interpolating between
+ *      various bins, however this has not been implemented as that amount of
+ *      precision is not needed for this application.
+ *
+ * short fft_readBin(int)
+ *      This function returns a raw value that is stored in the realNumbers[]
+ *      global array. The position of the bin of interested is passed to this
+ *      function and must be between 1 and FFT_SIZE/2 or else this function will
+ *      return 0. It is important that fft_execute() is called immedietly before
+ *      this function to guarentee the accuracy of the returned value.
+ *
+ *
+ * Originally Written by:     Tom Roberts          11/08/89
+ * Made portable:             Malcolm Slaney       12/15/94 malcolm@interval.com
+ * Enhanced:                  Dimitrios P. Bouras  06/14/06 dbouras@ieee.org
+ * Ported to PIC18F:          Simon Inns           01/04/11
+ * Modified for PIC18F97J94:  Broderick Carlin     05/07/15
+
+Copyright (c) 2015 Broderick Carlin & Tyler Holmes
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
 #ifndef FFT_H
 #define	FFT_H
-
-#ifdef	__cplusplus
-extern "C" {
-#endif
 
 #include <xc.h>
 #include "GlobalDefines.h"
 #include "delays.h"
 
 // Definitions
-#define N_WAVE      1024    // full length of Sinewave[]
+#define N_WAVE      1024    // full length of SineWave[]
 #define LOG2_N_WAVE 10      // log2(N_WAVE)
-#define SAMP_FREQ 10000     // sampling frequency in Hz
-
-// Since we only use 3/4 of N_WAVE, we define only
-// this many samples, in order to conserve data space.
+#define FFT_SIZE 64         // Number of samples to collect for FFT (power of 2)
     
 const short SineWave[N_WAVE-N_WAVE/4] = {
       0,    201,    402,    603,    804,   1005,   1206,   1406,
@@ -124,18 +230,12 @@ const short SineWave[N_WAVE-N_WAVE/4] = {
 };
   
 
-// Function prototypes
 void fft_init();
 void fft_fix();
 void fft_collectData();
 void fft_execute();
 int fft_maxFreq();
-int fft_readAnalog();
-short fft_readBin(int i);
+short fft_readBin(int);
 
-#ifdef	__cplusplus
-}
 #endif
-
-#endif	/* FFT_H */
 
