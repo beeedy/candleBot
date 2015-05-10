@@ -1,8 +1,12 @@
-/* 
+/*              ___  ___      _              ______      _
+                |  \/  |     | |             |  _  \    (_)
+                | .  . | ___ | |_ ___  _ __  | | | |_ __ ___   _____
+                | |\/| |/ _ \| __/ _ \| '__| | | | | '__| \ \ / / _ \
+                | |  | | (_) | || (_) | |    | |/ /| |  | |\ V /  __/
+                \_|  |_/\___/ \__\___/|_|    |___/ |_|  |_| \_/ \___|
+
  * File:   motorDrive.c
- * Author: broderickcarlin
- *
- * Created on April 20, 2015, 2:51 PM
+ * Author: Broderick Carlin
  */
 
 #include "motorDrive.h"
@@ -16,54 +20,50 @@ void motorDrive_init()
 {
     //setup 2 ECCP modules for 2 PWM outputs
     //Configure motor drive I/O pins as needed
-    //brake motor
 
-        //LEFT
+    //LEFT
     IOLOCK = 0;
-        // ECCP3 on RE6 (RP34)
-        RPOR34_35  |= 0xF8;
-        TRISE6 = 0;
+    // ECCP3 on RE6 (RP34)
+    RPOR34_35  |= 0xF8;
+    TRISE6 = 0;
 
-        //RIGHT
-        // ECCP1 on RE7 (RP31)
-        RPOR30_31  |= 0x4F;
-        TRISE7 = 0;
+    //RIGHT
+    // ECCP1 on RE7 (RP31)
+    RPOR30_31  |= 0x4F;
+    TRISE7 = 0;
 
-        IOLOCK = 1;
+    IOLOCK = 1;
 
-        //digital on:
-        //  RL0
-        //  RK1
+    //digital on:
+    //  RL0
+    //  RK1
 
-        TRISL0 = 0;
-        TRISK1 = 0;
+    TRISL0 = 0;
+    TRISK1 = 0;
+
+    TMR6ON = 1; //enable timer
+    T6CKPS1 = 1;
+
+
+    OpenEPWM1(0x33, ECCP_1_SEL_TMR36);
+    SetDCEPWM1(0x0);
+    SetOutputEPWM1( SINGLE_OUT, PWM_MODE_1);
         
-        
-        
-        TMR4ON = 1; //enable timer
-        T4CKPS1 = 1;
 
-        TMR6ON = 1; //enable timer
-        T6CKPS1 = 1;
-
-
-        OpenEPWM1(0x33, ECCP_1_SEL_TMR36);
-        SetDCEPWM1(0x0);
-        SetOutputEPWM1( SINGLE_OUT, PWM_MODE_1);
-        
-        
-        CCP1CON =   0b00001100; //Configure ECCP1
-        CCPTMRS0 =  0b01001001;
+    // There was problems getting both PWM moduels running off of the same timer
+    // when using the built in functions, we we had to manually set the values
+    // that enable us to do this.
+    CCP1CON =   0b00001100; //Configure ECCP1
+    CCPTMRS0 =  0b01001001;
 
         
         
-        OpenEPWM3(0x33, ECCP_3_SEL_TMR36);
-        SetDCEPWM3(0x0);
-        SetOutputEPWM3( SINGLE_OUT, PWM_MODE_1);
-        
-        motorDrive_setSpeeds(0,0);
-        
-    }
+    OpenEPWM3(0x33, ECCP_3_SEL_TMR36);
+    SetDCEPWM3(0x0);
+    SetOutputEPWM3( SINGLE_OUT, PWM_MODE_1);
+
+    motorDrive_setSpeeds(0,0);
+}
 
 void motorDrive_setSpeeds(signed char lSpeed, signed char rSpeed)
 {

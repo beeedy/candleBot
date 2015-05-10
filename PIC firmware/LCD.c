@@ -4,7 +4,7 @@
                             | |   | |   | | | |
                             | |___| \__/\ |/ /
                             \_____/\____/___/
- * File:   LCD.h
+ * File:   LCD.c
  * Author: Broderick Carlin
  */
 

@@ -1,28 +1,72 @@
-/* 
+/*              ___  ___      _              ______      _
+                |  \/  |     | |             |  _  \    (_)
+                | .  . | ___ | |_ ___  _ __  | | | |_ __ ___   _____
+                | |\/| |/ _ \| __/ _ \| '__| | | | | '__| \ \ / / _ \
+                | |  | | (_) | || (_) | |    | |/ /| |  | |\ V /  __/
+                \_|  |_/\___/ \__\___/|_|    |___/ |_|  |_| \_/ \___|
+
  * File:   motorDrive.h
- * Author: broderickcarlin
+ * Author: Broderick Carlin
  *
- * Created on April 20, 2015, 2:50 PM
+ * This file contains the functions that are responsible for interfacing with 
+ * the two MC33926PNB H-bridge IC chips. These functions in turn control the
+ * speed and direction of the motors that are connected through the two 
+ * MC33926PNB chips.
+ *
+ * -------------------------------Function List---------------------------------
+ * void motorDrive_init()
+ * void motorDrive_setSpeeds(signed char, signed char)
+ *
+ *
+ * ---------------------------Function Descriptions-----------------------------
+ * void motorDrive_init()
+ *      This function initializes the I/O and PWM channels needed to interface
+ *      with and control the motors. This function must be called before the
+ *      motors can be controlled. Upon completion of this function, the motors
+ *      are both set to stopped mode and the wheels will not spin until the
+ *      speed is changed. Each motor used one PWM channel for speed control and
+ *      one digital output for direction control.
+ *
+ * void motorDrive_setSpeeds(signed char, signed char)
+ *      This function controls the speed and direction of both motors
+ *      similtaneously. The inputs can be values between -100 and 100. All
+ *      positive values correspond to forward rotation while negative values
+ *      correspond to the reverse rotation. The absolute value of the input
+ *      is the PWM pulse width percentage. It is important to note that to make
+ *      both motors spin in the same direction and propel the robot forward, the
+ *      inputs should both be positive. To make the motors spin in the opposite
+ *      direction and have the robot move backwards, both values should be made
+ *      negative. 
+
+Copyright (c) 2015 Broderick Carlin & Tyler Holmes
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
 #ifndef MOTORDRIVE_H
 #define	MOTORDRIVE_H
-
-#ifdef	__cplusplus
-extern "C" {
-#endif
 
 #include "GlobalDefines.h"
 #include "xc.h"
 #include "pwm.h"
 
 void motorDrive_init();
-void motorDrive_setSpeeds(signed char lSpeed, signed char rSpeed);
+void motorDrive_setSpeeds(signed char, signed char);
 
-
-#ifdef	__cplusplus
-}
 #endif
-
-#endif	/* MOTORDRIVE_H */
 
