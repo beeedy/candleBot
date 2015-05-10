@@ -17,7 +17,9 @@
  * This file is responsible for delaring various #defines that are to be used
  * throughout the various files in this project. This includes global constants,
  * device addresses, and inline functions. This file should contain no compiled
- * functions or variables. 
+ * functions or variables.
+ *
+ * All titles are created using http://patorjk.com/software/taag/ with font DOOM
 
 Copyright (c) 2015 Broderick Carlin & Tyler Holmes
 
