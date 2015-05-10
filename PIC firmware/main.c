@@ -20,8 +20,8 @@
 #include "settings.h"
 #include "encoders.h"
 #include "PS2.h"
-//#include "compass.h"
-//#include "I2C.h"
+#include "compass.h"
+#include "I2C.h"
 
 char volatile FONA_BUFF[FONA_BUFF_SIZE], USB_BUFF[USB_BUFF_SIZE],
         PIXY_BUFF[PIXY_BUFF_SIZE], USART4_BUFF[50] = 0;
@@ -35,28 +35,43 @@ void init()
     UART_init();
     encoders_init();
     fft_init();
-    //I2C_init(1);
-    //I2C_init(1);
+    I2C_init(1);
+    I2C_init(2);
 
     clearMillis();
 }
 
 void debug()
-{
-    //disableInterrupts();
-    while(1)
-    {
-        fft_execute();
-        //LCD_printString(0,0,"Freq:\n%i    ",fft_maxFreq());
-        for(int i = 1; i < 32; i++)
-        {
-            //UART_transmitString(USB,"%i\n\r",fft_readBin(i));
-            
-            UART_transmitString(USB,"Freq: %i    \r",fft_maxFreq());
-            
-        }
-        delay_ms(5);
+{/**
+    disableInterrupts();
+    signed char retVal = 0;
+    while(1) {
+        I2C_open(1);
+        I2C_write(1, 0x42);
+        I2C_close(1);
+        I2C_open(2);
+        I2C_write(2, 0x42);
+        I2C_close(2);
+    }
+    enableInterrupts();
+    LCD_printString(0, 0, "I2C FAIL");
+    while(1);
+*/
 
+    signed char positionData[6], tempPivot;
+    signed int magnitude, theta, phi = 0;
+    compass_mainBoardInit();
+    while(1) {
+        compass_mainRead(positionData);
+        enableInterrupts();
+        compass_cart2polar(positionData, &theta, &phi, &magnitude);
+        LCD_printString(0, 0, "mag: \n%i", magnitude);
+        delay_s(5);
+        LCD_printString(0, 0, "theta: \n%i", theta);
+        delay_s(5);
+        LCD_printString(0, 0, "phi: \n%i", phi);
+        delay_s(5);
+        disableInterrupts();
     }
 }
 
@@ -152,13 +167,11 @@ void main()
     {
         char mode;
 
-        do
-        {
+        do {
 
             mode = (settings_selfTest() << 2) + (settings_wander() << 1) + settings_auto();
 
-            switch(mode)
-            {
+            switch(mode) {
                 case 0:     //RC Mode
                     LCD_printString(0, 0, "Selected\nRC Mode");
                     break;
@@ -183,12 +196,12 @@ void main()
                     LCD_printString(0, 0, "Selected\nUnknown");
                     break;
             }
-
             delay_ms(50);
-        }while(settings_readButton() == 1 || mode > 5);
+
+        } while(settings_readButton() == 1 || mode > 5);
     
-        switch(mode)
-        {
+        switch(mode) {
+
             case 0:     //RC Mode
                 RCMode();
                 break;

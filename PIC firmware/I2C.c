@@ -345,15 +345,24 @@ signed char I2C_readRegisters(unsigned char channel, unsigned char slaveAdr,
 
 
 
-signed char I2C_read(unsigned char channel, unsigned char* dataRetAdr) {
+signed char I2C_read(unsigned char channel, unsigned char* dataRetAdr,
+        unsigned char Ack) {
 
     volatile signed char retVal = 0;
     if(channel == 1) {
         SSP1CON2bits.RCEN = 1;          // recieve mode on
         while(!(SSP1STATbits.BF));      // wait for the buffer to fill
         (*dataRetAdr) = SSP1BUF;           // get data
-        SSP1CON2bits.ACKEN = 1;         // acknowledge
-        while(SSP1CON2bits.ACKEN);
+        if(Ack) {
+            SSP1CON2bits.ACKDT = 0;         // Acknowledge
+            SSP1CON2bits.ACKEN = 1;         // acknowledge sequence
+            while(SSP1CON2bits.ACKEN);
+        }
+        else {
+            SSP1CON2bits.ACKDT = 1;         // Acknowledge
+            SSP1CON2bits.ACKEN = 1;         // acknowledge sequence
+            while(SSP1CON2bits.ACKEN);
+        }
         SSP1CON2bits.RCEN = 0;          // recieve mode off
     }
     else {  // channel 2
@@ -361,8 +370,16 @@ signed char I2C_read(unsigned char channel, unsigned char* dataRetAdr) {
         SSP2CON2bits.RCEN = 1;          // recieve mode on
         while(!(SSP2STATbits.BF));      // wait for the buffer to fill
         (*dataRetAdr) = SSP2BUF;           // get data
-        SSP2CON2bits.ACKEN = 1;         // acknowledge
-        while(SSP2CON2bits.ACKEN);
+        if(Ack) {
+            SSP2CON2bits.ACKDT = 0;         // Acknowledge
+            SSP2CON2bits.ACKEN = 1;         // acknowledge sequence
+            while(SSP2CON2bits.ACKEN);
+        }
+        else {
+            SSP2CON2bits.ACKDT = 1;         // Acknowledge
+            SSP2CON2bits.ACKEN = 1;         // acknowledge sequence
+            while(SSP2CON2bits.ACKEN);
+        }
         SSP2CON2bits.RCEN = 0;          // recieve mode off
     }
 

@@ -21,7 +21,7 @@ signed char compass_pixyInit();
 signed char compass_mainBoardInit();
 signed char compass_mainRead(unsigned char directionData[]);
 signed char compass_pixyRead(int *x, int *y, int *z);
-void compass_cart2polar(int *x, int *y, int *z, int *theta, int *phi, int *r);
+void compass_cart2polar(signed char posData[], int *theta, int *phi, int *r);
 
 #ifdef	__cplusplus
 }

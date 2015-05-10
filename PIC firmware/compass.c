@@ -67,7 +67,10 @@
 #include "GlobalDefines.h"
 #include <math.h>
 
-signed char compass_pixyInit() {
+#define ACK 1
+#define NAK 0
+
+signed char compass_pixyInit() {    // this sensor is not working currently
 
     // the compass on the pixy board is on I2C line 1 (SDA: pin 56, SCL: pin 54)
 
@@ -115,23 +118,21 @@ signed char compass_mainBoardInit() {
 
 signed char compass_mainRead(unsigned char positionData[]) {
 
-    signed char retVal;
+    signed char retVal = 0;
 
     I2C_open(COMPASS_MAIN);
-    I2C_write(COMPASS_MAIN, COMPASS_ADR);
-    I2C_write(COMPASS_MAIN, 0x03);
+    retVal += I2C_write(COMPASS_MAIN, COMPASS_ADR);
+    retVal += I2C_write(COMPASS_MAIN, 0x03);
     I2C_close(COMPASS_MAIN);
-    I2C_open(COMPASS_MAIN);
-    I2C_write(COMPASS_MAIN, COMPASS_ADR | 0x01);
-    for(unsigned char x = 0; x < 6; x++) {
-        I2C_read(COMPASS_MAIN, positionData[x]);
+    retVal += I2C_open(COMPASS_MAIN);
+    retVal += I2C_write(COMPASS_MAIN, COMPASS_ADR | 0x01);
+    for(unsigned char x = 0; x < 5; x++) {
+        retVal += I2C_read(COMPASS_MAIN, &positionData[x], ACK);
     }
+    retVal += I2C_read(COMPASS_MAIN, &positionData[5], NAK);  // nak on the last data byte
     I2C_close(COMPASS_MAIN);
-    if(retVal == 0)
-        return 0;
-    else
-        return -1;
 
+    return retVal;
 }
 
 
@@ -161,11 +162,11 @@ signed char compass_pixyRead(int *x, int *y, int *z) { /*
 }
 
 
-void compass_cart2polar(int *x, int *y, int *z, int *theta, int *phi, int *r) {
-    float xf = (float)(*x);
-    float yf = (float)(*y);
-    float zf = (float)(*z);
+void compass_cart2polar(signed char positionData[], int *theta, int *phi, int *r) {
+    float xf = (float)( positionData[0] << 8 | positionData[1] );
+    float yf = (float)( positionData[4] << 8 | positionData[5] );
+    float zf = (float)( positionData[2] << 8 | positionData[3] );
     (*r)     = (int)(sqrt( (xf*xf) + (yf*yf) + (zf*zf) ));
-    (*theta) = (int)(acos((zf)/(*r)));
-    (*phi)   = (int)(atan((*y)/(*x)));
+    (*theta) = (int)( acos((zf)/(*r)) );
+    (*phi)   = (int)( atan( yf/xf ) );
 }

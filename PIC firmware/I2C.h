@@ -127,7 +127,8 @@ signed char I2C_readRegesters(unsigned char channel, unsigned char slaveAdr,
 
 
 
-signed char I2C_read(unsigned char channel, unsigned char* dataRetAdr);
+signed char I2C_read(unsigned char channel, unsigned char* dataRetAdr,
+        unsigned char Ack);
 
 
 #ifdef	__cplusplus
