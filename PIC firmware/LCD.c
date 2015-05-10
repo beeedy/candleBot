@@ -1,8 +1,11 @@
-/*
- * File:   LCD.c
- * Author: broderickcarlin
- *
- * Created on April 9, 2015, 10:03 PM
+/*                           _     ___________
+                            | |   /  __ \  _  \
+                            | |   | /  \/ | | |
+                            | |   | |   | | | |
+                            | |___| \__/\ |/ /
+                            \_____/\____/___/
+ * File:   LCD.h
+ * Author: Broderick Carlin
  */
 
 #include "LCD.h"
@@ -22,6 +25,7 @@
 #define LCD_RS  PORTDbits.RD0 /* RD0 */
 #define LCD_RW  PORTGbits.RG7
 
+// Inline function for writing out the 8 values for 8-bit mode
 #define LCD_write8bit(data_in) \
     {\
     LCD_DB7 = ((data_in >> 7) & 1);\
@@ -34,6 +38,7 @@
     LCD_DB0 = (data_in & 1);\
     }
 
+// Inline function for writing out the 4 values for 4-bit mode
 #define LCD_write4bit(data_in) \
     {\
     LCD_DB7 = ((data_in >> 3) & 1);\
