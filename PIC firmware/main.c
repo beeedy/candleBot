@@ -21,7 +21,9 @@
 #include "encoders.h"
 #include "PS2.h"
 #include "compass.h"
+#include "colorSensor.h"
 #include "I2C.h"
+
 
 char volatile FONA_BUFF[FONA_BUFF_SIZE], USB_BUFF[USB_BUFF_SIZE],
         PIXY_BUFF[PIXY_BUFF_SIZE], USART4_BUFF[50] = 0;
@@ -42,36 +44,32 @@ void init()
 }
 
 void debug()
-{/**
-    disableInterrupts();
+{
+    UART_transmitString(USB, "color sensor testing begin\n\r\n\r");
     signed char retVal = 0;
+    unsigned char colorVals[8];
     while(1) {
-        I2C_open(1);
-        I2C_write(1, 0x42);
-        I2C_close(1);
-        I2C_open(2);
-        I2C_write(2, 0x42);
-        I2C_close(2);
-    }
-    enableInterrupts();
-    LCD_printString(0, 0, "I2C FAIL");
-    while(1);
-*/
-
-    signed char positionData[6], tempPivot;
-    signed int magnitude, theta, phi = 0;
-    compass_mainBoardInit();
-    while(1) {
-        compass_mainRead(positionData);
-        enableInterrupts();
-        compass_cart2polar(positionData, &theta, &phi, &magnitude);
-        LCD_printString(0, 0, "mag: \n%i", magnitude);
-        delay_s(5);
-        LCD_printString(0, 0, "theta: \n%i", theta);
-        delay_s(5);
-        LCD_printString(0, 0, "phi: \n%i", phi);
-        delay_s(5);
         disableInterrupts();
+        retVal = colorSensor_init();
+        if(retVal == 0) {
+            while(1) {
+
+                enableInterrupts();
+                delay_ms(200);           // wait for integration time - 24ms
+                disableInterrupts();
+                retVal = colorSensor_read(READ_COLOR_AND_CLEAR, colorVals);
+                enableInterrupts();
+                if(retVal == 0) {
+                    UART_transmitString(USB, "Clear: %i \n\r", colorVals[1] << 8 | colorVals[0]);
+                    UART_transmitString(USB, "Red: %i \n\r", colorVals[3] << 8 | colorVals[2]);
+                    UART_transmitString(USB, "Green: %i \n\r", colorVals[5] << 8 | colorVals[4]);
+                    UART_transmitString(USB, "Blue: %i \n\r", colorVals[7] << 8 | colorVals[6]);
+                }
+                else {
+                    UART_transmitString(USB, "Color Sensor Error: %i \n\r", (int)retVal);
+                }
+            }
+        }
     }
 }
 

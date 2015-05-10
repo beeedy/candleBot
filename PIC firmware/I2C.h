@@ -12,12 +12,6 @@
 extern "C" {
 #endif
 
-#define COMPASS_PIXY  1
-#define COLOR_SENSOR  1
-#define WII_CAM_RIGHT 1
-#define WII_CAM_LEFT  2
-#define COMPASS_MAIN  2
-
 
 void I2C_init(unsigned char channel);
 
@@ -44,6 +38,15 @@ signed char I2C_open(unsigned char channel);
 
 
 
+
+/*
+ * I2C_repeatedStart generates a repeated start condition on the specified
+ * channel in order to begin data transmission from the same sensor without
+ * letting other sensors/masters taking control of the line
+ *
+ */
+
+signed char I2C_repeatedStart(unsigned char channel);
 
 
 
@@ -127,7 +130,7 @@ signed char I2C_readRegesters(unsigned char channel, unsigned char slaveAdr,
 
 
 
-signed char I2C_read(unsigned char channel, unsigned char* dataRetAdr,
+signed char I2C_read(unsigned char channel, signed char* dataRetAdr,
         unsigned char Ack);
 
 

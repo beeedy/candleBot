@@ -117,6 +117,32 @@ signed char I2C_open(unsigned char channel) {
 }
 
 
+/*
+ * I2C_repeatedStart generates a repeated start condition on the specified
+ * channel in order to begin data transmission from the same sensor without
+ * letting other sensors/masters taking control of the line
+ *
+ */
+
+signed char I2C_repeatedStart(unsigned char channel) {
+    
+    if(channel == 1) {
+        
+        I2C_wait(channel);              // wait for stuff to finish up
+        SSP1CON2bits.RSEN = 1;          // generate a repeated start condition
+        while(SSP1CON2bits.RSEN == 0);  // wait
+    }
+    else { // channel 2
+        
+        I2C_wait(channel);              // wait for stuff to finish up
+        SSP2CON2bits.RSEN = 1;          // generate a repeated start condition
+        while(SSP2CON2bits.RSEN == 0);  // wait
+    }
+    return 0;
+}
+
+
+
 
 /*
  * I2C_close generates a stop condition on the specified channel in order to
@@ -293,7 +319,7 @@ signed char I2C_writeRegister(unsigned char channel, unsigned char slaveAdr,
 
 signed char I2C_readRegisters(unsigned char channel, unsigned char slaveAdr,
         unsigned char startRegAdr, unsigned char len,
-        unsigned char* dataRetAdr) {
+        signed char* dataRetAdr) {
 
     volatile signed char retVal;
 
@@ -345,7 +371,7 @@ signed char I2C_readRegisters(unsigned char channel, unsigned char slaveAdr,
 
 
 
-signed char I2C_read(unsigned char channel, unsigned char* dataRetAdr,
+signed char I2C_read(unsigned char channel, signed char* dataRetAdr,
         unsigned char Ack) {
 
     volatile signed char retVal = 0;

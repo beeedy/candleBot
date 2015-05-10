@@ -19,7 +19,7 @@ extern "C" {
 
 signed char compass_pixyInit();
 signed char compass_mainBoardInit();
-signed char compass_mainRead(unsigned char directionData[]);
+signed char compass_mainRead(signed char directionData[]);
 signed char compass_pixyRead(int *x, int *y, int *z);
 void compass_cart2polar(signed char posData[], int *theta, int *phi, int *r);
 

@@ -44,9 +44,25 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 // I2C addresses for various devices
 #define WII_CAM_ADR        0xB0
-#define WII_CAM_SLAVE_ADR  0x21
+// #define WII_CAM_SLAVE_ADR  0x21
 #define COMPASS_ADR        0x3C
 #define COLOR_SENSOR_ADR   0x52 /* 0x29 <- non shifted version */
+
+    // The folowing sensors are on the following I2C lines
+#define COMPASS_PIXY  1
+#define WII_CAM_RIGHT 1
+#define WII_CAM_LEFT  2
+#define COMPASS_MAIN  2
+#define COLOR_SENSOR  2
+
+#define READ_CLEAR 1
+#define READ_COLOR 2
+#define READ_CLEAR_AND_COLOR 3
+#define READ_COLOR_AND_CLEAR 3
+
+#define ACK 1
+#define NAK 0
+
 
 #define FONA_BUFF_SIZE 50
 #define PIXY_BUFF_SIZE 500

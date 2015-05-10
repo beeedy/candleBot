@@ -116,7 +116,7 @@ signed char compass_mainBoardInit() {
 }
 
 
-signed char compass_mainRead(unsigned char positionData[]) {
+signed char compass_mainRead(signed char positionData[]) {
 
     signed char retVal = 0;
 
@@ -127,9 +127,9 @@ signed char compass_mainRead(unsigned char positionData[]) {
     retVal += I2C_open(COMPASS_MAIN);
     retVal += I2C_write(COMPASS_MAIN, COMPASS_ADR | 0x01);
     for(unsigned char x = 0; x < 5; x++) {
-        retVal += I2C_read(COMPASS_MAIN, &positionData[x], ACK);
+        retVal += I2C_read(COMPASS_MAIN, (positionData + x), ACK);
     }
-    retVal += I2C_read(COMPASS_MAIN, &positionData[5], NAK);  // nak on the last data byte
+    retVal += I2C_read(COMPASS_MAIN, (positionData + 5), NAK);  // nak on the last data byte
     I2C_close(COMPASS_MAIN);
 
     return retVal;
