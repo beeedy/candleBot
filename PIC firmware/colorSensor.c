@@ -10,7 +10,6 @@
  */
 
 #include "I2C.h"
-#include "globalDefines.h"
 
 signed char colorSensor_init() { 
     signed char retVal = 0;

@@ -1,23 +1,12 @@
-/*
- * This file contains all of the functions required to set up and communicate
- * over I2C. These functions interface with the two compass sensors, the two
- * wii cameras, and the color sensor.
+/*                           _____ _____  _____
+                            |_   _/ __  \/  __ \
+                              | | `' / /'| /  \/
+                              | |   / /  | |
+                             _| |_./ /___| \__/\
+                             \___/\_____/ \____/
+ * File:   I2C.h
+ * Author: Tyler Holmes
  *
- * 1. Generate a start condition (set the Start Enable bit, SEN)
- * 2. SSPxIF gets set. The MSSPx module waits for the required start time
- * 3. I load the SSPxBUF with the slave address to transmit.
- * 4. Address gets shifted out the SDAx pin
- * 5. The MSSPx module shifts in the ACK' bit from the slave device and writes
- *    its value into the SSPxCON2 register (SSPxCON2<6>).
- * 6. The MSSPx module generates an interrupt at the end of the 9th clock cycle
- *    by setting the SSPxIF bit.
- * 7. The user loads the SSPxBUF with eight bits of data.
- * 8. repeat steps 4-6
- * 9. generate a stop condition by setting the Stop Enable bit, PEN
- *
- *
- * This file initiates the two I2C buses on the Ladder 42 board. 
- * 
  * bus one is on SDA1: pin 56, SCL1: pin 54 and has:
  *
  *  pixy compass sensor     <- not responding
@@ -34,15 +23,7 @@
  * 
  */
 
-#include <XC.h>
 #include "I2C.h"
-
-/*
- * Initializes the I2C ports. Sets all of the registers to what they need to
- * be for proper I2C data transmission.
- *
- */
-
 
 void I2C_init(unsigned char channel) {
 
@@ -73,13 +54,6 @@ void I2C_init(unsigned char channel) {
 }
 
 
-
-
-/*
- * Waits for a few things to finish before continuing
- *
- */
-
 void I2C_wait(unsigned char channel) {
     if(channel == 1) {
         while ( (SSP1CON2 & 0x1F) || (SSP1STAT & 0x04) );
@@ -90,15 +64,6 @@ void I2C_wait(unsigned char channel) {
     }
  }
 
-
-
-
-
-/*
- * I2C_open generates a start condition on the specified channel in order to
- * begin data transmission
- *
- */
 
 signed char I2C_open(unsigned char channel) {
 
@@ -116,13 +81,6 @@ signed char I2C_open(unsigned char channel) {
     }
 }
 
-
-/*
- * I2C_repeatedStart generates a repeated start condition on the specified
- * channel in order to begin data transmission from the same sensor without
- * letting other sensors/masters taking control of the line
- *
- */
 
 signed char I2C_repeatedStart(unsigned char channel) {
     
@@ -142,18 +100,6 @@ signed char I2C_repeatedStart(unsigned char channel) {
 }
 
 
-
-
-/*
- * I2C_close generates a stop condition on the specified channel in order to
- * stop the current data transmission
- *
- * SSP2CON2bits.PEN=1;
- *  while(SSP2CON2bits.PEN);
- *
- *
- */
-
 signed char I2C_close(unsigned char channel) {
 
     if(channel == 1) {
@@ -172,16 +118,12 @@ signed char I2C_close(unsigned char channel) {
     }
 }
 
-/*
- * I2C_write writes the given byte to the given channel and waits for an ack or
- * nak and returns:
- *
+
+/*  Return Values
  *    0  -  slave acknowledged the transmittion
  *   -1  -  slave did not acknowledge the transmittion
  *   -2  -  bus collision
- *
  */
-
 signed char I2C_write(unsigned char channel, unsigned char data) {
 
     if(channel == 1) {
@@ -220,18 +162,11 @@ signed char I2C_write(unsigned char channel, unsigned char data) {
 }
 
 
-
-/*
- * I2C_writeRegisters writes the given byte(s) starting at the given address on
- * the given channel and returns:
- *
+/*  Return Values
  *    0  -  successful write, no errors
  *   -1  -  unsuccessful. NAK
  *   -2  -  unsuccessful. Bus collision
- *
  */
-
-
 signed char I2C_writeRegisters(unsigned char channel, unsigned char slaveAdr,
         unsigned char startRegAdr, unsigned char* data, unsigned char len) {
 
@@ -265,17 +200,11 @@ signed char I2C_writeRegisters(unsigned char channel, unsigned char slaveAdr,
 
 
 
-/*
- * I2C_writeRegister1 writes the given byte at the given address on
- * the given channel and returns:
- *
+/*  Return Values
  *    0  -  successful write, no errors
  *   -1  -  unsuccessful. NAK
  *   -2  -  unsuccessful. Bus collision
- * 
  */
-
-
 signed char I2C_writeRegister(unsigned char channel, unsigned char slaveAdr,
         unsigned char startRegAdr, unsigned char data) {
 
@@ -305,18 +234,11 @@ signed char I2C_writeRegister(unsigned char channel, unsigned char slaveAdr,
 }
 
 
-/*
- * I2C_read reads the register at the given address on the given channel of the
- * given register address and stores the value in the given location in memory
- * and returns:
- *
+/*  Return Values
  *     0  -  successful read, returned the data
  *    -1  -  unsuccessful read, buffer overflow
  *    -2  -  unsuccessful read, other issue
- *
- *
  */
-
 signed char I2C_readRegisters(unsigned char channel, unsigned char slaveAdr,
         unsigned char startRegAdr, unsigned char len,
         signed char* dataRetAdr) {
@@ -367,8 +289,6 @@ signed char I2C_readRegisters(unsigned char channel, unsigned char slaveAdr,
     
     return retVal;
 }
-
-
 
 
 signed char I2C_read(unsigned char channel, signed char* dataRetAdr,
