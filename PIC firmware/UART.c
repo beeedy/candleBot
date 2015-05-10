@@ -1,16 +1,24 @@
-/* 
- * File:   UART.c
- * Author: TylerHolmes
+/*                       _   _  ___  ______ _____
+                        | | | |/ _ \ | ___ \_   _|
+                        | | | / /_\ \| |_/ / | |
+                        | | | |  _  ||    /  | |
+                        | |_| | | | || |\ \  | |
+                         \___/\_| |_/\_| \_| \_/
+ * File:   UART.h
+ * Author: Tyler Holmes and Broderick Carlin
  *
- * Created on April 11, 2015, 5:18 PM
- * 
- * Fona RX maps to U4 TX (RP13)
- * Fona TX maps to U1 RX (RP27)
- * USB  RX maps to U1 TX (RP22)
- * USB  TX maps to U2 RX (RP24)
- * Pixy RX maps to U2 TX (RP11)
- * Pixy TX maps to U3 RX (RP16)
+ * UART Connection mapping:
+ *      Fona RX maps to U4 TX (RP13) Module 1
+ *      Fona TX maps to U1 RX (RP27) Module 4
  *
+ *      USB  RX maps to U1 TX (RP22) Module 4
+ *      USB  TX maps to U2 RX (RP24) Module 1
+ *
+ *      Pixy RX maps to U2 TX (RP11) Module 3
+ *      Pixy TX maps to U3 RX (RP16) Module 2
+ *
+ *      Unused RX on Module 2
+ *      Unused TX on Module 3
  */
 
 #include "UART.h"
@@ -19,26 +27,6 @@ volatile unsigned char config = 0;
 volatile unsigned int spbrg = 0;
 
 void UART_init() {
-
-    /*******************  USART Module PPS-Lite setup  ************************/
-    /*  USB:
-    /*      -RX on module 4
-    /*      -TX on module 1
-    /*
-    /*  Pixy:
-    /*      -RX on module 3
-    /*      -TX on module 2
-    /*
-    /*  Fona:
-    /*      -RX on module 1
-    /*      -TX on module 4
-    /*
-    /*
-    /*
-    /*  Unused:
-    /*      -RX on module 2
-    /*      -TX on module 3
-    /*/
 
     disablePPSLock();
 
@@ -52,10 +40,7 @@ void UART_init() {
     RPOR12_13 |= 0x3F;              // Configures RP13(Fona RX) to U4TX
 
     enablePPSLock();
-
-    INTCONbits.GIE = 1;
-
-    /////////////////////////// Enabling interrupts here? huh?
+    
     INTCONbits.PEIE = 1;
 
 
