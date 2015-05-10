@@ -84,7 +84,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #ifndef COLORSENSOR_H
 #define	COLORSENSOR_H
 
-#include "globalDefines.h"
+#include "GlobalDefines.h"
 
 signed char colorSensor_init();
 signed char colorSensor_read(unsigned char readType, signed char *retVals);

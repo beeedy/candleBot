@@ -8,16 +8,9 @@
 #ifndef WIICAMS_H
 #define	WIICAMS_H
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
-
-
-
-
-#ifdef	__cplusplus
-}
-#endif
+#include "GlobalDefines.h"
+#include "I2C.h"
+#include "delays.h"
 
 #endif	/* WIICAMS_H */
 

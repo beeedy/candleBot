@@ -16,11 +16,10 @@
       <itemPath>../PS2.h</itemPath>
       <itemPath>../settings.h</itemPath>
       <itemPath>../UART.h</itemPath>
-      <itemPath>../USB.h</itemPath>
       <itemPath>../whiskers.h</itemPath>
       <itemPath>../GlobalDefines.h</itemPath>
-      <itemPath>C:/Users/Tyler/Desktop/Ladder42_GitSoftwareHub/candleBot/PIC firmware/colorSensor.h</itemPath>
-      <itemPath>C:/Users/Tyler/Desktop/Ladder42_GitSoftwareHub/candleBot/PIC firmware/wiiCams.h</itemPath>
+      <itemPath>../colorSensor.h</itemPath>
+      <itemPath>../wiiCams.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -42,9 +41,8 @@
       <itemPath>../PS2.c</itemPath>
       <itemPath>../settings.c</itemPath>
       <itemPath>../UART.c</itemPath>
-      <itemPath>../USB.c</itemPath>
       <itemPath>../whiskers.c</itemPath>
-      <itemPath>C:/Users/Tyler/Desktop/Ladder42_GitSoftwareHub/candleBot/PIC firmware/wiiCams.c</itemPath>
+      <itemPath>../wiiCams.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

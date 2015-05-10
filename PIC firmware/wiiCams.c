@@ -12,8 +12,7 @@
  *
  */
 
-#include "GlobalDefines.h"
-#include "I2C.h"
+#include "wiiCams.h"
 
 
 signed char wiiCams_init() {
