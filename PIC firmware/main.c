@@ -21,7 +21,7 @@
 #include "encoders.h"
 #include "PS2.h"
 #include "compass.h"
-#include "colorSensor.h"
+//#include "colorSensor.h"
 #include "I2C.h"
 
 
