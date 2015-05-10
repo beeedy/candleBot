@@ -21,8 +21,6 @@ extern "C" {
 #define PIXY_BUFF_SIZE 500
 #define USB_BUFF_SIZE 500
 
-#define FFT_SIZE 64 // has to be a power of 2!!!!!!!
-
 #define _XTAL_FREQ 64000000
 
 //Macros
