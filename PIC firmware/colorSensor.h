@@ -1,24 +1,44 @@
-/* 
+/*          _____       _              _____
+           /  __ \     | |            /  ___|
+           | /  \/ ___ | | ___  _ __  \ `--.  ___ _ __  ___  ___  _ __
+           | |    / _ \| |/ _ \| '__|  `--. \/ _ \ '_ \/ __|/ _ \| '__|
+           | \__/\ (_) | | (_) | |    /\__/ /  __/ | | \__ \ (_) | |
+            \____/\___/|_|\___/|_|    \____/ \___|_| |_|___/\___/|_|
+
  * File:   colorSensor.h
- * Author: Tyler
+ * Author: Tyler Holmes
  *
- * Created on May 9, 2015, 10:32 PM
- */
-
-#ifndef COLORSENSOR_H
-#define	COLORSENSOR_H
-
-#ifdef	__cplusplus
-extern "C" {
-#endif
-
-/*
- * This function interfaces with our color (RGBC) sensor (TCS3472) for the
- * detection of the white circle.
+ * This file contains the functions that are used to  interface with our color
+ * (RGBC) sensor, PN:TCS3472. Our color sensor is mounted on the bottom of our
+ * robot and is used to determine the color of the flooring under the front of
+ * our robot for the specifc purpose of locating the white circle that surrounds
+ * a candle. The color sensor can be thought of as a simple single pixel camera.
  *
- * Color sensor is on SCL/SDA 2 on pin 81 (SDA2) and pin 79 (SCL2)
+ * I2C Address: 0x29
+ *
+ * -------------------------------Function List---------------------------------
+ * signed char colorSensor_init()
+ * signed char colorSensor_read(unsigned char readType, signed char *retVals)
+ *
+ * ---------------------------Function Descriptions-----------------------------
+ * signed char colorSensor_init()
+ *      This function initializes the color sensor so that it can be used to
+ *      gather information in regards to the color of the flooring. This
+ *      function configures the color sensor to have a 24mS integration time,
+ *      not to wait, and to have a gain of x4. It is important that this
+ *      function be called prior to trying to communicate with the color sensor,
+ *      otherwise unpredictable behvior may occur.
+ *
+ * signed char colorSensor_read(unsigned char readType, signed char *retVals)
+ *      This function reads out either the clear value or the color values that
+ *      are being read by the sensor. Depending on what you pass to the function
+ *      as your first argument, it will store the corresponding values in the
+ *      array pointed to by your second argument. It is important to remember
+ *      that colorSensor_init() must be called prior to this function to verify
+ *      that the results that are recieved is valid information.
  *
  *
+ * -------------------------------Command Table---------------------------------
  *  ??    COMMAND   W     Specifies register address                    0x00
  *  0x00  ENABLE    R/W   Enables states and interrupts                 0x00
  *  0x01  ATIME     R/W   RGBC time                                     0xFF
@@ -40,47 +60,32 @@ extern "C" {
  *  0x19  GDATAH    R     Green data high byte                          0x00
  *  0x1A  BDATAL    R     Blue data low byte                            0x00
  *  0x1B  BDATAH    R     Blue data high byte                           0x00
- *
- *
- * I2C Address: 0x29
- *
+
+Copyright (c) 2015 Broderick Carlin & Tyler Holmes
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-
-/*
- * colorSensor_init initializes the color sensor (TCS3472) to have
- * a 24 ms integration time, no waiting, and a 4 times gain value
- *
- *
- */
+#ifndef COLORSENSOR_H
+#define	COLORSENSOR_H
 
 signed char colorSensor_init();
-
-
-
-
-
-
-/*
- * colorSensor_read reads out either the clear value or the color values
- * depending on what you pass to the function (CLEAR, COLOR, CLEAR_AND_COLOR for
- * the read type input) and returns it in the retVals array
- *
- * format: [ clear LSB, clear MSB, red LSB, red MSB, green LSB, green MSB,
- *           blue LSB, blue MSB]
- *
- * if the read type you selected does not use of some of these values, it will
- * write them as 0.
- *
- */
-
-
 signed char colorSensor_read(unsigned char readType, signed char *retVals);
 
-
-#ifdef	__cplusplus
-}
 #endif
-
-#endif	/* COLORSENSOR_H */
 
