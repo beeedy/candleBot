@@ -51,6 +51,9 @@
  *      negative. The acceleration is limited by the #MAX_ACCEL value. This
  *      function is passive acceleration control and so as such it must be
  *      called often in order to verify that the desired velocityis reached. The
+ *      function returns a 0x00 if one or both of the sides have NOT reached
+ *      their goal velocities. The function will return 0x01 when both of the
+ *      sides have reached their goal velocities. 
 
 Copyright (c) 2015 Broderick Carlin & Tyler Holmes
 
