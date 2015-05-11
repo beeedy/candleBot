@@ -53,10 +53,7 @@ void init()
 
 void debug()
 {
-    int intensityDataLX[4];
-    int intensityDataLY[4];
-    int intensityDataRX[4];
-    int intensityDataRY[4];
+    unsigned char rawDataL[12], rawDataR[12];
 
     /*
     UART_transmitString(USB, "color sensor testing begin\n\r\n\r");
@@ -89,14 +86,12 @@ void debug()
     signed char retVal = 0;
     while(1) {
         UART_transmitString(USB, " ____1_____    ____2_____\n\r");
-        retVal = wiiCams_read(WII_CAM_LEFT, intensityDataLX, intensityDataLY);
-        retVal += wiiCams_read(WII_CAM_RIGHT, intensityDataRX, intensityDataRY);
+        retVal = wiiCams_read(WII_CAM_LEFT, rawDataL);
+        retVal += wiiCams_read(WII_CAM_RIGHT, rawDataR);
         for(unsigned char i = 0; i < 4; i++) {
-            UART_transmitString(USB, "(%i, ", intensityDataLX[i]);
-            UART_transmitString(USB, "%i)  ", intensityDataLY[i]);
+            UART_transmitString(USB, "(%i, ", (int)rawDataL[i]);
+            UART_transmitString(USB, "%i)  ", (int)rawDataL[i]);
 
-            UART_transmitString(USB, "(%i, ", intensityDataRX[i]);
-            UART_transmitString(USB, "%i) \n\r\n\r", intensityDataRY[i]);
         }
         if(retVal != 0) {
             LCD_printString(0, 0, "wii Cam\nreadFail");
