@@ -14,6 +14,10 @@
 #define direction_left PORTLbits.RL0
 #define direction_right PORTKbits.RK1
 
+signed char lMotorSpeed = 0;
+signed char rMotorSpeed = 0;
+unsigned long prevTime = 0;
+
 
 
 void motorDrive_init()
@@ -84,4 +88,72 @@ void motorDrive_setSpeeds(signed char lSpeed, signed char rSpeed)
 
     SetDCEPWM1(tempr);
     SetDCEPWM3(templ);
+}
+
+char motorDrive_limitedAccelerationSetSpeeds(signed char lSpeed, signed char rSpeed)
+{
+    while(millis() - prevTime < 5);
+
+    char speedReached = 0x01;
+
+    unsigned long deltaTime = millis() - prevTime;
+    prevTime = millis();
+
+    if(lSpeed < lMotorSpeed)
+    {
+        lMotorSpeed -= (deltaTime * MAX_ACCEL) / 10;
+
+        if(lSpeed > lMotorSpeed)
+        {
+            lMotorSpeed = lSpeed;
+
+        }
+        else
+        {
+            speedReached = 0x00;
+        }
+    }
+    else
+    {
+        lMotorSpeed += (deltaTime * MAX_ACCEL) / 10;
+
+        if(lSpeed < lMotorSpeed)
+        {
+            lMotorSpeed = lSpeed;
+        }
+        else
+        {
+            speedReached = 0x00;
+        }
+    }
+
+    if(rSpeed < rMotorSpeed)
+    {
+        rMotorSpeed -= (deltaTime * MAX_ACCEL) / 10;
+
+        if(rSpeed > rMotorSpeed)
+        {
+            rMotorSpeed = rSpeed;
+        }
+        else
+        {
+            speedReached = 0x00;
+        }
+    }
+    else
+    {
+        rMotorSpeed += (deltaTime * MAX_ACCEL) / 10;
+
+        if(rSpeed < rMotorSpeed)
+        {
+            rMotorSpeed = rSpeed;
+        }
+        else
+        {
+            speedReached = 0x00;
+        }
+    }
+    motorDrive_setSpeeds(lMotorSpeed, rMotorSpeed);
+
+    return speedReached;
 }
