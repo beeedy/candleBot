@@ -23,6 +23,7 @@
 #include "compass.h"
 #include "colorSensor.h"
 #include "I2C.h"
+#include "wiiCams.h"
 
 
 char volatile FONA_BUFF[FONA_BUFF_SIZE], USB_BUFF[USB_BUFF_SIZE],
@@ -31,6 +32,8 @@ char volatile FONA_INDEX, USB_INDEX, PIXY_INDEX, UART4_INDEX = 0;
 
 void init()
 {
+    signed char retVal = 0;
+
     settings_init();
     motorDrive_init();
     LCD_init4bit();
@@ -39,12 +42,23 @@ void init()
     fft_init();
     I2C_init(1);
     I2C_init(2);
-
+    retVal += wiiCams_init();
     clearMillis();
+
+    if(retVal != 0) {
+        LCD_printString(0, 0, "init /nFailure!");
+        delay_s(5);
+    }
 }
 
 void debug()
 {
+    int intensityDataLX[4];
+    int intensityDataLY[4];
+    int intensityDataRX[4];
+    int intensityDataRY[4];
+
+    /*
     UART_transmitString(USB, "color sensor testing begin\n\r\n\r");
     signed char retVal = 0;
     unsigned char colorVals[8];
@@ -70,6 +84,24 @@ void debug()
                 }
             }
         }
+    }
+    */
+    signed char retVal = 0;
+    while(1) {
+        UART_transmitString(USB, " ____1_____    ____2_____\n\r");
+        retVal = wiiCams_read(WII_CAM_LEFT, intensityDataLX, intensityDataLY);
+        retVal += wiiCams_read(WII_CAM_RIGHT, intensityDataRX, intensityDataRY);
+        for(unsigned char i = 0; i < 4; i++) {
+            UART_transmitString(USB, "(%i, ", intensityDataLX[i]);
+            UART_transmitString(USB, "%i)  ", intensityDataLY[i]);
+
+            UART_transmitString(USB, "(%i, ", intensityDataRX[i]);
+            UART_transmitString(USB, "%i) \n\r\n\r", intensityDataRY[i]);
+        }
+        if(retVal != 0) {
+            LCD_printString(0, 0, "wii Cam\nreadFail");
+        }
+        delay_ms(10);
     }
 }
 
