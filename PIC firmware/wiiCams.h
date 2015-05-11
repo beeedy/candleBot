@@ -25,7 +25,8 @@ signed char wiiCams_init();
  *
  */
 
-signed char wiiCams_read(unsigned char camera, unsigned char *rawData);
+signed char wiiCams_read(unsigned char camera, int *intensityDataX,
+        int *intensityDataY);
 
 #endif	/* WIICAMS_H */
 
