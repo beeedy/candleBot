@@ -147,7 +147,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #define CTRL_CLK        5
 #define CTRL_CLK_HIGH   5
-#define CTRL_BYTE_DELAY 4
+#define CTRL_BYTE_DELAY 5  //This value is very finicky and needs frequent tune
 
 #define UART_DEBUG
 
