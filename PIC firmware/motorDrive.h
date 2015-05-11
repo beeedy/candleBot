@@ -36,7 +36,25 @@
  *      both motors spin in the same direction and propel the robot forward, the
  *      inputs should both be positive. To make the motors spin in the opposite
  *      direction and have the robot move backwards, both values should be made
- *      negative. 
+ *      negative.
+ *
+ * char motorDrive_limitedAccelerationSetSpeeds(signed char, signed char, char)
+ *      This function controls the speed and direction of both motors
+ *      similtaneously. The inputs can be values between -100 and 100. All
+ *      positive values correspond to forward rotation while negative values
+ *      correspond to the reverse rotation. The absolute value of the input
+ *      is the PWM pulse width percentage. It is important to note that to make
+ *      both motors spin in the same direction and propel the robot forward, the
+ *      inputs should both be positive. To make the motors spin in the opposite
+ *      direction and have the robot move backwards, both values should be made
+ *      negative. This function has the benefit of being acceration limited so
+ *      as to reduce the likelyhood of tire slippage on the ground surface. It
+ *      is important to understand that this is a passive speed control function
+ *      so it does not always gaurentee the speed or motor rotation, rather it
+ *      increases motors rotation closer to the goal value. This function will
+ *      return a 0x00 if one or both of the motors is not current at its target
+ *      speed. This function will return a 0x01 if both motors have infact
+ *      reached their target velocity.
 
 Copyright (c) 2015 Broderick Carlin & Tyler Holmes
 
@@ -65,8 +83,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "xc.h"
 #include "pwm.h"
 
+#define MAX_ACCEL 10
+
 void motorDrive_init();
 void motorDrive_setSpeeds(signed char, signed char);
+char motorDrive_limitedAccelerationSetSpeeds(signed char, signed char, char);
 
 #endif
 

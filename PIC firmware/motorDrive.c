@@ -14,6 +14,10 @@
 #define direction_left PORTLbits.RL0
 #define direction_right PORTKbits.RK1
 
+unsigned long prevTime = 0;
+char lMotorSpeed = 0;
+char rMotorSpeed = 0;
+
 
 
 void motorDrive_init()
@@ -67,6 +71,9 @@ void motorDrive_init()
 
 void motorDrive_setSpeeds(signed char lSpeed, signed char rSpeed)
 {
+    lMotorSpeed = lSpeed;
+    rMotorSpeed = rSpeed;
+
     direction_left = (lSpeed >> 7 ) & 0x1 ^ 0x1;    //Set the direction of rotation based on MSB
     direction_right = (rSpeed >> 7 ) & 0x1;         //Set the direction of rotation based on MSB
 
@@ -84,4 +91,62 @@ void motorDrive_setSpeeds(signed char lSpeed, signed char rSpeed)
 
     SetDCEPWM1(tempr);
     SetDCEPWM3(templ);
+}
+
+char motorDrive_limitedAccelerationSetSpeeds(signed char lSpeed, signed char rSpeed, char accel)
+{
+    char done = 0x01;
+
+    unsigned long deltaTime = millis() - prevTime;
+
+    if(lSpeed < lMotorSpeed)
+    {
+       lSpeed += (accel * deltaTime);
+       if(lSpeed > lMotorSpeed)
+       {
+           lSpeed = lMotorSpeed;
+       }
+       else
+       {
+           done = 0x00;
+       }
+    }
+    else
+    {
+        lSpeed -= (accel * deltaTime);
+       if(lSpeed < lMotorSpeed)
+       {
+           lSpeed = lMotorSpeed;
+       }
+       else
+       {
+           done = 0x00;
+       }
+    }
+
+    if(rSpeed < rMotorSpeed)
+    {
+       rSpeed += (accel * deltaTime);
+       if(rSpeed > rMotorSpeed)
+       {
+           rSpeed = rMotorSpeed;
+       }
+       else
+       {
+           done = 0x00;
+       }
+    }
+    else
+    {
+        rSpeed -= (accel * deltaTime);
+       if(rSpeed < rMotorSpeed)
+       {
+           rSpeed = rMotorSpeed;
+       }
+       else
+       {
+           done = 0x00;
+       }
+    }
+    return done;
 }
