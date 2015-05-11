@@ -46,17 +46,17 @@ void init()
     clearMillis();
 
     if(retVal != 0) {
-        LCD_printString(0, 0, "init /nFailure!");
-        delay_s(5);
+        LCD_printString(0, 0, "init /nFail:%i", (int)retVal);
+        while(1);
     }
 }
 
 void debug()
 {
-    int intensityDataLX[4];
-    int intensityDataLY[4];
-    int intensityDataRX[4];
-    int intensityDataRY[4];
+    unsigned char rawDataL[12];
+    unsigned char rawDataR[12];
+    int processedDataL[12];
+    int processedDataR[12];
 
     /*
     UART_transmitString(USB, "color sensor testing begin\n\r\n\r");
@@ -88,18 +88,29 @@ void debug()
     */
     signed char retVal = 0;
     while(1) {
-        UART_transmitString(USB, " ____1_____    ____2_____\n\r");
-        retVal = wiiCams_read(WII_CAM_LEFT, intensityDataLX, intensityDataLY);
-        retVal += wiiCams_read(WII_CAM_RIGHT, intensityDataRX, intensityDataRY);
-        for(unsigned char i = 0; i < 4; i++) {
-            UART_transmitString(USB, "(%i, ", intensityDataLX[i]);
-            UART_transmitString(USB, "%i)  ", intensityDataLY[i]);
-
-            UART_transmitString(USB, "(%i, ", intensityDataRX[i]);
-            UART_transmitString(USB, "%i) \n\r\n\r", intensityDataRY[i]);
-        }
+        disableInterrupts();
+        retVal = wiiCams_read(WII_CAM_LEFT, rawDataL);
+        retVal += wiiCams_read(WII_CAM_RIGHT, rawDataR);
+        wiiCams_processData(rawDataL, processedDataL);
+        wiiCams_processData(rawDataR, processedDataR);
+        enableInterrupts();
         if(retVal != 0) {
             LCD_printString(0, 0, "wii Cam\nreadFail");
+            UART_transmitString(USB, "FAILURE");
+        }
+        else {
+            //UART_transmitString(USB, " ___1___  ___2___\n\r");
+            //for(unsigned char i = 0; i < 4; i++) {
+                //UART_transmitString(USB, "(%i, ", (int)processedDataL[3*i]);
+                //UART_transmitString(USB, "%i)  ", (int)processedDataL[3*i + 1]);
+                //UART_transmitString(USB, "s: %i  ", (int)processedDataL[3*i + 2]);
+
+                //UART_transmitString(USB, "(%i, ", (int)processedDataR[3*i]);
+                //UART_transmitString(USB, "%i)  ", (int)processedDataR[3*i + 1]);
+                //UART_transmitString(USB, "s: %i  \n\r", (int)processedDataR[3*i + 2]);
+            //}
+            wiiCams_sendData(processedDataL, ACK);
+            wiiCams_sendData(processedDataR, NAK);
         }
         delay_ms(10);
     }

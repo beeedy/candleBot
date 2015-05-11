@@ -5,259 +5,19 @@
  *
  *
  *
- *
- *
- *
- *
- *
  */
 
 #include "wiiCams.h"
-#define INSTRUCTION_DELAY 10
+#include "UART.h"
 
-/*
-signed char wiiCams_init() {
-
-    signed char retVal = 0;
-
-    I2C_open(WII_CAM_LEFT);
-    retVal = I2C_write(WII_CAM_LEFT, WII_CAM_ADR);  // call out to Wii_cam, write
-    if(retVal != 0)
-        return retVal;
-    retVal += I2C_write(WII_CAM_LEFT, 0x30);
-    retVal += I2C_write(WII_CAM_LEFT, 0x01);
-    I2C_close(WII_CAM_LEFT);
-    enableInterrupts();
-    delay_ms(INSTRUCTION_DELAY);
-    disableInterrupts();
-
-    I2C_open(WII_CAM_LEFT);
-    retVal = I2C_write(WII_CAM_LEFT, WII_CAM_ADR);  // call out to Wii_cam, write
-    if(retVal != 0)
-        return retVal;
-    retVal += I2C_write(WII_CAM_LEFT, 0x30);
-    retVal += I2C_write(WII_CAM_LEFT, 0x08);
-    I2C_close(WII_CAM_LEFT);
-    enableInterrupts();
-    delay_ms(INSTRUCTION_DELAY);
-    disableInterrupts();
-
-    I2C_open(WII_CAM_LEFT);
-    retVal = I2C_write(WII_CAM_LEFT, WII_CAM_ADR);  // call out to Wii_cam, write
-    if(retVal != 0)
-        return retVal;
-    retVal += I2C_write(WII_CAM_LEFT, 0x06);
-    retVal += I2C_write(WII_CAM_LEFT, 0x90);
-    I2C_close(WII_CAM_LEFT);
-    enableInterrupts();
-    delay_ms(INSTRUCTION_DELAY);
-    disableInterrupts();
-
-    I2C_open(WII_CAM_LEFT);
-    retVal = I2C_write(WII_CAM_LEFT, WII_CAM_ADR);  // call out to Wii_cam, write
-    if(retVal != 0)
-        return retVal;
-    retVal += I2C_write(WII_CAM_LEFT, 0x08);
-    retVal += I2C_write(WII_CAM_LEFT, 0xC0);
-    I2C_close(WII_CAM_LEFT);
-    enableInterrupts();
-    delay_ms(INSTRUCTION_DELAY);
-    disableInterrupts();
-
-    I2C_open(WII_CAM_LEFT);
-    retVal = I2C_write(WII_CAM_LEFT, WII_CAM_ADR);  // call out to Wii_cam, write
-    if(retVal != 0)
-        return retVal;
-    retVal += I2C_write(WII_CAM_LEFT, 0x1A);
-    retVal += I2C_write(WII_CAM_LEFT, 0x40);
-    I2C_close(WII_CAM_LEFT);
-    enableInterrupts();
-    delay_ms(INSTRUCTION_DELAY);
-    disableInterrupts();
-
-    I2C_open(WII_CAM_LEFT);
-    retVal = I2C_write(WII_CAM_LEFT, WII_CAM_ADR);  // call out to Wii_cam, write
-    if(retVal != 0)
-        return retVal;
-    retVal += I2C_write(WII_CAM_LEFT, 0x33);
-    retVal += I2C_write(WII_CAM_LEFT, 0x33);
-    I2C_close(WII_CAM_LEFT);
-    enableInterrupts();
-    delay_ms(10*INSTRUCTION_DELAY);
-
-    disableInterrupts();
-
- /////////////////////////// Left Wii Cam Initialized!!!!!!! ///////////////
-
-    I2C_open(WII_CAM_RIGHT);
-    retVal = I2C_write(WII_CAM_RIGHT, WII_CAM_ADR);  // call out to Wii_cam, write
-    if(retVal != 0)
-        return retVal;
-    retVal += I2C_write(WII_CAM_RIGHT, 0x30);
-    retVal += I2C_write(WII_CAM_RIGHT, 0x01);
-    I2C_close(WII_CAM_RIGHT);
-    enableInterrupts();
-    delay_ms(INSTRUCTION_DELAY);
-    disableInterrupts();
-
-    I2C_open(WII_CAM_RIGHT);
-    retVal = I2C_write(WII_CAM_RIGHT, WII_CAM_ADR);  // call out to Wii_cam, write
-    if(retVal != 0)
-        return retVal;
-    retVal += I2C_write(WII_CAM_RIGHT, 0x30);
-    retVal += I2C_write(WII_CAM_RIGHT, 0x08);
-    I2C_close(WII_CAM_RIGHT);
-    enableInterrupts();
-    delay_ms(INSTRUCTION_DELAY);
-    disableInterrupts();
-
-    I2C_open(WII_CAM_RIGHT);
-    retVal = I2C_write(WII_CAM_RIGHT, WII_CAM_ADR);  // call out to Wii_cam, write
-    if(retVal != 0)
-        return retVal;
-    retVal += I2C_write(WII_CAM_RIGHT, 0x06);
-    retVal += I2C_write(WII_CAM_RIGHT, 0x90);
-    I2C_close(WII_CAM_RIGHT);
-    enableInterrupts();
-    delay_ms(INSTRUCTION_DELAY);
-    disableInterrupts();
-
-    I2C_open(WII_CAM_RIGHT);
-    retVal = I2C_write(WII_CAM_RIGHT, WII_CAM_ADR);  // call out to Wii_cam, write
-    if(retVal != 0)
-        return retVal;
-    retVal += I2C_write(WII_CAM_RIGHT, 0x08);
-    retVal += I2C_write(WII_CAM_RIGHT, 0xC0);
-    I2C_close(WII_CAM_RIGHT);
-    enableInterrupts();
-    delay_ms(INSTRUCTION_DELAY);
-    disableInterrupts();
-
-    I2C_open(WII_CAM_RIGHT);
-    retVal = I2C_write(WII_CAM_RIGHT, WII_CAM_ADR);  // call out to Wii_cam, write
-    if(retVal != 0)
-        return retVal;
-    retVal += I2C_write(WII_CAM_RIGHT, 0x1A);
-    retVal += I2C_write(WII_CAM_RIGHT, 0x40);
-    I2C_close(WII_CAM_RIGHT);
-    enableInterrupts();
-    delay_ms(INSTRUCTION_DELAY);
-    disableInterrupts();
-
-    I2C_open(WII_CAM_RIGHT);
-    retVal = I2C_write(WII_CAM_RIGHT, WII_CAM_ADR);  // call out to Wii_cam, write
-    if(retVal != 0)
-        return retVal;
-    retVal += I2C_write(WII_CAM_RIGHT, 0x33);
-    retVal += I2C_write(WII_CAM_RIGHT, 0x33);
-    I2C_close(WII_CAM_RIGHT);
-    enableInterrupts();
-    delay_ms(10*INSTRUCTION_DELAY);
-    disableInterrupts();
-
- ////////////////// Right Wii Cam Initialized!!!!!!! /////////////////////////
-
-    return retVal;
-}
-*/
-
-
-/*
- * wiiCams_read reads the values from the given camera and stores them in the
- * array that was passed to them. The array must be 16 indeces minimum of type
- * unsigned char.
- *
- *
- */
-
-/*
-
-signed char wiiCams_read(unsigned char camera, int *intensityDataX,
-        int *intensityDataY) {
-
-    signed char retVal, s = 0;
-    unsigned char data[16];
-    disableInterrupts();
-    I2C_open(camera);
-    retVal = I2C_write(camera, WII_CAM_ADR);
-    retVal += I2C_write(camera, 0x36);            // I'm assuming pointing the wii's clock pointer to the right place
-    I2C_close(camera);
-    if(retVal != 0)
-        return retVal;
-
-    I2C_open(camera);
-    for(unsigned char x = 0; x < 15; x++) {
-        retVal += I2C_read(camera, (data + x), ACK );          // stores data in given index of data
-        if(retVal != 0) {
-            I2C_close(camera);
-            return retVal;
-        }
-    }
-    retVal += I2C_read(camera, (data + 15), NAK);
-    I2C_close(camera);
-
-    if(retVal != 0)
-        return retVal;
-    
-    intensityDataX[0] = data[1];
-    intensityDataY[0] = data[2];
-    s   = data[3];
-    intensityDataX[0] += (s & 0x30) <<4;
-    intensityDataY[0] += (s & 0xC0) <<2;
-
-    intensityDataX[1] = data[4];
-    intensityDataY[1] = data[5];
-    s   = data[6];
-    intensityDataX[1] += (s & 0x30) <<4;
-    intensityDataY[1] += (s & 0xC0) <<2;
-
-    intensityDataX[2] = data[7];
-    intensityDataY[2] = data[8];
-    s   = data[9];
-    intensityDataX[2] += (s & 0x30) <<4;
-    intensityDataY[2] += (s & 0xC0) <<2;
-
-    intensityDataX[3] = data[10];
-    intensityDataY[3] = data[11];
-    s   = data[12];
-    intensityDataX[3] += (s & 0x30) <<4;
-    intensityDataY[3] += (s & 0xC0) <<2;
-    enableInterrupts();
-    return retVal;
-}
-
-*/
+#define CANDLE_TOLERANCE 5
 
 /*
  * http://procrastineering.blogspot.com/2008/09/working-with-pixart-camera-directly.html
  *
- Initialize:
-
-write(hex): B0 30 01
-wait 100ms
-write(hex): B0 00 00 00 00 00 00 00 90 //sensitivity part 1
-wait 100ms
-write (hex): B0 07 00 41 //sensitivity part 2
-wait 100ms
-write(hex): B0 1A 40 00 //sensitivity part 3
-wait 100ms
-write(hex): B0 33 03 //sets the mode
-wait 100ms
-write(hex): B0 30 08
-wait 100ms
- *
- *
- *
- * Reading:
-
-write(hex): B0 37 //prepare for reading
-wait 25us
-write(hex): B1 //read request
-read 8 bytes
-wait 380us
-write(hex): B1 //read request
-read 4 bytes
-
+ * This yeilds one sample from the camera containing 12 bytes, 3 for each of the
+ * 4 potential points. The format of the data will be the Extended Mode
+ * (X,Y, Y 2-msb, X 2-msb, Size 4-bits)
  *
  */
 
@@ -274,7 +34,7 @@ signed char wiiCams_init() {
     retVal += I2C_write(WII_CAM_LEFT, 0x01);
     I2C_close(WII_CAM_LEFT);
     if(retVal != 0)
-        return retVal;
+        return -1;//retVal;
 
     enableInterrupts();
     delay_ms(100);
@@ -292,7 +52,7 @@ signed char wiiCams_init() {
     retVal += I2C_write(WII_CAM_LEFT, 0x90);
     I2C_close(WII_CAM_LEFT);
     if(retVal != 0)
-        return retVal;
+        return -2;//retVal;
 
     enableInterrupts();
     delay_ms(100);
@@ -305,7 +65,7 @@ signed char wiiCams_init() {
     retVal += I2C_write(WII_CAM_LEFT, 0x41);
     I2C_close(WII_CAM_LEFT);
     if(retVal != 0)
-        return retVal;
+        return -3;//retVal;
 
     enableInterrupts();
     delay_ms(100);
@@ -318,7 +78,7 @@ signed char wiiCams_init() {
     retVal += I2C_write(WII_CAM_LEFT, 0x00);
     I2C_close(WII_CAM_LEFT);
     if(retVal != 0)
-        return retVal;
+        return -4;//retVal;
 
     enableInterrupts();
     delay_ms(100);
@@ -330,7 +90,7 @@ signed char wiiCams_init() {
     retVal += I2C_write(WII_CAM_LEFT, 0x03);
     I2C_close(WII_CAM_LEFT);
     if(retVal != 0)
-        return retVal;
+        return -5;//retVal;
 
     enableInterrupts();
     delay_ms(100);
@@ -342,7 +102,7 @@ signed char wiiCams_init() {
     retVal += I2C_write(WII_CAM_LEFT, 0x08);
     I2C_close(WII_CAM_LEFT);
     if(retVal != 0)
-        return retVal;
+        return -6;//retVal;
 
     enableInterrupts();
     delay_ms(100);
@@ -359,7 +119,7 @@ signed char wiiCams_init() {
     retVal += I2C_write(WII_CAM_RIGHT, 0x01);
     I2C_close(WII_CAM_RIGHT);
     if(retVal != 0)
-        return retVal;
+        return -7;//retVal;
 
     enableInterrupts();
     delay_ms(100);
@@ -377,7 +137,7 @@ signed char wiiCams_init() {
     retVal += I2C_write(WII_CAM_RIGHT, 0x90);
     I2C_close(WII_CAM_RIGHT);
     if(retVal != 0)
-        return retVal;
+        return -8;//retVal;
 
     enableInterrupts();
     delay_ms(100);
@@ -390,7 +150,7 @@ signed char wiiCams_init() {
     retVal += I2C_write(WII_CAM_RIGHT, 0x41);
     I2C_close(WII_CAM_RIGHT);
     if(retVal != 0)
-        return retVal;
+        return -9;//retVal;
 
     enableInterrupts();
     delay_ms(100);
@@ -403,7 +163,7 @@ signed char wiiCams_init() {
     retVal += I2C_write(WII_CAM_RIGHT, 0x00);
     I2C_close(WII_CAM_RIGHT);
     if(retVal != 0)
-        return retVal;
+        return -10;//retVal;
 
     enableInterrupts();
     delay_ms(100);
@@ -415,7 +175,7 @@ signed char wiiCams_init() {
     retVal += I2C_write(WII_CAM_RIGHT, 0x03);
     I2C_close(WII_CAM_RIGHT);
     if(retVal != 0)
-        return retVal;
+        return -11;//retVal;
 
     enableInterrupts();
     delay_ms(100);
@@ -427,32 +187,24 @@ signed char wiiCams_init() {
     retVal += I2C_write(WII_CAM_RIGHT, 0x08);
     I2C_close(WII_CAM_RIGHT);
     if(retVal != 0)
-        return retVal;
+        return -12;//retVal;
 
     enableInterrupts();
     delay_ms(100);
     disableInterrupts();
 
+    return retVal;
 
 }
 
 
 signed char wiiCams_read(unsigned char camera, unsigned char *rawData) {
 
-    /*
-     *
-write(hex): B0 37 //prepare for reading
-wait 25us
-write(hex): B1 //read request
-read 8 bytes
-wait 380us
-write(hex): B1 //read request
-read 4 bytes
-     *
-     */
+    signed char retVal;
+
     I2C_open(camera);
-    I2C_write(camera, WII_CAM_ADR);
-    I2C_write(camera, 0x37);
+    retVal = I2C_write(camera, WII_CAM_ADR);
+    retVal += I2C_write(camera, 0x37);
     I2C_close(camera);
 
     enableInterrupts();
@@ -460,11 +212,11 @@ read 4 bytes
     disableInterrupts();
 
     I2C_open(camera);
-    I2C_write(camera, WII_CAM_ADR | 0x01);
+    retVal += I2C_write(camera, WII_CAM_ADR | 0x01);
     for(unsigned char i = 0; i < 7; i++) {
-        I2C_read(camera, (rawData + i), ACK);
+        retVal += I2C_read(camera, (rawData + i), ACK);
     }
-    I2C_read(camera, rawData + 7, NAK);
+    retVal += I2C_read(camera, rawData + 7, NAK);
     I2C_close(camera);
 
     enableInterrupts();
@@ -472,10 +224,86 @@ read 4 bytes
     disableInterrupts();
 
     I2C_open(camera);
-    I2C_write(camera, WII_CAM_ADR | 0x01);
+    retVal += I2C_write(camera, WII_CAM_ADR | 0x01);
     for(unsigned char i = 8; i < 11; i++) {
-        I2C_read(camera, (rawData + i), ACK);
+        retVal += I2C_read(camera, (rawData + i), ACK);
     }
-    I2C_read(camera, rawData + 11, NAK);
+    retVal += I2C_read(camera, rawData + 11, NAK);
     I2C_close(camera);
+
+    return retVal;
 }
+
+/*
+ * This yeilds one sample from the camera containing 12 bytes, 3 for each of the
+ * 4 potential points. The format of the data will be the Extended Mode
+ * (X,Y, Y 2-msb, X 2-msb, Size 4-bits)
+ *
+ */
+
+
+
+wiiCams_processData(unsigned char *rawData, int *processedData) {
+
+    processedData[0] = rawData[0] | ((rawData[2] & 0b00110000) << 4);   // x1
+    processedData[1] = rawData[1] | ((rawData[2] & 0b11000000) << 2);   // y1
+    processedData[2] = rawData[2] & 0x0F;                               // size1
+
+    processedData[3] = rawData[3] | ((rawData[5] & 0b00110000) << 4);   // x2
+    processedData[4] = rawData[4] | ((rawData[5] & 0b11000000) << 2);   // y2
+    processedData[5] = rawData[5] & 0x0F;                               // size2
+
+    processedData[6] = rawData[6] | ((rawData[8] & 0b00110000) << 4);   // x3
+    processedData[7] = rawData[7] | ((rawData[8] & 0b11000000) << 2);   // y3
+    processedData[8] = rawData[8] & 0x0F;                               // size3
+
+    processedData[9] = rawData[9] | ((rawData[11] & 0b00110000) << 4);  // x4
+    processedData[10] = rawData[10] | ((rawData[11] & 0b11000000) << 2);// y4
+    processedData[11] = rawData[11] & 0x0F;                             // size4
+}
+
+wiiCams_sendData(unsigned char *processedData, unsigned char keyFrame) {
+
+    if(keyFrame == 1) {
+        UART_transmitByte(USB, (char)42);
+        UART_transmitByte(USB, (char)42);
+    }
+    UART_transmitByte(USB, ((processedData[0]  >> 2) & 0x00FF) );
+    UART_transmitByte(USB, ((processedData[1]  >> 2) & 0x00FF) );
+    UART_transmitByte(USB, ((processedData[3]  >> 2) & 0x00FF) );
+    UART_transmitByte(USB, ((processedData[4]  >> 2) & 0x00FF) );
+    UART_transmitByte(USB, ((processedData[6]  >> 2) & 0x00FF) );
+    UART_transmitByte(USB, ((processedData[7]  >> 2) & 0x00FF) );
+    UART_transmitByte(USB, ((processedData[9]  >> 2) & 0x00FF) );
+    UART_transmitByte(USB, ((processedData[10] >> 2) & 0x00FF) );
+}
+
+wiiCams_findCandle(unsigned char *processedDataL, unsigned char *processedDataR,
+        unsigned char angle, unsigned char *x, unsigned char *y, unsigned char *z) {
+
+    unsigned char leftBlob, rightBlob = 0;
+/*
+    for(int i = 0; i < 4; i++) {
+        if( processedDataL[3i+1] <= 1023) {
+            for(int x = 0; x < 4; x++) {
+                if(processedDataL[3i+1] >= processedDataR[3x+1] - CANDLE_TOLERANCE ||
+                        processedDataL[3i+1] >= processedDataR[3x+1] + CANDLE_TOLERANCE ) {
+                    leftBlob = i;
+                    rightBlob = x;
+                    break;
+                }
+            }
+        }
+    }
+    if(leftBlob != 0) {
+        break;
+    }
+ */
+}
+
+    // do math with theta, processedDataL[3*leftBlob] (x1),
+    // processedDataL[3*leftBlob + 1] (y1), processedDataL[3*rightBlob] (x2),
+    // processedDataR[3*rightBlob + 1] (y2)
+
+
+
