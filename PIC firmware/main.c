@@ -159,8 +159,7 @@ void RCMode()
 
         //scaling for drivability
 
-        motorDrive_setSpeeds(right_speed, left_speed);
-        delay_ms(50);
+        //motorDrive_setSpeeds(right_speed, left_speed);
     }
 }
 
@@ -191,6 +190,7 @@ void main()
     IPEN = 1;
     enableInterrupts();
     init();
+    RCMode();
     debug();
 
     while(1)
