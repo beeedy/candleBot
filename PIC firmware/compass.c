@@ -75,22 +75,17 @@ signed char compass_pixyInit() {    // this sensor is not working currently
     // the compass on the pixy board is on I2C line 1 (SDA: pin 56, SCL: pin 54)
 
     signed char retVal, data;
-    unsigned char retry = 3;
 
     data = SSP1BUF; //read any previous stored content in buffer to clear buffer
                     //full status
-    do {
-        unsigned char data[] = {
-            0x50,
-            0x20,
-            0x00
-        };
-        retVal = I2C_writeRegisters(COMPASS_PIXY, COMPASS_ADR, 0x00, data, 3);
-        if(retVal == -3) { //check if bus collision happened
-            SSP1CON1bits.WCOL=0; // clear the bus collision status bit
-        }
-        retry--;
-    } while(retVal!=0 && retry > 0); //write untill successful communication
+
+    retVal = I2C_writeRegister(COMPASS_PIXY, COMPASS_ADR, 0x00, 0x50);
+    retVal += I2C_writeRegister(COMPASS_PIXY, COMPASS_ADR, 0x01, 0x20);
+    retVal += I2C_writeRegister(COMPASS_PIXY, COMPASS_ADR, 0x02, 0x00);
+
+    if(retVal <= -3) { //check if bus collision happened
+        SSP1CON1bits.WCOL=0; // clear the bus collision status bit
+    }
 
     return retVal;
 }
@@ -136,29 +131,23 @@ signed char compass_mainRead(signed char positionData[]) {
 }
 
 
-signed char compass_pixyRead(int *x, int *y, int *z) { /*
+signed char compass_pixyRead(signed char positionData[]) {
     
-    signed char retVal;
-    retVal += WriteI2C1(COMPASS_READ_ADDR); // compass address
-    retVal += WriteI2C1(0x03);              // x MSB address
-    if(retVal != 0) {
-        (*x) = ReadI2C1();                  // store val
-        (*x) = (*x) << 8;                   // shift MSB up
-        (*x) = ( 0x00ff & ReadI2C1() );     // read LSB
+    signed char retVal = 0;
 
-        (*z) = ReadI2C1();                  // read y MSB address
-        (*z) = (*z) << 8;                   // shift MSB up
-        (*z) = ReadI2C1();                  // read LSB
-
-        (*y) = ReadI2C1();                  // read z MSB address
-        (*y) = (*y) << 8;                   // shift MSB up
-        (*y) = ReadI2C1();                  // read LSB
-
-        return 0;
+    I2C_open(COMPASS_PIXY);
+    retVal += I2C_write(COMPASS_PIXY, COMPASS_ADR);
+    retVal += I2C_write(COMPASS_PIXY, 0x03);
+    I2C_close(COMPASS_PIXY);
+    retVal += I2C_open(COMPASS_PIXY);
+    retVal += I2C_write(COMPASS_PIXY, COMPASS_ADR | 0x01);
+    for(unsigned char x = 0; x < 5; x++) {
+        retVal += I2C_read(COMPASS_PIXY, (positionData + x), ACK);
     }
-    else
-        return -1;*/
-    return 0; // remove
+    retVal += I2C_read(COMPASS_PIXY, (positionData + 5), NAK);  // nak on the last data byte
+    I2C_close(COMPASS_PIXY);
+
+    return retVal;
 }
 
 

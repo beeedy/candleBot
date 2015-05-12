@@ -411,7 +411,7 @@ void LCD_printVal(char x, char y, const int a)
     LCD_printString(x, y, temp, a);
 }
 
-void LCD_printBin(char x, char y, const char a)
+void LCD_printBin(char x, char y, char a)
 {
     char string[9];
     for(int i = 0; i < 8; i++)

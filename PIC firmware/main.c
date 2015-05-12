@@ -32,6 +32,8 @@ char volatile FONA_INDEX, USB_INDEX, PIXY_INDEX, UART4_INDEX = 0;
 
 void init()
 {
+    IPEN = 1;   //enable interrupt priority
+
     signed char retVal = 0;
 
     settings_init();
@@ -191,37 +193,12 @@ void RCMode()
 
 void main()
 {
-//'########::'########::::'###::::'########:::::'##::::'##:'########:
-// ##.... ##: ##.....::::'## ##::: ##.... ##:::: ###::'###: ##.....::
-// ##:::: ##: ##::::::::'##:. ##:: ##:::: ##:::: ####'####: ##:::::::
-// ########:: ######:::'##:::. ##: ##:::: ##:::: ## ### ##: ######:::
-// ##.. ##::: ##...:::: #########: ##:::: ##:::: ##. #: ##: ##...::::
-// ##::. ##:: ##::::::: ##.... ##: ##:::: ##:::: ##:.:: ##: ##:::::::
-// ##:::. ##: ########: ##:::: ##: ########::::: ##:::: ##: ########:
-//..:::::..::........::..:::::..::........::::::..:::::..::........::
-
-    //  DO NOT PUT DEBUG CODE HERE!!!!!
-    //
-    //  Use the debug function for code you are currently trying to
-    //  debug. main() should NOT BE EDITED any more, ie. it is finalized.
-    //  Use the dip switches to select debug mode (look at the LCD) and
-    //  once selected press the button to enter debug mode.
-    //
-    //  If there is a mode you would like that is not included already,
-    //  feel free to add it into BOTH switch statements and to modify the
-    //  do while to correct for any changes.
-    //
-    //  ps. I took the liberty of moving your I2C code there already
-
-    IPEN = 1;
     enableInterrupts();
     init();
     while(1)
     {
-        
+       LCD_printBin(0,0,settings_readSettings());
     }
-    //RCMode();
-    debug();
 
     while(1)
     {
