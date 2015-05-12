@@ -315,7 +315,7 @@ void LCD_placeCursor(char x, char y)
 }
 
 
-void LCD_printString(char x, char y, char input[], ...)
+void LCD_printString(char x, char y, const char input[], ...)
 {
     char string[20] = "\0";
 
@@ -396,7 +396,7 @@ void LCD_printString(char x, char y, char input[], ...)
 }
 
 
-void LCD_printChar(char x, char y, char a)
+void LCD_printChar(char x, char y, const char a)
 {
     char string[2];
     string[0] = a;
@@ -405,13 +405,13 @@ void LCD_printChar(char x, char y, char a)
 }
 
 
-void LCD_printVal(char x, char y, int a)
+void LCD_printVal(char x, char y, const int a)
 {
     char temp[] = "%i";
     LCD_printString(x, y, temp, a);
 }
 
-void LCD_printBin(char x, char y, char a)
+void LCD_printBin(char x, char y, const char a)
 {
     char string[9];
     for(int i = 0; i < 8; i++)

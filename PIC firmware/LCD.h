@@ -16,10 +16,10 @@
  * -------------------------------Function List---------------------------------
  * void LCD_init4bit()
  * void LCD_init8bit()
- * void LCD_printString(char, char, char[], ...)
- * void LCD_printChar(char, char, char)
- * void LCD_printVal(char, char, int)
- * void LCD_printBin(char, char, char)
+ * void LCD_printString(char, char, const char[], ...)
+ * void LCD_printChar(char, char, const char)
+ * void LCD_printVal(char, char, const int)
+ * void LCD_printBin(char, char, const char)
  * void LCD_placeCursor(char, char)
  * void LCD_clearDisplay()
  *
@@ -40,7 +40,7 @@
  *      function must be called before any other LCD functions or the LCD will
  *      not work in a predictable way.
  *
- * void LCD_printString(char, char, char[], ...)
+ * void LCD_printString(char, char, const char[], ...)
  *      This function prints out a string to the LCD using a similar syntax to
  *      the popular printf() statement used in ANSI C. The first two arguments
  *      indicate the X-Y coordinates of the first character in the string,
@@ -54,7 +54,7 @@
  *      will automatically decide if it should communicate over a 4-bit or 8-bit
  *      protocol depending on how the LCD screen was initialized.
  *
- * void LCD_printChar(char, char, char)
+ * void LCD_printChar(char, char, const char)
  *      This function prints a single character to the LCD screen at the
  *      location determined by the first two arguments sent to the function,
  *      with the first two arguments representing x-y respectively. The third
@@ -62,7 +62,7 @@
  *      This function will automatically decide if it should communicate over a
  *      4-bit or 8-bit protocol depending on how the LCD screen was initialized.
  *
- * void LCD_printVal(char, char, int)
+ * void LCD_printVal(char, char, const int)
  *      This function prints a single integer value to the LCD screen at the
  *      location determined by the first two arguments sent to the function,
  *      with the first two arguments representing x-y respectively. The third
@@ -70,7 +70,7 @@
  *      This function will automatically decide if it should communicate over a
  *      4-bit or 8-bit protocol depending on how the LCD screen was initialized.
  *
- * void LCD_printBin(char, char, char)
+ * void LCD_printBin(char, char, const char)
  *      This function prints a single 8-bit binary number to the LCD screen at
  *      the location determined by the first two arguments sent to the function,
  *      with the first two arguments representing x-y respectively. The third
@@ -124,10 +124,10 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define delay_short() asm("NOP")
 #define delay_long() delay_us(40);
 
-void LCD_printString(char, char, char[], ...);
-void LCD_printChar(char, char, char);
-void LCD_printVal(char, char, int);
-void LCD_printBin(char, char, char);
+void LCD_printString(char, char, const char[], ...);
+void LCD_printChar(char, char, const char);
+void LCD_printVal(char, char, const int);
+void LCD_printBin(char, char, const char);
 void LCD_init4bit();
 void LCD_init8bit();
 void LCD_placeCursor(char, char);
