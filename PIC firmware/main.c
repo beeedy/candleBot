@@ -54,78 +54,54 @@ void init()
 
 void debug()
 {
-    /*
-    int intensityDataLX[4];
-    int intensityDataLY[4];
-    int intensityDataRX[4];
-    int intensityDataRY[4];
-=======
->>>>>>> Stashed changes
-    unsigned char rawDataL[12];
-    unsigned char rawDataR[12];
-    int processedDataL[12];
-    int processedDataR[12];
-<<<<<<< Updated upstream
-=======
->>>>>>> origin/master
->>>>>>> Stashed changes
+    while(1)
+    {
+        for(int i = 0; i < 45; i++)
+        {
+            UART_transmitByte(PIXY, i);
+            delay_ms(200);
+        }
+        
 
-    
-    UART_transmitString(USB, "color sensor testing begin\n\r\n\r");
-    signed char retVal = 0;
-    unsigned char colorVals[8];
-    while(1) {
-        disableInterrupts();
-        retVal = colorSensor_init();
-        if(retVal == 0) {
-            while(1) {
-
-                enableInterrupts();
-                delay_ms(200);           // wait for integration time - 24ms
-                disableInterrupts();
-                retVal = colorSensor_read(READ_COLOR_AND_CLEAR, colorVals);
-                enableInterrupts();
-                if(retVal == 0) {
-                    UART_transmitString(USB, "Clear: %i \n\r", colorVals[1] << 8 | colorVals[0]);
-                    UART_transmitString(USB, "Red: %i \n\r", colorVals[3] << 8 | colorVals[2]);
-                    UART_transmitString(USB, "Green: %i \n\r", colorVals[5] << 8 | colorVals[4]);
-                    UART_transmitString(USB, "Blue: %i \n\r", colorVals[7] << 8 | colorVals[6]);
-                }
-                else {
-                    UART_transmitString(USB, "Color Sensor Error: %i \n\r", (int)retVal);
-                }
+        /*
+        char W = 0;
+        char E = 0;
+        for(int i = 0; i < 5; i++)
+        {
+            fft_execute();
+            int freq = fft_maxFreq();
+            if(freq > 2000 && freq < 3000)
+            {
+                ++W;
+            }
+            else if(freq > 3000 && freq < 4000)
+            {
+                ++E;
             }
         }
-    }
-    
-    signed char retVal = 0;
-    while(1) {
-        disableInterrupts();
-        retVal = wiiCams_read(WII_CAM_LEFT, rawDataL);
-        retVal += wiiCams_read(WII_CAM_RIGHT, rawDataR);
-        wiiCams_processData(rawDataL, processedDataL);
-        wiiCams_processData(rawDataR, processedDataR);
-        enableInterrupts();
-        if(retVal != 0) {
-            LCD_printString(0, 0, "wii Cam\nreadFail");
-            UART_transmitString(USB, "FAILURE");
-        }
-        else {
-            //UART_transmitString(USB, " ___1___  ___2___\n\r");
-            //for(unsigned char i = 0; i < 4; i++) {
-                //UART_transmitString(USB, "(%i, ", (int)processedDataL[3*i]);
-                //UART_transmitString(USB, "%i)  ", (int)processedDataL[3*i + 1]);
-                //UART_transmitString(USB, "s: %i  ", (int)processedDataL[3*i + 2]);
 
-                //UART_transmitString(USB, "(%i, ", (int)processedDataR[3*i]);
-                //UART_transmitString(USB, "%i)  ", (int)processedDataR[3*i + 1]);
-                //UART_transmitString(USB, "s: %i  \n\r", (int)processedDataR[3*i + 2]);
-            //}
-            wiiCams_sendData(processedDataL, ACK);
-            wiiCams_sendData(processedDataR, NAK);
+        if(W == 5)
+        {
+            LCD_clearDisplay();
+            clearMillis();
+            while(1)
+            {
+                LCD_printString(0,0,"West\n%i",millis()/1000);
+                delay_ms(200);
+            }
         }
-        delay_ms(10);
-    }*/
+        else if(E == 5)
+        {
+            LCD_clearDisplay();
+            clearMillis();
+            while(1)
+            {
+                LCD_printString(0,0,"East\n%i",millis()/1000);
+                delay_ms(200);
+            }
+        }
+        */
+    }
 }
 
 void selfTest()
@@ -182,11 +158,11 @@ void RCMode()
 
         //scaling for drivability
 
-        left_speed = min(left_speed, 65);
-        right_speed = min(right_speed, 65);
+        left_speed = min(left_speed, 75);
+        right_speed = min(right_speed, 75);
 
-        //motorDrive_setSpeeds(right_speed, left_speed);
-        motorDrive_setSpeeds(0, 0);
+        motorDrive_setSpeeds(right_speed, left_speed);
+        //motorDrive_setSpeeds(0, 0);
         //motorDrive_limitedAccelerationSetSpeeds(left_speed, right_speed);
     }
 }
@@ -195,10 +171,7 @@ void main()
 {
     enableInterrupts();
     init();
-    while(1)
-    {
-       LCD_printBin(0,0,settings_readSettings());
-    }
+    debug();
 
     while(1)
     {
@@ -289,21 +262,25 @@ void interrupt high_priority  communicationInterruptHandler()
     }
     if(PIR1bits.RC1IF)   // EUSART1 Receive buffer RCREG1 is full
     {
-        FONA_BUFF[FONA_INDEX] = RCREG1;
-        FONA_INDEX++;
+        UART_transmitByte(USB,RCREG1);
+        //FONA_BUFF[FONA_INDEX] = RCREG1;
+        //FONA_INDEX++;
     }
     if(PIR3bits.RC2IF)   // EUSART2 Receive buffer RCREG2 is full
     {
+        UART_transmitByte(USB,RCREG2);
         // THIS SHOULD NEVER HAPPEN
     }
     if(PIR6bits.RC3IF)   // EUSART3 Receive buffer RCREG3 is full
     {
-        PIXY_BUFF[PIXY_INDEX] = RCREG3;
-        PIXY_INDEX++;
+        UART_transmitByte(USB,RCREG3);
+        //PIXY_BUFF[PIXY_INDEX] = RCREG3;
+        //PIXY_INDEX++;
     }
     if(PIR6bits.RC4IF)   // EUSART4 Receive buffer RCREG4 is full
     {
-        USB_BUFF[USB_INDEX] = RCREG4;
-        USB_INDEX++;
+        UART_transmitByte(USB,RCREG4);
+        //USB_BUFF[USB_INDEX] = RCREG4;
+        //USB_INDEX++;
     }
 }

@@ -20,41 +20,17 @@
 extern volatile char FONA_BUFF[FONA_BUFF_SIZE];
 extern volatile char FONA_INDEX;
 
-char FONA_init() {
-    char genString[20] = "AT\r\nOK\r\n";
-    // Fona seems to send text and then an \r character, not a \0
-    // character, elliminating the possibility of using a string
-    // continuous recieve function for little
-    short retry = 5;
-    FONA_INDEX = 0;
-    do {
-        UART_transmitByte(FONA, 'A');   // Transmit
-        //delay_ms(1);                    // Fona should echo 'A'
-        UART_transmitByte(FONA, 'T');
-        //delay_ms(1);                    // Fona should echo 'T'
-        UART_transmitByte(FONA, '\r');
-        //delay_ms(1);                    /// Should echo '\r'
-        UART_transmitByte(FONA, '\n');
-        delay_ms(5);                    /// Should echo '\n'
-
-        for(signed char i = 7; i >= 0; i--) {
-            if( !(FONA_BUFF[i] == genString[i]) ) {
-                retry = retry - 1;  // decrement the number of times to retry
-                FONA_INDEX = 0;    // Reset the buffer
-                break;              // stop checking the arrays
-            }
-            retry = -1;     // success!
+char FONA_init()
+{
+    for(int i = 0; i < 5; i++)
+    {
+        if(FONA_sendCommandCheckReply("AT","OK"))
+        {
+            return 0x01;
         }
-    } while(retry > 0);
-
-    if(retry == -1) {       // Successful communication
-        FONA_INDEX = 0;
-        for(signed char i = 10; i >= 0; i--) {
-            FONA_BUFF[i] = 0;   // clear buffer just in case
-        }
-        return 0;
+        delay_ms(100);
     }
-    return 1;               // unsuccessful communication
+    return 0x00;
 }
 
 /* Given a null terminated string and a 10 digit phone number, this function
@@ -137,4 +113,63 @@ char FONA_CheckStrength()
     }
 
     return 'a'; // this is just to remove error, no idea what you are actually doing
+}
+
+void FONA_sendCommand(const char input[])
+{
+    char input_fixed[100];
+
+    char inputLength = strlen(input);
+
+    strcpy(input_fixed, input);
+    input_fixed[inputLength] = '\n';
+    input_fixed[inputLength + 1] = '\0';
+
+    UART_transmitString(FONA, input_fixed);
+}
+
+char FONA_checkReply(const char test[])
+{
+    for(int i = 0; i < strlen(test); i++)
+    {
+        if(test[i] !=  FONA_BUFF[i])
+        {
+            return 0x00;
+        }
+    }
+    return 0x01;
+}
+
+char FONA_sendCommandCheckReply(const char input[], const char check[])
+{
+    FONA_INDEX = 0;
+
+    char inputLength = strlen(input);
+    char checkLength = strlen(check);
+
+    FONA_sendCommand(input);
+
+    unsigned long timeOut = millis();
+    while(FONA_INDEX < (inputLength + checkLength + 3) && millis() - timeOut < FONA_TIMEOUT);
+
+    if(millis() - timeOut >= FONA_TIMEOUT)
+    {
+        return 0x00;
+    }
+
+    char test[100];
+    strcpy(test,input);
+    test[inputLength] = '\r';
+    test[inputLength+1] = '\n';
+
+    for(int i = 0; i < checkLength; i++)
+    {
+        test[inputLength + 2 + i] = check[i];
+    }
+
+    test[inputLength + checkLength + 2] = '\r';
+    test[inputLength + checkLength + 3] = '\n';
+    test[inputLength + checkLength + 4] = '\0';
+
+    return FONA_checkReply(test);
 }
