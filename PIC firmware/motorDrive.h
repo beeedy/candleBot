@@ -38,7 +38,7 @@
  *      direction and have the robot move backwards, both values should be made
  *      negative.
  *
- * char motorDrive_limitedAccelerationSetSpeeds(signed char, signed char, char)
+ * char motorDrive_limitedAccelerationSetSpeeds(signed char, signed char)
  *      This function controls the speed and direction of both motors
  *      similtaneously. The inputs can be values between -100 and 100. All
  *      positive values correspond to forward rotation while negative values
@@ -83,11 +83,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "xc.h"
 #include "pwm.h"
 
-#define MAX_ACCEL 10
+#define MAX_ACCEL 1
 
 void motorDrive_init();
 void motorDrive_setSpeeds(signed char, signed char);
-char motorDrive_limitedAccelerationSetSpeeds(signed char, signed char, char);
+char motorDrive_limitedAccelerationSetSpeeds(signed char, signed char);
 
 #endif
 

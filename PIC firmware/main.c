@@ -22,8 +22,8 @@
 #include "PS2.h"
 #include "compass.h"
 #include "colorSensor.h"
-#include "I2C.h"
-#include "wiiCams.h"
+//#include "I2C.h"
+//#include "wiiCams.h"
 
 
 char volatile FONA_BUFF[FONA_BUFF_SIZE], USB_BUFF[USB_BUFF_SIZE],
@@ -34,9 +34,24 @@ void init()
 {
     signed char retVal = 0;
 
-    settings_init();
-    motorDrive_init();
+    //settings_init();
     LCD_init4bit();
+<<<<<<< HEAD
+    motorDrive_init();
+    delay_init();
+    //UART_init();
+    //encoders_init();
+    //fft_init();
+    //I2C_init(1);
+    //I2C_init(2);
+    //retVal += wiiCams_init();
+    //clearMillis();
+
+//    if(retVal != 0) {
+//        LCD_printString(0, 0, "init /nFailure!");
+//        delay_s(5);
+//    }
+=======
     UART_init();
     encoders_init();
     fft_init();
@@ -49,16 +64,31 @@ void init()
         LCD_printString(0, 0, "init /nFail:%i", (int)retVal);
         while(1);
     }
+>>>>>>> origin/master
 }
 
 void debug()
 {
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+    /*
+    int intensityDataLX[4];
+    int intensityDataLY[4];
+    int intensityDataRX[4];
+    int intensityDataRY[4];
+=======
+>>>>>>> Stashed changes
     unsigned char rawDataL[12];
     unsigned char rawDataR[12];
     int processedDataL[12];
     int processedDataR[12];
+<<<<<<< Updated upstream
+=======
+>>>>>>> origin/master
+>>>>>>> Stashed changes
 
-    /*
+    
     UART_transmitString(USB, "color sensor testing begin\n\r\n\r");
     signed char retVal = 0;
     unsigned char colorVals[8];
@@ -85,7 +115,7 @@ void debug()
             }
         }
     }
-    */
+    
     signed char retVal = 0;
     while(1) {
         disableInterrupts();
@@ -113,7 +143,7 @@ void debug()
             wiiCams_sendData(processedDataR, NAK);
         }
         delay_ms(10);
-    }
+    }*/
 }
 
 void selfTest()
@@ -164,13 +194,18 @@ void RCMode()
     while(1)
     {
         PS2_readGamepad();
-        //LCD_printString(0,0, "ana:%i\ntype %i",PS2_analog(PSS_LX),type);
+        LCD_printString(0,0, "ana:%i\ntype %i",PS2_analog(PSS_LX),type);
         int left_speed = ((PS2_analog(PSS_LY) * 120) / 255) - 60;
         int right_speed = ((PS2_analog(PSS_RY) * 120) / 255) - 60;
 
         //scaling for drivability
 
+        left_speed = min(left_speed, 65);
+        right_speed = min(right_speed, 65);
+
         //motorDrive_setSpeeds(right_speed, left_speed);
+        motorDrive_setSpeeds(0, 0);
+        //motorDrive_limitedAccelerationSetSpeeds(left_speed, right_speed);
     }
 }
 
@@ -201,7 +236,11 @@ void main()
     IPEN = 1;
     enableInterrupts();
     init();
-    RCMode();
+    while(1)
+    {
+        
+    }
+    //RCMode();
     debug();
 
     while(1)

@@ -10,6 +10,7 @@
  */
 
 #include "motorDrive.h"
+#include "LCD.h"
 
 #define direction_left PORTLbits.RL0
 #define direction_right PORTKbits.RK1
@@ -48,23 +49,22 @@ void motorDrive_init()
     TMR6ON = 1; //enable timer
     T6CKPS1 = 1;
 
+    TMR8ON = 1; //enable timer
+    T8CKPS1 = 1;
 
-    OpenEPWM1(0x33, ECCP_1_SEL_TMR36);
+    OpenEPWM3(0x33, ECCP_3_SEL_TMR36);
+    SetDCEPWM3(0x0);
+    SetOutputEPWM3( SINGLE_OUT, PWM_MODE_1);
+
+    OpenEPWM1(0x33, ECCP_1_SEL_TMR38);
     SetDCEPWM1(0x0);
     SetOutputEPWM1( SINGLE_OUT, PWM_MODE_1);
-        
+    
+    CCPTMRS0 = 0b11000010;
 
     // There was problems getting both PWM moduels running off of the same timer
     // when using the built in functions, we we had to manually set the values
     // that enable us to do this.
-    CCP1CON =   0b00001100; //Configure ECCP1
-    CCPTMRS0 =  0b01001001;
-
-        
-        
-    OpenEPWM3(0x33, ECCP_3_SEL_TMR36);
-    SetDCEPWM3(0x0);
-    SetOutputEPWM3( SINGLE_OUT, PWM_MODE_1);
 
     motorDrive_setSpeeds(0,0);
 }
@@ -93,30 +93,30 @@ void motorDrive_setSpeeds(signed char lSpeed, signed char rSpeed)
     SetDCEPWM3(templ);
 }
 
-char motorDrive_limitedAccelerationSetSpeeds(signed char lSpeed, signed char rSpeed, char accel)
+char motorDrive_limitedAccelerationSetSpeeds(signed char lSpeed, signed char rSpeed)
 {
     char done = 0x01;
 
-    unsigned long deltaTime = millis() - prevTime;
+    unsigned long deltaTime = (millis() - prevTime)/100;
 
     if(lSpeed < lMotorSpeed)
     {
-       lSpeed += (accel * deltaTime);
+       lMotorSpeed -= (MAX_ACCEL * deltaTime);
        if(lSpeed > lMotorSpeed)
        {
-           lSpeed = lMotorSpeed;
+           lMotorSpeed = lSpeed;
        }
        else
        {
            done = 0x00;
        }
     }
-    else
+    else if(lSpeed > lMotorSpeed)
     {
-        lSpeed -= (accel * deltaTime);
+        lMotorSpeed += (MAX_ACCEL * deltaTime);
        if(lSpeed < lMotorSpeed)
        {
-           lSpeed = lMotorSpeed;
+           lMotorSpeed = lSpeed;
        }
        else
        {
@@ -126,27 +126,29 @@ char motorDrive_limitedAccelerationSetSpeeds(signed char lSpeed, signed char rSp
 
     if(rSpeed < rMotorSpeed)
     {
-       rSpeed += (accel * deltaTime);
+       rMotorSpeed -= (MAX_ACCEL * deltaTime);
        if(rSpeed > rMotorSpeed)
        {
-           rSpeed = rMotorSpeed;
+           rMotorSpeed = rSpeed;
        }
        else
        {
            done = 0x00;
        }
     }
-    else
+    else if(rSpeed > rMotorSpeed)
     {
-        rSpeed -= (accel * deltaTime);
+        rMotorSpeed += (MAX_ACCEL * deltaTime);
        if(rSpeed < rMotorSpeed)
        {
-           rSpeed = rMotorSpeed;
+           rMotorSpeed = rSpeed;
        }
        else
        {
            done = 0x00;
        }
     }
+
+    motorDrive_setSpeeds(lMotorSpeed, rMotorSpeed);
     return done;
 }
