@@ -67,8 +67,6 @@
 #include "GlobalDefines.h"
 #include <math.h>
 
-#define ACK 1
-#define NAK 0
 
 signed char compass_pixyInit() {    // this sensor is not working currently
 
@@ -156,6 +154,6 @@ void compass_cart2polar(signed char positionData[], int *theta, int *phi, int *r
     float yf = (float)( positionData[4] << 8 | positionData[5] );
     float zf = (float)( positionData[2] << 8 | positionData[3] );
     (*r)     = (int)(sqrt( (xf*xf) + (yf*yf) + (zf*zf) ));
-    (*theta) = (int)( acos((zf)/(*r)) );
-    (*phi)   = (int)( atan( yf/xf ) );
+    (*theta) = (int)( acos((zf)/(*r))*57.296 );     // also converts to degrees
+    (*phi)   = (int)( atan( yf/xf )*57.296 );       // also converts to degrees
 }
