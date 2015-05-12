@@ -98,6 +98,7 @@ char motorDrive_limitedAccelerationSetSpeeds(signed char lSpeed, signed char rSp
     char done = 0x01;
 
     unsigned long deltaTime = (millis() - prevTime)/100;
+    prevTime = millis();
 
     if(lSpeed < lMotorSpeed)
     {

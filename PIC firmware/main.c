@@ -34,44 +34,24 @@ void init()
 {
     signed char retVal = 0;
 
-    //settings_init();
+    settings_init();
     LCD_init4bit();
-<<<<<<< HEAD
     motorDrive_init();
     delay_init();
-    //UART_init();
-    //encoders_init();
-    //fft_init();
-    //I2C_init(1);
-    //I2C_init(2);
-    //retVal += wiiCams_init();
-    //clearMillis();
-
-//    if(retVal != 0) {
-//        LCD_printString(0, 0, "init /nFailure!");
-//        delay_s(5);
-//    }
-=======
     UART_init();
     encoders_init();
     fft_init();
-    I2C_init(1);
-    I2C_init(2);
-    retVal += wiiCams_init();
+    UART_init();
     clearMillis();
 
     if(retVal != 0) {
         LCD_printString(0, 0, "init /nFail:%i", (int)retVal);
         while(1);
     }
->>>>>>> origin/master
 }
 
 void debug()
 {
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
     /*
     int intensityDataLX[4];
     int intensityDataLY[4];
