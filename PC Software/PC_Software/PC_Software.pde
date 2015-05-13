@@ -6,7 +6,7 @@ final int screenHeight = 500;
 final int edgesImageWidth = 160;
 final int edgesImageHeight = 100;
 
-final int baudRate = 921600;
+final int baudRate = 115200;
 
 import controlP5.*;
 import processing.serial.*;
@@ -20,9 +20,9 @@ RadioButton r;
 int mode = -1;
 
 boolean[][] edgesImage = new boolean[edgesImageWidth][edgesImageHeight];
-byte SerialBuffer[1024] = 0;
+byte[] SerialBuffer = new byte[1024];
 
-byte wiiData[16];
+byte[] wiiData = new byte[16];
 
 int serialCount = 0;
 
@@ -33,6 +33,10 @@ boolean collecting = false;
 
 void setup()
 {
+  for(int i = 0; i < 16; i++)
+  {
+   wiiData[i] = (byte)0xFF; 
+  }
   size(screenWidth,screenHeight);
   noStroke();
   
@@ -120,21 +124,22 @@ void draw()
       break;
       
     case (2):    //Wii Mode
+ 
     fill(color(244, 163,174));
-      for(int i = 0; i < 4; i++
+      for(int i = 0; i < 4; i++)
       {
         if(wiiData[2*i] != 0xff || wiiData[2*i+1] != 0xff)
         {
-          elipse(27+wiiData[2*i], 27+wiiData[2*i+1], 20, 20)
+          ellipse(27+wiiData[2*i], 27+wiiData[2*i+1], 20, 20);
         }
       }
       
       fill(color(201, 197, 232));
-      for(int i = 0; i < 4; i++
+      for(int i = 0; i < 4; i++)
       {
         if(wiiData[2*i] != 0xff || wiiData[2*i+1] != 0xff)
         {
-          elipse(27+wiiData[2*(i+8)], 27+wiiData[2*(i+8)+1], 20, 20)
+          ellipse(27+wiiData[2*i+8], 27+wiiData[2*i+9], 20, 20);
         }
       }
       break;
@@ -166,7 +171,7 @@ void radioButton(int a)
       break;
       
     case (2):    // Wii Mode
-      myPort.buffer(18);
+      myPort.buffer(36);
       break;
       
     case (3):    //FFT Mode
@@ -206,14 +211,15 @@ public void input(String text)
   }
   else if((lowerText.length() > 7) && (lowerText.substring(0,7).equals("connect")))
   {
-    mode = 1;
+    mode = 2;
     
     String portString = lowerText.substring(7);
     int portNum = Integer.parseInt(lowerText.substring(7));
     myPort = new Serial(this, Serial.list()[portNum], baudRate);
     myPort.clear();
     
-    myPort.bufferUntil(0x41);
+    //myPort.bufferUntil(0x41);
+    myPort.buffer(36);
     //myPort.buffer(edgesImageWidth*edgesImageHeight/8);
     textFeed.setText(textFeed.getText() + "Connected to " + Serial.list()[portNum] + "\n");
   }
@@ -242,9 +248,10 @@ public void input(String text)
 
 void serialEvent(Serial input)
 {   
+  
   switch(mode)
   {
-    case (1):
+    case (1):/*
       if(collecting == false)
       {
         myPort.clear();
@@ -282,13 +289,31 @@ void serialEvent(Serial input)
         //textFeed.setText(textFeed.getText() + "Recieved Frame\n" + inBuffer.length + " Bytes read\n" + input.available() + " bytes left in buffer\n");
         collecting = false;
         break;
-        
+        */
       case (2):  //wii mode
-        byte[] inBuffer = new byte[18];
-        if(inBuffer[0] != 42 || inBuffer[1] != 42) return;
-        for(int i = 2; i < 18; i++
+        byte[] inBuffer = new byte[36];
+        inBuffer = input.readBytes();
+      input.readBytes(inBuffer);
+        textFeed.setText(textFeed.getText() + "\nGot Data co");
+        for(int x = 0; x < 36; x++)
         {
-         wiiData[i-2] = inBuffer[i]; 
+          textFeed.setText(textFeed.getText() + inBuffer[x] + " ");
+        }
+        textFeed.setText(textFeed.getText() + "\n\n\n");
+        for(int i = 0; i < 20; i++)
+        {
+          if(inBuffer[i] == 42 && inBuffer[i+1] == 42) 
+          {
+            i += 2;
+            textFeed.setText(textFeed.getText() + "\nFound Data");
+        
+            for(int j = 0; j < 16; j++)
+            {
+               wiiData[j] = inBuffer[i];
+               i++;
+            }
+            i = 20;
+          }
         }
         break;
         
