@@ -11,6 +11,12 @@
 #include "GlobalDefines.h"
 #include "I2C.h"
 #include "delays.h"
+#include "math.h"
+
+#define WII_Y_TOLERANCE 5
+#define WII_FOV 0.576
+#define TAN_FOV_2 0.296236
+#define WII_CAM_DISTANCE_APART 3.5
 
 
 signed char wiiCams_init();
@@ -24,14 +30,12 @@ signed char wiiCams_init();
  *
  *
  */
-
-signed char wiiCams_read(unsigned char camera, unsigned char *rawData);
-
-
-wiiCams_processData(unsigned char *rawData, int *processedData);
-wiiCams_sendData(unsigned char *processedData, unsigned char keyFrame);
-wiiCams_findCandle(unsigned char *processedDataL, unsigned char *processedDataR,
-        unsigned char angle, unsigned char *x, unsigned char *y, unsigned char *z);
+void wiiCams_execute(char *x, char *y);
+signed char wiiCams_read(unsigned char camera, char *rawData);
+void wiiCams_processData(char *rawData, int *processedData);
+void wiiCams_sendData(unsigned char *processedData, unsigned char keyFrame);
+void wiiCams_findCandle(int *processedDataL, int *processedDataR,
+                        unsigned char *x, unsigned char *y);
 
 #endif	/* WIICAMS_H */
 

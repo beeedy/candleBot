@@ -10,8 +10,6 @@
 #include "wiiCams.h"
 #include "UART.h"
 
-#define CANDLE_TOLERANCE 5
-
 /*
  * http://procrastineering.blogspot.com/2008/09/working-with-pixart-camera-directly.html
  *
@@ -197,6 +195,27 @@ signed char wiiCams_init() {
 
 }
 
+void wiiCams_execute(char *x, char *y)
+{
+    char leftData[12];
+    char rightData[12];
+
+    if(wiiCams_read(WII_CAM_LEFT, leftData) != 0 || wiiCams_read(WII_CAM_RIGHT, rightData) != 0)
+    {
+        *x = -1;
+        *y = -1;
+        return;
+    }
+
+    int cookedLeftData[12];
+    int cookedRightData[12];
+
+    wiiCams_processData(&leftData, &cookedLeftData);
+    wiiCams_processData(&rightData, &cookedRightData);
+
+    wiiCams_findCandle(&cookedLeftData, &cookedRightData, x, y);
+}
+
 
 signed char wiiCams_read(unsigned char camera, unsigned char *rawData) {
 
@@ -243,26 +262,26 @@ signed char wiiCams_read(unsigned char camera, unsigned char *rawData) {
 
 
 
-wiiCams_processData(unsigned char *rawData, int *processedData) {
+void wiiCams_processData(unsigned char *rawData, int *processedData) {
 
-    processedData[0] = rawData[0] | ((rawData[2] & 0b00110000) << 4);   // x1
-    processedData[1] = rawData[1] | ((rawData[2] & 0b11000000) << 2);   // y1
+    processedData[0] = 1023 - (rawData[0] | ((rawData[2] & 0b00110000) << 4));   // x1
+    processedData[1] = 1023 - (rawData[1] | ((rawData[2] & 0b11000000) << 2));   // y1
     processedData[2] = rawData[2] & 0x0F;                               // size1
 
-    processedData[3] = rawData[3] | ((rawData[5] & 0b00110000) << 4);   // x2
-    processedData[4] = rawData[4] | ((rawData[5] & 0b11000000) << 2);   // y2
+    processedData[3] = 1023 - (rawData[3] | ((rawData[5] & 0b00110000) << 4));   // x2
+    processedData[4] = 1023 - (rawData[4] | ((rawData[5] & 0b11000000) << 2));   // y2
     processedData[5] = rawData[5] & 0x0F;                               // size2
 
-    processedData[6] = rawData[6] | ((rawData[8] & 0b00110000) << 4);   // x3
-    processedData[7] = rawData[7] | ((rawData[8] & 0b11000000) << 2);   // y3
+    processedData[6] = 1023 - (rawData[6] | ((rawData[8] & 0b00110000) << 4));   // x3
+    processedData[7] = 1023 - (rawData[7] | ((rawData[8] & 0b11000000) << 2));   // y3
     processedData[8] = rawData[8] & 0x0F;                               // size3
 
-    processedData[9] = rawData[9] | ((rawData[11] & 0b00110000) << 4);  // x4
-    processedData[10] = rawData[10] | ((rawData[11] & 0b11000000) << 2);// y4
+    processedData[9] = 1023 - (rawData[9] | ((rawData[11] & 0b00110000) << 4));  // x4
+    processedData[10] = 1023 - (rawData[10] | ((rawData[11] & 0b11000000) << 2));// y4
     processedData[11] = rawData[11] & 0x0F;                             // size4
 }
 
-wiiCams_sendData(unsigned char *processedData, unsigned char keyFrame) {
+void wiiCams_sendData(unsigned char *processedData, unsigned char keyFrame) {
 
     if(keyFrame == 1) {
         UART_transmitByte(USB, (char)42);
@@ -278,27 +297,49 @@ wiiCams_sendData(unsigned char *processedData, unsigned char keyFrame) {
     UART_transmitByte(USB, ((processedData[10] >> 2) & 0x00FF) );
 }
 
-wiiCams_findCandle(unsigned char *processedDataL, unsigned char *processedDataR,
-        unsigned char angle, unsigned char *x, unsigned char *y, unsigned char *z) {
+void wiiCams_findCandle(int *processedDataL, int *processedDataR,
+                        unsigned char *x, unsigned char *y)
+{
+    //These arrays could be optimized out if we do not care about all the light
+    //sources we find.
+    unsigned char xTemp[4];
+    unsigned char yTemp[4];
 
-    unsigned char leftBlob, rightBlob = 0;
-/*
-    for(int i = 0; i < 4; i++) {
-        if( processedDataL[3i+1] <= 1023) {
-            for(int x = 0; x < 4; x++) {
-                if(processedDataL[3i+1] >= processedDataR[3x+1] - CANDLE_TOLERANCE ||
-                        processedDataL[3i+1] >= processedDataR[3x+1] + CANDLE_TOLERANCE ) {
-                    leftBlob = i;
-                    rightBlob = x;
-                    break;
-                }
-            }
-        }
+    unsigned char minX = 1023;
+    unsigned char minY = 1023;
+
+    for(int i = 0; i <= 3; i++)
+    {
+       if(processedDataL[i*3+1] != 1023)
+       {
+           for(int j = 0; j <= 3; j++)
+           {
+               if(processedDataR[j*3+1] != 1023 && ABS((processedDataL[i*3+1] - processedDataR[j*3+1])) < WII_Y_TOLERANCE)
+               {
+                   //oh shit we found a match!
+
+                   double theta1, theta2, alpha;
+
+                   theta1 = 90 - atan2((2*processedDataL[i*3] - 1023)*TAN_FOV_2,1024);
+                   theta2 = 90 - atan2((-2*processedDataR[i*3] - 1023)*TAN_FOV_2,1024);
+
+                   alpha = WII_CAM_DISTANCE_APART * sin(theta2) / sin(180.0 - theta1 - theta2);
+
+                   yTemp[i] = (int)(sin(theta1)*alpha);
+                   xTemp[i] = (int)(WII_CAM_DISTANCE_APART - (cos(theta1)*alpha));
+
+                   if(minY > yTemp[i])
+                   {
+                       minY = yTemp[i];
+                       minX = xTemp[i];
+                   }
+               }
+           }
+       }
     }
-    if(leftBlob != 0) {
-        break;
-    }
- */
+
+    *x = minX;
+    *y = minY;
 }
 
     // do math with theta, processedDataL[3*leftBlob] (x1),
