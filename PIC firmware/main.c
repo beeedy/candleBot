@@ -54,13 +54,27 @@ void init()
 
 void debug()
 {
+    delay_s(5);
+
+    if(FONA_init() == SUCCESS)
+    {
+        char err = FONA_Text("Can we get muffin faded?",BroderickFoneNumber);
+        if(err == SUCCESS)
+        {
+            LCD_printString(0,0,"FOUND\nTEXTED");
+        }
+        else
+        {
+            LCD_printString(0,0,"%i\nERROR",err);
+        }
+    }
+    else
+    {
+         LCD_printString(0,0,"ERROR\nERROR");
+    }
     while(1)
     {
-        for(int i = 0; i < 45; i++)
-        {
-            UART_transmitByte(PIXY, i);
-            delay_ms(200);
-        }
+       
         
 
         /*
@@ -262,25 +276,21 @@ void interrupt high_priority  communicationInterruptHandler()
     }
     if(PIR1bits.RC1IF)   // EUSART1 Receive buffer RCREG1 is full
     {
-        UART_transmitByte(USB,RCREG1);
-        //FONA_BUFF[FONA_INDEX] = RCREG1;
-        //FONA_INDEX++;
+        FONA_BUFF[FONA_INDEX] = RCREG1;
+        FONA_INDEX++;
     }
     if(PIR3bits.RC2IF)   // EUSART2 Receive buffer RCREG2 is full
     {
-        UART_transmitByte(USB,RCREG2);
         // THIS SHOULD NEVER HAPPEN
     }
     if(PIR6bits.RC3IF)   // EUSART3 Receive buffer RCREG3 is full
     {
-        UART_transmitByte(USB,RCREG3);
-        //PIXY_BUFF[PIXY_INDEX] = RCREG3;
-        //PIXY_INDEX++;
+        PIXY_BUFF[PIXY_INDEX] = RCREG3;
+        PIXY_INDEX++;
     }
     if(PIR6bits.RC4IF)   // EUSART4 Receive buffer RCREG4 is full
     {
-        UART_transmitByte(USB,RCREG4);
-        //USB_BUFF[USB_INDEX] = RCREG4;
-        //USB_INDEX++;
+        USB_BUFF[USB_INDEX] = RCREG4;
+        USB_INDEX++;
     }
 }

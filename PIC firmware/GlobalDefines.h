@@ -72,6 +72,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #define _XTAL_FREQ 64000000
 
+#define SUCCESS 1
+#define FAILURE 0
+
+#define FONA_TIMEOUT 10000
+
 
 // Macros for various simple actions
 #define MAX(x,y)    ((x > y) ? x : y)
