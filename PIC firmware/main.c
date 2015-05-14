@@ -22,8 +22,8 @@
 #include "PS2.h"
 #include "compass.h"
 #include "colorSensor.h"
-//#include "I2C.h"
-//#include "wiiCams.h"
+#include "I2C.h"
+#include "wiiCams.h"
 
 
 char volatile FONA_BUFF[FONA_BUFF_SIZE], USB_BUFF[USB_BUFF_SIZE],
@@ -45,6 +45,7 @@ void init()
     fft_init();
     UART_init();
     clearMillis();
+    I2C_init(1);
 
     if(retVal != 0) {
         LCD_printString(0, 0, "init /nFail:%i", (int)retVal);
@@ -54,8 +55,10 @@ void init()
 
 void debug()
 {
-    delay_s(5);
-
+    //delay_s(5);
+    LCD_printString(0, 0, "Test\nSuccess");
+    
+    /*
     if(FONA_init() == SUCCESS)
     {
         char err = FONA_Text("Can we get muffin faded?",BroderickFoneNumber);
@@ -72,6 +75,9 @@ void debug()
     {
          LCD_printString(0,0,"ERROR\nERROR");
     }
+    */
+
+
     while(1)
     {
        

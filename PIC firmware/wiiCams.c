@@ -1,23 +1,16 @@
-/*
- * Wii Remote IR sensor  test sample code  by kako
- * modified output for Wii-BlobTrack program by RobotFreak
- * adapted for use with the PIC18F97J94 by Tyler Holmes
- *
- *
- *
+/*   _    _ _ _   ___________   _____
+    | |  | (_|_) |_   _| ___ \ /  __ \
+    | |  | |_ _    | | | |_/ / | /  \/ __ _ _ __ ___   ___ _ __ __ _ ___
+    | |/\| | | |   | | |    /  | |    / _` | '_ ` _ \ / _ \ '__/ _` / __|
+    \  /\  / | |  _| |_| |\ \  | \__/\ (_| | | | | | |  __/ | | (_| \__ \
+     \/  \/|_|_|  \___/\_| \_|  \____/\__,_|_| |_| |_|\___|_|  \__,_|___/
+
+ * File:   wiiCams.h
+ * Author: Tyler Holmes and Broderick Carlin
  */
 
 #include "wiiCams.h"
-#include "UART.h"
 
-/*
- * http://procrastineering.blogspot.com/2008/09/working-with-pixart-camera-directly.html
- *
- * This yeilds one sample from the camera containing 12 bytes, 3 for each of the
- * 4 potential points. The format of the data will be the Extended Mode
- * (X,Y, Y 2-msb, X 2-msb, Size 4-bits)
- *
- */
 
 signed char wiiCams_init() {
 
@@ -32,7 +25,10 @@ signed char wiiCams_init() {
     retVal += I2C_write(WII_CAM_LEFT, 0x01);
     I2C_close(WII_CAM_LEFT);
     if(retVal != 0)
+    {
+        enableInterrupts();
         return -1;//retVal;
+    }
 
     enableInterrupts();
     delay_ms(100);
@@ -50,7 +46,10 @@ signed char wiiCams_init() {
     retVal += I2C_write(WII_CAM_LEFT, 0x90);
     I2C_close(WII_CAM_LEFT);
     if(retVal != 0)
+    {
+        enableInterrupts();
         return -2;//retVal;
+    }
 
     enableInterrupts();
     delay_ms(100);
@@ -63,7 +62,10 @@ signed char wiiCams_init() {
     retVal += I2C_write(WII_CAM_LEFT, 0x41);
     I2C_close(WII_CAM_LEFT);
     if(retVal != 0)
+    {
+        enableInterrupts();
         return -3;//retVal;
+    }
 
     enableInterrupts();
     delay_ms(100);
@@ -76,7 +78,10 @@ signed char wiiCams_init() {
     retVal += I2C_write(WII_CAM_LEFT, 0x00);
     I2C_close(WII_CAM_LEFT);
     if(retVal != 0)
+    {
+        enableInterrupts();
         return -4;//retVal;
+    }
 
     enableInterrupts();
     delay_ms(100);
@@ -88,7 +93,10 @@ signed char wiiCams_init() {
     retVal += I2C_write(WII_CAM_LEFT, 0x03);
     I2C_close(WII_CAM_LEFT);
     if(retVal != 0)
+    {
+        enableInterrupts();
         return -5;//retVal;
+    }
 
     enableInterrupts();
     delay_ms(100);
@@ -100,7 +108,10 @@ signed char wiiCams_init() {
     retVal += I2C_write(WII_CAM_LEFT, 0x08);
     I2C_close(WII_CAM_LEFT);
     if(retVal != 0)
+    {
+        enableInterrupts();
         return -6;//retVal;
+    }
 
     enableInterrupts();
     delay_ms(100);
@@ -117,7 +128,10 @@ signed char wiiCams_init() {
     retVal += I2C_write(WII_CAM_RIGHT, 0x01);
     I2C_close(WII_CAM_RIGHT);
     if(retVal != 0)
+    {
+        enableInterrupts();
         return -7;//retVal;
+    }
 
     enableInterrupts();
     delay_ms(100);
@@ -135,7 +149,10 @@ signed char wiiCams_init() {
     retVal += I2C_write(WII_CAM_RIGHT, 0x90);
     I2C_close(WII_CAM_RIGHT);
     if(retVal != 0)
+    {
+        enableInterrupts();
         return -8;//retVal;
+    }
 
     enableInterrupts();
     delay_ms(100);
@@ -148,7 +165,10 @@ signed char wiiCams_init() {
     retVal += I2C_write(WII_CAM_RIGHT, 0x41);
     I2C_close(WII_CAM_RIGHT);
     if(retVal != 0)
+    {
+        enableInterrupts();
         return -9;//retVal;
+    }
 
     enableInterrupts();
     delay_ms(100);
@@ -161,7 +181,10 @@ signed char wiiCams_init() {
     retVal += I2C_write(WII_CAM_RIGHT, 0x00);
     I2C_close(WII_CAM_RIGHT);
     if(retVal != 0)
+    {
+        enableInterrupts();
         return -10;//retVal;
+    }
 
     enableInterrupts();
     delay_ms(100);
@@ -173,7 +196,10 @@ signed char wiiCams_init() {
     retVal += I2C_write(WII_CAM_RIGHT, 0x03);
     I2C_close(WII_CAM_RIGHT);
     if(retVal != 0)
+    {
+        enableInterrupts();
         return -11;//retVal;
+    }
 
     enableInterrupts();
     delay_ms(100);
@@ -185,11 +211,13 @@ signed char wiiCams_init() {
     retVal += I2C_write(WII_CAM_RIGHT, 0x08);
     I2C_close(WII_CAM_RIGHT);
     if(retVal != 0)
+    {
+        enableInterrupts();
         return -12;//retVal;
+    }
 
     enableInterrupts();
     delay_ms(100);
-    disableInterrupts();
 
     return retVal;
 
@@ -226,9 +254,7 @@ signed char wiiCams_read(unsigned char camera, unsigned char *rawData) {
     retVal += I2C_write(camera, 0x37);
     I2C_close(camera);
 
-    enableInterrupts();
     delay_us(25);
-    disableInterrupts();
 
     I2C_open(camera);
     retVal += I2C_write(camera, WII_CAM_ADR | 0x01);
@@ -238,9 +264,7 @@ signed char wiiCams_read(unsigned char camera, unsigned char *rawData) {
     retVal += I2C_read(camera, rawData + 7, NAK);
     I2C_close(camera);
 
-    enableInterrupts();
     delay_us(25);
-    disableInterrupts();
 
     I2C_open(camera);
     retVal += I2C_write(camera, WII_CAM_ADR | 0x01);
@@ -279,22 +303,6 @@ void wiiCams_processData(unsigned char *rawData, int *processedData) {
     processedData[9] = 1023 - (rawData[9] | ((rawData[11] & 0b00110000) << 4));  // x4
     processedData[10] = 1023 - (rawData[10] | ((rawData[11] & 0b11000000) << 2));// y4
     processedData[11] = rawData[11] & 0x0F;                             // size4
-}
-
-void wiiCams_sendData(unsigned char *processedData, unsigned char keyFrame) {
-
-    if(keyFrame == 1) {
-        UART_transmitByte(USB, (char)42);
-        UART_transmitByte(USB, (char)42);
-    }
-    UART_transmitByte(USB, ((processedData[0]  >> 2) & 0x00FF) );
-    UART_transmitByte(USB, ((processedData[1]  >> 2) & 0x00FF) );
-    UART_transmitByte(USB, ((processedData[3]  >> 2) & 0x00FF) );
-    UART_transmitByte(USB, ((processedData[4]  >> 2) & 0x00FF) );
-    UART_transmitByte(USB, ((processedData[6]  >> 2) & 0x00FF) );
-    UART_transmitByte(USB, ((processedData[7]  >> 2) & 0x00FF) );
-    UART_transmitByte(USB, ((processedData[9]  >> 2) & 0x00FF) );
-    UART_transmitByte(USB, ((processedData[10] >> 2) & 0x00FF) );
 }
 
 void wiiCams_findCandle(int *processedDataL, int *processedDataR,
@@ -341,10 +349,6 @@ void wiiCams_findCandle(int *processedDataL, int *processedDataR,
     *x = minX;
     *y = minY;
 }
-
-    // do math with theta, processedDataL[3*leftBlob] (x1),
-    // processedDataL[3*leftBlob + 1] (y1), processedDataL[3*rightBlob] (x2),
-    // processedDataR[3*rightBlob + 1] (y2)
 
 
 
