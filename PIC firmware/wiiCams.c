@@ -9,6 +9,7 @@
 
 #include "wiiCams.h"
 #include "UART.h"
+#include "LCD.h"
 
 #define CANDLE_TOLERANCE 5
 
@@ -243,7 +244,7 @@ signed char wiiCams_read(unsigned char camera, unsigned char *rawData) {
 
 
 
-wiiCams_processData(unsigned char *rawData, int *processedData) {
+void wiiCams_processData(unsigned char *rawData, int *processedData) {
 
     processedData[0] = rawData[0] | ((rawData[2] & 0b00110000) << 4);   // x1
     processedData[1] = rawData[1] | ((rawData[2] & 0b11000000) << 2);   // y1
@@ -262,7 +263,7 @@ wiiCams_processData(unsigned char *rawData, int *processedData) {
     processedData[11] = rawData[11] & 0x0F;                             // size4
 }
 
-wiiCams_sendData(unsigned char *processedData, unsigned char keyFrame) {
+void wiiCams_sendData(int *processedData, unsigned char keyFrame) {
 
     if(keyFrame == 1) {
         UART_transmitByte(USB, (char)42);
@@ -278,27 +279,39 @@ wiiCams_sendData(unsigned char *processedData, unsigned char keyFrame) {
     UART_transmitByte(USB, ((processedData[10] >> 2) & 0x00FF) );
 }
 
-wiiCams_findCandle(unsigned char *processedDataL, unsigned char *processedDataR,
+void wiiCams_findCandle(int *processedDataL, int *processedDataR,
         unsigned char angle, unsigned char *x, unsigned char *y, unsigned char *z) {
 
-    unsigned char leftBlob, rightBlob = 0;
-/*
-    for(int i = 0; i < 4; i++) {
-        if( processedDataL[3i+1] <= 1023) {
-            for(int x = 0; x < 4; x++) {
-                if(processedDataL[3i+1] >= processedDataR[3x+1] - CANDLE_TOLERANCE ||
-                        processedDataL[3i+1] >= processedDataR[3x+1] + CANDLE_TOLERANCE ) {
+    unsigned char leftBlob = 0;
+    unsigned char rightBlob = 0;
+
+    for(char i = 0; i < 4; i++)
+    {
+        if(processedDataL[3*i+1] < 1023)
+        {
+            for(char x = 0; x < 4; x++)
+            {
+                if(processedDataL[3*i+1] >= processedDataR[3*x+1] - CANDLE_TOLERANCE ||
+                        processedDataL[3*i+1] >= processedDataR[3*x+1] + CANDLE_TOLERANCE )
+                {
                     leftBlob = i;
                     rightBlob = x;
                     break;
                 }
             }
         }
+        if(leftBlob != 0) {
+            break;
+        }
     }
+    enableInterrupts();
     if(leftBlob != 0) {
-        break;
+        LCD_printString(0, 0, "CANDLE: \nDETECTED");
     }
- */
+    else {
+        LCD_printString(0, 0, "No \n Candle");
+    }
+    disableInterrupts(); 
 }
 
     // do math with theta, processedDataL[3*leftBlob] (x1),
@@ -307,3 +320,43 @@ wiiCams_findCandle(unsigned char *processedDataL, unsigned char *processedDataR,
 
 
 
+/*
+
+ Debug code:
+
+unsigned char rawDataL[12];
+unsigned char rawDataR[12];
+int processedDataL[12];
+int processedDataR[12];
+
+ signed char retVal = 0;
+    while(1) {
+        disableInterrupts();
+        retVal = wiiCams_read(WII_CAM_LEFT, rawDataL);
+        retVal += wiiCams_read(WII_CAM_RIGHT, rawDataR);
+        wiiCams_processData(rawDataL, processedDataL);
+        wiiCams_processData(rawDataR, processedDataR);
+        enableInterrupts();
+        if(retVal != 0) {
+            LCD_printString(0, 0, "wii Cam\nreadFail");
+            UART_transmitString(USB, "FAILURE");
+        }
+        else {
+            UART_transmitString(USB, " ___1___  ___2___\n\r");
+            for(unsigned char i = 0; i < 4; i++) {
+                UART_transmitString(USB, "(%i, ", (int)processedDataL[3*i]);
+                UART_transmitString(USB, "%i)  ", (int)processedDataL[3*i + 1]);
+                UART_transmitString(USB, "s: %i  ", (int)processedDataL[3*i + 2]);
+
+                UART_transmitString(USB, "(%i, ", (int)processedDataR[3*i]);
+                UART_transmitString(USB, "%i)  ", (int)processedDataR[3*i + 1]);
+                UART_transmitString(USB, "s: %i  \n\r", (int)processedDataR[3*i + 2]);
+            }
+            wiiCams_sendData(processedDataL, ACK);
+            wiiCams_sendData(processedDataR, NAK);
+        }
+        delay_ms(10);
+    }
+
+
+ */
