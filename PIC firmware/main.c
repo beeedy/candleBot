@@ -133,6 +133,66 @@ void selfTest()
 {
     //Code here to self test
 
+    signed char retVal = 0;
+    signed char errors = 0;
+
+    LCD_printString(0, 0, "INITSELF\nTEST(5s)");
+    enableInterrupts();
+    delay_s(5);
+    disableInterrupts();
+
+    I2C_open(WII_CAM_LEFT);
+    retVal = I2C_write(WII_CAM_LEFT, WII_CAM_ADR);
+    I2C_close(WII_CAM_LEFT);
+    if(retVal != 0) {
+        LCD_printString(0, 0, "LEFT WII\n--FAIL--");
+        enableInterrupts();
+        delay_s(5);
+        disableInterrupts();
+        errors++;
+    }
+
+
+    I2C_open(WII_CAM_RIGHT);
+    retVal = I2C_write(WII_CAM_RIGHT, WII_CAM_ADR);
+    I2C_close(WII_CAM_RIGHT);
+    if(retVal != 0) {
+        LCD_printString(0, 0, "RIGHT WII\n--FAIL--");
+        enableInterrupts();
+        delay_s(5);
+        disableInterrupts();
+        errors++;
+    }
+
+    I2C_open(COLOR_SENSOR);
+    retVal = I2C_write(COLOR_SENSOR, COLOR_SENSOR_ADR);
+    I2C_close(COLOR_SENSOR);
+    if(retVal != 0) {
+        LCD_printString(0, 0, "ColorSen\n--FAIL--");
+        enableInterrupts();
+        delay_s(5);
+        disableInterrupts();
+        errors++;
+    }
+
+    I2C_open(COMPASS_MAIN);
+    retVal = I2C_write(COMPASS_MAIN, COMPASS_ADR);
+    I2C_close(COMPASS_MAIN);
+    if(retVal != 0) {
+        LCD_printString(0, 0, "MainComp\n--FAIL--");
+        enableInterrupts();
+        delay_s(5);
+        disableInterrupts();
+        errors++;
+    }
+
+    if(errors != 0) {
+        LCD_printString(0, 0, "=ERRORS=\nnum: %i", errors);
+        enableInterrupts();
+        delay_s(10);
+        disableInterrupts();
+    }
+
     LCD_printString(0,0, "Self Cal\nWait Plz");
     
     while(settings_readButton() == 0);
@@ -278,15 +338,7 @@ void interrupt high_priority  communicationInterruptHandler()
     //INTCONbits.INT0IF = 0;  ???
 
     // Rearange for Priority
-
-    if(0) {
-
-        // I2C Comms 1
-    }
-    if(0) {
-
-        // I2C Comms 2
-    }
+    
     if(PIR1bits.RC1IF)   // EUSART1 Receive buffer RCREG1 is full
     {
         FONA_BUFF[FONA_INDEX] = RCREG1;
