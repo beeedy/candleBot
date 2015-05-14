@@ -136,17 +136,20 @@ void selfTest()
     signed char retVal = 0;
     signed char errors = 0;
 
-    LCD_printString(0, 0, "INITSELF\nTEST(5s)");
     enableInterrupts();
+    LCD_printString(0, 0, "INITSELF\nTEST(5s)");
+    UART_transmitString(USB, "Init Self Test in 5 sec...\n\r");
     delay_s(5);
     disableInterrupts();
+
 
     I2C_open(WII_CAM_LEFT);
     retVal = I2C_write(WII_CAM_LEFT, WII_CAM_ADR);
     I2C_close(WII_CAM_LEFT);
     if(retVal != 0) {
-        LCD_printString(0, 0, "LEFT WII\n--FAIL--");
         enableInterrupts();
+        LCD_printString(0, 0, "LEFT WII\n--FAIL--");
+        UART_transmitString(USB, "Left Wii Init Fail. Error: %i\n\r\n\r", retVal);
         delay_s(5);
         disableInterrupts();
         errors++;
@@ -157,8 +160,9 @@ void selfTest()
     retVal = I2C_write(WII_CAM_RIGHT, WII_CAM_ADR);
     I2C_close(WII_CAM_RIGHT);
     if(retVal != 0) {
-        LCD_printString(0, 0, "RIGHT WII\n--FAIL--");
         enableInterrupts();
+        LCD_printString(0, 0, "RIGHT WII\n--FAIL--");
+        UART_transmitString(USB, "Right Wii Init Fail. Error: %i\n\r\n\r", retVal);
         delay_s(5);
         disableInterrupts();
         errors++;
@@ -168,8 +172,9 @@ void selfTest()
     retVal = I2C_write(COLOR_SENSOR, COLOR_SENSOR_ADR);
     I2C_close(COLOR_SENSOR);
     if(retVal != 0) {
-        LCD_printString(0, 0, "ColorSen\n--FAIL--");
         enableInterrupts();
+        LCD_printString(0, 0, "ColorSen\n--FAIL--");
+        UART_transmitString(USB, "Color Sensor Init Fail. Error: %i\n\r\n\r", retVal);
         delay_s(5);
         disableInterrupts();
         errors++;
@@ -179,16 +184,17 @@ void selfTest()
     retVal = I2C_write(COMPASS_MAIN, COMPASS_ADR);
     I2C_close(COMPASS_MAIN);
     if(retVal != 0) {
-        LCD_printString(0, 0, "MainComp\n--FAIL--");
         enableInterrupts();
+        LCD_printString(0, 0, "MainComp\n--FAIL--");
+        UART_transmitString(USB, "Main Compass Init Fail. Error: %i\n\r\n\r", retVal);
         delay_s(5);
         disableInterrupts();
         errors++;
     }
 
     if(errors != 0) {
-        LCD_printString(0, 0, "=ERRORS=\nnum: %i", errors);
         enableInterrupts();
+        LCD_printString(0, 0, "=ERRORS=\nnum: %i", errors);
         delay_s(10);
         disableInterrupts();
     }
