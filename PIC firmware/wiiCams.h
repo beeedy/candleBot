@@ -26,9 +26,11 @@ signed char wiiCams_init();
  */
 
 signed char wiiCams_read(unsigned char camera, unsigned char *rawData);
-void wiiCams_processData(unsigned char *rawData, int *processedData);
-void wiiCams_sendData(int *processedData, unsigned char keyFrame);
-void wiiCams_findCandle(int *processedDataL, int *processedDataR,
+
+
+wiiCams_processData(unsigned char *rawData, int *processedData);
+wiiCams_sendData(unsigned char *processedData, unsigned char keyFrame);
+wiiCams_findCandle(unsigned char *processedDataL, unsigned char *processedDataR,
         unsigned char angle, unsigned char *x, unsigned char *y, unsigned char *z);
 
 #endif	/* WIICAMS_H */
