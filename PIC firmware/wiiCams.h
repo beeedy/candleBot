@@ -104,15 +104,13 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "math.h"
 
 #define WII_Y_TOLERANCE 5
-#define WII_FOV 0.576
-#define TAN_FOV_2 0.296236
-#define WII_CAM_DISTANCE_APART 3.5
-
+#define TAN_FOV_2 0.29621
+#define WII_CAM_DISTANCE_APART 2.5
 
 signed char wiiCams_init();
 void wiiCams_execute(char *x, char *y);
 signed char wiiCams_read(unsigned char camera, char *rawData);
-void wiiCams_processData(char *rawData, int *processedData);
+void wiiCams_processData(unsigned char *rawData, int *processedData);
 void wiiCams_findCandle(int *processedDataL, int *processedDataR,
                         unsigned char *x, unsigned char *y);
 

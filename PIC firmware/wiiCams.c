@@ -11,7 +11,6 @@
 
 #include "wiiCams.h"
 
-
 signed char wiiCams_init() {
 
     signed char retVal = 0;
@@ -223,30 +222,9 @@ signed char wiiCams_init() {
 
 }
 
-void wiiCams_execute(char *x, char *y)
+
+signed char wiiCams_read(unsigned char camera, unsigned char *rawData)
 {
-    char leftData[12];
-    char rightData[12];
-
-    if(wiiCams_read(WII_CAM_LEFT, leftData) != 0 || wiiCams_read(WII_CAM_RIGHT, rightData) != 0)
-    {
-        *x = -1;
-        *y = -1;
-        return;
-    }
-
-    int cookedLeftData[12];
-    int cookedRightData[12];
-
-    wiiCams_processData(&leftData, &cookedLeftData);
-    wiiCams_processData(&rightData, &cookedRightData);
-
-    wiiCams_findCandle(&cookedLeftData, &cookedRightData, x, y);
-}
-
-
-signed char wiiCams_read(unsigned char camera, unsigned char *rawData) {
-
     signed char retVal;
 
     I2C_open(camera);
@@ -277,33 +255,26 @@ signed char wiiCams_read(unsigned char camera, unsigned char *rawData) {
     return retVal;
 }
 
-/*
- * This yeilds one sample from the camera containing 12 bytes, 3 for each of the
- * 4 potential points. The format of the data will be the Extended Mode
- * (X,Y, Y 2-msb, X 2-msb, Size 4-bits)
- *
- */
+void wiiCams_processData(unsigned char *rawData, int *processedData)
+{
 
-
-
-void wiiCams_processData(unsigned char *rawData, int *processedData) {
-
-    processedData[0] = 1023 - (rawData[0] | ((rawData[2] & 0b00110000) << 4));   // x1
-    processedData[1] = 1023 - (rawData[1] | ((rawData[2] & 0b11000000) << 2));   // y1
+    processedData[0] = rawData[0] | ((rawData[2] & 0b00110000) << 4);   // x1
+    processedData[1] = rawData[1] | ((rawData[2] & 0b11000000) << 2);   // y1
     processedData[2] = rawData[2] & 0x0F;                               // size1
 
-    processedData[3] = 1023 - (rawData[3] | ((rawData[5] & 0b00110000) << 4));   // x2
-    processedData[4] = 1023 - (rawData[4] | ((rawData[5] & 0b11000000) << 2));   // y2
+    processedData[3] = rawData[3] | ((rawData[5] & 0b00110000) << 4);   // x2
+    processedData[4] = rawData[4] | ((rawData[5] & 0b11000000) << 2);   // y2
     processedData[5] = rawData[5] & 0x0F;                               // size2
 
-    processedData[6] = 1023 - (rawData[6] | ((rawData[8] & 0b00110000) << 4));   // x3
-    processedData[7] = 1023 - (rawData[7] | ((rawData[8] & 0b11000000) << 2));   // y3
+    processedData[6] = rawData[6] | ((rawData[8] & 0b00110000) << 4);   // x3
+    processedData[7] = rawData[7] | ((rawData[8] & 0b11000000) << 2);   // y3
     processedData[8] = rawData[8] & 0x0F;                               // size3
 
-    processedData[9] = 1023 - (rawData[9] | ((rawData[11] & 0b00110000) << 4));  // x4
-    processedData[10] = 1023 - (rawData[10] | ((rawData[11] & 0b11000000) << 2));// y4
+    processedData[9] = rawData[9] | ((rawData[11] & 0b00110000) << 4);  // x4
+    processedData[10] = rawData[10] | ((rawData[11] & 0b11000000) << 2);// y4
     processedData[11] = rawData[11] & 0x0F;                             // size4
 }
+
 
 void wiiCams_findCandle(int *processedDataL, int *processedDataR,
                         unsigned char *x, unsigned char *y)
@@ -328,8 +299,8 @@ void wiiCams_findCandle(int *processedDataL, int *processedDataR,
 
                    double theta1, theta2, alpha;
 
-                   theta1 = 90 - atan2((2*processedDataL[i*3] - 1023)*TAN_FOV_2,1024);
-                   theta2 = 90 - atan2((-2*processedDataR[i*3] - 1023)*TAN_FOV_2,1024);
+                   theta1 = 90 - atan2(((2*processedDataL[i*3] - 1023)*TAN_FOV_2),1024);
+                   theta2 = 90 - atan2(((-2*processedDataR[i*3] - 1023)*TAN_FOV_2),1024);
 
                    alpha = WII_CAM_DISTANCE_APART * sin(theta2) / sin(180.0 - theta1 - theta2);
 
@@ -345,10 +316,4 @@ void wiiCams_findCandle(int *processedDataL, int *processedDataR,
            }
        }
     }
-
-    *x = minX;
-    *y = minY;
 }
-
-
-

@@ -46,8 +46,13 @@ void init()
     UART_init();
     clearMillis();
     I2C_init(1);
+    I2C_init(2);
+    retVal += compass_mainBoardInit();
+    retVal += wiiCams_init();
+    retVal += colorSensor_init();
 
     if(retVal != 0) {
+        enableInterrupts();
         LCD_printString(0, 0, "init /nFail:%i", (int)retVal);
         while(1);
     }
@@ -178,11 +183,11 @@ void RCMode()
 
         //scaling for drivability
 
-        left_speed = min(left_speed, 75);
-        right_speed = min(right_speed, 75);
+        left_speed = min(left_speed, 65);
+        right_speed = min(right_speed, 65);
 
-        motorDrive_setSpeeds(right_speed, left_speed);
-        //motorDrive_setSpeeds(0, 0);
+        //motorDrive_setSpeeds(right_speed, left_speed);
+        motorDrive_setSpeeds(0, 0);
         //motorDrive_limitedAccelerationSetSpeeds(left_speed, right_speed);
     }
 }
@@ -191,7 +196,9 @@ void main()
 {
     enableInterrupts();
     init();
-    debug();
+    while(1) {
+        debug();
+    }
 
     while(1)
     {
@@ -199,8 +206,8 @@ void main()
 
         do {
 
-            mode = (settings_selfTest() << 2) + (settings_wander() << 1) + settings_auto();
-
+            //mode = (settings_selfTest() << 2) + (settings_wander() << 1) + settings_auto();
+            mode = 5;
             switch(mode) {
                 case 0:     //RC Mode
                     LCD_printString(0, 0, "Selected\nRC Mode");
