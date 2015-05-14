@@ -22,8 +22,8 @@
 #include "PS2.h"
 #include "compass.h"
 #include "colorSensor.h"
-//#include "I2C.h"
-//#include "wiiCams.h"
+#include "I2C.h"
+#include "wiiCams.h"
 
 
 char volatile FONA_BUFF[FONA_BUFF_SIZE], USB_BUFF[USB_BUFF_SIZE],
@@ -45,8 +45,14 @@ void init()
     fft_init();
     UART_init();
     clearMillis();
+    I2C_init(1);
+    I2C_init(2);
+    retVal += compass_mainBoardInit();
+    retVal += wiiCams_init();
+    retVal += colorSensor_init();
 
     if(retVal != 0) {
+        enableInterrupts();
         LCD_printString(0, 0, "init /nFail:%i", (int)retVal);
         while(1);
     }
@@ -54,78 +60,7 @@ void init()
 
 void debug()
 {
-    /*
-    int intensityDataLX[4];
-    int intensityDataLY[4];
-    int intensityDataRX[4];
-    int intensityDataRY[4];
-=======
->>>>>>> Stashed changes
-    unsigned char rawDataL[12];
-    unsigned char rawDataR[12];
-    int processedDataL[12];
-    int processedDataR[12];
-<<<<<<< Updated upstream
-=======
->>>>>>> origin/master
->>>>>>> Stashed changes
-
     
-    UART_transmitString(USB, "color sensor testing begin\n\r\n\r");
-    signed char retVal = 0;
-    unsigned char colorVals[8];
-    while(1) {
-        disableInterrupts();
-        retVal = colorSensor_init();
-        if(retVal == 0) {
-            while(1) {
-
-                enableInterrupts();
-                delay_ms(200);           // wait for integration time - 24ms
-                disableInterrupts();
-                retVal = colorSensor_read(READ_COLOR_AND_CLEAR, colorVals);
-                enableInterrupts();
-                if(retVal == 0) {
-                    UART_transmitString(USB, "Clear: %i \n\r", colorVals[1] << 8 | colorVals[0]);
-                    UART_transmitString(USB, "Red: %i \n\r", colorVals[3] << 8 | colorVals[2]);
-                    UART_transmitString(USB, "Green: %i \n\r", colorVals[5] << 8 | colorVals[4]);
-                    UART_transmitString(USB, "Blue: %i \n\r", colorVals[7] << 8 | colorVals[6]);
-                }
-                else {
-                    UART_transmitString(USB, "Color Sensor Error: %i \n\r", (int)retVal);
-                }
-            }
-        }
-    }
-    
-    signed char retVal = 0;
-    while(1) {
-        disableInterrupts();
-        retVal = wiiCams_read(WII_CAM_LEFT, rawDataL);
-        retVal += wiiCams_read(WII_CAM_RIGHT, rawDataR);
-        wiiCams_processData(rawDataL, processedDataL);
-        wiiCams_processData(rawDataR, processedDataR);
-        enableInterrupts();
-        if(retVal != 0) {
-            LCD_printString(0, 0, "wii Cam\nreadFail");
-            UART_transmitString(USB, "FAILURE");
-        }
-        else {
-            //UART_transmitString(USB, " ___1___  ___2___\n\r");
-            //for(unsigned char i = 0; i < 4; i++) {
-                //UART_transmitString(USB, "(%i, ", (int)processedDataL[3*i]);
-                //UART_transmitString(USB, "%i)  ", (int)processedDataL[3*i + 1]);
-                //UART_transmitString(USB, "s: %i  ", (int)processedDataL[3*i + 2]);
-
-                //UART_transmitString(USB, "(%i, ", (int)processedDataR[3*i]);
-                //UART_transmitString(USB, "%i)  ", (int)processedDataR[3*i + 1]);
-                //UART_transmitString(USB, "s: %i  \n\r", (int)processedDataR[3*i + 2]);
-            //}
-            wiiCams_sendData(processedDataL, ACK);
-            wiiCams_sendData(processedDataR, NAK);
-        }
-        delay_ms(10);
-    }*/
 }
 
 void selfTest()
@@ -195,9 +130,8 @@ void main()
 {
     enableInterrupts();
     init();
-    while(1)
-    {
-       LCD_printBin(0,0,settings_readSettings());
+    while(1) {
+        debug();
     }
 
     while(1)
@@ -206,8 +140,8 @@ void main()
 
         do {
 
-            mode = (settings_selfTest() << 2) + (settings_wander() << 1) + settings_auto();
-
+            //mode = (settings_selfTest() << 2) + (settings_wander() << 1) + settings_auto();
+            mode = 5;
             switch(mode) {
                 case 0:     //RC Mode
                     LCD_printString(0, 0, "Selected\nRC Mode");

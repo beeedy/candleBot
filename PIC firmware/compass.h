@@ -19,9 +19,10 @@ extern "C" {
 
 signed char compass_pixyInit();
 signed char compass_mainBoardInit();
-signed char compass_mainRead(signed char positionData[]);
-signed char compass_pixyRead(signed char positionData[]);
-void compass_cart2polar(signed char posData[], int *theta, int *phi, int *r);
+signed char compass_mainRead(unsigned char *positionData);
+signed char compass_pixyRead(unsigned char *positionData);
+void compass_cart2polar(unsigned char *posData, int *theta, int *phi, int *r,
+        int *x, int *y, int *z);
 
 #ifdef	__cplusplus
 }

@@ -59,6 +59,8 @@
  * write the device's address, the adress you want to read/write,
  * then write/read the value
  *
+ * 63488 - 2047
+ *
  */
 
 #include <xc.h>
@@ -97,7 +99,7 @@ signed char compass_mainBoardInit() {
     data = SSP2BUF; //read any previous stored content in buffer to clear buffer
                     //full status
 
-    retVal = I2C_writeRegister(COMPASS_MAIN, COMPASS_ADR, 0x00, 0x50);
+    retVal = I2C_writeRegister(COMPASS_MAIN, COMPASS_ADR, 0x00, 0b01110000);
     retVal += I2C_writeRegister(COMPASS_MAIN, COMPASS_ADR, 0x01, 0x20);
     retVal += I2C_writeRegister(COMPASS_MAIN, COMPASS_ADR, 0x02, 0x00);
 
@@ -109,7 +111,7 @@ signed char compass_mainBoardInit() {
 }
 
 
-signed char compass_mainRead(signed char positionData[]) {
+signed char compass_mainRead(unsigned char *positionData) {
 
     signed char retVal = 0;
 
@@ -129,7 +131,7 @@ signed char compass_mainRead(signed char positionData[]) {
 }
 
 
-signed char compass_pixyRead(signed char positionData[]) {
+signed char compass_pixyRead(unsigned char *positionData) {
     
     signed char retVal = 0;
 
@@ -149,11 +151,50 @@ signed char compass_pixyRead(signed char positionData[]) {
 }
 
 
-void compass_cart2polar(signed char positionData[], int *theta, int *phi, int *r) {
-    float xf = (float)( positionData[0] << 8 | positionData[1] );
-    float yf = (float)( positionData[4] << 8 | positionData[5] );
-    float zf = (float)( positionData[2] << 8 | positionData[3] );
+void compass_cart2polar(unsigned char *positionData, int *theta, int *phi,
+        int *r, int *x, int *y, int *z) {
+    signed float xf = (signed float)( positionData[0] << 8 | positionData[1] );
+    signed float yf = (signed float)( positionData[4] << 8 | positionData[5] );
+    signed float zf = (signed float)( positionData[2] << 8 | positionData[3] );
     (*r)     = (int)(sqrt( (xf*xf) + (yf*yf) + (zf*zf) ));
     (*theta) = (int)( acos((zf)/(*r))*57.296 );     // also converts to degrees
     (*phi)   = (int)( atan( yf/xf )*57.296 );       // also converts to degrees
+
+    *x = (signed int)xf;
+    *y = (signed int)yf;
+    *z = (signed int)zf;
 }
+
+
+/*
+    unsigned char positionData[6];
+    int theta, phi, r = 0;
+    int x, y, z = 0;
+    while(1) {
+        disableInterrupts();
+        compass_mainRead(positionData);
+        compass_cart2polar(positionData, &theta, &phi, &r, &x, &y, &z);
+        enableInterrupts();
+
+        UART_transmitString(USB, "x: %i\n\r", x);
+        UART_transmitString(USB, "y: %i\n\r", y);
+        UART_transmitString(USB, "z: %i\n\r\n\r", z);
+        delay_ms(50);
+    }
+     */
+    /*
+    unsigned char rawDataL[12], rawDataR[12];
+    int processedDataL[12], processedDataR[12];
+    int angle, x, y, z;
+
+    while(1) {
+        wiiCams_read(WII_CAM_LEFT, rawDataL);
+        wiiCams_read(WII_CAM_RIGHT, rawDataR);
+
+        wiiCams_processData(rawDataL, processedDataL);
+        wiiCams_processData(rawDataR, processedDataR);
+
+        wiiCams_findCandle(processedDataL, processedDataR, angle,  &x, &y, &z);
+    }
+
+ */

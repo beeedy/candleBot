@@ -88,3 +88,32 @@ signed char colorSensor_read(unsigned char readType, signed char *retVals) {
     return 0;//retVal;
 
 }
+
+/*
+    UART_transmitString(USB, "color sensor testing begin\n\r\n\r");
+    signed char retVal = 0;
+    unsigned char colorVals[8];
+    while(1) {
+        disableInterrupts();
+        retVal = colorSensor_init();
+        if(retVal == 0) {
+            while(1) {
+
+                enableInterrupts();
+                delay_ms(200);           // wait for integration time - 24ms
+                disableInterrupts();
+                retVal = colorSensor_read(READ_COLOR_AND_CLEAR, colorVals);
+                enableInterrupts();
+                if(retVal == 0) {
+                    UART_transmitString(USB, "Clear: %i \n\r", colorVals[1] << 8 | colorVals[0]);
+                    UART_transmitString(USB, "Red: %i \n\r", colorVals[3] << 8 | colorVals[2]);
+                    UART_transmitString(USB, "Green: %i \n\r", colorVals[5] << 8 | colorVals[4]);
+                    UART_transmitString(USB, "Blue: %i \n\r", colorVals[7] << 8 | colorVals[6]);
+                }
+                else {
+                    UART_transmitString(USB, "Color Sensor Error: %i \n\r", (int)retVal);
+                }
+            }
+        }
+    }*/
+
