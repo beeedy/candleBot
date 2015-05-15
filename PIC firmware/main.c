@@ -43,25 +43,28 @@ void init()
     UART_init();
     encoders_init();
     fft_init();
-    UART_init();
     clearMillis();
     I2C_init(1);
     I2C_init(2);
     retVal += compass_mainBoardInit();
     retVal += wiiCams_init();
     retVal += colorSensor_init();
-
+    FONA_init();
+/*
     if(retVal != 0) {
         enableInterrupts();
         LCD_printString(0, 0, "init /nFail:%i", (int)retVal);
         while(1);
-    }
+    } */
 }
 
 void debug()
 {
+    FONA_Text("FONA TEST - LADDER 43", 5077794334);
+    while(1);
+
     //delay_s(5);
-    LCD_printString(0, 0, "Test\nSuccess");
+    //LCD_printString(0, 0, "Test\nSuccess");
     
     /*
     if(FONA_init() == SUCCESS)
@@ -82,19 +85,21 @@ void debug()
     }
     */
 
-
+/*
     while(1)
     {
        
-        
-
+        fft_execute();
+        int freq = fft_maxFreq();
+        UART_transmitString(USB, "Freq: %i\n\r", freq);
+    }
+*/
         /*
         char W = 0;
         char E = 0;
         for(int i = 0; i < 5; i++)
         {
-            fft_execute();
-            int freq = fft_maxFreq();
+            
             if(freq > 2000 && freq < 3000)
             {
                 ++W;
@@ -125,8 +130,8 @@ void debug()
                 delay_ms(200);
             }
         }
-        */
-    }
+        
+    }*/
 }
 
 void selfTest()
@@ -195,6 +200,7 @@ void selfTest()
     if(errors != 0) {
         enableInterrupts();
         LCD_printString(0, 0, "=ERRORS=\nnum: %i", errors);
+        UART_transmitString(USB, "Total Errors: %i\n\r\n\r", errors);
         delay_s(10);
         disableInterrupts();
     }
@@ -225,25 +231,29 @@ void competitionMode()
 
 void RCMode()
 {
-    LCD_printString(0,0, "RC Mode\nSearch..");
+    //LCD_printString(0,0, "RC Mode\nSearch..");
+    UART_transmitString(USB, "RC Mode: Searching...\n\r");
     char done = PS2_init();
     while( done != 0 )
     {
-        LCD_printString(0,0, "RC Mode\nERR: %i  ",done);
+        //LCD_printString(0,0, "RC Mode\nERR: %i  ",done);
+        UART_transmitString(USB, "RC Mode: Error: %i \n\r", done);
         delay_ms(500);
         done = PS2_init();
     }
 
     char type = PS2_readType();
 
-    LCD_printString(0,0, "ana:%i\ntype %i",PS2_analog(PSS_LX),type);
+    //LCD_printString(0,0, "ana:%i\ntype %i",PS2_analog(PSS_LX),type);
+    UART_transmitString(USB, "analog: %i\n\rtype: %i\n\r", PS2_analog(PSS_LX), type);
 
     //LCD_printString(0,0, "RC Mode\nConnectd");
 
     while(1)
     {
         PS2_readGamepad();
-        LCD_printString(0,0, "ana:%i\ntype %i",PS2_analog(PSS_LX),type);
+        //LCD_printString(0,0, "ana:%i\ntype %i",PS2_analog(PSS_LX),type);
+        UART_transmitString(USB, "analog: %i\n\rtype: %i\n\r", PS2_analog(PSS_LX), type);
         int left_speed = ((PS2_analog(PSS_LY) * 120) / 255) - 60;
         int right_speed = ((PS2_analog(PSS_RY) * 120) / 255) - 60;
 
@@ -273,7 +283,7 @@ void main()
         do {
 
             //mode = (settings_selfTest() << 2) + (settings_wander() << 1) + settings_auto();
-            mode = 5;
+            mode = 4;
             switch(mode) {
                 case 0:     //RC Mode
                     LCD_printString(0, 0, "Selected\nRC Mode");
