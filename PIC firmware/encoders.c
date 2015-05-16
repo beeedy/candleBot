@@ -52,11 +52,11 @@ void interrupt low_priority encoderInterrupt()
     {
         if(PORTBbits.RB0 == 1)
         {
-            left_count--;
+            right_count--;
         }
         else
         {
-            left_count++;
+            right_count++;
         }
         INT1IF = 0;
     }
@@ -64,11 +64,11 @@ void interrupt low_priority encoderInterrupt()
     {
         if(PORTBbits.RB2 == 1)
         {
-            right_count--;
+            left_count--;
         }
         else
         {
-            right_count++;
+            left_count++;
         }
         INT3IF = 0;
     }
@@ -77,7 +77,7 @@ void interrupt low_priority encoderInterrupt()
 
 long encoders_readLeft()
 {
-    int temp = left_count;
+    long temp = left_count;
     left_count = 0;
     return temp;
 
@@ -86,14 +86,13 @@ long encoders_readLeft()
 
 long encoders_peakLeft()
 {
-    long temp = left_count;
-    return temp;
+    return left_count;
 }
 
 
 long encoders_readRight()
 {
-    int temp = right_count;
+    long temp = right_count;
     right_count = 0;
     return temp;
 }
@@ -101,8 +100,7 @@ long encoders_readRight()
 
 long encoders_peakRight()
 {
-    long temp = right_count;
-    return temp;
+    return right_count;
 }
 
 
