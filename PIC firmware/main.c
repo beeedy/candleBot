@@ -62,6 +62,7 @@ void init()
     delay_init();
     UART_init();
     encoders_init();
+<<<<<<< HEAD
     //fft_init();
     clearMillis();
     //I2C_init(1);
@@ -75,15 +76,39 @@ void init()
 //        LCD_printString(0, 0, "init /nFail:%i", (int)retVal);
 //        while(1);
 //    }
+=======
+    fft_init();
+    clearMillis();
+    I2C_init(1);
+    I2C_init(2);
+    retVal += compass_mainBoardInit();
+    retVal += wiiCams_init();
+    retVal += colorSensor_init();
+    FONA_init();
+/*
+    if(retVal != 0) {
+        enableInterrupts();
+        LCD_printString(0, 0, "init /nFail:%i", (int)retVal);
+        while(1);
+    } */
+>>>>>>> origin/master
 }
 
 void debug()
 {
+<<<<<<< HEAD
     delay_s(5);
 //    UART_transmitByte(FONA,'\n');
 //    UART_transmitByte(FONA,'\0');
 //    UART_transmitByte(FONA,'\n');
 //    UART_transmitByte(FONA,0x1A);
+=======
+    FONA_Text("FONA TEST - LADDER 43", 5077794334);
+    while(1);
+
+    //delay_s(5);
+    //LCD_printString(0, 0, "Test\nSuccess");
+>>>>>>> origin/master
     
    FONA_Text("Last try",TylerFoneNumber);
     
@@ -106,16 +131,34 @@ void debug()
             motorDrive_setSpeeds(i,i);
             delay_ms(50);
         }
+<<<<<<< HEAD
 
         
 
+=======
+    }
+    else
+    {
+         LCD_printString(0,0,"ERROR\nERROR");
+    }
+    */
+
+/*
+    while(1)
+    {
+       
+        fft_execute();
+        int freq = fft_maxFreq();
+        UART_transmitString(USB, "Freq: %i\n\r", freq);
+    }
+*/
+>>>>>>> origin/master
         /*
         char W = 0;
         char E = 0;
         for(int i = 0; i < 5; i++)
         {
-            fft_execute();
-            int freq = fft_maxFreq();
+            
             if(freq > 2000 && freq < 3000)
             {
                 ++W;
@@ -146,13 +189,80 @@ void debug()
                 delay_ms(200);
             }
         }
-        */
-    }
+        
+    }*/
 }
 
 void selfTest()
 {
     //Code here to self test
+
+    signed char retVal = 0;
+    signed char errors = 0;
+
+    enableInterrupts();
+    LCD_printString(0, 0, "INITSELF\nTEST(5s)");
+    UART_transmitString(USB, "Init Self Test in 5 sec...\n\r");
+    delay_s(5);
+    disableInterrupts();
+
+
+    I2C_open(WII_CAM_LEFT);
+    retVal = I2C_write(WII_CAM_LEFT, WII_CAM_ADR);
+    I2C_close(WII_CAM_LEFT);
+    if(retVal != 0) {
+        enableInterrupts();
+        LCD_printString(0, 0, "LEFT WII\n--FAIL--");
+        UART_transmitString(USB, "Left Wii Init Fail. Error: %i\n\r\n\r", retVal);
+        delay_s(5);
+        disableInterrupts();
+        errors++;
+    }
+
+
+    I2C_open(WII_CAM_RIGHT);
+    retVal = I2C_write(WII_CAM_RIGHT, WII_CAM_ADR);
+    I2C_close(WII_CAM_RIGHT);
+    if(retVal != 0) {
+        enableInterrupts();
+        LCD_printString(0, 0, "RIGHT WII\n--FAIL--");
+        UART_transmitString(USB, "Right Wii Init Fail. Error: %i\n\r\n\r", retVal);
+        delay_s(5);
+        disableInterrupts();
+        errors++;
+    }
+
+    I2C_open(COLOR_SENSOR);
+    retVal = I2C_write(COLOR_SENSOR, COLOR_SENSOR_ADR);
+    I2C_close(COLOR_SENSOR);
+    if(retVal != 0) {
+        enableInterrupts();
+        LCD_printString(0, 0, "ColorSen\n--FAIL--");
+        UART_transmitString(USB, "Color Sensor Init Fail. Error: %i\n\r\n\r", retVal);
+        delay_s(5);
+        disableInterrupts();
+        errors++;
+    }
+
+    I2C_open(COMPASS_MAIN);
+    retVal = I2C_write(COMPASS_MAIN, COMPASS_ADR);
+    I2C_close(COMPASS_MAIN);
+    if(retVal != 0) {
+        enableInterrupts();
+        LCD_printString(0, 0, "MainComp\n--FAIL--");
+        UART_transmitString(USB, "Main Compass Init Fail. Error: %i\n\r\n\r", retVal);
+        delay_s(5);
+        disableInterrupts();
+        errors++;
+    }
+
+    if(errors != 0) {
+        enableInterrupts();
+        LCD_printString(0, 0, "=ERRORS=\nnum: %i", errors);
+        UART_transmitString(USB, "Total Errors: %i\n\r\n\r", errors);
+        delay_s(10);
+        disableInterrupts();
+    }
 
     LCD_printString(0,0, "Self Cal\nWait Plz");
     
@@ -181,10 +291,18 @@ void competitionMode()
 void RCMode()
 {
     //LCD_printString(0,0, "RC Mode\nSearch..");
+<<<<<<< HEAD
+=======
+    UART_transmitString(USB, "RC Mode: Searching...\n\r");
+>>>>>>> origin/master
     char done = PS2_init();
     while( done != 0 )
     {
         //LCD_printString(0,0, "RC Mode\nERR: %i  ",done);
+<<<<<<< HEAD
+=======
+        UART_transmitString(USB, "RC Mode: Error: %i \n\r", done);
+>>>>>>> origin/master
         delay_ms(500);
         done = PS2_init();
     }
@@ -192,6 +310,10 @@ void RCMode()
     char type = PS2_readType();
 
     //LCD_printString(0,0, "ana:%i\ntype %i",PS2_analog(PSS_LX),type);
+<<<<<<< HEAD
+=======
+    UART_transmitString(USB, "analog: %i\n\rtype: %i\n\r", PS2_analog(PSS_LX), type);
+>>>>>>> origin/master
 
     //LCD_printString(0,0, "RC Mode\nConnectd");
 
@@ -199,6 +321,10 @@ void RCMode()
     {
         PS2_readGamepad();
         //LCD_printString(0,0, "ana:%i\ntype %i",PS2_analog(PSS_LX),type);
+<<<<<<< HEAD
+=======
+        UART_transmitString(USB, "analog: %i\n\rtype: %i\n\r", PS2_analog(PSS_LX), type);
+>>>>>>> origin/master
         int left_speed = ((PS2_analog(PSS_LY) * 120) / 255) - 60;
         int right_speed = ((PS2_analog(PSS_RY) * 120) / 255) - 60;
 
@@ -226,7 +352,7 @@ void main()
         do {
 
             //mode = (settings_selfTest() << 2) + (settings_wander() << 1) + settings_auto();
-            mode = 5;
+            mode = 4;
             switch(mode) {
                 case 0:     //RC Mode
                     LCD_printString(0, 0, "Selected\nRC Mode");
@@ -297,15 +423,7 @@ void interrupt high_priority  communicationInterruptHandler()
     //INTCONbits.INT0IF = 0;  ???
 
     // Rearange for Priority
-
-    if(0) {
-
-        // I2C Comms 1
-    }
-    if(0) {
-
-        // I2C Comms 2
-    }
+    
     if(PIR1bits.RC1IF)   // EUSART1 Receive buffer RCREG1 is full
     {
         char temp = RCREG1;
