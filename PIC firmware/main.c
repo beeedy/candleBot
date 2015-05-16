@@ -75,7 +75,10 @@ void debug()
 {
     while(1)
     {
-        UART_transmitString(USB,"\rLEFT: %i RIGHT: %i",(int)encoders_peakLeft(), (int)encoders_peakRight());
+        char retVals[8];
+        colorSensor_read(READ_CLEAR,retVals);
+        int i = (retVals[0] << 8) + retVals[1];
+        UART_transmitString(USB,"\rClear: %i",i);
     }
 
 /*
