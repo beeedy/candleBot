@@ -218,11 +218,102 @@ void wanderMode()
 
 void competitionMode()
 {
-    LCD_printString(0,0, "We are\nwinning!");
-    while(1)
-    {
+    ////////////////////////////////////////////////////////////////////////////
+    /////////// PERFORM INITIAL CHECK OF HARDWARE AND NOTIFY OVER SMS //////////
+    ////////////////////////////////////////////////////////////////////////////
 
+    signed char retVal = 0;
+    retVal += compass_mainBoardInit();
+    retVal += (wiiCams_init() << 1);
+    retVal += (colorSensor_init() << 2);
+
+    switch(retVal)
+    {
+        case 0:
+            FONA_Text("Ready to begin\nCompass: OK\nIR Cams: OK\nColor: OK\n\n\nWaiting for start tone", TylerFoneNumber);
+            FONA_Text("Ready to begin\nCompass: OK\nIR Cams: OK\nColor: OK\n\n\nWaiting for start tone", BroderickFoneNumber);
+            break;
+
+        case 1:
+            FONA_Text("Ready to begin\nCompass: ERR\nIR Cams: OK\nColor: OK\n\n\nWaiting for start tone", TylerFoneNumber);
+            FONA_Text("Ready to begin\nCompass: ERR\nIR Cams: OK\nColor: OK\n\n\nWaiting for start tone", BroderickFoneNumber);
+            break;
+
+        case 2:
+            FONA_Text("Ready to begin\nCompass: OK\nIR Cams: ERR\nColor: OK\n\n\nWaiting for start tone", TylerFoneNumber);
+            FONA_Text("Ready to begin\nCompass: OK\nIR Cams: ERR\nColor: OK\n\n\nWaiting for start tone", BroderickFoneNumber);
+            break;
+
+        case 3:
+            FONA_Text("Ready to begin\nCompass: ERR\nIR Cams: ERR\nColor: OK\n\n\nWaiting for start tone", TylerFoneNumber);
+            FONA_Text("Ready to begin\nCompass: ERR\nIR Cams: ERR\nColor: OK\n\n\nWaiting for start tone", BroderickFoneNumber);
+            break;
+
+        case 4:
+            FONA_Text("Ready to begin\nCompass: OK\nIR Cams: OK\nColor: ERR\n\n\nWaiting for start tone", TylerFoneNumber);
+            FONA_Text("Ready to begin\nCompass: OK\nIR Cams: OK\nColor: ERR\n\n\nWaiting for start tone", BroderickFoneNumber);
+            break;
+
+        case 5:
+            FONA_Text("Ready to begin\nCompass: ERR\nIR Cams: OK\nColor: ERR\n\n\nWaiting for start tone", TylerFoneNumber);
+            FONA_Text("Ready to begin\nCompass: ERR\nIR Cams: OK\nColor: ERR\n\n\nWaiting for start tone", BroderickFoneNumber);
+            break;
+
+        case 6:
+            FONA_Text("Ready to begin\nCompass: OK\nIR Cams: ERR\nColor: ERR\n\n\nWaiting for start tone", TylerFoneNumber);
+            FONA_Text("Ready to begin\nCompass: OK\nIR Cams: ERR\nColor: ERR\n\n\nWaiting for start tone", BroderickFoneNumber);
+            break;
+
+        case 7:
+            FONA_Text("Ready to begin\nCompass: ERR\nIR Cams: ERR\nColor: ERR\n\n\nWaiting for start tone", TylerFoneNumber);
+            FONA_Text("Ready to begin\nCompass: ERR\nIR Cams: ERR\nColor: ERR\n\n\nWaiting for start tone", BroderickFoneNumber);
+            break;
     }
+
+    ////////////////////////////////////////////////////////////////////////////
+    /////////// Wait for start tone and determine direction to begin  //////////
+    ////////////////////////////////////////////////////////////////////////////
+
+    char direction = 0;
+
+    do
+    {
+        char W = 0;
+        char E = 0;
+
+        fft_execute();
+        int freq = fft_maxFreq();
+
+        for(int i = 0; i < 5; i++)
+        {
+
+            if(freq > 2000 && freq < 3000)
+            {
+                ++W;
+            }
+           else if(freq > 3000 && freq < 4000)
+           {
+                ++E;
+           }
+        }
+
+        if(W == 5)
+        {
+            clearMillis();
+            direction = WEST_SIDE;
+        }
+        else if(E == 5)
+        {
+            clearMillis();
+            direction = EAST_SIDE;
+        }
+    }while(direction == 0);
+
+    ////////////////////////////////////////////////////////////////////////////
+    /////////// MotorDrive code needs to be placed here based off of  //////////
+    ///////////     ground map that is grabbed from the pixy cam      //////////
+    ////////////////////////////////////////////////////////////////////////////
+
 }
 
 void RCMode()

@@ -77,6 +77,9 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #define FONA_TIMEOUT 10000
 
+#define EAST_SIDE 1
+#define WEST_SIDE 2
+
 
 // Macros for various simple actions
 #define MAX(x,y)    ((x > y) ? x : y)
