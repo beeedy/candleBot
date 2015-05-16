@@ -58,25 +58,10 @@ void init()
     clearArrays();
     settings_init();
     //LCD_init4bit();
-    //motorDrive_init();
+    motorDrive_init();
     delay_init();
     UART_init();
     encoders_init();
-<<<<<<< HEAD
-    //fft_init();
-    clearMillis();
-    //I2C_init(1);
-    //I2C_init(2);
-    //retVal += compass_mainBoardInit();
-    //retVal += wiiCams_init();
-    //retVal += colorSensor_init();
-
-//    if(retVal != 0) {
-//        enableInterrupts();
-//        LCD_printString(0, 0, "init /nFail:%i", (int)retVal);
-//        while(1);
-//    }
-=======
     fft_init();
     clearMillis();
     I2C_init(1);
@@ -84,64 +69,14 @@ void init()
     retVal += compass_mainBoardInit();
     retVal += wiiCams_init();
     retVal += colorSensor_init();
-    FONA_init();
-/*
-    if(retVal != 0) {
-        enableInterrupts();
-        LCD_printString(0, 0, "init /nFail:%i", (int)retVal);
-        while(1);
-    } */
->>>>>>> origin/master
 }
 
 void debug()
 {
-<<<<<<< HEAD
-    delay_s(5);
-//    UART_transmitByte(FONA,'\n');
-//    UART_transmitByte(FONA,'\0');
-//    UART_transmitByte(FONA,'\n');
-//    UART_transmitByte(FONA,0x1A);
-=======
-    FONA_Text("FONA TEST - LADDER 43", 5077794334);
-    while(1);
-
-    //delay_s(5);
-    //LCD_printString(0, 0, "Test\nSuccess");
->>>>>>> origin/master
-    
-   FONA_Text("Last try",TylerFoneNumber);
-    
-
-
     while(1)
     {
-        for(int i = 0; i <= 100; i++)
-        {
-            motorDrive_setSpeeds(i,i);
-            delay_ms(50);
-        }
-        for(int i = 100; i >= -100; i--)
-        {
-            motorDrive_setSpeeds(i,i);
-            delay_ms(50);
-        }
-        for(int i = -100; i <= 0; i++)
-        {
-            motorDrive_setSpeeds(i,i);
-            delay_ms(50);
-        }
-<<<<<<< HEAD
-
-        
-
-=======
+        UART_transmitString(USB,"\rLEFT: %i RIGHT: %i",(int)encoders_peakLeft(), (int)encoders_peakRight());
     }
-    else
-    {
-         LCD_printString(0,0,"ERROR\nERROR");
-    }
-    */
 
 /*
     while(1)
@@ -152,7 +87,6 @@ void debug()
         UART_transmitString(USB, "Freq: %i\n\r", freq);
     }
 */
->>>>>>> origin/master
         /*
         char W = 0;
         char E = 0;
@@ -291,18 +225,13 @@ void competitionMode()
 void RCMode()
 {
     //LCD_printString(0,0, "RC Mode\nSearch..");
-<<<<<<< HEAD
-=======
+
     UART_transmitString(USB, "RC Mode: Searching...\n\r");
->>>>>>> origin/master
     char done = PS2_init();
     while( done != 0 )
     {
         //LCD_printString(0,0, "RC Mode\nERR: %i  ",done);
-<<<<<<< HEAD
-=======
         UART_transmitString(USB, "RC Mode: Error: %i \n\r", done);
->>>>>>> origin/master
         delay_ms(500);
         done = PS2_init();
     }
@@ -310,10 +239,7 @@ void RCMode()
     char type = PS2_readType();
 
     //LCD_printString(0,0, "ana:%i\ntype %i",PS2_analog(PSS_LX),type);
-<<<<<<< HEAD
-=======
     UART_transmitString(USB, "analog: %i\n\rtype: %i\n\r", PS2_analog(PSS_LX), type);
->>>>>>> origin/master
 
     //LCD_printString(0,0, "RC Mode\nConnectd");
 
@@ -321,10 +247,7 @@ void RCMode()
     {
         PS2_readGamepad();
         //LCD_printString(0,0, "ana:%i\ntype %i",PS2_analog(PSS_LX),type);
-<<<<<<< HEAD
-=======
         UART_transmitString(USB, "analog: %i\n\rtype: %i\n\r", PS2_analog(PSS_LX), type);
->>>>>>> origin/master
         int left_speed = ((PS2_analog(PSS_LY) * 120) / 255) - 60;
         int right_speed = ((PS2_analog(PSS_RY) * 120) / 255) - 60;
 
