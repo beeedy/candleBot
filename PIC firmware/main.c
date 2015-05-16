@@ -30,62 +30,83 @@ char volatile FONA_BUFF[FONA_BUFF_SIZE], USB_BUFF[USB_BUFF_SIZE],
         PIXY_BUFF[PIXY_BUFF_SIZE], USART4_BUFF[50] = 0;
 char volatile FONA_INDEX, USB_INDEX, PIXY_INDEX, UART4_INDEX = 0;
 
+void clearArrays()
+{
+    for(int i = 0; i < FONA_BUFF_SIZE; i++)
+    {
+        FONA_BUFF[i] = '\0';
+    }
+
+    for(int i = 0; i < USB_BUFF_SIZE; i++)
+    {
+        USB_BUFF[i] = '\0';
+    }
+
+    for(int i = 0; i < PIXY_BUFF_SIZE; i++)
+    {
+        PIXY_BUFF[i] = '\0';
+    }
+
+}
+
 void init()
 {
     IPEN = 1;   //enable interrupt priority
 
     signed char retVal = 0;
 
+    clearArrays();
     settings_init();
-    LCD_init4bit();
-    motorDrive_init();
+    //LCD_init4bit();
+    //motorDrive_init();
     delay_init();
     UART_init();
     encoders_init();
-    fft_init();
-    UART_init();
+    //fft_init();
     clearMillis();
-    I2C_init(1);
-    I2C_init(2);
-    retVal += compass_mainBoardInit();
-    retVal += wiiCams_init();
-    retVal += colorSensor_init();
+    //I2C_init(1);
+    //I2C_init(2);
+    //retVal += compass_mainBoardInit();
+    //retVal += wiiCams_init();
+    //retVal += colorSensor_init();
 
-    if(retVal != 0) {
-        enableInterrupts();
-        LCD_printString(0, 0, "init /nFail:%i", (int)retVal);
-        while(1);
-    }
+//    if(retVal != 0) {
+//        enableInterrupts();
+//        LCD_printString(0, 0, "init /nFail:%i", (int)retVal);
+//        while(1);
+//    }
 }
 
 void debug()
 {
-    //delay_s(5);
-    LCD_printString(0, 0, "Test\nSuccess");
+    delay_s(5);
+//    UART_transmitByte(FONA,'\n');
+//    UART_transmitByte(FONA,'\0');
+//    UART_transmitByte(FONA,'\n');
+//    UART_transmitByte(FONA,0x1A);
     
-    /*
-    if(FONA_init() == SUCCESS)
-    {
-        char err = FONA_Text("Can we get muffin faded?",BroderickFoneNumber);
-        if(err == SUCCESS)
-        {
-            LCD_printString(0,0,"FOUND\nTEXTED");
-        }
-        else
-        {
-            LCD_printString(0,0,"%i\nERROR",err);
-        }
-    }
-    else
-    {
-         LCD_printString(0,0,"ERROR\nERROR");
-    }
-    */
+   FONA_Text("Last try",TylerFoneNumber);
+    
 
 
     while(1)
     {
-       
+        for(int i = 0; i <= 100; i++)
+        {
+            motorDrive_setSpeeds(i,i);
+            delay_ms(50);
+        }
+        for(int i = 100; i >= -100; i--)
+        {
+            motorDrive_setSpeeds(i,i);
+            delay_ms(50);
+        }
+        for(int i = -100; i <= 0; i++)
+        {
+            motorDrive_setSpeeds(i,i);
+            delay_ms(50);
+        }
+
         
 
         /*
@@ -159,35 +180,35 @@ void competitionMode()
 
 void RCMode()
 {
-    LCD_printString(0,0, "RC Mode\nSearch..");
+    //LCD_printString(0,0, "RC Mode\nSearch..");
     char done = PS2_init();
     while( done != 0 )
     {
-        LCD_printString(0,0, "RC Mode\nERR: %i  ",done);
+        //LCD_printString(0,0, "RC Mode\nERR: %i  ",done);
         delay_ms(500);
         done = PS2_init();
     }
 
     char type = PS2_readType();
 
-    LCD_printString(0,0, "ana:%i\ntype %i",PS2_analog(PSS_LX),type);
+    //LCD_printString(0,0, "ana:%i\ntype %i",PS2_analog(PSS_LX),type);
 
     //LCD_printString(0,0, "RC Mode\nConnectd");
 
     while(1)
     {
         PS2_readGamepad();
-        LCD_printString(0,0, "ana:%i\ntype %i",PS2_analog(PSS_LX),type);
+        //LCD_printString(0,0, "ana:%i\ntype %i",PS2_analog(PSS_LX),type);
         int left_speed = ((PS2_analog(PSS_LY) * 120) / 255) - 60;
         int right_speed = ((PS2_analog(PSS_RY) * 120) / 255) - 60;
 
         //scaling for drivability
 
-        left_speed = min(left_speed, 65);
-        right_speed = min(right_speed, 65);
+        //left_speed = min(left_speed, 65);
+        //right_speed = min(right_speed, 65);
 
-        //motorDrive_setSpeeds(right_speed, left_speed);
-        motorDrive_setSpeeds(0, 0);
+        motorDrive_setSpeeds(right_speed, left_speed);
+        //motorDrive_setSpeeds(0, 0);
         //motorDrive_limitedAccelerationSetSpeeds(left_speed, right_speed);
     }
 }
@@ -196,9 +217,7 @@ void main()
 {
     enableInterrupts();
     init();
-    while(1) {
-        debug();
-    }
+    debug();
 
     while(1)
     {
@@ -289,8 +308,11 @@ void interrupt high_priority  communicationInterruptHandler()
     }
     if(PIR1bits.RC1IF)   // EUSART1 Receive buffer RCREG1 is full
     {
-        FONA_BUFF[FONA_INDEX] = RCREG1;
+        char temp = RCREG1;
+        FONA_BUFF[FONA_INDEX] = temp;
         FONA_INDEX++;
+
+        TXREG1 = RCREG1;
     }
     if(PIR3bits.RC2IF)   // EUSART2 Receive buffer RCREG2 is full
     {

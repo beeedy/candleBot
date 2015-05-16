@@ -32,37 +32,38 @@ char FONA_init()
 
 char FONA_Text(char *data, char *phoneNumber)
 {
-  if (!FONA_sendCommandCheckReply("AT+CMGF=1", "OK")) return FAILURE;
+    if (!FONA_init()) return FAILURE;
+    if (!FONA_sendCommandCheckReply("AT+CMGF=1", "OK")) return FAILURE;
 
-  char sendcmd[30] = "AT+CMGS=\"";
-  strncpy(sendcmd+9, phoneNumber, 30-9-2);  // 9 bytes beginning, 2 bytes for close quote + null
-  sendcmd[strlen(sendcmd)] = '\"';
+    char sendcmd[30] = "AT+CMGS=\"";
+    strncpy(sendcmd+9, phoneNumber, 30-9-2);  // 9 bytes beginning, 2 bytes for close quote + null
+    sendcmd[strlen(sendcmd)] = '\"';
 
-  if (!FONA_sendCommandCheckReply(sendcmd, "> ")) return FAILURE;
+    FONA_INDEX = 0;
 
-  FONA_INDEX = 0;
+    FONA_sendCommand(sendcmd);
 
-  UART_transmitString(FONA,data);
-  UART_transmitByte(FONA,'\n');
-  UART_transmitByte(FONA,'\0');
-  UART_transmitByte(FONA,'\n');
-  UART_transmitByte(FONA,0x1A);
+    UART_transmitString(FONA,data);
+    UART_transmitByte(FONA,'\n');
+    UART_transmitByte(FONA,'\0');
+    UART_transmitByte(FONA,'\n');
+    UART_transmitByte(FONA,0x1A);
 
-  unsigned long start = millis();
-  while(FONA_INDEX < 8 && millis() - start < 10000);
+    unsigned long start = millis();
+    while(FONA_INDEX < 8 && millis() - start < 10000);
 
-  if(millis() - start >= 10000)
-  {
-      return FAILURE;
-  }
+    if(millis() - start >= 10000)
+    {
+        return FAILURE;
+    }
 
-  FONA_BUFF[8] = '\0';
-  if(strcmp(FONA_BUFF,"\r\n+CMGS:") == 0)
-  {
-      return SUCCESS;
-  }
+    FONA_BUFF[8] = '\0';
+    if(strcmp(FONA_BUFF,"\r\n+CMGS:") == 0)
+    {
+        return SUCCESS;
+    }
 
-  return FAILURE;
+    return FAILURE;
 }
 
 
