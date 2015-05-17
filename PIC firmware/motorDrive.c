@@ -10,7 +10,7 @@
  */
 
 #include "motorDrive.h"
-#include "LCD.h"
+#include "UART.h"
 
 #define direction_left PORTLbits.RL0
 #define direction_right PORTKbits.RK1
@@ -71,6 +71,9 @@ void motorDrive_init()
 
 void motorDrive_setSpeeds(signed char lSpeed, signed char rSpeed)
 {
+    lSpeed *= -1;
+    rSpeed *= -1;
+    
     lMotorSpeed = lSpeed;
     rMotorSpeed = rSpeed;
 
@@ -152,4 +155,96 @@ char motorDrive_limitedAccelerationSetSpeeds(signed char lSpeed, signed char rSp
 
     motorDrive_setSpeeds(lMotorSpeed, rMotorSpeed);
     return done;
+}
+
+void motorDrive_drive(int distance, int distanceCutOff) // distance = distance to travel in MM
+{
+    //65cm to the center
+
+    //43mm diameter wheels, 135mm circumfrence (13.5cm)
+    //60 encoder ticks per rev.
+    encoders_clear();
+
+    const float differencePGain = 2.0;
+    const int baseSpeed = 60;
+
+    int encoderGoal = distance >> 1;
+
+
+
+    while(encoderGoal > (int)encoders_peakLeft() && encoderGoal > (int)encoders_peakRight())
+    {
+        int rightSpeed;
+        int leftSpeed;
+        if((encoderGoal - (int)encoders_peakRight()) > distanceCutOff)
+        {
+            rightSpeed = baseSpeed - (int)(((float)(encoders_peakRight() - encoders_peakLeft()))*differencePGain);
+        }
+        else
+        {
+            rightSpeed = baseSpeed - (int)(((float)(encoders_peakRight() - encoders_peakLeft()))*differencePGain);
+            rightSpeed *= (((encoderGoal - (int)encoders_peakRight())*100) / (distanceCutOff));
+            rightSpeed /= 100;
+        }
+
+        if((encoderGoal - (int)encoders_peakLeft()) > distanceCutOff)
+        {
+            leftSpeed = baseSpeed - (int)(((float)(encoders_peakLeft() - encoders_peakRight()))*differencePGain);
+        }
+        else
+        {
+            leftSpeed = baseSpeed - (int)(((float)(encoders_peakLeft() - encoders_peakRight()))*differencePGain);
+            leftSpeed *= (((encoderGoal - (int)encoders_peakLeft())*100) / (distanceCutOff));
+            leftSpeed /= 100;
+        }
+
+        if(rightSpeed < 7 && leftSpeed < 7)
+        {
+            motorDrive_setSpeeds(0,0);
+            return;
+        }
+
+        motorDrive_setSpeeds(rightSpeed, leftSpeed);
+    }
+    motorDrive_setSpeeds(0,0);
+}
+
+void motorDrive_turn(int angle)
+{
+    // diameter of wheel base: 86mm
+    // circumfrence of turning circle: 271mm
+
+    // diameter of wheel: 43mm
+    // circumfrece of wheel: 135mm
+
+    //60 encoder ticks per revolution
+
+    // number of encoder ticks per wheel: (271 * angle / 360) / (135/60)
+
+    encoders_clear();
+
+    const float differencePGain = 2.0;
+    const int baseSpeed = 60;
+
+    int encoderGoal = (angle * 32 + 1) / 100;
+
+    if(angle > 0)
+    {
+        while(encoderGoal > (int)encoders_peakLeft() && (-1 * encoderGoal) < (int)encoders_peakRight())
+        {
+            int rightSpeed = baseSpeed + (int)(((float)(encoders_peakRight() + encoders_peakLeft()))*differencePGain);
+            int leftSpeed = baseSpeed - (int)(((float)(encoders_peakLeft() + encoders_peakRight()))*differencePGain);
+            motorDrive_setSpeeds(-1 * rightSpeed, leftSpeed);
+        }
+    }
+    else
+    {
+        while(encoderGoal < (int)encoders_peakLeft() && (-1 * encoderGoal) > (int)encoders_peakRight())
+        {
+            int rightSpeed = baseSpeed - (int)(((float)(encoders_peakRight() + encoders_peakLeft()))*differencePGain);
+            int leftSpeed = baseSpeed + (int)(((float)(encoders_peakLeft() + encoders_peakRight()))*differencePGain);
+            motorDrive_setSpeeds(rightSpeed, -1 * leftSpeed);
+        }
+    }
+    motorDrive_setSpeeds(0,0);
 }

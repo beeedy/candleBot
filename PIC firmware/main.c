@@ -25,10 +25,50 @@
 #include "I2C.h"
 #include "wiiCams.h"
 
+//#define textMode
+
+#define MOVEDELAY() delay_ms(700)
+
 
 char volatile FONA_BUFF[FONA_BUFF_SIZE], USB_BUFF[USB_BUFF_SIZE],
         PIXY_BUFF[PIXY_BUFF_SIZE], USART4_BUFF[50] = 0;
 char volatile FONA_INDEX, USB_INDEX, PIXY_INDEX, UART4_INDEX = 0;
+
+char volatile drivableMap[40][5];
+
+
+void loadMap()
+{
+    for(int i = 0; i < 200; i++)
+    {
+        drivableMap[i/5][i%5] = PIXY_BUFF[i];
+    }
+}
+
+char checkMap(int x, int y)
+{
+    return (drivableMap[x][y/8] >> (y%8)) & 0x01;
+}
+
+void printMap()
+{
+    for(int y = 39; y >=0; y--)
+    {
+        for(int x = 0; x < 40; x++)
+        {
+            if(checkMap(x,y) == 0)
+            {
+                UART_transmitByte(USB, 'X');
+            }
+            else
+            {
+                UART_transmitByte(USB, ' ');
+            }
+        }
+        UART_transmitByte(USB, '\n');
+        UART_transmitByte(USB, '\r');
+    }
+}
 
 void clearArrays()
 {
@@ -47,6 +87,43 @@ void clearArrays()
         PIXY_BUFF[i] = '\0';
     }
 
+}
+
+void fixSTR(char *output, char data[], ...)
+{
+    va_list aptr;
+    va_start(aptr,data);
+
+    output[0] = '\0';
+
+
+    for(int i = 0; data[i] != '\0' && i < 200; i++)
+    {
+        if(data[i] == '%')
+        {
+            if(data[i+1] == '%')
+            {
+                strcat(output, "%");
+            }
+            else
+            {
+                int val = va_arg(aptr, int);
+                char tempString[20];
+                sprintf(tempString,"%i",val);
+                strcat(output, tempString);
+            }
+            i++;
+        }
+        else
+        {
+            char tempString[2];
+            tempString[0] = data[i];
+            tempString[1] = '\0';
+            strcat(output,tempString);
+        }
+    }
+
+    va_end(aptr);
 }
 
 void init()
@@ -221,7 +298,7 @@ void competitionMode()
     ////////////////////////////////////////////////////////////////////////////
     /////////// PERFORM INITIAL CHECK OF HARDWARE AND NOTIFY OVER SMS //////////
     ////////////////////////////////////////////////////////////////////////////
-
+#ifdef textMode
     signed char retVal = 0;
     retVal += compass_mainBoardInit();
     retVal += (wiiCams_init() << 1);
@@ -269,6 +346,7 @@ void competitionMode()
             FONA_Text("Ready to begin\nCompass: ERR\nIR Cams: ERR\nColor: ERR\n\n\nWaiting for start tone", BroderickFoneNumber);
             break;
     }
+#endif
 
     ////////////////////////////////////////////////////////////////////////////
     /////////// Wait for start tone and determine direction to begin  //////////
@@ -313,6 +391,57 @@ void competitionMode()
     /////////// MotorDrive code needs to be placed here based off of  //////////
     ///////////     ground map that is grabbed from the pixy cam      //////////
     ////////////////////////////////////////////////////////////////////////////
+
+    if(direction == WEST_SIDE)
+    {
+        // Code to drive forward and make a turn to get to the correct wing
+
+
+        // Code to look into the large open room for the candle
+
+
+        // Code to look into the walled room for the candle
+
+
+        // if we still haven't found the candle, double check both rooms
+
+        // once found, text with the time
+    }
+    else
+    {
+        // Code to drive forward and make a turn to get to the correct wing
+
+
+        // Code to look into the large open room for the candle
+
+
+        // Code to look into the walled room for the candle
+
+
+        // if we still haven't found the candle, double check both rooms
+
+        // once found, text with the time
+    }
+
+
+
+    // code to check for the white circle
+    char retVals[8];
+    colorSensor_read(READ_CLEAR,retVals);
+    int i = (retVals[0] << 8) + retVals[1];
+
+    if(i > 1000)
+    {
+        // stop looking for the candle here
+        motorDrive_setSpeeds(0,0);
+        char endMsg[200];
+        fixSTR(endMsg, "Found the candle in %i seconds",(int)millis());
+        #ifdef textMode
+        FONA_Text(endMsg,TylerFoneNumber);
+        FONA_Text(endMsg,BroderickFoneNumber);
+        #endif
+    }
+
 
 }
 
@@ -360,7 +489,40 @@ void main()
 {
     enableInterrupts();
     init();
-    debug();
+
+    delay_s(5);
+    
+    UART_transmitByte(PIXY, 12);
+    while(1)
+    {
+        UART_transmitByte(PIXY, 60);
+        while(PIXY_INDEX < 199);
+        loadMap();
+        printMap();
+        delay_s(1);
+    }
+
+    /*
+    delay_s(5);
+    motorDrive_drive(650, 120);
+    MOVEDELAY();
+    motorDrive_turn(-90);
+    MOVEDELAY();
+    motorDrive_drive(650, 120);
+    MOVEDELAY();
+    motorDrive_turn(-90);
+    MOVEDELAY();
+    MOVEDELAY();
+    motorDrive_turn(180);
+    MOVEDELAY();
+    motorDrive_drive(400, 120);
+    MOVEDELAY();
+    motorDrive_turn(1800);
+    */
+
+    while(1);
+
+    //competitionMode();
 
     while(1)
     {

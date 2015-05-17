@@ -82,12 +82,16 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "GlobalDefines.h"
 #include "xc.h"
 #include "pwm.h"
+#include "encoders.h"
+#include "delays.h"
 
 #define MAX_ACCEL 1
 
 void motorDrive_init();
 void motorDrive_setSpeeds(signed char, signed char);
 char motorDrive_limitedAccelerationSetSpeeds(signed char, signed char);
+void motorDrive_drive(int, int);
+void motorDrive_turn(int);
 
 #endif
 
