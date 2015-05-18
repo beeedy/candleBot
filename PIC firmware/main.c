@@ -36,6 +36,75 @@ char volatile FONA_INDEX, USB_INDEX, PIXY_INDEX, UART4_INDEX = 0;
 
 char volatile drivableMap[40][5];
 
+void drive(int distance, int cutOff)
+{
+    motorDrive_drive(distance, cutOff);
+    MOVEDELAY();
+
+
+    char done = 0;
+
+    int error = distance - (encoders_peakLeft() + encoders_peakRight());
+    
+    if(error > MOTORERROR)
+    {
+        motorDrive_turn(-90);
+        MOVEDELAY();
+        motorDrive_drive(150,0);
+        MOVEDELAY();
+        
+        int correctionError = (encoders_peakLeft() + encoders_peakRight());
+        int goalDistance = 150 - correctionError;
+
+        while(1)
+        {
+
+            if(150 - correctionError > MOTORERROR)
+            {
+                motorDrive_turn(180);
+                MOVEDELAY();
+                motorDrive_drive(300 - correctionError, 50);
+                MOVEDELAY();
+
+                if(300 - correctionError - (encoders_peakLeft() + encoders_peakRight()) > MOTORERROR)
+                {
+                    motorDrive_turn(90);
+                    MOVEDELAY();
+                    motorDrive_drive(error,0);
+                    MOVEDELAY();
+                    motorDrive_turn(90);
+                    MOVEDELAY();
+                    motorDrive_drive(150,0);    // could run into something... maybe
+                    MOVEDELAY();
+                    motorDrive_turn(90);
+                    MOVEDELAY();
+                    goalDistance = distance - error;
+                    drive(goalDistance, 120);   // we need to compensate for the lateral distance we've moved
+                    MOVEDELAY();
+                    motorDrive_turn(90);
+                    MOVEDELAY();
+                    motorDrive_drive(150,0);
+                    MOVEDELAY();
+                    motorDrive_turn(-90);
+                    done = 1;
+                }
+            }
+            else
+            {
+                motorDrive_turn(90);
+                MOVEDELAY();
+                drive(error, 30);
+                MOVEDELAY();
+                motorDrive_turn(90);
+                MOVEDELAY();
+                motorDrive_drive(150,0);
+                MOVEDELAY();
+                motorDrive_turn(-90);
+                done = 1;
+            }
+        }
+    }
+}
 
 void loadMap()
 {
@@ -150,61 +219,7 @@ void init()
 
 void debug()
 {
-    while(1)
-    {
-        char retVals[8];
-        colorSensor_read(READ_CLEAR,retVals);
-        int i = (retVals[0] << 8) + retVals[1];
-        UART_transmitString(USB,"\rClear: %i",i);
-    }
 
-/*
-    while(1)
-    {
-       
-        fft_execute();
-        int freq = fft_maxFreq();
-        UART_transmitString(USB, "Freq: %i\n\r", freq);
-    }
-*/
-        /*
-        char W = 0;
-        char E = 0;
-        for(int i = 0; i < 5; i++)
-        {
-            
-            if(freq > 2000 && freq < 3000)
-            {
-                ++W;
-            }
-            else if(freq > 3000 && freq < 4000)
-            {
-                ++E;
-            }
-        }
-
-        if(W == 5)
-        {
-            LCD_clearDisplay();
-            clearMillis();
-            while(1)
-            {
-                LCD_printString(0,0,"West\n%i",millis()/1000);
-                delay_ms(200);
-            }
-        }
-        else if(E == 5)
-        {
-            LCD_clearDisplay();
-            clearMillis();
-            while(1)
-            {
-                LCD_printString(0,0,"East\n%i",millis()/1000);
-                delay_ms(200);
-            }
-        }
-        
-    }*/
 }
 
 void selfTest()
@@ -359,11 +374,10 @@ void competitionMode()
         char W = 0;
         char E = 0;
 
-        fft_execute();
-        int freq = fft_maxFreq();
-
-        for(int i = 0; i < 8; i++)
+        for(int i = 0; i < 5; i++)
         {
+            fft_execute();
+            int freq = fft_maxFreq();
 
             if(freq > 2300 && freq < 2700)
             {
@@ -375,12 +389,12 @@ void competitionMode()
            }
         }
 
-        if(W == 8)
+        if(W == 5)
         {
             clearMillis();
             direction = WEST_SIDE;
         }
-        else if(E == 8)
+        else if(E == 5)
         {
             clearMillis();
             direction = EAST_SIDE;
@@ -392,25 +406,28 @@ void competitionMode()
     ///////////     ground map that is grabbed from the pixy cam      //////////
     ////////////////////////////////////////////////////////////////////////////
 
-    motorDrive_drive(650, 120);
+    drive(650, 120);
     MOVEDELAY();
+
     if(direction == WEST_SIDE)
     {
-        motorDrive_turn(90);
+        motorDrive_turn(85);
     }
     else
     {
         motorDrive_turn(-90);
     }
     MOVEDELAY();
-    motorDrive_drive(650, 120);
+    
+    drive(700, 120);
+
     MOVEDELAY();
     motorDrive_turn(-90);
     MOVEDELAY();
     motorDrive_turn(180);
     MOVEDELAY();
     MOVEDELAY();
-    motorDrive_drive(400, 120);
+    drive(400, 120);
 
 
 
@@ -479,7 +496,7 @@ void main()
 {
     enableInterrupts();
     init();
-
+ 
     competitionMode();
 
     while(1)
