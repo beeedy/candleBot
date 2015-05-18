@@ -102,8 +102,9 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "I2C.h"
 #include "delays.h"
 #include "math.h"
+#include "UART.h"
 
-#define WII_Y_TOLERANCE 5
+#define WII_Y_TOLERANCE 15
 #define TAN_FOV_2 0.29621
 #define WII_CAM_DISTANCE_APART 2.5
 
@@ -111,8 +112,9 @@ signed char wiiCams_init();
 void wiiCams_execute(char *x, char *y);
 signed char wiiCams_read(unsigned char camera, char *rawData);
 void wiiCams_processData(unsigned char *rawData, int *processedData);
-void wiiCams_findCandle(int *processedDataL, int *processedDataR,
+void wiiCams_findCandleCords(int *processedDataL, int *processedDataR,
                         unsigned char *x, unsigned char *y);
 
-#endif
+signed char wiiCams_findCandle(int *processedDataL, int *processedDataR);
 
+#endif

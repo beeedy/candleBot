@@ -276,16 +276,32 @@ void wiiCams_processData(unsigned char *rawData, int *processedData)
 }
 
 
-void wiiCams_findCandle(int *processedDataL, int *processedDataR,
+void wiiCams_findCandleCords(int *processedDataL, int *processedDataR,
                         unsigned char *x, unsigned char *y)
 {
     //These arrays could be optimized out if we do not care about all the light
     //sources we find.
-    unsigned char xTemp[4];
-    unsigned char yTemp[4];
+    int xTemp[4];
+    int yTemp[4];
+    unsigned char pointIntensity[4];
 
     unsigned char minX = 1023;
     unsigned char minY = 1023;
+
+    int xSend = 0;
+    int ySend = 0;
+
+    unsigned char candleIndex = 0;
+    unsigned char pointsDetected = 0;
+    unsigned char maxIntensity = 0;
+
+
+    for(int i = 0; i <= 3; i++)
+    {
+        pointIntensity[i] = 0;  // set the array to a known value
+        xTemp[i] = 0;
+        yTemp[i] = 0;
+    }
 
     for(int i = 0; i <= 3; i++)
     {
@@ -293,27 +309,80 @@ void wiiCams_findCandle(int *processedDataL, int *processedDataR,
        {
            for(int j = 0; j <= 3; j++)
            {
-               if(processedDataR[j*3+1] != 1023 && ABS((processedDataL[i*3+1] - processedDataR[j*3+1])) < WII_Y_TOLERANCE)
+               if(processedDataR[j*3+1] != 1023 && (ABS((processedDataL[i*3+1] - processedDataR[j*3+1])) < WII_Y_TOLERANCE))
                {
                    //oh shit we found a match!
-
+                   pointsDetected++;
                    double theta1, theta2, alpha;
 
-                   theta1 = 90 - atan2(((2*processedDataL[i*3] - 1023)*TAN_FOV_2),1024);
-                   theta2 = 90 - atan2(((-2*processedDataR[i*3] - 1023)*TAN_FOV_2),1024);
+                   theta1 = abs(90.0 - (180.0/3.14159)*atan2(((2*processedDataL[i*3] - 1023)*TAN_FOV_2),1024));
+                   theta2 = abs(90.0 - (180.0/3.14159)*atan2(((2*processedDataR[i*3] - 1023)*TAN_FOV_2),1024));
+                   
+                   //alpha = (WII_CAM_DISTANCE_APART * sin((3.14159/180.0)*(theta2))) / sin((3.14159/180.0)*(180.0 - theta1 - theta2));
 
-                   alpha = WII_CAM_DISTANCE_APART * sin(theta2) / sin(180.0 - theta1 - theta2);
+                   //yTemp[i] = (int)(-1)*(sin((3.14159/180.0)*theta1)*alpha);
+                   //xTemp[i] = (int)(WII_CAM_DISTANCE_APART - (cos((3.14159/180.0)*theta1)*alpha));
 
-                   yTemp[i] = (int)(sin(theta1)*alpha);
-                   xTemp[i] = (int)(WII_CAM_DISTANCE_APART - (cos(theta1)*alpha));
+                   alpha = abs((WII_CAM_DISTANCE_APART * sin((3.14159/180.0)*(theta2)) * sin((3.14159/180.0)*(theta1))) / sin((3.14159/180.0)*(180.0 - theta1 - theta2)));
 
-                   if(minY > yTemp[i])
-                   {
-                       minY = yTemp[i];
-                       minX = xTemp[i];
-                   }
+                   yTemp[i] = (int)abs((sin((3.14159/180.0)*theta1)*alpha));
+                   xTemp[i] = (int)(((double)yTemp[i])*cos((3.14159/180.0)*theta1)/sin((3.14159/180.0)*theta1) - 1.25);
+
+                   pointIntensity[i] = (processedDataL[i*3 + 2] + processedDataR[i*3 + 2]) >> 1;    // average intensity
+
                }
            }
        }
     }
+    if(pointsDetected == 0)
+    {
+        enableInterrupts();
+        UART_transmitString(USB, "NO CANDLE HERE\r", xSend, ySend);
+        disableInterrupts();
+    }
+    else {
+        for(int i = 0; i <= pointsDetected; i++)
+        {
+            if(maxIntensity < pointIntensity[i])
+            {
+                maxIntensity = pointIntensity[i];
+                candleIndex = i;
+            }
+        }
+        (*y) = yTemp[candleIndex];
+        (*x) = xTemp[candleIndex];
+
+        xSend = xTemp[candleIndex];
+        ySend = abs(yTemp[candleIndex]);
+
+        enableInterrupts();
+        UART_transmitString(USB, "rawxL: %i rawxR: %i rawyL: %i rawyR: %i x: %i  y: %i \n\r",(int)processedDataL[candleIndex*3],
+            (int)processedDataR[candleIndex*3],(int)processedDataL[candleIndex*3 + 1], (int)processedDataR[candleIndex*3 + 1], xSend, ySend);
+        //UART_transmitString(USB, "x: %i  y: %i          \r", xSend, ySend);
+        disableInterrupts();
+    }
+}
+
+
+
+signed char wiiCams_findCandle(int *processedDataL, int *processedDataR)
+{
+    //These arrays could be optimized out if we do not care about all the light
+    //sources we find.
+
+    for(int i = 0; i <= 3; i++)
+    {
+       if(processedDataL[i*3+1] != 1023)
+       {
+           for(int j = 0; j <= 3; j++)
+           {
+               if(processedDataR[j*3+1] != 1023 && (ABS((processedDataL[i*3+1] - processedDataR[j*3+1])) < WII_Y_TOLERANCE))
+               {
+                   //oh shit we found a match!
+                   return(1);
+               }
+           }
+       }
+   return(0);
+   }
 }
