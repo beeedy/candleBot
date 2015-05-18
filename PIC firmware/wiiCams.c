@@ -277,7 +277,7 @@ void wiiCams_processData(unsigned char *rawData, int *processedData)
 
 
 void wiiCams_findCandleCords(int *processedDataL, int *processedDataR,
-                        unsigned char *x, unsigned char *y)
+                        int *x, int *y)
 {
     //These arrays could be optimized out if we do not care about all the light
     //sources we find.
@@ -309,31 +309,44 @@ void wiiCams_findCandleCords(int *processedDataL, int *processedDataR,
        {
            for(int j = 0; j <= 3; j++)
            {
+               //UART_transmitString(USB, "checking...\n\r");
                if(processedDataR[j*3+1] != 1023 && (ABS((processedDataL[i*3+1] - processedDataR[j*3+1])) < WII_Y_TOLERANCE))
                {
                    //oh shit we found a match!
                    pointsDetected++;
                    double theta1, theta2, alpha;
 
-                   theta1 = abs(90.0 - (180.0/3.14159)*atan2(((2*processedDataL[i*3] - 1023)*TAN_FOV_2),1024));
-                   theta2 = abs(90.0 - (180.0/3.14159)*atan2(((2*processedDataR[i*3] - 1023)*TAN_FOV_2),1024));
+                   //UART_transmitString(USB, "found something\r");
+
+                   //theta1 = abs(90.0 - (180.0/3.14159)*atan2(((2*processedDataL[i*3] - 1023)*TAN_FOV_2),1024));
+                   //theta2 = abs(90.0 - (180.0/3.14159)*atan2(((2*processedDataR[j*3] - 1023)*TAN_FOV_2),1024));
                    
                    //alpha = (WII_CAM_DISTANCE_APART * sin((3.14159/180.0)*(theta2))) / sin((3.14159/180.0)*(180.0 - theta1 - theta2));
 
                    //yTemp[i] = (int)(-1)*(sin((3.14159/180.0)*theta1)*alpha);
                    //xTemp[i] = (int)(WII_CAM_DISTANCE_APART - (cos((3.14159/180.0)*theta1)*alpha));
 
-                   alpha = abs((WII_CAM_DISTANCE_APART * sin((3.14159/180.0)*(theta2)) * sin((3.14159/180.0)*(theta1))) / sin((3.14159/180.0)*(180.0 - theta1 - theta2)));
+                   //alpha = abs((WII_CAM_DISTANCE_APART * sin((3.14159/180.0)*(theta2)) * sin((3.14159/180.0)*(theta1))) / sin((3.14159/180.0)*(180.0 - theta1 - theta2)));
 
-                   yTemp[i] = (int)abs((sin((3.14159/180.0)*theta1)*alpha));
-                   xTemp[i] = (int)(((double)yTemp[i])*cos((3.14159/180.0)*theta1)/sin((3.14159/180.0)*theta1) - 1.25);
+                   //yTemp[i] = (int)abs((sin((3.14159/180.0)*theta1)*alpha));
+                   //xTemp[i] = (int)(((double)yTemp[i])*cos((3.14159/180.0)*theta1)/sin((3.14159/180.0)*theta1) - 1.25);
 
-                   pointIntensity[i] = (processedDataL[i*3 + 2] + processedDataR[i*3 + 2]) >> 1;    // average intensity
+                   //*y = (int)abs((sin((3.14159/180.0)*theta1)*alpha));
+                   //*x = (int)(((double)yTemp[i])*cos((3.14159/180.0)*theta1)/sin((3.14159/180.0)*theta1) - 1.25);
+                   *y = processedDataL[i*3];
+                  // *x = (processedDataL[i*3] + processedDataR[i*3]) >> 1;   // sends back average x position in the frame
+                   *x = processedDataR[i*3];
+                  // pointIntensity[i] = (processedDataL[i*3 + 2] + processedDataR[j*3 + 2]) >> 1;    // average intensity
+
+                   //enableInterrupts();
+                   // UART_transmitString(USB, "x: %i  y: %i          \r", *x, *y);
+                   // disableInterrupts();
 
                }
            }
        }
     }
+    /*
     if(pointsDetected == 0)
     {
         enableInterrupts();
@@ -356,11 +369,11 @@ void wiiCams_findCandleCords(int *processedDataL, int *processedDataR,
         ySend = abs(yTemp[candleIndex]);
 
         enableInterrupts();
-        UART_transmitString(USB, "rawxL: %i rawxR: %i rawyL: %i rawyR: %i x: %i  y: %i \n\r",(int)processedDataL[candleIndex*3],
-            (int)processedDataR[candleIndex*3],(int)processedDataL[candleIndex*3 + 1], (int)processedDataR[candleIndex*3 + 1], xSend, ySend);
+        //UART_transmitString(USB, "rawxL: %i rawxR: %i rawyL: %i rawyR: %i x: %i  y: %i \n\r",(int)processedDataL[candleIndex*3],
+        //    (int)processedDataR[candleIndex*3],(int)processedDataL[candleIndex*3 + 1], (int)processedDataR[candleIndex*3 + 1], xSend, ySend);
         //UART_transmitString(USB, "x: %i  y: %i          \r", xSend, ySend);
         disableInterrupts();
-    }
+    }*/
 }
 
 
@@ -385,4 +398,107 @@ signed char wiiCams_findCandle(int *processedDataL, int *processedDataR)
        }
    return(0);
    }
+}
+
+
+signed char wiiCams_driveToCandle()
+{
+    // control flow:
+
+    //     -if it can't see the candle, look up
+    //     -if it still can't see the candle, look down
+    //     -grab image data
+    //     -calculate angle needed to correct itself
+    //     -drive a small-ish distance
+    //     -check the color sensor
+    //     -if it has found the circle, text
+    //     -else, loop back to beginning
+//    signed int candleError = 0;
+//    unsigned char rawDataLeft[12], rawDataRight[12];
+//    int processedDataLeft[12], processedDataRight[12];
+//    signed char retVals[12];
+//    int x, y = 0;
+//    int rightX, leftX = 0;
+//
+//    motorDrive_setSpeeds(0, 0);
+//
+//    wiiCams_read(WII_CAM_LEFT, rawDataLeft);
+//    wiiCams_read(WII_CAM_RIGHT, rawDataRight);
+//
+//    wiiCams_processData(rawDataLeft, processedDataLeft);
+//    wiiCams_processData(rawDataRight, processedDataRight);
+//
+//    if( !(wiiCams_findCandle(processedDataLeft, processedDataRight)) )
+//    {
+//        UART_transmitByte(PIXY, 30); // move cameras up
+//        delay_ms(200);
+//
+//        // recheck
+//        wiiCams_read(WII_CAM_LEFT, rawDataLeft);
+//        wiiCams_read(WII_CAM_RIGHT, rawDataRight);
+//
+//        wiiCams_processData(rawDataLeft, processedDataLeft);
+//        wiiCams_processData(rawDataRight, processedDataRight);
+//
+//        if( !(wiiCams_findCandle(processedDataLeft, processedDataRight)) )
+//        {
+//            UART_transmitByte(PIXY, 12); // move cameras down
+//            delay_ms(200);
+//
+//            wiiCams_read(WII_CAM_LEFT, rawDataLeft);
+//            wiiCams_read(WII_CAM_RIGHT, rawDataRight);
+//
+//            wiiCams_processData(rawDataLeft, processedDataLeft);
+//            wiiCams_processData(rawDataRight, processedDataRight);
+//
+//            if( !(wiiCams_findCandle(processedDataLeft, processedDataRight)) )
+//            {
+//                UART_transmitByte(PIXY, 20);
+//                delay_ms(200);
+//                wiiCams_read(WII_CAM_LEFT, rawDataLeft);
+//                wiiCams_read(WII_CAM_RIGHT, rawDataRight);
+//
+//                wiiCams_processData(rawDataLeft, processedDataLeft);
+//                wiiCams_processData(rawDataRight, processedDataRight);
+//
+//                if( !(wiiCams_findCandle(processedDataLeft, processedDataRight)) )
+//                {
+//                    // we lost the candle
+//                    return(-1);
+//                }
+//            }
+//        }
+//    } // end checking if we can see the candle
+//
+//    UART_transmitByte(PIXY, 20);
+//    delay_ms(200);
+//    wiiCams_findCandleCords(processedDataLeft, processedDataRight, &rightX, &leftX);
+//    candleError = rightX - (1024 - leftX);
+//    //enableInterrupts();
+//    //UART_transmitString(USB, "rightX: %i leftX: %i \n\r", (int)rightX, (int)leftX);
+//    //UART_transmitString(USB, "candleError: %i \n\r", (int)(candleError >> 3));
+//    //disableInterrupts();
+//
+//    motorDrive_setSpeeds(60-(candleError / 8), 60+(candleError / 8));
+//    delay_ms(50);
+//    //motorDrive_drive(20, 14);   // drive forward 15 cm
+//
+//    colorSensor_read(READ_CLEAR, retVals);
+//    UART_transmitString(USB, "Color Sensor: %i \n\r", (int)(retVals[0] | (retVals[1] << 8)));
+//    //delay_s(1);
+//
+//    if(((int)(((retVals[0] | (retVals[1] << 8))) > 700)))
+//    {
+//        // we've found the white circle!
+//        UART_transmitString(USB, "found and got it white\n\r", (int)(retVals[0] | (retVals[1] << 8)));
+//        motorDrive_setSpeeds(0, 0);
+//        return(1);
+//    }
+//    else
+//    {
+//        return(0);  // we haven't found the circle yet.
+//    }
+
+    
+
 }

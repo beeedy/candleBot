@@ -103,6 +103,8 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "delays.h"
 #include "math.h"
 #include "UART.h"
+#include "motorDrive.h"
+#include "colorSensor.h"
 
 #define WII_Y_TOLERANCE 15
 #define TAN_FOV_2 0.29621
@@ -113,7 +115,7 @@ void wiiCams_execute(char *x, char *y);
 signed char wiiCams_read(unsigned char camera, char *rawData);
 void wiiCams_processData(unsigned char *rawData, int *processedData);
 void wiiCams_findCandleCords(int *processedDataL, int *processedDataR,
-                        unsigned char *x, unsigned char *y);
+                        int *x, int *y);
 
 signed char wiiCams_findCandle(int *processedDataL, int *processedDataR);
 
