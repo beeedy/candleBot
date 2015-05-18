@@ -179,6 +179,7 @@ void motorDrive_drive(int distance, int distanceCutOff) // distance = distance t
 
     while(encoderGoal > (int)encoders_peakLeft() && encoderGoal > (int)encoders_peakRight())
     {
+        /* RIP Pixy
         if(waiting == 0)
         {
             waiting = 1;
@@ -203,6 +204,7 @@ void motorDrive_drive(int distance, int distanceCutOff) // distance = distance t
                 return;
             }
         }
+        */
 
         int rightSpeed;
         int leftSpeed;

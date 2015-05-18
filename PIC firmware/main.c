@@ -57,19 +57,18 @@ void drive(int distance, int cutOff)
             motorDrive_drive(150,0);
             MOVEDELAY();
 
-            int correctionError = (encoders_peakLeft() + encoders_peakRight());
             xError -= (encoders_peakLeft() + encoders_peakRight());
-            int goalError = 150 - correctionError;
+            int goalError = 150 - (encoders_peakLeft() + encoders_peakRight());
         
             if(goalError > MOTORERROR)
             {
                 motorDrive_turn(180);
                 MOVEDELAY();
-                motorDrive_drive(150 + goalError, 50);
+                motorDrive_drive(300 - goalError, 50);
                 MOVEDELAY();
                 xError += (encoders_peakLeft() + encoders_peakRight());
 
-                if(150 + goalError - (encoders_peakLeft() + encoders_peakRight()) > MOTORERROR)
+                if(300 - goalError - (encoders_peakLeft() + encoders_peakRight()) > MOTORERROR)
                 {
                     motorDrive_turn(90);
                     MOVEDELAY();
@@ -78,12 +77,12 @@ void drive(int distance, int cutOff)
                     yError += (encoders_peakLeft() + encoders_peakRight());
                     motorDrive_turn(90);
                     MOVEDELAY();
-                    motorDrive_drive(150,0);    // could run into something... maybe
+                    motorDrive_drive(150,50);    // could run into something... maybe
                     xError -= (encoders_peakLeft() + encoders_peakRight());
                     MOVEDELAY();
                     motorDrive_turn(90);
                     MOVEDELAY();
-                    motorDrive_drive(yError, 120);   // we need to compensate for the lateral distance we've moved
+                    motorDrive_drive(yError, yError / 6);   // we need to compensate for the lateral distance we've moved
                     MOVEDELAY();
                     yError -= (encoders_peakLeft() + encoders_peakRight());
                     if(yError > MOTORERROR)
@@ -94,7 +93,7 @@ void drive(int distance, int cutOff)
                     {
                         motorDrive_turn(90);
                         MOVEDELAY();
-                        motorDrive_drive(xError,0);
+                        motorDrive_drive(-1*xError,0);
                         MOVEDELAY();
                         motorDrive_turn(-90);
                     }
@@ -102,10 +101,29 @@ void drive(int distance, int cutOff)
                     {
                         motorDrive_turn(-90);
                         MOVEDELAY();
-                        motorDrive_drive(-1*xError,0);
+                        motorDrive_drive(-xError,0);
                         MOVEDELAY();
                         motorDrive_turn(90);
                     }
+                }
+                else
+                {
+                    motorDrive_turn(-90);
+                    MOVEDELAY();
+                    motorDrive_drive(yError, 120);
+                    MOVEDELAY();
+                    yError -= (encoders_peakLeft() + encoders_peakRight());
+                    if(yError > MOTORERROR)
+                    {
+                        continue;
+                    }
+                    motorDrive_turn(-90);
+                    MOVEDELAY();
+                    motorDrive_drive(xError, 0);
+                    MOVEDELAY();
+                    motorDrive_turn(90);
+                    MOVEDELAY();
+                    xError -= (encoders_peakLeft() + encoders_peakRight());
                 }
             }
             else
@@ -441,11 +459,8 @@ void competitionMode()
     ///////////     ground map that is grabbed from the pixy cam      //////////
     ////////////////////////////////////////////////////////////////////////////
 
-    drive(1000,120); 
-    while(1);
 
-
-    drive(650, 120);
+    motorDrive_drive(650, 120);
     MOVEDELAY();
 
     if(direction == WEST_SIDE)
@@ -458,7 +473,7 @@ void competitionMode()
     }
     MOVEDELAY();
     
-    drive(700, 120);
+    motorDrive_drive(700, 120);
 
     MOVEDELAY();
     motorDrive_turn(-90);
@@ -466,7 +481,7 @@ void competitionMode()
     motorDrive_turn(180);
     MOVEDELAY();
     MOVEDELAY();
-    drive(400, 120);
+    motorDrive_drive(400, 120);
 
 
 
