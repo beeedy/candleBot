@@ -256,7 +256,14 @@ int fft_maxFreq()
         }
     }
 
-    return maxFreq;
+    if(maxVal > 3)
+    {
+        return maxFreq;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
 short fft_readBin(int i)

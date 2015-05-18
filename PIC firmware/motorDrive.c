@@ -230,6 +230,8 @@ void motorDrive_drive(int distance, int distanceCutOff) // distance = distance t
 
         if(rightSpeed < 25 && leftSpeed < 25)
         {
+            motorDrive_setSpeeds(-100,-100);
+            delay_ms(2);
             motorDrive_setSpeeds(0,0);
             return;
         }
