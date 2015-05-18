@@ -44,63 +44,98 @@ void drive(int distance, int cutOff)
 
     char done = 0;
 
-    int error = distance - (encoders_peakLeft() + encoders_peakRight());
+    int yError = distance - (encoders_peakLeft() + encoders_peakRight());
     
-    if(error > MOTORERROR)
+    if(yError > MOTORERROR)
     {
-        motorDrive_turn(-90);
-        MOVEDELAY();
-        motorDrive_drive(150,0);
-        MOVEDELAY();
-        
-        int correctionError = (encoders_peakLeft() + encoders_peakRight());
-        int goalDistance = 150 - correctionError;
-
-        while(1)
+        int xError = 0;
+        while(abs(yError) > MOTORERROR || abs(xError) < MOTORERROR)
         {
 
-            if(150 - correctionError > MOTORERROR)
+            motorDrive_turn(-90);
+            MOVEDELAY();
+            motorDrive_drive(150,0);
+            MOVEDELAY();
+
+            int correctionError = (encoders_peakLeft() + encoders_peakRight());
+            xError -= (encoders_peakLeft() + encoders_peakRight());
+            int goalError = 150 - correctionError;
+        
+            if(goalError > MOTORERROR)
             {
                 motorDrive_turn(180);
                 MOVEDELAY();
-                motorDrive_drive(300 - correctionError, 50);
+                motorDrive_drive(150 + goalError, 50);
                 MOVEDELAY();
+                xError += (encoders_peakLeft() + encoders_peakRight());
 
-                if(300 - correctionError - (encoders_peakLeft() + encoders_peakRight()) > MOTORERROR)
+                if(150 + goalError - (encoders_peakLeft() + encoders_peakRight()) > MOTORERROR)
                 {
                     motorDrive_turn(90);
                     MOVEDELAY();
-                    motorDrive_drive(error,0);
+                    motorDrive_drive(yError,0);
                     MOVEDELAY();
+                    yError += (encoders_peakLeft() + encoders_peakRight());
                     motorDrive_turn(90);
                     MOVEDELAY();
                     motorDrive_drive(150,0);    // could run into something... maybe
+                    xError -= (encoders_peakLeft() + encoders_peakRight());
                     MOVEDELAY();
                     motorDrive_turn(90);
                     MOVEDELAY();
-                    goalDistance = distance - error;
-                    drive(goalDistance, 120);   // we need to compensate for the lateral distance we've moved
+                    motorDrive_drive(yError, 120);   // we need to compensate for the lateral distance we've moved
                     MOVEDELAY();
-                    motorDrive_turn(90);
-                    MOVEDELAY();
-                    motorDrive_drive(150,0);
-                    MOVEDELAY();
-                    motorDrive_turn(-90);
-                    done = 1;
+                    yError -= (encoders_peakLeft() + encoders_peakRight());
+                    if(yError > MOTORERROR)
+                    {
+                        continue;
+                    }
+                    if(xError < 0)
+                    {
+                        motorDrive_turn(90);
+                        MOVEDELAY();
+                        motorDrive_drive(xError,0);
+                        MOVEDELAY();
+                        motorDrive_turn(-90);
+                    }
+                    else if(xError > 0)
+                    {
+                        motorDrive_turn(-90);
+                        MOVEDELAY();
+                        motorDrive_drive(-1*xError,0);
+                        MOVEDELAY();
+                        motorDrive_turn(90);
+                    }
                 }
             }
             else
             {
                 motorDrive_turn(90);
                 MOVEDELAY();
-                drive(error, 30);
+                motorDrive_drive(yError, 120);
                 MOVEDELAY();
-                motorDrive_turn(90);
-                MOVEDELAY();
-                motorDrive_drive(150,0);
-                MOVEDELAY();
-                motorDrive_turn(-90);
-                done = 1;
+                yError -= (encoders_peakLeft() + encoders_peakRight());
+                if(yError > MOTORERROR)
+                {
+                    continue;
+                }
+                
+                if(xError < 0)
+                {
+                    motorDrive_turn(90);
+                    MOVEDELAY();
+                    motorDrive_drive(xError,0);
+                    MOVEDELAY();
+                    motorDrive_turn(-90);
+                }
+                else if(xError > 0)
+                {
+                    motorDrive_turn(-90);
+                    MOVEDELAY();
+                    motorDrive_drive(-1*xError,0);
+                    MOVEDELAY();
+                    motorDrive_turn(90);
+                }
             }
         }
     }
@@ -405,6 +440,10 @@ void competitionMode()
     /////////// MotorDrive code needs to be placed here based off of  //////////
     ///////////     ground map that is grabbed from the pixy cam      //////////
     ////////////////////////////////////////////////////////////////////////////
+
+    drive(1000,120); 
+    while(1);
+
 
     drive(650, 120);
     MOVEDELAY();
