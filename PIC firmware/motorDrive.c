@@ -165,15 +165,45 @@ void motorDrive_drive(int distance, int distanceCutOff) // distance = distance t
     //60 encoder ticks per rev.
     encoders_clear();
 
-    const float differencePGain = 2.0;
-    const int baseSpeed = 60;
+    const float differencePGain = 15.0;
+    const int baseSpeed = 65;
 
     int encoderGoal = distance >> 1;
+
+    extern char PIXY_INDEX;
+    extern char PIXY_BUFF[PIXY_BUFF_SIZE];
+
+    char waiting = 0;
 
 
 
     while(encoderGoal > (int)encoders_peakLeft() && encoderGoal > (int)encoders_peakRight())
     {
+        if(waiting == 0)
+        {
+            waiting = 1;
+            PIXY_INDEX = 0;
+            UART_transmitByte(PIXY, 60);
+        }
+
+        if(PIXY_INDEX >= 40)
+        {
+            waiting = 0;
+            int count = 0;
+            for(int i = 5; i < 35; i++)
+            {
+             if(PIXY_BUFF[i] < 18)
+             {
+                 count++;
+             }
+            }
+            if(count > 3)
+            {
+                motorDrive_setSpeeds(0,0);
+                return;
+            }
+        }
+
         int rightSpeed;
         int leftSpeed;
         if((encoderGoal - (int)encoders_peakRight()) > distanceCutOff)
@@ -198,11 +228,14 @@ void motorDrive_drive(int distance, int distanceCutOff) // distance = distance t
             leftSpeed /= 100;
         }
 
-        if(rightSpeed < 7 && leftSpeed < 7)
+        if(rightSpeed < 25 && leftSpeed < 25)
         {
             motorDrive_setSpeeds(0,0);
             return;
         }
+
+        rightSpeed = min(100,rightSpeed);
+        leftSpeed = min(100,leftSpeed);
 
         motorDrive_setSpeeds(rightSpeed, leftSpeed);
     }
@@ -223,10 +256,10 @@ void motorDrive_turn(int angle)
 
     encoders_clear();
 
-    const float differencePGain = 2.0;
+    const float differencePGain = 15.0;
     const int baseSpeed = 60;
 
-    int encoderGoal = (angle * 32 + 1) / 100;
+    int encoderGoal = (angle * 31 + 5) / 100;
 
     if(angle > 0)
     {

@@ -27,7 +27,7 @@
 
 //#define textMode
 
-#define MOVEDELAY() delay_ms(700)
+#define MOVEDELAY() delay_ms(350)
 
 
 char volatile FONA_BUFF[FONA_BUFF_SIZE], USB_BUFF[USB_BUFF_SIZE],
@@ -362,25 +362,25 @@ void competitionMode()
         fft_execute();
         int freq = fft_maxFreq();
 
-        for(int i = 0; i < 5; i++)
+        for(int i = 0; i < 8; i++)
         {
 
-            if(freq > 2000 && freq < 3000)
+            if(freq > 2300 && freq < 2700)
             {
                 ++W;
             }
-           else if(freq > 3000 && freq < 4000)
+           else if(freq > 3600 && freq < 4000)
            {
                 ++E;
            }
         }
 
-        if(W == 5)
+        if(W == 8)
         {
             clearMillis();
             direction = WEST_SIDE;
         }
-        else if(E == 5)
+        else if(E == 8)
         {
             clearMillis();
             direction = EAST_SIDE;
@@ -392,36 +392,26 @@ void competitionMode()
     ///////////     ground map that is grabbed from the pixy cam      //////////
     ////////////////////////////////////////////////////////////////////////////
 
+    motorDrive_drive(650, 120);
+    MOVEDELAY();
     if(direction == WEST_SIDE)
     {
-        // Code to drive forward and make a turn to get to the correct wing
-
-
-        // Code to look into the large open room for the candle
-
-
-        // Code to look into the walled room for the candle
-
-
-        // if we still haven't found the candle, double check both rooms
-
-        // once found, text with the time
+        motorDrive_turn(90);
     }
     else
     {
-        // Code to drive forward and make a turn to get to the correct wing
-
-
-        // Code to look into the large open room for the candle
-
-
-        // Code to look into the walled room for the candle
-
-
-        // if we still haven't found the candle, double check both rooms
-
-        // once found, text with the time
+        motorDrive_turn(-90);
     }
+    MOVEDELAY();
+    motorDrive_drive(650, 120);
+    MOVEDELAY();
+    motorDrive_turn(-90);
+    MOVEDELAY();
+    motorDrive_turn(180);
+    MOVEDELAY();
+    MOVEDELAY();
+    motorDrive_drive(400, 120);
+
 
 
 
@@ -490,39 +480,7 @@ void main()
     enableInterrupts();
     init();
 
-    delay_s(5);
-    
-    UART_transmitByte(PIXY, 12);
-    while(1)
-    {
-        UART_transmitByte(PIXY, 60);
-        while(PIXY_INDEX < 199);
-        loadMap();
-        printMap();
-        delay_s(1);
-    }
-
-    /*
-    delay_s(5);
-    motorDrive_drive(650, 120);
-    MOVEDELAY();
-    motorDrive_turn(-90);
-    MOVEDELAY();
-    motorDrive_drive(650, 120);
-    MOVEDELAY();
-    motorDrive_turn(-90);
-    MOVEDELAY();
-    MOVEDELAY();
-    motorDrive_turn(180);
-    MOVEDELAY();
-    motorDrive_drive(400, 120);
-    MOVEDELAY();
-    motorDrive_turn(1800);
-    */
-
-    while(1);
-
-    //competitionMode();
+    competitionMode();
 
     while(1)
     {
