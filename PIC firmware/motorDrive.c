@@ -205,6 +205,14 @@ void motorDrive_drive(int distance, int distanceCutOff) // distance = distance t
             }
         }
         */
+        char retVals[12];
+        colorSensor_read(READ_CLEAR, retVals);
+
+        if((retVals[0] | (retVals[1] << 8)) > 700)
+        {
+            motorDrive_setSpeeds(0,0);
+            return;
+        }
 
         int rightSpeed;
         int leftSpeed;

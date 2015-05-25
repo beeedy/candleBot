@@ -84,6 +84,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "pwm.h"
 #include "encoders.h"
 #include "delays.h"
+#include "colorSensor.h"
 
 #define MAX_ACCEL 1
 

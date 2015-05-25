@@ -25,7 +25,7 @@
 #include "I2C.h"
 #include "wiiCams.h"
 
-//#define textMode
+#define textMode
 
 #define MOVEDELAY() delay_ms(350)
 
@@ -371,46 +371,49 @@ void competitionMode()
     retVal += compass_mainBoardInit();
     retVal += (wiiCams_init() << 1);
     retVal += (colorSensor_init() << 2);
+    //FONA_Text("Ready to begin", BroderickFoneNumber);
+
+    UART_transmitByte(PIXY, 24);
 
     switch(retVal)
     {
         case 0:
-            FONA_Text("Ready to begin\nCompass: OK\nIR Cams: OK\nColor: OK\n\n\nWaiting for start tone", TylerFoneNumber);
+            //FONA_Text("Ready to begin\nCompass: OK\nIR Cams: OK\nColor: OK\n\n\nWaiting for start tone", TylerFoneNumber);
             FONA_Text("Ready to begin\nCompass: OK\nIR Cams: OK\nColor: OK\n\n\nWaiting for start tone", BroderickFoneNumber);
             break;
 
         case 1:
-            FONA_Text("Ready to begin\nCompass: ERR\nIR Cams: OK\nColor: OK\n\n\nWaiting for start tone", TylerFoneNumber);
+            //FONA_Text("Ready to begin\nCompass: ERR\nIR Cams: OK\nColor: OK\n\n\nWaiting for start tone", TylerFoneNumber);
             FONA_Text("Ready to begin\nCompass: ERR\nIR Cams: OK\nColor: OK\n\n\nWaiting for start tone", BroderickFoneNumber);
             break;
 
         case 2:
-            FONA_Text("Ready to begin\nCompass: OK\nIR Cams: ERR\nColor: OK\n\n\nWaiting for start tone", TylerFoneNumber);
+            //FONA_Text("Ready to begin\nCompass: OK\nIR Cams: ERR\nColor: OK\n\n\nWaiting for start tone", TylerFoneNumber);
             FONA_Text("Ready to begin\nCompass: OK\nIR Cams: ERR\nColor: OK\n\n\nWaiting for start tone", BroderickFoneNumber);
             break;
 
         case 3:
-            FONA_Text("Ready to begin\nCompass: ERR\nIR Cams: ERR\nColor: OK\n\n\nWaiting for start tone", TylerFoneNumber);
+            //FONA_Text("Ready to begin\nCompass: ERR\nIR Cams: ERR\nColor: OK\n\n\nWaiting for start tone", TylerFoneNumber);
             FONA_Text("Ready to begin\nCompass: ERR\nIR Cams: ERR\nColor: OK\n\n\nWaiting for start tone", BroderickFoneNumber);
             break;
 
         case 4:
-            FONA_Text("Ready to begin\nCompass: OK\nIR Cams: OK\nColor: ERR\n\n\nWaiting for start tone", TylerFoneNumber);
+            //FONA_Text("Ready to begin\nCompass: OK\nIR Cams: OK\nColor: ERR\n\n\nWaiting for start tone", TylerFoneNumber);
             FONA_Text("Ready to begin\nCompass: OK\nIR Cams: OK\nColor: ERR\n\n\nWaiting for start tone", BroderickFoneNumber);
             break;
 
         case 5:
-            FONA_Text("Ready to begin\nCompass: ERR\nIR Cams: OK\nColor: ERR\n\n\nWaiting for start tone", TylerFoneNumber);
+            //FONA_Text("Ready to begin\nCompass: ERR\nIR Cams: OK\nColor: ERR\n\n\nWaiting for start tone", TylerFoneNumber);
             FONA_Text("Ready to begin\nCompass: ERR\nIR Cams: OK\nColor: ERR\n\n\nWaiting for start tone", BroderickFoneNumber);
             break;
 
         case 6:
-            FONA_Text("Ready to begin\nCompass: OK\nIR Cams: ERR\nColor: ERR\n\n\nWaiting for start tone", TylerFoneNumber);
+            //FONA_Text("Ready to begin\nCompass: OK\nIR Cams: ERR\nColor: ERR\n\n\nWaiting for start tone", TylerFoneNumber);
             FONA_Text("Ready to begin\nCompass: OK\nIR Cams: ERR\nColor: ERR\n\n\nWaiting for start tone", BroderickFoneNumber);
             break;
 
         case 7:
-            FONA_Text("Ready to begin\nCompass: ERR\nIR Cams: ERR\nColor: ERR\n\n\nWaiting for start tone", TylerFoneNumber);
+            //FONA_Text("Ready to begin\nCompass: ERR\nIR Cams: ERR\nColor: ERR\n\n\nWaiting for start tone", TylerFoneNumber);
             FONA_Text("Ready to begin\nCompass: ERR\nIR Cams: ERR\nColor: ERR\n\n\nWaiting for start tone", BroderickFoneNumber);
             break;
     }
@@ -459,30 +462,95 @@ void competitionMode()
     ///////////     ground map that is grabbed from the pixy cam      //////////
     ////////////////////////////////////////////////////////////////////////////
 
+    unsigned char rawDataLeft[12], rawDataRight[12];
+    int processedDataLeft[12], processedDataRight[12];
+
+    UART_transmitByte(PIXY, 30);
 
     motorDrive_drive(650, 120);
     MOVEDELAY();
 
+    if(settings_readSettings() == 0x00)
+    {
+        if(direction == WEST_SIDE)
+        {
+            direction == EAST_SIDE;
+        }
+        else
+        {
+            direction == WEST_SIDE;
+        }
+    }
+
     if(direction == WEST_SIDE)
     {
-        motorDrive_turn(85);
+        motorDrive_turn(80);
+        MOVEDELAY();
     }
     else
     {
         motorDrive_turn(-90);
     }
+
+    motorDrive_drive(300, 30);
     MOVEDELAY();
+    motorDrive_turn(-80);
+    MOVEDELAY();
+
+    for(int i = 0; i < 7; i++)
+    {
+
+        motorDrive_turn(5 * i);
+        MOVEDELAY();
+        wiiCams_read(WII_CAM_LEFT, rawDataLeft);
+        wiiCams_read(WII_CAM_RIGHT, rawDataRight);
+
+        wiiCams_processData(rawDataLeft, processedDataLeft);
+        wiiCams_processData(rawDataRight, processedDataRight);
+
+        if(wiiCams_findCandle(processedDataLeft, processedDataRight) == 1)
+        {
+            motorDrive_drive(2000, 0);
+            // found candle
+            char dat[144];
+            fixSTR(dat, "Found Candle in %i seconds",(int)(millis()/1000));
+            FONA_Text(dat, BroderickFoneNumber);
+
+            while(1);
+        }
+    }
     
-    motorDrive_drive(700, 120);
 
     MOVEDELAY();
-    motorDrive_turn(-90);
+    motorDrive_drive(320, 30);
     MOVEDELAY();
-    motorDrive_turn(180);
+    motorDrive_turn(75);
     MOVEDELAY();
-    MOVEDELAY();
-    motorDrive_drive(400, 120);
+    motorDrive_drive(350, 30);
 
+    for(int i = 0; i < 50; i++)
+    {
+
+        motorDrive_turn(2 * i);
+        MOVEDELAY();
+        wiiCams_read(WII_CAM_LEFT, rawDataLeft);
+        wiiCams_read(WII_CAM_RIGHT, rawDataRight);
+
+        wiiCams_processData(rawDataLeft, processedDataLeft);
+        wiiCams_processData(rawDataRight, processedDataRight);
+
+        if(wiiCams_findCandle(processedDataLeft, processedDataRight) == 1)
+        {
+            motorDrive_drive(2000, 0);
+            // found candle
+
+            char dat[144];
+            fixSTR(dat, "Found Candle in %i seconds",(int)(millis()/1000));
+            FONA_Text(dat, BroderickFoneNumber);
+
+            while(1);
+        }
+    }
 
 
 
