@@ -179,32 +179,6 @@ void motorDrive_drive(int distance, int distanceCutOff) // distance = distance t
 
     while(encoderGoal > (int)encoders_peakLeft() && encoderGoal > (int)encoders_peakRight())
     {
-        /* RIP Pixy
-        if(waiting == 0)
-        {
-            waiting = 1;
-            PIXY_INDEX = 0;
-            UART_transmitByte(PIXY, 60);
-        }
-
-        if(PIXY_INDEX >= 40)
-        {
-            waiting = 0;
-            int count = 0;
-            for(int i = 5; i < 35; i++)
-            {
-             if(PIXY_BUFF[i] < 18)
-             {
-                 count++;
-             }
-            }
-            if(count > 3)
-            {
-                motorDrive_setSpeeds(0,0);
-                return;
-            }
-        }
-        */
         char retVals[12];
         colorSensor_read(READ_CLEAR, retVals);
 
@@ -292,4 +266,127 @@ void motorDrive_turn(int angle)
         }
     }
     motorDrive_setSpeeds(0,0);
+}
+
+void motorDrive_driveAvoidObstacles(int distance, int cutOff)
+{
+    motorDrive_drive(distance, cutOff);
+    MOVEDELAY();
+
+
+    char done = 0;
+
+    int yError = distance - (encoders_peakLeft() + encoders_peakRight());
+
+    if(yError > MOTORERROR)
+    {
+        int xError = 0;
+        while(abs(yError) > MOTORERROR || abs(xError) < MOTORERROR)
+        {
+
+            motorDrive_turn(-90);
+            MOVEDELAY();
+            motorDrive_drive(150,0);
+            MOVEDELAY();
+
+            xError -= (encoders_peakLeft() + encoders_peakRight());
+            int goalError = 150 - (encoders_peakLeft() + encoders_peakRight());
+
+            if(goalError > MOTORERROR)
+            {
+                motorDrive_turn(180);
+                MOVEDELAY();
+                motorDrive_drive(300 - goalError, 50);
+                MOVEDELAY();
+                xError += (encoders_peakLeft() + encoders_peakRight());
+
+                if(300 - goalError - (encoders_peakLeft() + encoders_peakRight()) > MOTORERROR)
+                {
+                    motorDrive_turn(90);
+                    MOVEDELAY();
+                    motorDrive_drive(yError,0);
+                    MOVEDELAY();
+                    yError += (encoders_peakLeft() + encoders_peakRight());
+                    motorDrive_turn(90);
+                    MOVEDELAY();
+                    motorDrive_drive(150,50);    // could run into something... maybe
+                    xError -= (encoders_peakLeft() + encoders_peakRight());
+                    MOVEDELAY();
+                    motorDrive_turn(90);
+                    MOVEDELAY();
+                    motorDrive_drive(yError, yError / 6);   // we need to compensate for the lateral distance we've moved
+                    MOVEDELAY();
+                    yError -= (encoders_peakLeft() + encoders_peakRight());
+                    if(yError > MOTORERROR)
+                    {
+                        continue;
+                    }
+                    if(xError < 0)
+                    {
+                        motorDrive_turn(90);
+                        MOVEDELAY();
+                        motorDrive_drive(-1*xError,0);
+                        MOVEDELAY();
+                        motorDrive_turn(-90);
+                    }
+                    else if(xError > 0)
+                    {
+                        motorDrive_turn(-90);
+                        MOVEDELAY();
+                        motorDrive_drive(-xError,0);
+                        MOVEDELAY();
+                        motorDrive_turn(90);
+                    }
+                }
+                else
+                {
+                    motorDrive_turn(-90);
+                    MOVEDELAY();
+                    motorDrive_drive(yError, 120);
+                    MOVEDELAY();
+                    yError -= (encoders_peakLeft() + encoders_peakRight());
+                    if(yError > MOTORERROR)
+                    {
+                        continue;
+                    }
+                    motorDrive_turn(-90);
+                    MOVEDELAY();
+                    motorDrive_drive(xError, 0);
+                    MOVEDELAY();
+                    motorDrive_turn(90);
+                    MOVEDELAY();
+                    xError -= (encoders_peakLeft() + encoders_peakRight());
+                }
+            }
+            else
+            {
+                motorDrive_turn(90);
+                MOVEDELAY();
+                motorDrive_drive(yError, 120);
+                MOVEDELAY();
+                yError -= (encoders_peakLeft() + encoders_peakRight());
+                if(yError > MOTORERROR)
+                {
+                    continue;
+                }
+
+                if(xError < 0)
+                {
+                    motorDrive_turn(90);
+                    MOVEDELAY();
+                    motorDrive_drive(xError,0);
+                    MOVEDELAY();
+                    motorDrive_turn(-90);
+                }
+                else if(xError > 0)
+                {
+                    motorDrive_turn(-90);
+                    MOVEDELAY();
+                    motorDrive_drive(-1*xError,0);
+                    MOVEDELAY();
+                    motorDrive_turn(90);
+                }
+            }
+        }
+    }
 }
