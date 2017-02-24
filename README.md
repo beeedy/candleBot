@@ -11,5 +11,6 @@ This robot was designed around:
 * [FONA](https://www.adafruit.com/product/1946) (Used to 'call the fire department')
 * MC33926PNB (Motor controllers)
 * Nintendo Wii IR Cameras (2x, stereo vision used for camera 3D localization)
+* PS2 connector (Allowed for PlayStation controllers to be connected and used to drive the bot)
 
 This repo is dormant and there are no future plans to put more work into this project. This project now resides as the first microcontroller project taken on by [Tyler Holmes](https://github.com/TDHolmes) and myself.
