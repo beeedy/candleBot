@@ -1,0 +1,68 @@
+
+
+•	LPC_TIMER2 is a microsecond timer
+•	M4 is the main processor, M0 is the coprocessor
+•	In lib_pixy_m4
+		-camera.cpp
+		-cam_getframe
+			g_rawFrame.m_pixels = memory;
+			g_rawFrame.m_width = xWidth;
+			g_rawFrame.m_height = yWidth;
+
+
+
+•	cam_getFrame(uint8_t *memory, uint32_t memSize, uint8_t type, uint16_t xOffset, uint16_t yOffset, uint16_t xWidth, uint16_t yWidth)
+	/*
+	  Pixy has 3 different possible resolutions you can use, 1280x800, 640x400, or 320x200. 
+	  we have to make sure of:  xOffset+xWidth < CAM_RES0_WIDTH && yOffset+yWidth < CAM_RES0_HEIGHT
+	  For our purposes, xOffset = yOffset = 0 and xWidth = RES_WIDTH and yWidth = RES_HEIGHT to get the full cam frame. This is then stored in the 
+	  memory location pointed at by the pointer memory, allocated the size memSize. If it passes all the checks, it chirps to the M0 processor
+	  to get the actual info:
+	  
+		// forward call to M0, get frame
+		g_chirpM0->callSync(g_getFrameM0, 
+			UINT8(type), UINT32((uint32_t)memory), UINT16(xOffset), UINT16(yOffset), UINT16(xWidth), UINT16(yWidth), END_OUT_ARGS,
+			&responseInt, END_IN_ARGS);
+
+		if (responseInt==0)
+		{
+			g_rawFrame.m_pixels = memory;
+			g_rawFrame.m_width = xWidth;
+			g_rawFrame.m_height = yWidth;
+		}
+	  
+	  
+	  Camera Vals headder file contents:
+	  
+		#define CAM_MODE0               0x00
+		#define CAM_MODE1               0x01
+
+		#define CAM_LIGHT_NORMAL        0
+		#define CAM_LIGHT_LOW           1
+		#define CAM_LIGHT_HIGH          2 // not sure if combining high light and low light exposure is possible, or good
+
+		#define CAM_BRIGHTNESS_DEFAULT  80
+		#define CAM_BRIGHTNESS_RANGE    0x14
+
+
+		#define CAM_RES0                0x00 
+		#define CAM_RES1                0x01
+		#define CAM_RES2                0x02
+		#define CAM_RES0_WIDTH          1280
+		#define CAM_RES0_HEIGHT         800
+		#define CAM_RES1_WIDTH          640
+		#define CAM_RES1_HEIGHT         400
+		#define CAM_RES2_WIDTH          320
+		#define CAM_RES2_HEIGHT         200
+
+		#define CAM_GRAB_M0R0           (CAM_RES0<<4 | CAM_MODE0)    <--- These are the inputs to cam_getFrame paramiter "type" which specifies
+		#define CAM_GRAB_M1R1           (CAM_RES1<<4 | CAM_MODE1)         Mode and resolution
+		#define CAM_GRAB_M1R2           (CAM_RES2<<4 | CAM_MODE1)    <--- 
+
+	*/
+
+
+
+•	progvideo.cpp sends straight up raw camera video thru USB
+•	exec_loop()
+•	frame_m0() is the dirty, low level camera interfacing.
