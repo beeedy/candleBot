@@ -1,11 +1,8 @@
-/*                           _     ___________
-                            | |   /  __ \  _  \
-                            | |   | /  \/ | | |
-                            | |   | |   | | | |
-                            | |___| \__/\ |/ /
-                            \_____/\____/___/
+/*
  * File:   LCD.c
- * Author: Broderick Carlin
+ * Author: broderickcarlin
+ *
+ * Created on April 9, 2015, 10:03 PM
  */
 
 #include "LCD.h"
@@ -25,7 +22,6 @@
 #define LCD_RS  PORTDbits.RD0 /* RD0 */
 #define LCD_RW  PORTGbits.RG7
 
-// Inline function for writing out the 8 values for 8-bit mode
 #define LCD_write8bit(data_in) \
     {\
     LCD_DB7 = ((data_in >> 7) & 1);\
@@ -38,7 +34,6 @@
     LCD_DB0 = (data_in & 1);\
     }
 
-// Inline function for writing out the 4 values for 4-bit mode
 #define LCD_write4bit(data_in) \
     {\
     LCD_DB7 = ((data_in >> 3) & 1);\
@@ -46,7 +41,6 @@
     LCD_DB5 = ((data_in >> 1) & 1);\
     LCD_DB4 = (data_in & 1);\
     }
-
 
 volatile char mode = 0;
 
@@ -127,7 +121,7 @@ void LCD_init4bit()
     delay_long();
     LCD_E = 0;
 
-    delay_ms(50); // 5
+    delay_ms(5); // 5
 
     ///////////////// font and # of lines  /////////////////
     delay_long();
@@ -315,7 +309,7 @@ void LCD_placeCursor(char x, char y)
 }
 
 
-void LCD_printString(char x, char y, const char input[], ...)
+void LCD_printString(char x, char y, char input[], ...)
 {
     char string[20] = "\0";
 
@@ -396,7 +390,7 @@ void LCD_printString(char x, char y, const char input[], ...)
 }
 
 
-void LCD_printChar(char x, char y, const char a)
+void LCD_printChar(char x, char y, char a)
 {
     char string[2];
     string[0] = a;
@@ -405,7 +399,7 @@ void LCD_printChar(char x, char y, const char a)
 }
 
 
-void LCD_printVal(char x, char y, const int a)
+void LCD_printVal(char x, char y, int a)
 {
     char temp[] = "%i";
     LCD_printString(x, y, temp, a);

@@ -61,39 +61,43 @@
  *
  */
 
-#include <xc.h>
-#include "i2c.h"
+#include <i2c.h>
 #include "compass.h"
-#include "GlobalDefines.h"
 #include <math.h>
 
 signed char compass_pixyInit() {
 
     // the compass on the pixy board is on I2C line 1 (SDA: pin 56, SCL: pin 54)
 
-    signed char retVal, data;
-    unsigned char retry = 3;
+    signed char retVal;
+    retVal += WriteI2C1(COMPASS_WRITE_ADDR);  // compass address
+    retVal += WriteI2C1(0x00);                // Config reg A address
+    retVal += WriteI2C1(0x50);                // config reg A val
 
-    data = SSP1BUF; //read any previous stored content in buffer to clear buffer
-                    //full status
-    do {
-        unsigned char data[] = {
-            0x00,
-            0x50,
-            0x20,
-            0x00
-        };
-        retVal = I2C_write(COMPASS_PIXY, COMPASS_ADR, data, 4);
-        if(retVal == -3) { //check if bus collision happened
-            SSP1CON1bits.WCOL=0; // clear the bus collision status bit
-        }
-        retry--;
-    } while(retVal!=0 && retry > 0); //write untill successful communication
-    if(retry == 0) {
+    retVal += WriteI2C1(COMPASS_WRITE_ADDR);  // compass address
+    retVal += WriteI2C1(0x01);                // Config reg A address
+    retVal += WriteI2C1(0x20);                // config reg A val
+
+    retVal += WriteI2C1(COMPASS_WRITE_ADDR);  // compass address
+    retVal += WriteI2C1(0x02);                // Mode reg address
+    retVal += WriteI2C1(0x00);                // Continuous Measure
+
+    if(retVal != 0) {
         return -1;
     }
-    else
-        return 0;
+    else {
+        return 0;   // testing
+        WriteI2C1(COMPASS_READ_ADDR);  // compass address
+        WriteI2C1(0x0A);               // ID reg. A
+        if(ReadI2C1() != 'H')
+            return -1;
+
+        // get initial calibration. Must be flat on the floor!
+
+        int x, y, z;
+        retVal = compass_pixyRead(&x, &y, &z);
+    }
+    
 }
 
 
@@ -131,17 +135,7 @@ signed char compass_mainBoardInit() {
         return -1;
     }
     else {
-        WriteI2C1(COMPASS_READ_ADDR);  // compass address
-        WriteI2C1(0x0A);               // ID reg. A
-        if(ReadI2C1() != 'H')
-            return -1;
-
-        // get initial calibration. Must be flat on the floor!
-
-        int x, y, z;
-        retVal = compass_mainRead(&x, &y, &z);
-        StopI2C1();
-        return retVal;
+        return 0;
     }
 }
 

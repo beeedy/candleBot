@@ -1,14 +1,3 @@
-/*                    _____                    _
-                     |  ___|                  | |
-                     | |__ _ __   ___ ___   __| | ___ _ __ ___
-                     |  __| '_ \ / __/ _ \ / _` |/ _ \ '__/ __|
-                     | |__| | | | (_| (_) | (_| |  __/ |  \__ \
-                     \____/_| |_|\___\___/ \__,_|\___|_|  |___/
-
- * File:   encoders.h
- * Author: Broderick Carlin
- */
-
 #include "encoders.h"
 
 volatile long right_count = 0;
@@ -43,7 +32,9 @@ void encoders_init()
     INTCON2bits.INTEDG3 = 1;
     INTCON2bits.INT3IP = 0;
     INTCON3bits.INT3IF = 0;
-    INTCON3bits.INT3IE = 1; 
+    INTCON3bits.INT3IE = 1;
+
+    //INTCON2bits.IOCIP = 0; Not needed? 
 }
 
 void interrupt low_priority encoderInterrupt()
@@ -52,11 +43,11 @@ void interrupt low_priority encoderInterrupt()
     {
         if(PORTBbits.RB0 == 1)
         {
-            right_count--;
+            left_count--;
         }
         else
         {
-            right_count++;
+            left_count++;
         }
         INT1IF = 0;
     }
@@ -64,11 +55,11 @@ void interrupt low_priority encoderInterrupt()
     {
         if(PORTBbits.RB2 == 1)
         {
-            left_count--;
+            right_count--;
         }
         else
         {
-            left_count++;
+            right_count++;
         }
         INT3IF = 0;
     }
@@ -77,7 +68,7 @@ void interrupt low_priority encoderInterrupt()
 
 long encoders_readLeft()
 {
-    long temp = left_count;
+    int temp = left_count;
     left_count = 0;
     return temp;
 
@@ -86,13 +77,14 @@ long encoders_readLeft()
 
 long encoders_peakLeft()
 {
-    return left_count;
+    long temp = left_count;
+    return temp;
 }
 
 
 long encoders_readRight()
 {
-    long temp = right_count;
+    int temp = right_count;
     right_count = 0;
     return temp;
 }
@@ -100,7 +92,8 @@ long encoders_readRight()
 
 long encoders_peakRight()
 {
-    return right_count;
+    long temp = right_count;
+    return temp;
 }
 
 

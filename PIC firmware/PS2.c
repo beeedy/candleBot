@@ -1,20 +1,3 @@
-/*                          ______  _____  _____
-                            | ___ \/  ___|/ __  \
-                            | |_/ /\ `--. `' / /'
-                            |  __/  `--. \  / /
-                            | |    /\__/ /./ /___
-                            \_|    \____/ \_____/
-                        ______                     _
-                        | ___ \                   | |
-                        | |_/ /___ _ __ ___   ___ | |_ ___
-                        |    // _ \ '_ ` _ \ / _ \| __/ _ \
-                        | |\ \  __/ | | | | | (_) | ||  __/
-                        \_| \_\___|_| |_| |_|\___/ \__\___|
-
- * File:   PS2.h
- * Author: Broderick Carlin
- */
-
 #include "PS2.h"
 
 static char enter_config[]={0x01,0x43,0x00,0x01,0x00};
@@ -46,13 +29,13 @@ char PS2_init()
 
     if(PS2data[1] != 0x41 && PS2data[1] != 0x73 && PS2data[1] != 0x79)
     {
-        return 1; //return error code 1, no controller found
+        return 1; //return error code 1
     }
 
     //try setting mode, increasing delays if need be.
     read_delay = 1;
 
-    for(int y = 0; y <= 15; y++)
+    for(int y = 0; y <= 10; y++)
     {
         PS2_sendCommandString(enter_config, sizeof(enter_config)); //start config run
 
@@ -83,9 +66,9 @@ char PS2_init()
         if(PS2data[1] == 0x73)
         break;
 
-        if(y == 15)
+        if(y == 10)
         {
-            return 2; //exit function with error, controller not accepting cmds
+            return 2; //exit function with error
         }
         read_delay += 1; //add 1ms to read_delay
   }
@@ -96,7 +79,7 @@ void PS2_readGamepad()
 {
     long temp = millis() - last_read;
 
-    if (temp > 1500) //waited too long
+    if (temp > 1500) //waited to long
     {
         PS2_reconfig();
     }
@@ -107,8 +90,6 @@ void PS2_readGamepad()
     }
 
     last_buttons = buttons;
-
-    disableInterrupts();
 
     CMD = 1;
     CLK = 1;
@@ -138,8 +119,6 @@ void PS2_readGamepad()
 
     buttons = *(unsigned int*)(PS2data+3);   //store as one value for multiple functions
     last_read = millis();
-
-    enableInterrupts();
 }
 
 void PS2_reconfig()

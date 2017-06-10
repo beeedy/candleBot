@@ -1,16 +1,5 @@
-/*                      ______     _
-                        |  _  \   | |
-                        | | | |___| | __ _ _   _ ___
-                        | | | / _ \ |/ _` | | | / __|
-                        | |/ /  __/ | (_| | |_| \__ \
-                        |___/ \___|_|\__,_|\__, |___/
-                                            __/ |
-                                           |___/
- * File:   delays.c
- * Author: Broderick Carlin
- */
-
 #include "delays.h"
+#include <timers.h>
 #define USE_OR_MASKS
 
 unsigned long millisCount = 0;
@@ -24,6 +13,23 @@ void delay_init()
     {
         return;
     }
+
+    //configure timer 1 to use internal 32kHz clock
+    TMR3CS0 = 1;
+    TMR3CS1 = 1;
+
+    //configure no prescale of timer 1
+    T3CKPS0 = 0;
+    T3CKPS1 = 0;
+
+    //configure timer 1, 3, 5 to be 16bit
+    RD163 = 1;
+    
+    //disable interrupting
+    TMR3IE = 0;
+
+    //enable timer
+    TMR3ON = 1;
 
     config = 1;
 
@@ -66,6 +72,39 @@ void delay_s(long x)
     unsigned long time = millis();
     while(millis() - time < (x * 1000));
     return;
+}
+
+
+void delay_clear()
+{
+
+    TMR3ON = 0;
+    TMR3H = 0;
+    TMR3L = 0;
+}
+
+
+void delay_startCount()
+{
+    TMR3ON = 1;
+}
+
+
+unsigned int delay_readCountMS()
+{
+    unsigned int val = TMR3L;
+    val = val + (TMR3H << 8);
+
+    return (val/32);
+}
+
+
+unsigned int delay_readCountUS()
+{
+    unsigned int val = TMR3L;
+    val = val + (TMR3H << 8);
+
+    return (unsigned int)(val*30.518);
 }
 
 unsigned long millis()

@@ -1,129 +1,140 @@
-/*               _____  ________  ___  _____      _ _       _
-                |  __ \/  ___|  \/  | /  __ \    | | |     | |
-                | |  \/\ `--.| .  . | | /  \/ ___| | |_   _| | __ _ _ __
-                | | __  `--. \ |\/| | | |    / _ \ | | | | | |/ _` | '__|
-                | |_\ \/\__/ / |  | | | \__/\  __/ | | |_| | | (_| | |
-                 \____/\____/\_|  |_/  \____/\___|_|_|\__,_|_|\__,_|_|
 
- * File:   FONA.h
- * Author: Broderick Carlin
+/*
+ * Function for interfacing with the FONA GSM Module
+ *
+ *
  */
 
+#define SUCCESS 0
+#define INVALID_PHONE_NUMBER 1
+#define INSUFFICIENT_CELL 2
+#define TEXT_SIZE_ERROR 3
+#define RETRY_COUNT 3
+
+#include "GlobalDefines.h"
+#include "UART.h"
+#include "delays.h"
 #include "FONA.h"
+#include <string.h>
 
 extern volatile char FONA_BUFF[FONA_BUFF_SIZE];
 extern volatile char FONA_INDEX;
 
-char FONA_init()
-{
-    char done = FAILURE;
-    for(int i = 0; i < 20; i++)
-    {
-        if(FONA_sendCommandCheckReply("AT","OK"))
-        {
-            done = SUCCESS;
-            i = 20;
+char FONA_init() {
+    char genString[20] = "AT\r\nOK\r\n";
+    // Fona seems to send text and then an \r character, not a \0
+    // character, elliminating the possibility of using a string
+    // continuous recieve function for little
+    short retry = 5;
+    FONA_INDEX = 0;
+    do {
+        UART_transmitByte(FONA, 'A');   // Transmit
+        //delay_ms(1);                    // Fona should echo 'A'
+        UART_transmitByte(FONA, 'T');
+        //delay_ms(1);                    // Fona should echo 'T'
+        UART_transmitByte(FONA, '\r');
+        //delay_ms(1);                    /// Should echo '\r'
+        UART_transmitByte(FONA, '\n');
+        delay_ms(5);                    /// Should echo '\n'
+
+        for(signed char i = 7; i >= 0; i--) {
+            if( !(FONA_BUFF[i] == genString[i]) ) {
+                retry = retry - 1;  // decrement the number of times to retry
+                FONA_INDEX = 0;    // Reset the buffer
+                break;              // stop checking the arrays
+            }
+            retry = -1;     // success!
         }
-        delay_ms(100);
+    } while(retry > 0);
+
+    if(retry == -1) {       // Successful communication
+        FONA_INDEX = 0;
+        for(signed char i = 10; i >= 0; i--) {
+            FONA_BUFF[i] = 0;   // clear buffer just in case
+        }
+        return 0;
     }
-    return done;
+    return 1;               // unsuccessful communication
 }
 
+/* Given a null terminated string and a 10 digit phone number, this function
+ * will text the number the string if it is under 140 characters, the phone
+ * number is valid, and the signal strength is sufficient.
+ *
+ * Return codes:
+ *   0 - success
+ *   1 - invalid phone number
+ *   2 - insufficient cell strength
+ *   3 - too long of a string
+ *
+ */
 
 char FONA_Text(char *data, char *phoneNumber)
 {
-    if (!FONA_init()) return FAILURE;
-    if (!FONA_sendCommandCheckReply("AT+CMGF=1", "OK")) return FAILURE;
+  char genString[20];
+  char error = 1;
+  char strength = 0;
 
-    char sendcmd[30] = "AT+CMGS=\"";
-    strncpy(sendcmd+9, phoneNumber, 30-9-2);  // 9 bytes beginning, 2 bytes for close quote + null
-    sendcmd[strlen(sendcmd)] = '\"';
-
-    FONA_INDEX = 0;
-
-    FONA_sendCommand(sendcmd);
-
-    UART_transmitString(FONA,data);
-    UART_transmitByte(FONA,'\n');
-    UART_transmitByte(FONA,'\0');
-    UART_transmitByte(FONA,'\n');
-    UART_transmitByte(FONA,0x1A);
-
-    unsigned long start = millis();
-    while(FONA_INDEX < 8 && millis() - start < 10000);
-
-    if(millis() - start >= 10000)
-    {
-        return FAILURE;
-    }
-
-    FONA_BUFF[8] = '\0';
-    if(strcmp(FONA_BUFF,"\r\n+CMGS:") == 0)
-    {
-        return SUCCESS;
-    }
-
-    return FAILURE;
-}
-
-
-void FONA_sendCommand(const char input[])
-{
-    char input_fixed[100];
-
-    char inputLength = strlen(input);
-
-    strcpy(input_fixed, input);
-    input_fixed[inputLength] = '\n';
-    input_fixed[inputLength + 1] = '\0';
-
-    UART_transmitString(FONA, input_fixed);
-}
-
-
-char FONA_checkReply(const char test[])
-{
-    for(int i = 0; i < strlen(test); i++)
-    {
-        if(test[i] !=  FONA_BUFF[i])
+    if(phoneNumber[10] == '\0')
+    {   // if phoneNumber[] is 10 digits long
+        for(int i = 0; i < 141; i++)
         {
-            return FAILURE;
+            if(data[i] == '\0')
+            {   // We have reached the end of the string
+                error = 0;
+                break;
+            }
+            if(error == 1)
+            {
+                return(TEXT_SIZE_ERROR);
+            }
         }
+
+        strength = FONA_CheckStrength();
+
+        if(strength < 6)
+        {      // Insufficient Cell Strength
+
+            return(INSUFFICIENT_CELL);
+        }
+        strcpy(genString, "AT+CMGF=1");
+        UART_transmitString(FONA, genString);   // Text mode
+        delay_ms(5);
+        strcpy(genString, "AT+CMGS=");
+        for(int i = 17; i > 7; i--)
+        {       // String concatination
+            genString[i] = phoneNumber[i-7];
+        }
+        genString[18] = '\0';
+        UART_transmitString(FONA, genString);   // Phone Number I'm Texting
+        delay_ms(5);
+        strcpy(genString, "MESSAGE_GOES_HERE\r\n");
+        UART_transmitString(FONA, genString);
+        UART_transmitByte(FONA, '\0');      // send message!
+
+        //code for checking if the text went through successfully goes here
     }
-    return SUCCESS;
+    else
+    {
+        return(INVALID_PHONE_NUMBER);
+    }
+    return(0);
 }
 
 
-char FONA_sendCommandCheckReply(const char input[], const char check[])
+char FONA_CheckStrength()
 {
+
+    char genString[21] = "00000000000000000000"; // changed to 21 in length so null could be added. removed error
     FONA_INDEX = 0;
-
-    char inputLength = strlen(input);
-    char checkLength = strlen(check);
-
-    FONA_sendCommand(input);
-
-    unsigned long timeOut = millis();
-    while(FONA_INDEX < (inputLength + checkLength + 3) && millis() - timeOut < FONA_TIMEOUT);
-
-    if(millis() - timeOut >= FONA_TIMEOUT)
+    strcpy(genString, "AT+CSQ\r\n");
+    UART_transmitString(FONA, &genString[0]);   // Check call strength
+    delay_ms(5);
+    for(int i = FONA_INDEX; i >= 0; i--)
     {
-        return FAILURE;
+
+
     }
 
-    char test[100];
-    strcpy(test,input);
-    test[inputLength] = '\r';
-    test[inputLength+1] = '\n';
-
-    for(int i = 0; i < checkLength; i++)
-    {
-        test[inputLength + 2 + i] = check[i];
-    }
-
-    test[inputLength + checkLength + 2] = '\r';
-    test[inputLength + checkLength + 3] = '\n';
-    test[inputLength + checkLength + 4] = '\0';
-
-    return FONA_checkReply(test);
+    return 'a'; // this is just to remove error, no idea what you are actually doing
 }
